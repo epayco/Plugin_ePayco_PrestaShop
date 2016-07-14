@@ -33,4 +33,4 @@
 
 
 
-![Alt text](ImgTutorialPrestaShop/tuto-1.png =100x20 "iamgen decripcion")
+![Alt text](ImgTutorialPrestaShop/tuto-1.png "iamgen decripcion") { width: 200px; }
