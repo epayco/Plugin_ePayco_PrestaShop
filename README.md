@@ -41,3 +41,4 @@
 
 ## Versiones
 * [ePayco plugin PrestaShop v1.6.1.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6).
+* [ePayco plugin PrestaShop v1.5.6.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.5.6.2).
