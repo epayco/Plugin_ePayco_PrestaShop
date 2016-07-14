@@ -31,4 +31,4 @@
 #### 5. Por ultimo guarda los cambios.
 
 
-![Alt text](imagen.png "iamgen decripcion")
+![Alt text](icono_epayco.png "iamgen decripcion")
