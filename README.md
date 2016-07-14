@@ -1,4 +1,4 @@
-#ePayco plugin para PrestaShop version 1.6.1.6
+#ePayco plugin para PrestaShop v1.6.1.6
 
 **Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
 
@@ -10,17 +10,17 @@
 
 ## Requisitos
 
-* Tener una cuenta activa en ePayco.
-* Tener instalado CS-CART 4.3.*. 
-* Acceso a las carpetas donde se encuetra instalado CS-CART.
-* Acceso al backend de CS-CART.
+* Tener una cuenta activa en [ePayco](https://pagaycobra.com).
+* Tener instalado PrestaShop v1.6.1.6.
+* Acceso a las carpetas donde se encuetra instalado PrestaShop.
+* Acceso al admin de PrestaShop.
 
 ## Instalación
 
-### 1. [Descarga el plugin.](http://dev-plugins.info/cscart-tuto/epayco.zip)
-### 2. Ingresar a tu administrador de CS-CART. <br/><img src="http://dev-plugins.info/cscart-tuto/1.png">
-### 3. Ingresar a Add-ons / Manage add-ons. <br/><img src="http://dev-plugins.info/cscart-tuto/2.png">
-### 4. Haz click en Upload & install add-on, y busca en tu ordenador el compreso del plugin y cargalo. <br/><img src="http://dev-plugins.info/cscart-tuto/3.png">
+### 1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
+### 2. Ingresar a tu administrador de PrestaShop.
+### 3. Ingresar a Add-ons / Manage add-ons.
+### 4. Haz click en Upload & install add-on, y busca en tu ordenador el compreso del plugin y cargalo. 
 
 ## Configuración
 
