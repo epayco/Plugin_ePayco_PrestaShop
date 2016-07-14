@@ -29,12 +29,12 @@
 
 ## Pasos
 
-<img src="ImgTutorialPrestaShop/tuto-1.png" alt="Pasos 1" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-2.png" alt="Pasos 2" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-3.png" alt="Pasos 3" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-4.png" alt="Pasos 4" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-5.png" alt="Pasos 5" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-6.png" alt="Pasos 6" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-7.png" alt="Pasos 7" width="200px">
-<img src="ImgTutorialPrestaShop/tuto-8.png" alt="Pasos 8" width="200px">
+<img src="ImgTutorialPrestaShop/tuto-1.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-2.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-3.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-4.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-5.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-6.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-7.png" width="400px">
+<img src="ImgTutorialPrestaShop/tuto-8.png" width="400px">
 
