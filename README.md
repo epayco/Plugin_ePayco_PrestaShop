@@ -29,3 +29,6 @@
 #### 3. Ingresa el nombre del metodo de pago y selecciona el Processor (ePayco).
 #### 4. Selecciona la pestaña Configure e ingresa el P_CUST_ID_CLIENTE y P_KEY.
 #### 5. Por ultimo guarda los cambios.
+
+
+![Alt text](imagen.png "iamgen decripcion")
