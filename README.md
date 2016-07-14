@@ -33,4 +33,4 @@
 
 
 
-![Alt text](ImgTutorialPrestaShop/tuto-1.png "iamgen decripcion") { width: 200px; }
+![Alt text](ImgTutorialPrestaShop/tuto-1.png "iamgen decripcion"){:.some-css-class style="width: 200px"}
