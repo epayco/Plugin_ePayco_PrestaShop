@@ -1,4 +1,4 @@
-#ePayco plugin para PrestaShop v1.6.1.6
+######ePayco plugin para PrestaShop v1.6.1.6
 
 **Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
 
