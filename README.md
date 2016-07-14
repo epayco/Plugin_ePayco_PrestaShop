@@ -16,16 +16,7 @@
 
 ## instalación
 
-<div style="width: 100%">
-	<div style="width: 50%">1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)</div>
-	<div style="width: 50%"><img src="ImgTutorialPrestaShop/tuto-1.png"></div>
-</div>
-
-
-
-
-
-
+1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
 2. Ingresar a tu administrador de PrestaShop.
 3. Ingresa a Módulos y Servicios.
 4. Carga el plugin en PrestaShop.
