@@ -30,14 +30,14 @@
 
 ## Pasos
 
-<img src="ImgTutorialPrestaShop/tuto-1.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-2.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-3.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-4.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-5.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-6.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-7.png" width="700px"/><br/>
-<img src="ImgTutorialPrestaShop/tuto-8.png" width="700px"/><br/>
+<img src="ImgTutorialPrestaShop/tuto-1.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-2.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-3.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-4.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-5.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-6.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-7.png" width="500px"/>
+<img src="ImgTutorialPrestaShop/tuto-8.png" width="500px"/>
 
 ## Versiones
 * [ePayco plugin PrestaShop v1.6.1.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6).
