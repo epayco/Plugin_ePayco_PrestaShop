@@ -14,7 +14,7 @@
 * Acceso a las carpetas donde se encuetra instalado PrestaShop.
 * Acceso al admin de PrestaShop.
 
-## instalación
+## Instalación
 
 1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
 2. Ingresar a tu administrador de PrestaShop.
