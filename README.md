@@ -29,12 +29,12 @@
 
 ## Pasos
 
-<img src="ImgTutorialPrestaShop/tuto-1.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-2.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-3.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-4.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-5.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-6.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-7.png" width="400px" margin="auto auto"/>
-<img src="ImgTutorialPrestaShop/tuto-8.png" width="400px" margin="auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-1.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-2.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-3.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-4.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-5.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-6.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-7.png" width="400px" style="margin:auto auto"/>
+<img src="ImgTutorialPrestaShop/tuto-8.png" width="400px" style="margin:auto auto"/>
 
