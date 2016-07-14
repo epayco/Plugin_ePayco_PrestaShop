@@ -32,5 +32,7 @@
 <img src="ImgTutorialPrestaShop/tuto-1.png" alt="Pasos 1" width="200px">
 
 
-![image](https://octodex.github.com/images/yaktocat.png "This is a tooltip"){: width=200px}
+![image](https://octodex.github.com/images/yaktocat.png "This is a tooltip"){
+	width=200px;
+}
 ![Alt text](ImgTutorialPrestaShop/tuto-1.png "iamgen decripcion"){: width=200px}
