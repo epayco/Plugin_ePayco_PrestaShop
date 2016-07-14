@@ -33,4 +33,4 @@
 
 
 
-![Alt text](ImgTutorialPrestaShop/tuto-1.png "iamgen decripcion" median)
+![Alt text](ImgTutorialPrestaShop/tuto-1.png =100x20 "iamgen decripcion")
