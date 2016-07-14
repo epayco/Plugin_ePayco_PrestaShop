@@ -7,6 +7,7 @@
 * [Requisitos](#requisitos)
 * [Instalación](#instalación)
 * [Pasos](#pasos)
+* [Versiones](#versiones)
 
 ## Requisitos
 
@@ -38,3 +39,5 @@
 <img src="ImgTutorialPrestaShop/tuto-7.png" width="700px"/><br/>
 <img src="ImgTutorialPrestaShop/tuto-8.png" width="700px"/><br/>
 
+## Versiones
+* [ePayco plugin PrestaShop v1.6.1.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6).
