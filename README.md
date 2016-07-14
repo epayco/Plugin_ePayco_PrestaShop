@@ -16,14 +16,14 @@
 
 ## instalación
 
-#### 1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
-#### 2. Ingresar a tu administrador de PrestaShop.
-#### 3. Ingresa a Módulos y Servicios.
-#### 4. Carga el plugin en PrestaShop.
-#### 5. Buscar el plugin ePayco en la lista de módulos.
-#### 6. Haz click en Instalar.
-#### 7. Haz click en Seguir con la Instalación.
-#### 8. Ingresa al panel de clientes de ePayco para obtener el P_CUST_ID_CLIENTE y P_KEY.
-#### 9. Por último configura el plugin de ePayco ingresando los datos del formulario. 
+1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
+2. Ingresar a tu administrador de PrestaShop.
+3. Ingresa a Módulos y Servicios.
+4. Carga el plugin en PrestaShop.
+5. Buscar el plugin ePayco en la lista de módulos.
+6. Haz click en Instalar.
+7. Haz click en Seguir con la Instalación.
+8. Ingresa al panel de clientes de ePayco para obtener el P_CUST_ID_CLIENTE y P_KEY.
+9. Por último configura el plugin de ePayco ingresando los datos del formulario. 
 
 ![Alt text](icono_epayco.png "iamgen decripcion")
