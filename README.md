@@ -6,6 +6,7 @@
 
 * [Requisitos](#requisitos)
 * [Instalación](#instalación)
+* [Pasos](#pasos)
 
 ## Requisitos
 
@@ -26,6 +27,9 @@
 8. Ingresa al panel de clientes de ePayco para obtener el **P_CUST_ID_CLIENTE** y **P_KEY**.
 9. Por último configura el plugin de ePayco ingresando los datos del formulario. 
 
+## Pasos
+
+<img src="ImgTutorialPrestaShop/tuto-1.png" alt="Pasos 1" width="200px">
 
 
 
