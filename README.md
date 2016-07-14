@@ -29,12 +29,12 @@
 
 ## Pasos
 
-<div><img src="ImgTutorialPrestaShop/tuto-1.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-2.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-3.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-4.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-5.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-6.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-7.png" width="400px"></div>
-<div><img src="ImgTutorialPrestaShop/tuto-8.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-1.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-2.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-3.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-4.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-5.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-6.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-7.png" width="400px"></div>
+<div width="100%"><img src="ImgTutorialPrestaShop/tuto-8.png" width="400px"></div>
 
