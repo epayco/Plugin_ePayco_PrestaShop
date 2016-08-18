@@ -21,7 +21,7 @@ class Payco extends PaymentModule {
     $this->name = 'payco';
     $this->author = 'ePayco';
     $this->displayName = 'payco';
-    $this->tab = 'payments_gateways';   
+    $this->tab = 'payments_gateways';
     $this->controllers = array('payment', 'validation');
 
     $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE', 'P_KEY','P_TEST_REQUEST'));
@@ -41,7 +41,7 @@ class Payco extends PaymentModule {
 
     $this->version = '1.0';
     if (!isset($this->p_cust_id_cliente) OR !isset($this->p_key))
-        $this->warning = $this->l('Merchant ID and Merchant Password deben estar configurados para utilizar este módulo correctamente');
+        $this->warning = $this->l('Merchant ID and Merchant Password deben estar configurados para utilizar este mï¿½dulo correctamente');
     if (!sizeof(Currency::checkPaymentCurrencies($this->id)))
         $this->warning = $this->l('No currency set for this module');
 
@@ -51,7 +51,7 @@ class Payco extends PaymentModule {
 
   }
 
-  /** 	install()	
+  /** 	install()
    * 	Called on Back Office -> Install */
   public function install() {
 
@@ -60,21 +60,21 @@ class Payco extends PaymentModule {
       $this->registerHook('payment');   //Payment Selection Screen
       $this->registerHook('paymentReturn'); //Payment Return
       $this->registerHook('invoice');   //Back Office Invoice View
-      $this->registerHook('updateOrderStatus'); //Back Office Order Status Updated			
+      $this->registerHook('updateOrderStatus'); //Back Office Order Status Updated
 
       if (!isset($this->p_cust_id_cliente))
           Configuration::updateValue('P_CUST_ID_CLIENTE', '');
       if (!isset($this->p_key))
           Configuration::updateValue('P_KEY', '');
        if (!isset($this->p_test_request))
-          Configuration::updateValue('MERCHANT_TEST', '');
+          Configuration::updateValue('P_TEST_REQUEST', '');
 
       //Set up our currencies and issuers
       CreditCard_OrderState::setup();
       //CreditCard_Issuer::setup();
       CreditCard_Order::setup();
       return true;
-      
+
       } else {
         return false;
       }
@@ -84,7 +84,7 @@ class Payco extends PaymentModule {
      * Called on Back Office -> Uninstall */
     function uninstall() {
       CreditCard_Order::remove();
-      if (!Configuration::deleteByName('P_CUST_ID_CLIENTE') OR !Configuration::deleteByName('MERCHANT_TEST') OR !Configuration::deleteByName('P_KEY') OR !parent::uninstall())
+      if (!Configuration::deleteByName('P_CUST_ID_CLIENTE') OR !Configuration::deleteByName('P_TEST_REQUEST') OR !Configuration::deleteByName('P_KEY') OR !parent::uninstall())
           return false;
       return true;
     }
@@ -102,7 +102,7 @@ class Payco extends PaymentModule {
       if (Tools::isSubmit('btnSubmit')) {
         Configuration::updateValue('P_CUST_ID_CLIENTE', Tools::getValue('merchantid'));
         Configuration::updateValue('P_KEY', Tools::getValue('merchantpassword'));
-        Configuration::updateValue('MERCHANT_TEST', Tools::getValue('merchanttest'));
+        Configuration::updateValue('P_TEST_REQUEST', Tools::getValue('merchanttest'));
 
         CreditCard_OrderState::updateStates(intval(Tools::getValue('id_os_initial')), Tools::getValue('id_os_deleteon'));
         $this->_html.= '<div class="bootstrap"><div class="alert alert-success">'.$this->l('Cambios Aplicados Exitosamente') . '</div></div>';
@@ -110,15 +110,15 @@ class Payco extends PaymentModule {
     }
 
     private function _displayForm() {
-      
+
       global $cookie;
 
       $states = CreditCard_OrderState::getOrderStates();
       $id_os_initial = Configuration::get('CREDITCARD_DATA_OS_INITIAL');
 
-      $this->_html .= '<b>'. 
+      $this->_html .= '<b>'.
       $this->l('Este modulo acepta pagos utilizando la plataforma de ePayco').'</b><br /><br />'.
-      $this->l('Si el cliente opta por esta modalidad de pago, el estado del pedido cambia a \'ePayco - Esperando Validacion\'.').'<br/>'. 
+      $this->l('Si el cliente opta por esta modalidad de pago, el estado del pedido cambia a \'ePayco - Esperando Validacion\'.').'<br/>'.
       $this->l('Cuando el sitio ePayco confirme el pago, el estado del pedido cambia a \'Payment acepted\'.')."<br/><br/>";
 
       $this->_html.='<form action="'.Tools::htmlentitiesUTF8($_SERVER['REQUEST_URI']).'" method="post" class="half_form">
@@ -129,7 +129,7 @@ class Payco extends PaymentModule {
             '.$this->l("Advanced Settings").':
         </legend>
         <div id="advanced" >
-          <div style="float: left;padding:10px;">			
+          <div style="float: left;padding:10px;">
             <table cellpadding="0" cellspacing="0" class="table">
             <thead>
               <tr>
@@ -139,7 +139,7 @@ class Payco extends PaymentModule {
               </tr>
             </thead>
             <tbody>';
-        
+
 
         foreach ($states as $item => $state) {
           $checked = "";
@@ -173,13 +173,13 @@ class Payco extends PaymentModule {
         						</div>
         					</fieldset>
         					<fieldset>
-        				<legend>'.utf8_encode("Configuración Cuenta ePayco").'</legend>
-        				
+        				<legend>'.utf8_encode("Configuraciï¿½n Cuenta ePayco").'</legend>
+
                 <img src="../modules/payco/boton.png"/>
 
                 <table border="0" width="600" cellpadding="0" cellspacing="0" id="form">
         					<tr><td colspan="2">Por favor especifique su P_CUST_ID_CLIENTE y P_KEY, sumninistrados por ePayco<br /><br /></td></tr>
-        					<tr><td width="250" align="justify" style="padding-right:20px;"><b>P_CUST_ID_CLIENTE</b><br>'.utf8_encode("Corresponde a su Número de identificación el cual es proporcionado por ePayco").'</td><td><input type="text" name="merchantid" value="' . Tools::htmlentitiesUTF8(Tools::getValue('merchantid', $this->p_cust_id_cliente)) . '" style="width: 300px;" /></td></tr>
+        					<tr><td width="250" align="justify" style="padding-right:20px;"><b>P_CUST_ID_CLIENTE</b><br>'.utf8_encode("Corresponde a su Nï¿½mero de identificaciï¿½n el cual es proporcionado por ePayco").'</td><td><input type="text" name="merchantid" value="' . Tools::htmlentitiesUTF8(Tools::getValue('merchantid', $this->p_cust_id_cliente)) . '" style="width: 300px;" /></td></tr>
         					<tr><td width="250" >&nbsp;&nbsp;</td></tr>
                             <tr><td width="250"  align="justify" style="padding-right:20px;"><b>P_KEY</b><br>Corresponde a una llave transaccional la cual es sumninistrada  por ePayco</td><td><input type="text" name="merchantpassword" value="' . Tools::htmlentitiesUTF8(Tools::getValue('merchantpassword', $this->p_key)) . '" style="width: 300px;" /></td></tr>
         				    <tr><td width="250" >&nbsp;&nbsp;</td></tr>
@@ -190,7 +190,7 @@ class Payco extends PaymentModule {
                                 </select>
                             </td>
                             </tr>
-                        
+
         				</table>
         			</fieldset>
         	<div style="clear: both;"></div>
@@ -205,12 +205,12 @@ class Payco extends PaymentModule {
 
     public function getContent() {
       $this->_html = '<h2>' . $this->displayName . '</h2>';
-      
+
       if (Tools::isSubmit('btnSubmit')) {
         $this->_postValidation();
         if (!count($this->_postErrors)) {
           $this->_postProcess();
-        } else {        
+        } else {
           foreach ($this->_postErrors as $err) {
             $this->_html .= '<div class="alert error">' . $err . '</div>';
           }
@@ -246,29 +246,29 @@ class Payco extends PaymentModule {
         }else{
             mysql_select_db($dbName, $conexion);
         }
-        
+
         if ($respuesta == 'Aceptada'){
 
             $sqlstado = "SELECT id_order_state FROM " . $dbPrefix . "order_state where color='#30AF49'";
             $resultPayco1 = mysql_query($sqlstado);
-            $id_estado1 = mysql_fetch_array($resultPayco1);            
+            $id_estado1 = mysql_fetch_array($resultPayco1);
 
             $id_order_state = $id_estado1[0];
 
 
         }else if ($respuesta == 'Rechazada'){
-        
+
             $sqlstado2 = "SELECT id_order_state FROM " . $dbPrefix . "order_state where color='#FF0202'";
             $resultPayco2 = mysql_query($sqlstado2);
-            $id_estado2 = mysql_fetch_array($resultPayco2);            
+            $id_estado2 = mysql_fetch_array($resultPayco2);
 
             $id_order_state = $id_estado2[0];
 
         }else if ($respuesta = 'Pendiente'){
-        
+
             $sqlstado3 = "SELECT id_order_state FROM " . $dbPrefix . "order_state where color='#FFFFAA'";
             $resultPayco3 = mysql_query($sqlstado3);
-            $id_estado3 = mysql_fetch_array($resultPayco3);            
+            $id_estado3 = mysql_fetch_array($resultPayco3);
 
             $id_order_state = $id_estado3[0];
 
@@ -277,7 +277,7 @@ class Payco extends PaymentModule {
 
         if (isset($id_order_state) && isset($idorder)) {
 
-            
+
             $sql = "SELECT MAX(id_order_history) FROM " . $dbPrefix . "order_history";
             $result = mysql_query($sql);
             if (!$result) {
@@ -307,7 +307,7 @@ class Payco extends PaymentModule {
     /** 	execPayment($cart)
      * 	Called from front office when a user clicks "Pay with Credit Card" */
     function execPayment($cart) {
-       
+
 
         if (!$this->active)
             return;
@@ -382,7 +382,7 @@ class Payco extends PaymentModule {
       if (!$this->active) return;
 
       global $smarty, $cart, $cookie;
-      
+
       //Agregar la order a credicar
       $id_order = $_GET['id_order'];
       $extra1 = $params['objOrder']->id_cart;
@@ -391,10 +391,10 @@ class Payco extends PaymentModule {
       $value = $params['total_to_pay'];
       $valorBaseDevolucion = $params['objOrder']->total_paid_tax_excl;
       $iva = $value - $valorBaseDevolucion;
-      
+
       //$valor = str_replace('.', '', $valor);
       if ($iva == 0) $valorBaseDevolucion = 0;
-      
+
       $currency = $this->getCurrency();
       $idcurrency = $params['objOrder']->id_currency;
       foreach ($currency as $mon) {
@@ -410,9 +410,14 @@ class Payco extends PaymentModule {
       $creditcard = new CreditCard_Order();
       $esorden = $creditcard->isCreditCardOrder($id_order);
 
+
+
       if ($state) {
 
         $p_signature = md5(trim($this->p_cust_id_cliente).'^'.trim($this->p_key).'^'.$refVenta.'^'.$value.'^'.$currency);
+
+        // print_r($this->p_test_request);
+        // die();
 
         $smarty->assign(array(
           'this_path_bw' => $this->_path,
@@ -426,7 +431,7 @@ class Payco extends PaymentModule {
           'total' => $value,
           'currency' => $currency,
           'iva' => $iva,
-          'baseDevolucionIva' => $valorBaseDevolucion,                
+          'baseDevolucionIva' => $valorBaseDevolucion,
           'merchantid' => trim($this->p_cust_id_cliente),
           'merchantpassword' => trim($this->p_key),
           'merchanttest'=> $this->p_test_request,
@@ -439,7 +444,7 @@ class Payco extends PaymentModule {
           'p_billing_lastname' => $this->context->customer->lastname
           )
         );
-      
+
       } else {
           $smarty->assign('status', 'failed');
       }
@@ -471,7 +476,7 @@ class Payco extends PaymentModule {
      * 	hookPaymentReturn($params)
      * 	Called in Front Office upon order placement
      */
-    function hookUpdateOrderStatus($params) {  
+    function hookUpdateOrderStatus($params) {
       if (CreditCard_OrderState::isDeleteOnState(intval($params['newOrderStatus']->id)))
             CreditCard_Order::removeDataString($params['id_order']);
     }

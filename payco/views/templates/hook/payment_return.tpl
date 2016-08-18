@@ -3,10 +3,11 @@
   <img src="{$this_path_bw}preload.gif"><br/>
 </div>
 <div style="text-align: center;">
-  Enviando a transacción de pago... 
+  Enviando a transacción de pago {$merchanttest}...
+
 </div>
-<form action="https://secure.payco.co/checkout.php" 
-      method="post" 
+<form action="https://secure.payco.co/checkout.php"
+      method="post"
       enctype="application/x-www-form-urlencoded"
       name="paymentForm">
     <input type="hidden" name="p_cust_id_cliente" type="text" value="{$merchantid}" />
@@ -21,7 +22,7 @@
     <input type="hidden" name="p_tax" type="text" value="0" />
     <input type="hidden" name="p_amount_base" type="text" value="0" />
     <input type="hidden" name="p_test_request" type="text" value="{$merchanttest}" />
-    <input type="hidden" name="p_extra1" type="text" value="{$extra1}" /> 
+    <input type="hidden" name="p_extra1" type="text" value="{$extra1}" />
     <input type="hidden" name="p_extra2" type="text" value="{$extra2}" />
     <input type="hidden" name="p_signature" type="text" value="{$p_signature}" />
 
@@ -43,7 +44,7 @@
 </script>
 {else}
 	<p class="warning">
-		{l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro' mod='ev1enlinea'} 
+		{l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro' mod='ev1enlinea'}
 		<a href="{$base_dir_ssl}contact-form.php">{l s='Departamento De Soporte' mod='ev1enlinea'}</a>.
 	</p>
 {/if}

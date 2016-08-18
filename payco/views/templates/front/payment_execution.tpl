@@ -59,17 +59,17 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="border: solid 1px; text-align: center;" colspan="2">		
+							<td style="border: solid 1px; text-align: center;" colspan="2">
 								<b>{l s='Por favor, confirme su pedido haciendo clic en CONFIRMO MI PEDIDO' mod='payco'}.</b>
 							</td>
-						</tr>	
+						</tr>
 					</table>
 				</div>
 			</div>
 			<div id="cart_navigation" class="cart_navigation clearfix">
-				<input type="submit" 
-					style="background: #F0943E; color: #FFFFFF; font-size: 16px;" 
-					value="{l s='CONFIRMO MI PEDIDO' mod='payco'}" 
+				<input type="submit"
+					style="background: #F0943E; color: #FFFFFF; font-size: 16px;"
+					value="{l s='CONFIRMO MI PEDIDO' mod='payco'}"
 					class="button btn btn-default pull-right"/>
 			</div>
 		</form>
