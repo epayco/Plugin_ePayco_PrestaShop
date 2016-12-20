@@ -1,6 +1,6 @@
 <?php
 //echo "hola mundo de afuera";
-var_export($_REQUEST);
+//var_export($_REQUEST);
 
 $useSSL = true;
 include(dirname(__FILE__).'/../../config/config.inc.php');

@@ -2,7 +2,7 @@
 
 	class CreditCard_Order
 	{
-		public function isCreditCardOrder($id_order)
+		public static function isCreditCardOrder($id_order)
 		{
 			$db = Db::getInstance();
 			$result = $db->getRow('
@@ -13,7 +13,7 @@
 			
 		}
 
-		public function removeDataString($id_order)
+		public static function removeDataString($id_order)
 		{
 			$db = Db::getInstance();
 			$result = $db->execute('
@@ -21,45 +21,49 @@
 				WHERE `id_order` = "'.intval($id_order).'"');
 		}
 
-		public function addDataString($id_order, $transid, $transdate)
+		public static function addDataString($id_order, $transid, $transdate)
 		{
 			$db = Db::getInstance();
-			$result = $db->Execute('
+			$result = $db->execute('
 			INSERT INTO `'._DB_PREFIX_.'creditcard_order`
 			( `id_order`, `data_string` , `trans_date` )
 			VALUES
 			("'.intval($id_order).'","'.$transid.'","'.$transdate.'")');
 		}
 
-		public function getDataString($id_order)
+		public static function getDataString($id_order)
 		{
 			$db = Db::getInstance();
-			$result = $db->ExecuteS('
+			$result = $db->execute('
 			SELECT `data_string` FROM `'._DB_PREFIX_.'creditcard_order`
 			WHERE `id_order` ="'.intval($id_order).'";');
 			return $result[0]['data_string'];
 		}
 
-		public function getTransactionID($id_order)
+		public static function getTransactionID($id_order)
 		{
 			$db = Db::getInstance();
-			$result = $db->ExecuteS('
+			$result = $db->execute('
 			SELECT `data_string` FROM `'._DB_PREFIX_.'creditcard_order`
 			WHERE `id_order` ="'.intval($id_order).'";');
 			return $result[0]['data_string'];
 		}
 
-		public function getTransactionDate($id_order)
+		public static function getTransactionDate($id_order)
 		{
 			$db = Db::getInstance();
-			$result = $db->ExecuteS('
+			$result = $db->execute('
 			SELECT `trans_date` FROM `'._DB_PREFIX_.'creditcard_order`
 			WHERE `id_order` ="'.intval($id_order).'";');
 			return $result[0]['trans_date'];
 		}
 		
-		public function setup()
-		{	$db = Db::getInstance();
+		public static function setup()
+		{	
+
+
+			$db = Db::getInstance();
+
 			//Create table to store credit card data
 			$db->execute("CREATE TABLE `"._DB_PREFIX_."creditcard_order` (
 				`id_record` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -72,9 +76,10 @@
 			return true;
 		}
 		
-		public function remove()
-		{	$db = Db::getInstance();
-			$db->execute("DROP TABLE `"._DB_PREFIX_."creditcard_order`");
+		public static function remove()
+		{	
+			$db = Db::getInstance();
+			$db->execute("DROP TABLE IF EXISTS `"._DB_PREFIX_."creditcard_order`");
 			return true;
 		}
 		

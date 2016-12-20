@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="wrap">
 <div class="box cheque-box">
-	<h1 class="page-heading"> Transaccion {$respuesta}</h1>
+	<h1 class="page-heading"> Transacción {$respuesta}</h1>
 
 	<h3 class="page-subheading" >
 		<img src="/modules/payco/payco.jpg" alt="{l s='payco' mod='payco'}" width="86" height="90" style="float:left;" />
@@ -19,7 +19,7 @@
 						</td>
 					</tr>	
 					<tr>
-						<td style="border: solid 1px;"><strong> Codigo de Referencia: </strong>&nbsp;</td>
+						<td style="border: solid 1px;"><strong> Código de Referencia: </strong>&nbsp;</td>
 						<td width="240" style="border: solid 1px;">
 							{$ref_venta}
 						</td>

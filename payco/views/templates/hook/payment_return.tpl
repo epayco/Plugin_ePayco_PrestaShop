@@ -3,7 +3,7 @@
   <img src="{$this_path_bw}preload.gif"><br/>
 </div>
 <div style="text-align: center;">
-  Enviando a transacción de pago {$merchanttest}...
+  Enviando a transacción de pago...
 
 </div>
 <form action="https://secure.payco.co/checkout.php"
@@ -30,17 +30,24 @@
     <input name="p_billing_name" value="{$p_billing_name}" type="hidden" />
     <input name="p_billing_lastname" value="{$p_billing_lastname}" type="hidden" />
 
-    <input style="display:none;" type="submit" id="submit"/>
+   <input type="submit" id="submit"
+          style="background: #F0943E; color: #FFFFFF; font-size: 16px;"
+          value="{l s='Pagar Pedido' mod='payco'}"
+          class="button btn btn-default pull-right"/>
 
 </form>
 <!-- Auto ejecute el boton de pagos, redireccionando a la pasarela -->
 <script>
+  cont=0;
   $(document).ready(function() {
+    
     var submit = document.getElementById("submit");
+    console.log(submit);
     if(submit != null) {
       submit.click();
     }
   })
+ 
 </script>
 {else}
 	<p class="warning">

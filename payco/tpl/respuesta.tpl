@@ -8,7 +8,7 @@
 			<table border="0">
 				<tbody>
 					<tr>
-						<td width="240"><strong> Codigo de Referencia: </strong>&nbsp;</td>
+						<td width="240"><strong> Código de Referencia: </strong>&nbsp;</td>
 						<td width="240">
 							{$ref_venta}
 						</td>

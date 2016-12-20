@@ -20,7 +20,7 @@ class Payco extends PaymentModule {
     $this->currencies_mode = 'checkbox';
     $this->name = 'payco';
     $this->author = 'ePayco';
-    $this->displayName = 'payco';
+    $this->displayName = 'ePayco';
     $this->tab = 'payments_gateways';
     $this->controllers = array('payment', 'validation');
 
@@ -41,7 +41,7 @@ class Payco extends PaymentModule {
 
     $this->version = '1.0';
     if (!isset($this->p_cust_id_cliente) OR !isset($this->p_key))
-        $this->warning = $this->l('Merchant ID and Merchant Password deben estar configurados para utilizar este m�dulo correctamente');
+        $this->warning = $this->l('P_CUST_ID_CLIENTE y P_KEY deben estar configurados para utilizar este módulo correctamente');
     if (!sizeof(Currency::checkPaymentCurrencies($this->id)))
         $this->warning = $this->l('No currency set for this module');
 
@@ -92,9 +92,9 @@ class Payco extends PaymentModule {
     private function _postValidation() {
       if (Tools::isSubmit('btnSubmit')) {
         if (!Tools::getValue('merchantid'))
-          $this->_postErrors[] = $this->l('\'MerchantID\' Campo Requerido.');
+          $this->_postErrors[] = $this->l('\'P_CUST_ID_CLIENTE\' Campo Requerido.');
         if (!Tools::getValue('merchantpassword'))
-          $this->_postErrors[] = $this->l('\'MerchantPassword\' Campo Requerido.');
+          $this->_postErrors[] = $this->l('\'P_KEY\' Campo Requerido.');
       }
     }
 
@@ -114,12 +114,12 @@ class Payco extends PaymentModule {
       global $cookie;
 
       $states = CreditCard_OrderState::getOrderStates();
-      $id_os_initial = Configuration::get('CREDITCARD_DATA_OS_INITIAL');
+      $id_os_initial = Configuration::get('PAYCO_ORDERSTATE_WAITING');
 
       $this->_html .= '<b>'.
       $this->l('Este modulo acepta pagos utilizando la plataforma de ePayco').'</b><br /><br />'.
-      $this->l('Si el cliente opta por esta modalidad de pago, el estado del pedido cambia a \'ePayco - Esperando Validacion\'.').'<br/>'.
-      $this->l('Cuando el sitio ePayco confirme el pago, el estado del pedido cambia a \'Payment acepted\'.')."<br/><br/>";
+      $this->l('Si el cliente opta por esta modalidad de pago, el estado del pedido cambia a \'ePayco Esperando Pago\'.').'<br/>'.
+      $this->l('Cuando el sitio ePayco confirme el pago, el estado del pedido cambia a \'Pago aceptado\'.')."<br/><br/>";
 
       $this->_html.='<form action="'.Tools::htmlentitiesUTF8($_SERVER['REQUEST_URI']).'" method="post" class="half_form">
 
@@ -165,6 +165,9 @@ class Payco extends PaymentModule {
         } else if(Tools::getValue('merchanttest', $this->p_test_request) == "FALSE") {
             $checked1 ="";
             $checked2 = "selected";
+        }else{
+          $checked1 ="selected";
+          $checked2 = "";
         }
 
         $this->_html.='</tbody>
@@ -173,13 +176,13 @@ class Payco extends PaymentModule {
         						</div>
         					</fieldset>
         					<fieldset>
-        				<legend>'.utf8_encode("Configuraci�n Cuenta ePayco").'</legend>
+        				<legend>'.utf8_encode("Configuraci&oacute;n ePayco").'</legend>
 
                 <img src="../modules/payco/boton.png"/>
 
                 <table border="0" width="600" cellpadding="0" cellspacing="0" id="form">
         					<tr><td colspan="2">Por favor especifique su P_CUST_ID_CLIENTE y P_KEY, sumninistrados por ePayco<br /><br /></td></tr>
-        					<tr><td width="250" align="justify" style="padding-right:20px;"><b>P_CUST_ID_CLIENTE</b><br>'.utf8_encode("Corresponde a su N�mero de identificaci�n el cual es proporcionado por ePayco").'</td><td><input type="text" name="merchantid" value="' . Tools::htmlentitiesUTF8(Tools::getValue('merchantid', $this->p_cust_id_cliente)) . '" style="width: 300px;" /></td></tr>
+        					<tr><td width="250" align="justify" style="padding-right:20px;"><b>P_CUST_ID_CLIENTE</b><br>'.utf8_encode("Corresponde a su n&uacute;mero de identificaci&oacute;n el cual es proporcionado por ePayco").'</td><td><input type="text" name="merchantid" value="' . Tools::htmlentitiesUTF8(Tools::getValue('merchantid', $this->p_cust_id_cliente)) . '" style="width: 300px;" /></td></tr>
         					<tr><td width="250" >&nbsp;&nbsp;</td></tr>
                             <tr><td width="250"  align="justify" style="padding-right:20px;"><b>P_KEY</b><br>Corresponde a una llave transaccional la cual es sumninistrada  por ePayco</td><td><input type="text" name="merchantpassword" value="' . Tools::htmlentitiesUTF8(Tools::getValue('merchantpassword', $this->p_key)) . '" style="width: 300px;" /></td></tr>
         				    <tr><td width="250" >&nbsp;&nbsp;</td></tr>
@@ -224,84 +227,63 @@ class Payco extends PaymentModule {
     }
 
     function PaymentSuccess($idcart, $idorden, $respuesta) {
-        $transid = $_POST['x_transaction_id'];
+        $x_transaction_id = $_POST['x_transaction_id'];
         $transdate = $_POST['x_fecha_transaccion'];
+        $x_cod_response=$_POST['x_cod_response'];
         //then add the credit data to the DB
-        CreditCard_Order::addDataString($idorden, $transid, $transdate);
-        $this->Acentarpago($respuesta, $idorden);
+        //CreditCard_Order::addDataString($_POST['x_id_invoice'], $transid, $transdate);
+        $this->Acentarpago($_POST['x_extra1'],$x_cod_response, $x_transaction_id);
     }
 
-    private function Acentarpago($respuesta, $idorder) {
+    private function Acentarpago($idorder,$x_cod_response,$x_transaction_id) {
 
-        $host = _DB_SERVER_;
-        $dbName = _DB_NAME_;
-        $dbPrefix = _DB_PREFIX_;
-        $dbPass = _DB_PASSWD_;
-        $dbUser = _DB_USER_;
-        $date = date("Y-m-d H:i:s", strtotime("now"));
+           $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE', 'P_KEY','P_TEST_REQUEST'));  
+           
+           $x_cust_id_cliente=trim($config['P_CUST_ID_CLIENTE']);
+           $x_key=trim($config['P_KEY']);
 
-        $conexion = mysql_connect($host, $dbUser, $dbPass);
-        if (!$conexion) {
-            die('Error de conexión DB: ');
-        }else{
-            mysql_select_db($dbName, $conexion);
-        }
+           $x_signature=hash('sha256',
+            $x_cust_id_cliente.'^'
+            .$x_key.'^'
+            .$_REQUEST['x_ref_payco'].'^'
+            .$_REQUEST['x_transaction_id'].'^'
+            .$_REQUEST['x_amount'].'^'
+            .$_REQUEST['x_currency_code']
+          );
 
-        if ($respuesta == 'Aceptada'){
+          $state = 'PAYCO_OS_REJECTED';
+          if ($x_cod_response == 4)
+            $state = 'PAYCO_OS_FAILED';
+          else if ($x_cod_response == 2)
+            $state = 'PAYCO_OS_REJECTED';
+          else if ($x_cod_response == 3)
+            $state = 'PAYCO_OS_PENDING';
+          else if ($x_cod_response == 1)
+            $state = 'PS_OS_PAYMENT';
+          
+          //Validamos la firma
+          if($x_signature==$_REQUEST['x_signature']){
 
-            $sqlstado = "SELECT id_order_state FROM " . $dbPrefix . "order_state where color='#30AF49'";
-            $resultPayco1 = mysql_query($sqlstado);
-            $id_estado1 = mysql_fetch_array($resultPayco1);
-
-            $id_order_state = $id_estado1[0];
-
-
-        }else if ($respuesta == 'Rechazada'){
-
-            $sqlstado2 = "SELECT id_order_state FROM " . $dbPrefix . "order_state where color='#FF0202'";
-            $resultPayco2 = mysql_query($sqlstado2);
-            $id_estado2 = mysql_fetch_array($resultPayco2);
-
-            $id_order_state = $id_estado2[0];
-
-        }else if ($respuesta = 'Pendiente'){
-
-            $sqlstado3 = "SELECT id_order_state FROM " . $dbPrefix . "order_state where color='#FFFFAA'";
-            $resultPayco3 = mysql_query($sqlstado3);
-            $id_estado3 = mysql_fetch_array($resultPayco3);
-
-            $id_order_state = $id_estado3[0];
-
-        }
-
-
-        if (isset($id_order_state) && isset($idorder)) {
-
-
-            $sql = "SELECT MAX(id_order_history) FROM " . $dbPrefix . "order_history";
-            $result = mysql_query($sql);
-            if (!$result) {
-                die(' Invalid query: ' . mysql_error());
-                return false;
+            $id_state=(int)Configuration::get($state);
+        
+            $order = new Order((int)Order::getOrderByCartId((int)$idorder));
+            $current_state = $order->current_state;
+            
+            if ($current_state != Configuration::get('PS_OS_PAYMENT'))
+            {
+              $history = new OrderHistory();
+              $history->id_order = (int)$order->id;
+              $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+              $history->addWithemail(false);
             }
-            $id_max = mysql_fetch_array($result);
-            $id_new = intval($id_max[0]) + 1;
-            $sql = "INSERT INTO " . $dbPrefix . "order_history (`id_order_history`, `id_employee`, `id_order`, `id_order_state`, `date_add`) ";
-            $sql .= "VALUES (" . $id_new . ", '1','" . $idorder . "', '" . $id_order_state . "', '" . $date . "')";
-            $result = mysql_query($sql);
+            if ($state != 'PS_OS_PAYMENT')
+            {
+              foreach ($order->getProductsDetail() as $product)
+                StockAvailable::updateQuantity($product['product_id'], $product['product_attribute_id'], + (int)$product['product_quantity'], $order->id_shop);
+            }
 
-            //Actualizar la Orden
-            $sqlupdate = 'Update ' . $dbPrefix . 'orders set current_state=' . $id_order_state . ' where id_order=' . $idorder . '';
-            $resulupdate = mysql_query($sqlupdate);
-
-            if (!$result)
-                die('No se puede insertar');
-            return false;
-        }else {
-            return true;
-        }
-
-        mysql_close($conexion);
+          }
+                           
     }
 
     /** 	execPayment($cart)
@@ -477,8 +459,8 @@ class Payco extends PaymentModule {
      * 	Called in Front Office upon order placement
      */
     function hookUpdateOrderStatus($params) {
-      if (CreditCard_OrderState::isDeleteOnState(intval($params['newOrderStatus']->id)))
-            CreditCard_Order::removeDataString($params['id_order']);
+      /*if (CreditCard_OrderState::isDeleteOnState(intval($params['newOrderStatus']->id)))
+            CreditCard_Order::removeDataString($params['id_order']);*/
     }
 
     /*

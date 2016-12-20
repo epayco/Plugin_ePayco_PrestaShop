@@ -1,5 +1,5 @@
 <div class="">
-	<h1> Transaccion {$respuesta}</h1>
+	<h1> Transacción {$respuesta}</h1>
 
 	<h3> Apreciado cliente, la transaccion con Referencia. {$refpayco}
 		
@@ -8,7 +8,7 @@
 			<table border="0">
 				<tbody>
 					<tr>
-						<td width="240"><strong> Codigo de Referencia: </strong>&nbsp;</td>
+						<td width="240"><strong> Código de Referencia: </strong>&nbsp;</td>
 						<td width="240">
 							{$ref_venta}
 						</td>
@@ -57,7 +57,13 @@
 							<br /></td>
 						</tr>
 						<tr>
-							<td><strong> Codigo de Respuesta POL: </strong></td>
+							<td><strong> Respuesta: </strong></td>
+							<td>
+								{$mensaje}
+							</td>
+						</tr>
+						<tr>
+							<td><strong> Motivo: </strong></td>
 							<td>
 								{$mensaje}
 							</td>
