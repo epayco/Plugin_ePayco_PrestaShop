@@ -3,8 +3,7 @@
   <img src="{$this_path_bw}preload.gif"><br/>
 </div>
 <div style="text-align: center;">
-  Enviando a transacción de pago...
-
+  Enviando a transacción de pago..., si el pedido no se envia automaticamente de click en el botón "Pagar Pedido"
 </div>
 <form action="https://secure.payco.co/checkout.php"
       method="post"
@@ -38,15 +37,17 @@
 </form>
 <!-- Auto ejecute el boton de pagos, redireccionando a la pasarela -->
 <script>
-  cont=0;
+ var submit = document.getElementById("submit");
+ submit.click();
+  /*cont=0;
   $(document).ready(function() {
     
-    var submit = document.getElementById("submit");
+   
     console.log(submit);
     if(submit != null) {
-      submit.click();
+     
     }
-  })
+  })*/
  
 </script>
 {else}
