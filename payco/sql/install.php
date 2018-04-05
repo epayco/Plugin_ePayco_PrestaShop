@@ -24,27 +24,15 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-class PaycoReturnModuleFrontController extends ModuleFrontController
-{
+$sql = array();
 
-	/**
-	 * @see FrontController::postProcess()
-	*/
-	public function postProcess()
-	{
-		$payco = new Payco();
+$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payco` (
+    `id_payco` int(11) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY  (`id_payco`)
+) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;';
 
-		if (isset($_REQUEST['x_cod_response']))
-		{	
-			$extra1=$_REQUEST['x_extra1'];
-			$response=$_REQUEST['x_cod_response'];
-			$referencia=$_REQUEST['x_ref_payco'];
-			$transid=$_REQUEST['x_transaction_id'];
-			$amount=$_REQUEST['x_amount'];
-			$currency=$_REQUEST['x_currency_code'];
-			$signature=$_REQUEST['x_signature'];
-		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature);		
-		}
-	}
-
+foreach ($sql as $query) {
+    if (Db::getInstance()->execute($query) == false) {
+        return false;
+    }
 }

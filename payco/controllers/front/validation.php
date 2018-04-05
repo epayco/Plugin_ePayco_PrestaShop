@@ -1,6 +1,6 @@
 <?php
-/*
-* 2007-2014 PrestaShop
+/**
+* 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,15 +18,12 @@
 * versions in the future. If you wish to customize PrestaShop for your
 * needs please refer to http://www.prestashop.com for more information.
 *
-*  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2014 PrestaShop SA
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2017 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-/**
- * @since 1.5.0
- */
 class PaycoValidationModuleFrontController extends ModuleFrontController
 {
 	/**
@@ -34,6 +31,7 @@ class PaycoValidationModuleFrontController extends ModuleFrontController
 	 */
 	public function postProcess()
 	{
+	
 		$cart = $this->context->cart;
 		if ($cart->id_customer == 0 || $cart->id_address_delivery == 0 || $cart->id_address_invoice == 0 || !$this->module->active)
 			Tools::redirect('index.php?controller=order&step=1');

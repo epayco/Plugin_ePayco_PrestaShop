@@ -24,27 +24,16 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-class PaycoReturnModuleFrontController extends ModuleFrontController
-{
+/**
+* In some cases you should not drop the tables.
+* Maybe the merchant will just try to reset the module
+* but does not want to loose all of the data associated to the module.
+*/
 
-	/**
-	 * @see FrontController::postProcess()
-	*/
-	public function postProcess()
-	{
-		$payco = new Payco();
+$sql = array();
 
-		if (isset($_REQUEST['x_cod_response']))
-		{	
-			$extra1=$_REQUEST['x_extra1'];
-			$response=$_REQUEST['x_cod_response'];
-			$referencia=$_REQUEST['x_ref_payco'];
-			$transid=$_REQUEST['x_transaction_id'];
-			$amount=$_REQUEST['x_amount'];
-			$currency=$_REQUEST['x_currency_code'];
-			$signature=$_REQUEST['x_signature'];
-		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature);		
-		}
-	}
-
+foreach ($sql as $query) {
+    if (Db::getInstance()->execute($query) == false) {
+        return false;
+    }
 }

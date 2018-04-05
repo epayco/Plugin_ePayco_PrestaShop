@@ -1,5 +1,4 @@
-<?php
-/**
+{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -22,29 +21,18 @@
 *  @copyright 2007-2017 PrestaShop SA
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
-*/
+*}
 
-class PaycoReturnModuleFrontController extends ModuleFrontController
-{
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+	<li class="active"><a href="#template_1" role="tab" data-toggle="tab">Template 1</a></li>
+	<li><a href="#template_2" role="tab" data-toggle="tab">Template 2</a></li>
+	<li><a href="#template_3" role="tab" data-toggle="tab">Template 3</a></li>
+</ul>
 
-	/**
-	 * @see FrontController::postProcess()
-	*/
-	public function postProcess()
-	{
-		$payco = new Payco();
-
-		if (isset($_REQUEST['x_cod_response']))
-		{	
-			$extra1=$_REQUEST['x_extra1'];
-			$response=$_REQUEST['x_cod_response'];
-			$referencia=$_REQUEST['x_ref_payco'];
-			$transid=$_REQUEST['x_transaction_id'];
-			$amount=$_REQUEST['x_amount'];
-			$currency=$_REQUEST['x_currency_code'];
-			$signature=$_REQUEST['x_signature'];
-		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature);		
-		}
-	}
-
-}
+<!-- Tab panes -->
+<div class="tab-content">
+	<div class="tab-pane active" id="template_1">{include file='./template_1.tpl'}</div>
+	<div class="tab-pane" id="template_2">{include file='./template_2.tpl'}</div>
+	<div class="tab-pane" id="template_3">{include file='./template_3.tpl'}</div>
+</div>

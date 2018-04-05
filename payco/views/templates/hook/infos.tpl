@@ -24,18 +24,10 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<div class="row">
-	<div class="col-xs-12 col-md-12">
-		<p class="payment_module">
-			<a class="bankwire" 
-				 href="{$link->getModuleLink('payco', 'payment')|escape:'html'}" 
-				 title="{l s='ePayco Reciba pagos online con tarjetas de credito, debito PSE, Efectivo y SafetyPay en menos de 24 Horas con multiples herramientas.' mod='payco'}">	
-				 <img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/epayco/boton_de_cobro_epayco.png" />			
-				{l s='ePayco' mod='payco'}&nbsp;
-				<span style="font-size: 14px;">
-					{l s='(Reciba pagos online con tarjetas de Crédito, Debito PSE, Efectivo y SafetyPay en menos de 24 Horas con multiples herramientas).' mod='payco'}
-				</span>
-			</a>
-		</p>
-	</div>
+<img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/logos/logo_epayco_200px.png"  />
+<br/>
+<div class="alert alert-info">
+<p><strong>{l s='Este módulo le permite aceptar pagos seguros por la plataforma de pagos ePayco.' mod='payco'}</strong></p>
+<p>{l s='Si el cliente decide pagar por ePayco, el estado del pedido cambiará a ePayco Esperando Pago' mod='payco'}</p>
+<p>{l s='Cuando el pago sea Aceptado o Rechazado ePayco envia una confirmación a la tienda para cambiar el estado del pedido' mod='payco'}</p>
 </div>

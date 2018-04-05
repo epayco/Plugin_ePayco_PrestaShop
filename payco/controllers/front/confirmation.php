@@ -24,15 +24,25 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-class PaycoReturnModuleFrontController extends ModuleFrontController
+class PaycoConfirmationModuleFrontController extends ModuleFrontController
 {
+    
+ 	public $ssl = true;
+    public $display_column_left = false;
+    public $display_column_right = false;
 
-	/**
-	 * @see FrontController::postProcess()
-	*/
-	public function postProcess()
-	{
-		$payco = new Payco();
+    public function initContent()
+    { 
+	    
+	    parent::initContent();	
+	   
+    }
+
+    public function postProcess(){
+
+    	$payco = new Payco();
+
+
 
 		if (isset($_REQUEST['x_cod_response']))
 		{	
@@ -43,8 +53,13 @@ class PaycoReturnModuleFrontController extends ModuleFrontController
 			$amount=$_REQUEST['x_amount'];
 			$currency=$_REQUEST['x_currency_code'];
 			$signature=$_REQUEST['x_signature'];
+		
 		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature);		
+		}else{
+			
 		}
-	}
 
+    }
 }
+
+

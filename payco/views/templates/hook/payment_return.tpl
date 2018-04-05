@@ -1,58 +1,122 @@
+{*
+* 2007-2017 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2017 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*}
 {if $status == 'ok'}
-<div style="width: 74px; margin: auto auto;">
-  <img src="{$this_path_bw}preload.gif"><br/>
-</div>
-<div style="text-align: center;">
-  Enviando a transacción de pago..., si el pedido no se envia automaticamente de click en el botón "Pagar Pedido"
-</div>
-<form action="https://secure.payco.co/checkout.php"
-      method="post"
-      enctype="application/x-www-form-urlencoded"
-      name="paymentForm">
-    <input type="hidden" name="p_cust_id_cliente" type="text" value="{$merchantid}" />
-    <input type="hidden" name="p_key" type="text" value="{$p_key}" />
-    <input type="hidden" name="p_id_invoice" type="text" value="{$refVenta}" />
-    <input type="hidden" name="p_currency_code" type="text" value="{$currency}" />
-    <input type="hidden" name="p_amount" type="text" value="{$total}" />
-    <input type="hidden" name="p_description" type="text" value="ORDEN DE COMPRA # {$refVenta}" />
-    <input type="hidden" name="p_email" type="text" value="{$custemail}" />
-    <input type="hidden" name="p_url_respuesta" type="text" value="{$returnurl}" />
-    <input type="hidden" name="p_url_confirmation" type="text" value="{$returnurl}" />
-    <input type="hidden" name="p_tax" type="text" value="0" />
-    <input type="hidden" name="p_amount_base" type="text" value="0" />
-    <input type="hidden" name="p_test_request" type="text" value="{$merchanttest}" />
-    <input type="hidden" name="p_extra1" type="text" value="{$extra1}" />
-    <input type="hidden" name="p_extra2" type="text" value="{$extra2}" />
-    <input type="hidden" name="p_signature" type="text" value="{$p_signature}" />
 
-    <input name="p_billing_email" value="{$p_billing_email}" type="hidden" />
-    <input name="p_billing_name" value="{$p_billing_name}" type="hidden" />
-    <input name="p_billing_lastname" value="{$p_billing_lastname}" type="hidden" />
+<p style="text-align: center;">
+   Enviando a transacción de pago... si el pedido no se envia automaticamente de click en el botón "Pagar con ePayco"
+</p>
 
-   <input type="submit" id="submit"
-          style="background: #F0943E; color: #FFFFFF; font-size: 16px;"
-          value="{l s='Pagar Pedido' mod='payco'}"
-          class="button btn btn-default pull-right"/>
-
+<form id="epayco_form" style="text-align: center;">
+    <script src="https://checkout.epayco.co/checkout.js"
+        class="epayco-button"
+        data-epayco-key="{$public_key}"
+        data-epayco-amount="{$total|escape:'htmlall':'UTF-8'}"
+        data-epayco-tax="{$tax|escape:'htmlall':'UTF-8'}"
+        data-epayco-tax-base="{$base_tax|escape:'htmlall':'UTF-8'}"    
+        data-epayco-name="ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}"
+        data-epayco-description="ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}"
+        data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
+        data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"
+        data-epayco-country="{$iso|lower|escape:'htmlall':'UTF-8'}"
+        data-epayco-test={$merchanttest}
+        data-epayco-extra1="{$extra1|escape:'htmlall':'UTF-8'}",
+        data-epayco-extra2="{$extra2|escape:'htmlall':'UTF-8'}",
+        data-epayco-extra3="",
+        data-epayco-external="{$external|escape:'htmlall':'UTF-8'}"
+        data-epayco-response="{$p_url_response|unescape: 'html' nofilter}" 
+        data-epayco-confirmation="{$p_url_response|unescape: 'html' nofilter}"
+        data-epayco-email-billing="{$p_billing_email|escape:'htmlall':'UTF-8'}"
+        data-epayco-name-billing="{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}"
+        data-epayco-address-billing="{$p_billing_address|escape:'htmlall':'UTF-8'}"
+        data-epayco-lang="es"
+        data-epayco-mobilephone-billing="{$p_billing_phone|escape:'htmlall':'UTF-8'}"
+        >
+    </script>
 </form>
-<!-- Auto ejecute el boton de pagos, redireccionando a la pasarela -->
+
 <script>
- var submit = document.getElementById("submit");
- submit.click();
-  /*cont=0;
-  $(document).ready(function() {
-    
-   
-    console.log(submit);
-    if(submit != null) {
-     
-    }
-  })*/
- 
+    setTimeout(function(){ 
+       document.getElementsByClassName("epayco-button-render" )[0].click();
+    }, 2500);
 </script>
+
+<!-- <div style="text-align: center;">
+  
+  Enviando a transacción de pago... si el pedido no se envia automaticamente de click en el botón "Pagar con ePayco"
+
+  <a id="btn-pagar" href="#" onclick="open_checkout();"><img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/epayco/boton_de_cobro_epayco2.png" />
+
+
+  </a>
+</div>
+
+<script type="text/javascript" src="https://checkout.epayco.co/checkout.js" > </script>
+<script type="text/javascript" >
+
+    
+    var handler = ePayco.checkout.configure({
+        key: "{$public_key}",
+        test: {$merchanttest}
+    })
+    var data = { 
+            amount: "{$total|escape:'htmlall':'UTF-8'}",
+            base_tax:"{$base_tax|escape:'htmlall':'UTF-8'}",
+            tax:"{$tax|escape:'htmlall':'UTF-8'}",
+            name: "ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}",
+            description: "ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}",
+            currency: "{$currency|lower|escape:'htmlall':'UTF-8'}",
+            country: "{$iso|lower|escape:'htmlall':'UTF-8'}",
+            lang: "es",
+            external:"{$external|escape:'htmlall':'UTF-8'}",
+            extra1:"{$extra1|escape:'htmlall':'UTF-8'}",
+            extra2:"{$extra2|escape:'htmlall':'UTF-8'}",
+            extra3:"",
+            invoice: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            confirmation: "{$p_url_response|unescape: 'html' nofilter}",
+            response: "{$p_url_response|unescape: 'html' nofilter}",
+            email_billing: "{$p_billing_email|escape:'htmlall':'UTF-8'}",
+            name_billing: "{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}",
+            address_billing: "{$p_billing_address|escape:'htmlall':'UTF-8'}",
+            phone_billing:"{$p_billing_phone|escape:'htmlall':'UTF-8'}"
+        }
+        console.log(data);
+        setTimeout(function(){ 
+            handler.open(data);
+         }, 2000);
+
+
+        function open_checkout(){
+            handler.open(data);
+        }
+
+
+     </script> -->
+
 {else}
-	<p class="warning">
-		{l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro' mod='ev1enlinea'}
-		<a href="{$base_dir_ssl}contact-form.php">{l s='Departamento De Soporte' mod='ev1enlinea'}</a>.
-	</p>
+<p class="warning">
+  {l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro departamento de Soporte' mod='payco'}
+  {l s='' mod='payco'}.
+</p>
 {/if}
