@@ -48,8 +48,7 @@ class CreditCard_OrderState extends ObjectModel
 	}
 	
 	public static function setup()
-	{		
-		
+	{	
 		if (!Configuration::get('PAYCO_ORDERSTATE_WAITING'))
 		{
 			$order_state = new OrderState();
@@ -114,6 +113,51 @@ class CreditCard_OrderState extends ObjectModel
 			$order_state->add();
 			Configuration::updateValue('PAYCO_OS_REJECTED', (int)$order_state->id);
 		}
+
+		if (!Configuration::get('PAYCO_OS_EXPIRED'))
+		{
+			$order_state = new OrderState();
+			foreach (Language::getLanguages() as $language)
+			$order_state->name[$language['id_lang']] = 'ePayco Pago Expirado';
+			$order_state->send_email = false;
+			$order_state->color = '#8F0621';
+			$order_state->hidden = false;
+			$order_state->delivery = false;
+			$order_state->logable = false;
+			$order_state->invoice = false;
+			$order_state->add();
+			Configuration::updateValue('PAYCO_OS_EXPIRED', (int)$order_state->id);
+		}
+
+		if (!Configuration::get('PAYCO_OS_ABANDONED'))
+		{
+			$order_state = new OrderState();
+			foreach (Language::getLanguages() as $language)
+			$order_state->name[$language['id_lang']] = 'ePayco Pago Abandonado';
+			$order_state->send_email = false;
+			$order_state->color = '#8F0621';
+			$order_state->hidden = false;
+			$order_state->delivery = false;
+			$order_state->logable = false;
+			$order_state->invoice = false;
+			$order_state->add();
+			Configuration::updateValue('PAYCO_OS_ABANDONED', (int)$order_state->id);
+		}
+
+		if (!Configuration::get('PAYCO_OS_CANCELED'))
+		{
+			$order_state = new OrderState();
+			foreach (Language::getLanguages() as $language)
+			$order_state->name[$language['id_lang']] = 'ePayco Pago Cancelado';
+			$order_state->send_email = false;
+			$order_state->color = '#8F0621';
+			$order_state->hidden = false;
+			$order_state->delivery = false;
+			$order_state->logable = false;
+			$order_state->invoice = false;
+			$order_state->add();
+			Configuration::updateValue('PAYCO_OS_CANCELED', (int)$order_state->id);
+		}
 	}
 
 	public static function remove(){
@@ -122,6 +166,9 @@ class CreditCard_OrderState extends ObjectModel
 	    Configuration::deleteByName('PAYCO_OS_PENDING');
 	    Configuration::deleteByName('PAYCO_OS_FAILED');
 	    Configuration::deleteByName('PAYCO_OS_REJECTED');
+	    Configuration::deleteByName('PAYCO_OS_EXPIRED');
+	    Configuration::deleteByName('PAYCO_OS_ABANDONED');
+	    Configuration::deleteByName('PAYCO_OS_CANCELED');
 		 
 	}	
 }

@@ -136,6 +136,7 @@ class Payco extends PaymentModule
         Configuration::updateValue('P_STATE_END_TRANSACTION', 'PS_OS_PAYMENT');    
         
         //Set up our currencies and issuers
+        CreditCard_OrderState::remove();
         CreditCard_OrderState::setup();
         //CreditCard_Issuer::setup();
         CreditCard_Order::setup();
@@ -780,7 +781,6 @@ class Payco extends PaymentModule
           $confirmation=true;
       }  
 
-      var_dump(isset($_REQUEST["?ref_payco"]));
       if(isset($_REQUEST["?ref_payco"])!="" || isset($_REQUEST["ref_payco"]) || $ref_payco){
 
           if(isset($_REQUEST["?ref_payco"])){
@@ -796,11 +796,11 @@ class Payco extends PaymentModule
         }
         if($ref_payco!="" and $url!=""){
 
+              //Consultamos la transaccion en el servidor
               $responseData = $this->PostCurl($url,false,$this->StreamContext());
-        
               $jsonData = @json_decode($responseData, true);
               $data = $jsonData['data'];
-              //Consultamos la transaccion en el servidor
+
               $data["ref_payco"]=$ref_payco;
               $data["url"]=$url;
             
@@ -845,6 +845,12 @@ class Payco extends PaymentModule
             $state = 'PAYCO_OS_REJECTED';
           else if ($x_cod_response == 3)
             $state = 'PAYCO_OS_PENDING';
+          else if ($x_cod_response == 9)
+            $state = 'PAYCO_OS_EXPIRED';
+          else if ($x_cod_response == 10)
+            $state = 'PAYCO_OS_ABANDONED';
+          else if ($x_cod_response == 11)
+            $state = 'PAYCO_OS_CANCELED';
           else if ($x_cod_response == 1){
              $state = 'PS_OS_PAYMENT';
              $payment=true;
