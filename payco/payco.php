@@ -1,6 +1,6 @@
 <?php
 /**
-* 2007-2017 PrestaShop
+* 2007-2018 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -28,6 +28,9 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
+use EpaycoOrder as EpaycoOrder;
+
+include(_PS_MODULE_DIR_ . 'payco/lib/EpaycoOrder.php');
 include(_PS_MODULE_DIR_ . 'payco/lib/CreditCard_Order.php');
 include(_PS_MODULE_DIR_ . 'payco/lib/CreditCard_OrderState.php');
 
@@ -53,7 +56,7 @@ class Payco extends PaymentModule
        
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '2.0.0';
+        $this->version = '1.7.3';
         $this->author = 'payco';
         $this->need_instance = 0;
 
@@ -67,7 +70,7 @@ class Payco extends PaymentModule
         $this->displayName = $this->l('payco');
         $this->description = $this->l('ePayco, Tarjetas de Credito, Debito PSE, SafetyPay y Efectivo');
         
-        $this->confirmUninstall = $this->l('Esta seguro de desistalar este mmodulo?');
+        $this->confirmUninstall = $this->l('Esta seguro de desistalar este modulo?');
 
        
 
@@ -77,6 +80,7 @@ class Payco extends PaymentModule
                                                 'P_TITULO',
                                                 'P_URL_RESPONSE',
                                                 'P_TYPE_CHECKOUT',
+                                                'P_REDUCE_STOCK_PENDING',
                                                 'P_URL_CONFIRMATION',
                                                 'P_STATE_END_TRANSACTION'));
 
@@ -96,14 +100,20 @@ class Payco extends PaymentModule
             $this->p_url_confirmation = trim($config['P_URL_CONFIRMATION']);  
         if (isset($config['P_TYPE_CHECKOUT']))
             $this->p_type_checkout = $config['P_TYPE_CHECKOUT'];
-        if (isset($config['P_STATE_END_TRANSACTION']))
+         if (isset($config['P_REDUCE_STOCK_PENDING']))
+            $this->p_reduce_stock_pending = $config['P_REDUCE_STOCK_PENDING'];
+        if (isset($config['P_STATE_END_TRANSACTION'])){
             $this->p_state_end_transaction = $config['P_STATE_END_TRANSACTION'];
+        }else{
+            $this->p_state_end_transaction = (int)Configuration::get('PS_OS_PAYMENT');
+        }
 
         if (!isset($this->p_cust_id_cliente) OR !isset($this->p_key) OR !isset($this->public_key))
         $this->warning = $this->l('P_CUST_ID_CLIENTE, P_KEY y PUBLIC_KEY deben estar configurados para utilizar este módulo correctamente');
         if (!sizeof(Currency::checkPaymentCurrencies($this->id)))
         $this->warning = $this->l('No currency set for this module');
-
+        //$this->install();
+        //EpaycoOrder::remove();
     }
 
     /**
@@ -111,7 +121,12 @@ class Payco extends PaymentModule
      * http://doc.prestashop.com/display/PS16/Enabling+the+Auto-Update
      */
     public function install()
-    {
+    {   
+        if ((int)Configuration::get('payco') == 1 ) {
+            $this->_errors[] = $this->l('El modulo ePayco actualmente ya esta instado');
+            return false;
+        }
+
         if (extension_loaded('curl') == false)
         {
             $this->_errors[] = $this->l('You have to enable the cURL extension on your server to install this module');
@@ -130,7 +145,8 @@ class Payco extends PaymentModule
         Configuration::updateValue('P_CUST_ID_CLIENTE', '');
         Configuration::updateValue('P_KEY', '');
         Configuration::updateValue('PUBLIC_KEY', '');
-        Configuration::updateValue('P_TEST_REQUEST', false);  
+        Configuration::updateValue('P_TEST_REQUEST', false);
+        Configuration::updateValue('P_REDUCE_STOCK_PENDING', true);  
         Configuration::updateValue('P_URL_RESPONSE', Context::getContext()->link->getModuleLink('payco', 'response'));
         Configuration::updateValue('P_URL_CONFIRMATION', Context::getContext()->link->getModuleLink('payco', 'response'));
         Configuration::updateValue('P_STATE_END_TRANSACTION', 'PS_OS_PAYMENT');    
@@ -141,10 +157,11 @@ class Payco extends PaymentModule
         //CreditCard_Issuer::setup();
         CreditCard_Order::setup();
 
-        //Configuration::updateValue('PAYCO_LIVE_MODE', false);
+        //crear la tabla para administrar los pedidos
+        EpaycoOrder::remove();
+        EpaycoOrder::setup();
 
-        include(dirname(__FILE__).'/sql/install.php');
-
+        Configuration::updateValue('payco', true);
         return parent::install() &&
             $this->registerHook('header') &&
             $this->registerHook('backOfficeHeader') &&
@@ -156,6 +173,7 @@ class Payco extends PaymentModule
     public function uninstall()
     {
         CreditCard_Order::remove();
+        CreditCard_OrderState::remove();
         Configuration::deleteByName('PAYCO_LIVE_MODE');
         Configuration::deleteByName('P_TITULO');
         Configuration::deleteByName('P_CUST_ID_CLIENTE');
@@ -165,11 +183,14 @@ class Payco extends PaymentModule
         Configuration::deleteByName('P_URL_RESPONSE');
         Configuration::deleteByName('P_URL_CONFIRMATION');
         Configuration::deleteByName('P_TYPE_CHECKOUT');
+        Configuration::deleteByName('P_REDUCE_STOCK_PENDING');
         Configuration::deleteByName('P_STATE_END_TRANSACTION');
 
-        include(dirname(__FILE__).'/sql/uninstall.php');
-
+        Configuration::deleteByName('payco', false);
+        //eliminar la tabla para administrar los pedidos
+        EpaycoOrder::remove();
         return parent::uninstall();
+
     }
 
     protected function _displayInfoAdmin()
@@ -336,6 +357,24 @@ class Payco extends PaymentModule
                         ),
                     ),
                     array(
+                        'type' => 'radio',
+                        'label'=> $this->trans('Reducir el stock en transacciones pendientes', array(), 'Modules.Payco.Admin'),
+                        'name' => "P_REDUCE_STOCK_PENDING",
+                        'is_bool' => true,
+                        'values' => array(
+                            array(
+                                'id' => 'P_REDUCE_STOCK_PENDING_TRUE',
+                                'value' => true,
+                                'label' => $this->trans('Si', array(), 'Modules.Payment.Admin'),
+                            ),
+                            array(
+                                'id' => 'P_REDUCE_STOCK_PENDING_FALSE',
+                                'value' => false,
+                                'label' => $this->trans('No', array(), 'Modules.Payment.Admin'),
+                            )
+                        ),
+                    ),
+                    array(
                         'type' => 'select',
                         'label' => $this->trans('Estado final Pedido', array(), 'Modules.Payco.Admin'),
                         'name' => 'P_STATE_END_TRANSACTION',
@@ -377,7 +416,8 @@ class Payco extends PaymentModule
             'P_TYPE_CHECKOUT' => Tools::getValue('P_TYPE_CHECKOUT', Configuration::get('P_TYPE_CHECKOUT')),
             'P_URL_RESPONSE' => Tools::getValue('P_URL_RESPONSE', Configuration::get('P_URL_RESPONSE')),
             'P_URL_CONFIRMATION' => Tools::getValue('P_URL_CONFIRMATION', Configuration::get('P_URL_CONFIRMATION')),
-            'P_STATE_END_TRANSACTION'=>Tools::getValue('P_STATE_END_TRANSACTION', Configuration::get('P_STATE_END_TRANSACTION'))
+            'P_STATE_END_TRANSACTION'=>Tools::getValue('P_STATE_END_TRANSACTION', Configuration::get('P_STATE_END_TRANSACTION')),
+            'P_REDUCE_STOCK_PENDING' => Tools::getValue('P_REDUCE_STOCK_PENDING', Configuration::get('P_REDUCE_STOCK_PENDING'))
         );
     }
 
@@ -389,8 +429,10 @@ class Payco extends PaymentModule
           $this->_postErrors[] = $this->l('\'P_KEY\' Campo Requerido.');
         if (!Tools::getValue('PUBLIC_KEY'))
           $this->_postErrors[] = $this->l('\'PUBLIC_KEY\' Campo Requerido.');      
-        if (!Tools::getValue('P_TITULO'))
-          $this->_postErrors[] = $this->l('\'P_TITULO\' Campo Requerido.');
+        /*if (!Tools::getValue('P_TITULO'))
+          $this->_postErrors[] = $this->l('\'P_TITULO\' Campo Requerido.');*/
+        if (!Tools::getValue('P_STATE_END_TRANSACTION'))
+          $this->_postErrors[] = $this->l('\'Estado final Pedido\' Campo Requerido.');
         
       }
     }
@@ -403,8 +445,8 @@ class Payco extends PaymentModule
     {
             
           
-            if (Tools::isSubmit('btnSubmit')) {
-            //Setear url respuesta y confirmacion  
+        if (Tools::isSubmit('btnSubmit')) {
+        //Setear url respuesta y confirmacion y titulo 
 
             if(Tools::getValue('P_URL_RESPONSE')=="")
             {
@@ -432,12 +474,13 @@ class Payco extends PaymentModule
             Configuration::updateValue('P_URL_RESPONSE', $p_url_response);
             Configuration::updateValue('P_URL_CONFIRMATION', $p_url_confirmation);
             Configuration::updateValue('P_TYPE_CHECKOUT', Tools::getValue('P_TYPE_CHECKOUT'));
+            Configuration::updateValue('P_REDUCE_STOCK_PENDING', Tools::getValue('P_REDUCE_STOCK_PENDING'));
             Configuration::updateValue('P_STATE_END_TRANSACTION', Tools::getValue('P_STATE_END_TRANSACTION'));
             
             //CreditCard_OrderState::updateStates(intval(Tools::getValue('id_os_initial')), Tools::getValue('id_os_deleteon'));
             $this->_html.= '<div class="bootstrap"><div class="alert alert-success">'.$this->l('Cambios Aplicados Exitosamente') . '</div></div>'; 
        
-      }
+        }
     }
 
     /**
@@ -576,6 +619,10 @@ class Payco extends PaymentModule
               $external="true";
             }
 
+            //definir la url de respuesta y confirmacion segun la defina el usuario
+            $p_url_response=Context::getContext()->link->getModuleLink('payco', 'response');
+            $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
+
 
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
@@ -599,8 +646,8 @@ class Payco extends PaymentModule
               'public_key'=>trim($this->public_key),
               'custip' => $_SERVER['REMOTE_ADDR'],
               'custname' => $this->context->customer->firstname." ".$this->context->customer->lastname,
-              'p_url_response' => $this->p_url_response,
-              'p_url_confirmation' => $this->p_url_confirmation,
+              'p_url_response' => $p_url_response,
+              'p_url_confirmation' => $p_url_confirmation,
               'p_billing_email' => $this->context->customer->email,
               'p_billing_name' => $this->context->customer->firstname,
               'p_billing_last_name' => $this->context->customer->lastname,
@@ -693,10 +740,20 @@ class Payco extends PaymentModule
               $external="true";
             }
 
+            //Busca si ya se restauro el stock
+            if (!EpaycoOrder::ifExist($order->id)) {
+                //si no se restauro el stock restaurarlo inmediatamente
+                $this->RestoreStock($order,'+');
+                EpaycoOrder::create($order->id,1);
+            }
+
             $valueNodecimal = substr($value, 0,strrpos($value, '.'));
             $decimals = !substr($value, strrpos($value, '.')+1 ,2) ? '00': substr($value, strrpos($value, '.')+1 ,2);
-            //echo $valueNodecimal,'.',$decimals;
-            //exit();
+            
+            //definir la url de respuesta y confirmacion segun la defina el usuario
+            $p_url_response=Context::getContext()->link->getModuleLink('payco', 'response');
+            $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
+
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
               'p_signature' => $p_signature,
@@ -719,8 +776,8 @@ class Payco extends PaymentModule
               'public_key'=>trim($this->public_key),
               'custip' => $_SERVER['REMOTE_ADDR'],
               'custname' => $this->context->customer->firstname." ".$this->context->customer->lastname,
-              'p_url_response' => $this->p_url_response,
-              'p_url_confirmation' => $this->p_url_confirmation,
+              'p_url_response' => $p_url_response,
+              'p_url_confirmation' => $p_url_confirmation,
               'p_billing_email' => $this->context->customer->email,
               'p_billing_name' => $this->context->customer->firstname,
               'p_billing_last_name' => $this->context->customer->lastname,
@@ -796,17 +853,17 @@ class Payco extends PaymentModule
         }
         if($ref_payco!="" and $url!=""){
 
-              //Consultamos la transaccion en el servidor
-              $responseData = $this->PostCurl($url,false,$this->StreamContext());
-              $jsonData = @json_decode($responseData, true);
-              $data = $jsonData['data'];
+            //Consultamos la transaccion en el servidor
+            $responseData = $this->PostCurl($url,false,$this->StreamContext());
+            $jsonData = @json_decode($responseData, true);
+            $data = $jsonData['data'];
 
-              $data["ref_payco"]=$ref_payco;
-              $data["url"]=$url;
-            
-              $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation);
-             
-              $this->context->smarty->assign($data);
+            $data["ref_payco"]=$ref_payco;
+            $data["url"]=$url;
+
+            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation);
+
+            $this->context->smarty->assign($data);
 
 
         }
@@ -843,8 +900,9 @@ class Payco extends PaymentModule
             $state = 'PAYCO_OS_FAILED';
           else if ($x_cod_response == 2)
             $state = 'PAYCO_OS_REJECTED';
-          else if ($x_cod_response == 3)
+          else if ($x_cod_response == 3){
             $state = 'PAYCO_OS_PENDING';
+          }
           else if ($x_cod_response == 9)
             $state = 'PAYCO_OS_EXPIRED';
           else if ($x_cod_response == 10)
@@ -863,11 +921,20 @@ class Payco extends PaymentModule
         
             $order = new Order((int)Order::getOrderByCartId((int)$idorder));
 
+            //Busca si ya se restauro el stock y si se configuro reducir el stock en transacciones pendientes  
+            if ($x_cod_response == 3 && !EpaycoOrder::ifStockDiscount($order->id) && (int)Configuration::get('P_REDUCE_STOCK_PENDING') == 1) {
+
+                //reducir el stock
+                if (EpaycoOrder::updateStockDiscount($order->id,1)) {
+                    $this->RestoreStock($order,'-');
+                }
+            }
+
             $current_state = $order->current_state;
-            
+
+
             if ($current_state != Configuration::get($state))
             {
-              
                 $history = new OrderHistory();
                 $history->id_order = (int)$order->id;
               
@@ -879,46 +946,75 @@ class Payco extends PaymentModule
                 $history->addWithemail(false);
                  
             }
-            if (!$payment)
+
+            //validar si la transaccion esta pendiente y pasa a rechazada y ya habia descontado el stock
+            if($current_state == Configuration::get('PAYCO_OS_PENDING') && ($x_cod_response == 2 || $x_cod_response == 4) && EpaycoOrder::ifStockDiscount($order->id)){
+
+                //si no se restauro el stock restaurarlo inmediatamente
+                $this->RestoreStock($order,'+');
+            };
+
+            //validar si la transaccion fue ACEPTADA
+            if ($payment)
             {
-              foreach ($order->getProductsDetail() as $product)
-                StockAvailable::updateQuantity($product['product_id'], $product['product_attribute_id'], + (int)$product['product_quantity'], $order->id_shop);
+
+                //Busca si ya se descontó el stock
+                if (!EpaycoOrder::ifStockDiscount($order->id)) {
+                    
+                    //se descuenta el stock
+                    if (EpaycoOrder::updateStockDiscount($order->id,1)) {
+                        $this->RestoreStock($order,'-');
+                    }
+                }
             }
             if($confirmation){
                 header("HTTP/1.1 200 OK");
-                //echo "OK";
-                //exit();
+               
+            }else{
+                if(Configuration::get('P_URL_RESPONSE') != Context::getContext()->link->getModuleLink('payco', 'response')){
+
+                    //redireccionado
+                    Tools::redirect(Configuration::get('P_URL_RESPONSE'));
+                }
+            
             }
 
           }
                            
     }
 
-    
+    //restaurar el stock de la orden
+    private function RestoreStock($orderId,$operation){
+        $order = $orderId;
+
+        foreach ($order->getProductsDetail() as $product){
+            StockAvailable::updateQuantity($product['product_id'], $product['product_attribute_id'], $operation.(int)$product['product_quantity'], $order->id_shop);
+        }
+    }
 
     private function PostCurl($url){
 
         if (function_exists('curl_init')) {
-                  $ch = curl_init();
-                  $timeout = 5;
-                  $user_agent='Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
-                  curl_setopt($ch, CURLOPT_URL, $url);
-                  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-                  curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
-                  curl_setopt($ch, CURLOPT_HEADER, 0);
-                  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-                  curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
-                  curl_setopt($ch,CURLOPT_MAXREDIRS,10);
-                  $data = curl_exec($ch);
-                  curl_close($ch);
-                  return $data;
-              }else{
-                  $data =  @Tools::file_get_contents($url);
-                  return $data;
-              }
+              $ch = curl_init();
+              $timeout = 5;
+              $user_agent='Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+              curl_setopt($ch, CURLOPT_URL, $url);
+              curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+              curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+              curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+              curl_setopt($ch, CURLOPT_HEADER, 0);
+              curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+              curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+              curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+              curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
+              curl_setopt($ch,CURLOPT_MAXREDIRS,10);
+              $data = curl_exec($ch);
+              curl_close($ch);
+              return $data;
+          }else{
+              $data =  @Tools::file_get_contents($url);
+              return $data;
+          }
     }
 
     private function StreamContext(){

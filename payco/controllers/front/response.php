@@ -42,7 +42,6 @@ class PaycoResponseModuleFrontController extends ModuleFrontController
         
         $payco = new Payco();
         $payco->PaymentReturnOnpage();
-        //var_dump('expression');
         $this->context->smarty->assign('base_url', Tools::getHttpHost(true).__PS_BASE_URI__);
         $this->setTemplate('module:payco/views/templates/front/response.tpl');
         

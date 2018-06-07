@@ -162,14 +162,34 @@ class CreditCard_OrderState extends ObjectModel
 
 	public static function remove(){
 
-		Configuration::deleteByName('PAYCO_ORDERSTATE_WAITING');
-	    Configuration::deleteByName('PAYCO_OS_PENDING');
+		$statuses = [
+			'PAYCO_ORDERSTATE_WAITING',
+			'PAYCO_OS_PENDING',
+			'PAYCO_OS_FAILED',
+			'PAYCO_OS_REJECTED',
+			'PAYCO_OS_EXPIRED',
+			'PAYCO_OS_ABANDONED',
+			'PAYCO_OS_CANCELED'
+		];
+
+		foreach ($statuses as $state) {
+			self::deleteOrderState((int)Configuration::get($state));
+			Configuration::deleteByName($state);
+		}
+
+	    /*Configuration::deleteByName('PAYCO_OS_PENDING');
 	    Configuration::deleteByName('PAYCO_OS_FAILED');
 	    Configuration::deleteByName('PAYCO_OS_REJECTED');
 	    Configuration::deleteByName('PAYCO_OS_EXPIRED');
 	    Configuration::deleteByName('PAYCO_OS_ABANDONED');
-	    Configuration::deleteByName('PAYCO_OS_CANCELED');
-		 
+	    Configuration::deleteByName('PAYCO_OS_CANCELED');*/		 
+	}
+
+	public static function deleteOrderState($id_order_state) {
+
+	    $orderState = new OrderState($id_order_state);        
+	    $orderState->delete();
+
 	}	
 }
 
