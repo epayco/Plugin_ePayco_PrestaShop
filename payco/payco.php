@@ -56,7 +56,7 @@ class Payco extends PaymentModule
        
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.7.4';
+        $this->version = '1.7.6';
         $this->author = 'payco';
         $this->need_instance = 0;
 
