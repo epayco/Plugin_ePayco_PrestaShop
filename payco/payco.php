@@ -861,7 +861,7 @@ class Payco extends PaymentModule
             $data["ref_payco"]=$ref_payco;
             $data["url"]=$url;
 
-            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation);
+            $this->Acentarpago($data["x_extra1"],$data["x_cod_transaction_state"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation);
 
             $this->context->smarty->assign($data);
 
