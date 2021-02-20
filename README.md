@@ -10,6 +10,7 @@
 * [Pasos](#pasos)
 
 ## Versiones
+* [ePayco plugin OnPage_Checkout_PrestaShop v1.7.7](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.7.x).
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.7.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.6).
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.7.5](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.5).
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.7.4](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.4).
