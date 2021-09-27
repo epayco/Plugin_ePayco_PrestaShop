@@ -1,5 +1,4 @@
-<?php
-/**
+{*
 * 2007-2017 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -22,14 +21,18 @@
 *  @copyright 2007-2017 PrestaShop SA
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
-*/
+*}
 
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+	<li class="active"><a href="#template_1" role="tab" data-toggle="tab">Template 1</a></li>
+	<li><a href="#template_2" role="tab" data-toggle="tab">Template 2</a></li>
+	<li><a href="#template_3" role="tab" data-toggle="tab">Template 3</a></li>
+</ul>
 
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', false);
-header('Pragma: no-cache');
-
-header('Location: ../');
-exit;
+<!-- Tab panes -->
+<div class="tab-content">
+	<div class="tab-pane active" id="template_1">{include file='./template_1.tpl'}</div>
+	<div class="tab-pane" id="template_2">{include file='./template_2.tpl'}</div>
+	<div class="tab-pane" id="template_3">{include file='./template_3.tpl'}</div>
+</div>

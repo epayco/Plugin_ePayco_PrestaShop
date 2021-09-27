@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>payco</name>
-	<displayName><![CDATA[ePayco]]></displayName>
-	<version><![CDATA[1.1]]></version>
-	<description><![CDATA[ePayco, Tarjetas de Credito, Debito PSE, SafetyPay, Efectivo]]></description>
-	<author><![CDATA[ePayco]]></author>
+	<displayName><![CDATA[payco]]></displayName>
+	<version><![CDATA[1.7.6]]></version>
+	<description><![CDATA[ePayco, Tarjetas de Credito, Debito PSE, SafetyPay y Efectivo]]></description>
+	<author><![CDATA[payco]]></author>
 	<tab><![CDATA[payments_gateways]]></tab>
-	<confirmUninstall><![CDATA[Está seguro que desea desinstalar ePayco]]></confirmUninstall>
 	<is_configurable>1</is_configurable>
 	<need_instance>1</need_instance>
-	<limited_countries></limited_countries>
 </module>

@@ -24,12 +24,37 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+class PaycoConfirmationModuleFrontController extends ModuleFrontController
+{
 
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', false);
-header('Pragma: no-cache');
+ 	public $ssl = true;
+    public $display_column_left = false;
+    public $display_column_right = false;
 
-header('Location: ../');
-exit;
+    public function initContent()
+    { 
+	    
+	    parent::initContent();	
+	   
+    }
+
+    public function postProcess(){
+
+    	$payco = new Payco();
+
+		if (isset($_REQUEST['x_cod_response']))
+		{	
+			$extra1=trim($_REQUEST['x_extra1']);
+			$response=trim($_REQUEST['x_cod_response']);
+			$referencia=trim($_REQUEST['x_ref_payco']);
+			$transid=trim($_REQUEST['x_transaction_id']);
+			$amount=trim($_REQUEST['x_amount']);
+			$currency=trim($_REQUEST['x_currency_code']);
+			$signature=trim($_REQUEST['x_signature']);
+			$confirmation=true;
+		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation);
+		}
+    }
+}
+
+
