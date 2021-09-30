@@ -54,8 +54,8 @@ class Payco extends PaymentModule
        
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.7.6';
-        $this->author = 'epayco';
+        $this->version = '1.7.7';
+        $this->author = 'payco';
         $this->need_instance = 0;
 
         /**
@@ -521,10 +521,125 @@ class Payco extends PaymentModule
         return $payment_options;
     }
 
+    /**
+     * This hook is used to display the order confirmation page.
+     */
+    public function hookPaymentReturn($params)
+    {
+        if ($this->active == false)
+            return;
+
+        if (version_compare(_PS_VERSION_, '1.7.0.0 ', '<')){
+            $order = $params['objOrder'];
+            $value = $params['total_to_pay'];
+            $currence = $params['currencyObj'];
+        }else{
+            $order = $params['order'];
+            $value = $params['order']->getOrdersTotalPaid();
+            $currence = new Currency($params['order']->id_currency);
+        }
+       
+        if ($order->getCurrentOrderState()->id != Configuration::get('PS_OS_ERROR')){
+             $this->smarty->assign('status', 'ok');
+        }
+           
+        
+          $extra1 = $order->id_cart;
+          $extra2 = $order->id;
+          $emailComprador = $this->context->customer->email;
+          $valorBaseDevolucion = $order->total_paid_tax_excl;
+          $iva = $value - $valorBaseDevolucion;
+          $cart= $this->context->cart;
+
+          $iso = 'CO';
+          if ($iva == 0) $valorBaseDevolucion = 0;
+
+          $currency = $this->getCurrency();
+          $idcurrency = $order->id_currency;
+          foreach ($currency as $mon) {
+            if ($idcurrency == $mon['id_currency']) $currency = $mon['iso_code'];
+          }
+
+          if ($currency == ''){
+            $currency = 'COP';
+          }
+          $refVenta = $order->reference;
+          $state = $order->getCurrentState();
+
+          if ($state) {
+
+            $p_signature = md5(trim($this->p_cust_id_cliente).'^'.trim($this->p_key).'^'.$refVenta.'^'.$value.'^'.$currency);
+            $addressdelivery = new Address((int)($cart->id_address_delivery));
+        
+            if($this->p_test_request==1){
+              $test="true";
+            }else{
+              $test="false";
+            }
+
+            if($this->p_type_checkout==1){
+              $external="false";
+            }else{
+              $external="true";
+            }
+
+             if (!EpaycoOrder::ifExist($order->id)) {
+                EpaycoOrder::create($order->id,1);
+            }
+
+            $p_url_response=Context::getContext()->link->getModuleLink('payco', 'response');
+            $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
+
+            $this->smarty->assign(array(
+              'this_path_bw' => $this->_path,
+              'p_signature' => $p_signature,
+              'total_to_pay' => Tools::displayPrice($value, $currence, false),
+              'status' => 'ok',
+              'refVenta' => $refVenta,
+              'custemail' => $emailComprador,
+              'extra1' => $extra1,
+              'extra2' => $extra2,
+              'total' => $value,
+              'currency' => $currency,
+              'iso' => $iso,
+              'iva' => $iva,
+              'baseDevolucionIva' => $valorBaseDevolucion,
+              'merchantid' => trim($this->p_cust_id_cliente),
+              'external'=>$external,
+              'merchantpassword' => trim($this->p_key),
+              'merchanttest'=> $test,
+              'p_key'=>trim($this->p_key),
+              'public_key'=>trim($this->public_key),
+              'custip' => $_SERVER['REMOTE_ADDR'],
+              'custname' => $this->context->customer->firstname." ".$this->context->customer->lastname,
+              'p_url_response' => $p_url_response,
+              'p_url_confirmation' => $p_url_confirmation,
+              'p_billing_email' => $this->context->customer->email,
+              'p_billing_name' => $this->context->customer->firstname,
+              'p_billing_last_name' => $this->context->customer->lastname,
+              'p_billing_address'=>$addressdelivery->address1 . " " . $addressdelivery->address2,
+              'p_billing_city'=>$addressdelivery->city,
+              'p_billing_country'=>$addressdelivery->id_state,
+              'p_billing_phone'=>""
+              )
+            );
+
+          } else {
+              $this->smarty->assign('status', 'failed');
+          }
+          //redirige al checkout
+          //luego al controlador response.php
+        return $this->display(__FILE__, 'views/templates/hook/payment_return.tpl');
+    }
+
+    public function hookActionPaymentConfirmation()
+    {
+    
+    }
 
     public function hookDisplayPaymentReturn($params)
     {
-        
+
         if ($this->active == false)
             return;
 
@@ -585,6 +700,7 @@ class Payco extends PaymentModule
             }
 
             if (!EpaycoOrder::ifExist($order->id)) {
+                $this->RestoreStock($order,'+');
                 EpaycoOrder::create($order->id,1);
             }
 
@@ -636,6 +752,11 @@ class Payco extends PaymentModule
 
     }
 
+    public function hookDisplayPaymentTop()
+    {
+        /* Place your code here. */
+    }
+
     private function is_blank($var) {
         return isset($var) || $var == '0' ? ($var == "" ? true : false) : false;
     }
@@ -655,8 +776,8 @@ class Payco extends PaymentModule
 
       $ref_payco="";
       $url="";
-      $x_ref_payco="";
       $confirmation=false;
+      $x_ref_payco="";
 
       foreach ($_REQUEST as $value) {
         if(preg_match("/ref_payco/", $value)){
@@ -666,11 +787,11 @@ class Payco extends PaymentModule
       }
 
       if(isset($_REQUEST["x_ref_payco"])){
-     
           $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE','P_KEY','PUBLIC_KEY','P_TEST_REQUEST'));  
           $public_key=$config["PUBLIC_KEY"];
           $ref_payco=$_REQUEST["x_ref_payco"];
           $url ="https://secure.payco.co/restpagos/transaction/response.json?ref_payco=$ref_payco&public_key=".$public_key;
+          $confirmation=true;
       }  
 
       if(isset($_REQUEST["?ref_payco"])!="" || isset($_REQUEST["ref_payco"]) || $ref_payco){
@@ -720,7 +841,7 @@ class Payco extends PaymentModule
             .$amount.'^'
             .$currency
           );
-          
+
           $payment=false;
           $state = 'PAYCO_OS_REJECTED';
           if ($x_cod_response == 4)
@@ -740,42 +861,40 @@ class Payco extends PaymentModule
              $state = 'PS_OS_PAYMENT';
              $payment=true;
           }
-            
+
           if($x_signature==$signature){
-            
+
             $order = new Order((int)Order::getOrderByCartId((int)$idorder));
 
             if ($x_cod_response == 3 && !EpaycoOrder::ifStockDiscount($order->id) && (int)Configuration::get('P_REDUCE_STOCK_PENDING') == 1) {
                 EpaycoOrder::updateStockDiscount($order->id,1);
+            }else{
+
+                if(!$confirmation){
+                    EpaycoOrder::updateStockDiscount($order->id,1);
+                    $this->RestoreStock($order,'+');
+                }
             }
 
             $current_state = $order->current_state;
-
             if ($current_state != Configuration::get($state))
             {
                 $history = new OrderHistory();
                 $history->id_order = (int)$order->id;
 
                 if($payment){
-                   
                   $history->changeIdOrderState((int)$this->p_state_end_transaction, $order, true);
-                    if($confirmation && (int)Configuration::get('P_REDUCE_STOCK_PENDING') == 0){
+
+                    if(!$confirmation){
                         $this->RestoreStock($order,'-');
                     }
                 }else{
-                    
-                    if($current_state == Configuration::get('PAYCO_ORDERSTATE_WAITING') && ($x_cod_response == 2 || $x_cod_response == 4) && !EpaycoOrder::ifStockDiscount($order->id))
+
+                    if($current_state == Configuration::get('PAYCO_OS_PENDING') && ($x_cod_response == 2 || $x_cod_response == 4) && EpaycoOrder::ifStockDiscount($order->id))
                     {
                         $this->RestoreStock($order,'+');
                     }
 
-                    if($current_state == Configuration::get('PAYCO_ORDERSTATE_WAITING') && ($x_cod_response == 3) && !EpaycoOrder::ifStockDiscount($order->id) && (int)Configuration::get('P_REDUCE_STOCK_PENDING') == 0){
-                        $this->RestoreStock($order,'+');
-                    }
-                    
-                    if($confirmation && ($x_cod_response == 2 || $x_cod_response == 4) && (int)Configuration::get('P_REDUCE_STOCK_PENDING') == 1){
-                        $this->RestoreStock($order,'+');
-                    }
                   $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                 }
                 $history->addWithemail(false);

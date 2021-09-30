@@ -159,7 +159,7 @@
         data-epayco-name="ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}"
         data-epayco-description="ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}"
         data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"
+        {*data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"*}
         data-epayco-country="{$iso|lower|escape:'htmlall':'UTF-8'}"
         data-epayco-test={$merchanttest}
         data-epayco-extra1="{$extra1|escape:'htmlall':'UTF-8'}",

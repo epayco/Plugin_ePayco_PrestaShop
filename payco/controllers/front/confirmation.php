@@ -53,7 +53,10 @@ class PaycoConfirmationModuleFrontController extends ModuleFrontController
 			$signature=trim($_REQUEST['x_signature']);
 			$confirmation=true;
 		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation);
+		}else{
+			
 		}
+
     }
 }
 
