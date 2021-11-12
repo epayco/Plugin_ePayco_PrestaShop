@@ -171,8 +171,8 @@
         data-epayco-email-billing="{$p_billing_email|escape:'htmlall':'UTF-8'}"
         data-epayco-name-billing="{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}"
         data-epayco-address-billing="{$p_billing_address|escape:'htmlall':'UTF-8'}"
-        data-epayco-lang="es"
-        data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png"
+        data-epayco-lang="{$lang|escape:'htmlall':'UTF-8'}"
+        data-epayco-button="{$button_img|escape:'htmlall':'UTF-8'}"
         data-epayco-mobilephone-billing="{$p_billing_phone|escape:'htmlall':'UTF-8'}"
         data-epayco-autoClick="true"
         >

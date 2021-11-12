@@ -176,6 +176,8 @@ class Payco extends PaymentModule
 
     protected function _displayInfoAdmin()
     {
+        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/";
+        $this->smarty->assign('module_dir', $url);
         return $this->display(__FILE__, 'infos.tpl');
     }
 
@@ -493,7 +495,8 @@ class Payco extends PaymentModule
         if (in_array($currency->iso_code, $this->limited_currencies) == false)
             return false;
 
-        $this->smarty->assign('module_dir', $this->_path);
+        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/";
+        $this->smarty->assign('module_dir', $url);
 
         return $this->display(__FILE__, 'views/templates/hook/payment.tpl');
 
@@ -507,13 +510,15 @@ class Payco extends PaymentModule
         if (!$this->checkCurrency($params['cart'])) {
             return;
         }
+
+        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/logo.png";
         $this->context->smarty->assign(array("titulo"=>$this->p_titulo));
         
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
         $modalOption->setCallToActionText($this->l(''))
                       ->setAction($this->context->link->getModuleLink($this->name, 'validation', array(), true))
                       ->setAdditionalInformation($this->context->smarty->fetch('module:payco/views/templates/hook/payment_onpage.tpl'))
-                      ->setLogo("https://multimedia.epayco.co/epayco-landing/btns/epayco-logo-fondo-claro-lite.png");
+                      ->setLogo($url);
         $payment_options = [
            $modalOption,
         ];
@@ -590,6 +595,14 @@ class Payco extends PaymentModule
             $p_url_response=Context::getContext()->link->getModuleLink('payco', 'response');
             $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
 
+            $lang = $this->context->language->language_code;
+ 
+            if($lang == "es"){
+                $url_button = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/Boton-color-espanol.png";
+            }else{
+                $url_button = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/Boton-color-Ingles.png";
+                $lang = "en";
+            }
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
               'p_signature' => $p_signature,
@@ -620,7 +633,9 @@ class Payco extends PaymentModule
               'p_billing_address'=>$addressdelivery->address1 . " " . $addressdelivery->address2,
               'p_billing_city'=>$addressdelivery->city,
               'p_billing_country'=>$addressdelivery->id_state,
-              'p_billing_phone'=>""
+              'p_billing_phone'=>"",
+              'button_img' => $url_button,
+              'lang' => $lang
               )
             );
 
@@ -709,7 +724,14 @@ class Payco extends PaymentModule
 
             $p_url_response=Context::getContext()->link->getModuleLink('payco', 'response');
             $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
-
+            $lang = $this->context->language->language_code;
+ 
+            if($lang == "es"){
+                $url_button = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/Boton-color-espanol.png";
+            }else{
+                $url_button = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/Boton-color-Ingles.png";
+                $lang = "en";
+            }
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
               'p_signature' => $p_signature,
@@ -740,7 +762,9 @@ class Payco extends PaymentModule
               'p_billing_address'=>$addressdelivery->address1 . " " . $addressdelivery->address2,
               'p_billing_city'=>$addressdelivery->city,
               'p_billing_country'=>$addressdelivery->id_state,
-              'p_billing_phone'=>""
+              'p_billing_phone'=>"",
+              'button_img' => $url_button,
+              'lang' => $lang
               )
             );
 
