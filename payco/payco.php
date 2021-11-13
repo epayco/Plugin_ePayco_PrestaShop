@@ -136,11 +136,10 @@ class Payco extends PaymentModule
         Configuration::updateValue('P_STATE_END_TRANSACTION', 'PS_OS_PAYMENT');    
         
         //Set up our currencies and issuers
-        CreditCard_OrderState::remove();
+        //CreditCard_OrderState::remove();
         CreditCard_OrderState::setup();
-        //CreditCard_Issuer::setup();
         CreditCard_Order::setup();
-        EpaycoOrder::remove();
+        //EpaycoOrder::remove();
         EpaycoOrder::setup();
 
         Configuration::updateValue('payco', true);
@@ -176,7 +175,7 @@ class Payco extends PaymentModule
 
     protected function _displayInfoAdmin()
     {
-        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/";
+        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE'];
         $this->smarty->assign('module_dir', $url);
         return $this->display(__FILE__, 'infos.tpl');
     }
@@ -495,7 +494,7 @@ class Payco extends PaymentModule
         if (in_array($currency->iso_code, $this->limited_currencies) == false)
             return false;
 
-        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/";
+        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE'];
         $this->smarty->assign('module_dir', $url);
 
         return $this->display(__FILE__, 'views/templates/hook/payment.tpl');
@@ -511,7 +510,7 @@ class Payco extends PaymentModule
             return;
         }
 
-        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/logo.png";
+        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."/modules/payco/views/img/logo.png";
         $this->context->smarty->assign(array("titulo"=>$this->p_titulo));
         
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
@@ -547,8 +546,6 @@ class Payco extends PaymentModule
         if ($order->getCurrentOrderState()->id != Configuration::get('PS_OS_ERROR')){
              $this->smarty->assign('status', 'ok');
         }
-           
-        
           $extra1 = $order->id_cart;
           $extra2 = $order->id;
           $emailComprador = $this->context->customer->email;
@@ -587,6 +584,26 @@ class Payco extends PaymentModule
             }else{
               $external="true";
             }
+
+          $descripcion = '';
+          $productos = Db::getInstance()->executeS('
+			SELECT id_product FROM `' . _DB_PREFIX_ . 'cart_product`
+			WHERE `id_cart` = ' . (int) $extra1);
+
+          foreach ($productos as $producto)
+          {
+              // Your product id
+              $id_product = (int)$producto['id_product'];
+              // Language id
+              $lang_id = (int) Configuration::get('PS_LANG_DEFAULT');
+              // Load product object
+              $product = new Product($id_product, false, $lang_id);
+              // Validate product object
+              if (Validate::isLoadedObject($product)) {
+                  // Get product name
+                  $descripcion = $descripcion.$product->name.', ';
+              }
+          }
 
              if (!EpaycoOrder::ifExist($order->id)) {
                 EpaycoOrder::create($order->id,1);
@@ -635,7 +652,8 @@ class Payco extends PaymentModule
               'p_billing_country'=>$addressdelivery->id_state,
               'p_billing_phone'=>"",
               'button_img' => $url_button,
-              'lang' => $lang
+              'lang' => $lang,
+              'descripcion' => $descripcion
               )
             );
 

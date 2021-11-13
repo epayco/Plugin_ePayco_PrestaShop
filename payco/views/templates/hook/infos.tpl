@@ -24,7 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<img src="{$module_dir}logo.png"  />
+<img src="{$module_dir}views/img/logo.png"  />
 <br/>
 <div class="alert alert-info">
 <p><strong>{l s='Este módulo le permite aceptar pagos seguros por la plataforma de pagos ePayco.' mod='payco'}</strong></p>

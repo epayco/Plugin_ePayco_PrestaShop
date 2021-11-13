@@ -66,6 +66,23 @@ class CreditCard_OrderState extends ObjectModel
 			Configuration::updateValue('PAYCO_ORDERSTATE_WAITING', (int)$order_state->id);
 		}
 
+        if (!Configuration::get('PAYCO_ORDERSTATE_WAITING_TEST'))
+        {
+            $order_state = new OrderState();
+            $order_state->name = array();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Esperando Pago Prueba';
+
+            $order_state->send_email = false;
+            $order_state->color = '#FEFF64';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_ORDERSTATE_WAITING_TEST', (int)$order_state->id);
+        }
+
 		if (!Configuration::get('PAYCO_OS_PENDING'))
 		{
 			$order_state = new OrderState();
@@ -83,6 +100,23 @@ class CreditCard_OrderState extends ObjectModel
 			Configuration::updateValue('PAYCO_OS_PENDING', (int)$order_state->id);
 		}
 
+        if (!Configuration::get('PAYCO_OS_PENDING_TEST'))
+        {
+            $order_state = new OrderState();
+            $order_state->name = array();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Pendiente Prueba';
+
+            $order_state->send_email = false;
+            $order_state->color = '#FEFF64';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_PENDING_TEST', (int)$order_state->id);
+        }
+
 		if (!Configuration::get('PAYCO_OS_FAILED'))
 		{
 			$order_state = new OrderState();			
@@ -99,6 +133,22 @@ class CreditCard_OrderState extends ObjectModel
 			Configuration::updateValue('PAYCO_OS_FAILED', (int)$order_state->id);
 		}
 
+        if (!Configuration::get('PAYCO_OS_FAILED_TEST'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Fallido Prueba';
+            $order_state->send_email = false;
+            $order_state->color = '#8F0621';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+
+            Configuration::updateValue('PAYCO_OS_FAILED_TEST', (int)$order_state->id);
+        }
+
 		if (!Configuration::get('PAYCO_OS_REJECTED'))
 		{
 			$order_state = new OrderState();
@@ -113,6 +163,21 @@ class CreditCard_OrderState extends ObjectModel
 			$order_state->add();
 			Configuration::updateValue('PAYCO_OS_REJECTED', (int)$order_state->id);
 		}
+
+        if (!Configuration::get('PAYCO_OS_REJECTED_TEST'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Rechazado Prueba';
+            $order_state->send_email = false;
+            $order_state->color = '#8F0621';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_REJECTED_TEST', (int)$order_state->id);
+        }
 
 		if (!Configuration::get('PAYCO_OS_EXPIRED'))
 		{
@@ -129,6 +194,21 @@ class CreditCard_OrderState extends ObjectModel
 			Configuration::updateValue('PAYCO_OS_EXPIRED', (int)$order_state->id);
 		}
 
+        if (!Configuration::get('PAYCO_OS_EXPIRED_TEST'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Expirado Prueba';
+            $order_state->send_email = false;
+            $order_state->color = '#8F0621';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_EXPIRED_TEST', (int)$order_state->id);
+        }
+
 		if (!Configuration::get('PAYCO_OS_ABANDONED'))
 		{
 			$order_state = new OrderState();
@@ -144,6 +224,21 @@ class CreditCard_OrderState extends ObjectModel
 			Configuration::updateValue('PAYCO_OS_ABANDONED', (int)$order_state->id);
 		}
 
+        if (!Configuration::get('PAYCO_OS_ABANDONED_TEST'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Abandonado Prueba';
+            $order_state->send_email = false;
+            $order_state->color = '#8F0621';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_ABANDONED_TEST', (int)$order_state->id);
+        }
+
 		if (!Configuration::get('PAYCO_OS_CANCELED'))
 		{
 			$order_state = new OrderState();
@@ -158,6 +253,21 @@ class CreditCard_OrderState extends ObjectModel
 			$order_state->add();
 			Configuration::updateValue('PAYCO_OS_CANCELED', (int)$order_state->id);
 		}
+
+        if (!Configuration::get('PAYCO_OS_CANCELED_TEST'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Cancelado Prueba';
+            $order_state->send_email = false;
+            $order_state->color = '#8F0621';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_CANCELED_TEST', (int)$order_state->id);
+        }
 	}
 
 	public static function remove(){
@@ -169,7 +279,14 @@ class CreditCard_OrderState extends ObjectModel
 			'PAYCO_OS_REJECTED',
 			'PAYCO_OS_EXPIRED',
 			'PAYCO_OS_ABANDONED',
-			'PAYCO_OS_CANCELED'
+			'PAYCO_OS_CANCELED',
+            'PAYCO_ORDERSTATE_WAITING_TEST',
+            'PAYCO_OS_PENDING_TEST',
+            'PAYCO_OS_FAILED_TEST',
+            'PAYCO_OS_REJECTED_TEST',
+            'PAYCO_OS_EXPIRED_TEST',
+            'PAYCO_OS_ABANDONED_TEST',
+            'PAYCO_OS_CANCELED_TEST'
 		];
 
 		foreach ($statuses as $state) {
