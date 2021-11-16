@@ -268,6 +268,36 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->add();
             Configuration::updateValue('PAYCO_OS_CANCELED_TEST', (int)$order_state->id);
         }
+
+		if (!Configuration::get('PAYCO_OS_PAYMENT'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Aceptado';
+            $order_state->send_email = true;
+            $order_state->color = '#3498D8';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_PAYMENT', (int)$order_state->id);
+        }
+
+        if (!Configuration::get('PAYCO_OS_PAYMENT_TEST'))
+        {
+            $order_state = new OrderState();
+            foreach (Language::getLanguages() as $language)
+                $order_state->name[$language['id_lang']] = 'ePayco Pago Aceptado Prueba';
+            $order_state->send_email = true;
+            $order_state->color = '#3498D8';
+            $order_state->hidden = false;
+            $order_state->delivery = false;
+            $order_state->logable = false;
+            $order_state->invoice = false;
+            $order_state->add();
+            Configuration::updateValue('PAYCO_OS_PAYMENT_TEST', (int)$order_state->id);
+        }
 	}
 
 	public static function remove(){
@@ -280,13 +310,16 @@ class CreditCard_OrderState extends ObjectModel
 			'PAYCO_OS_EXPIRED',
 			'PAYCO_OS_ABANDONED',
 			'PAYCO_OS_CANCELED',
+			'PAYCO_OS_PAYMENT',
             'PAYCO_ORDERSTATE_WAITING_TEST',
             'PAYCO_OS_PENDING_TEST',
             'PAYCO_OS_FAILED_TEST',
             'PAYCO_OS_REJECTED_TEST',
             'PAYCO_OS_EXPIRED_TEST',
             'PAYCO_OS_ABANDONED_TEST',
-            'PAYCO_OS_CANCELED_TEST'
+            'PAYCO_OS_CANCELED_TEST',
+			'PAYCO_OS_PAYMENT_TEST'
+			
 		];
 
 		foreach ($statuses as $state) {

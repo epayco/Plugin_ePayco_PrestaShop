@@ -604,6 +604,7 @@ class Payco extends PaymentModule
                   $descripcion = $descripcion.$product->name.', ';
               }
           }
+            $descripcion = substr($descripcion, 0,-2);
 
              if (!EpaycoOrder::ifExist($order->id)) {
                 EpaycoOrder::create($order->id,1);
@@ -858,91 +859,116 @@ class Payco extends PaymentModule
             $data["ref_payco"]=$ref_payco;
             $data["url"]=$url;
 
-            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation);
+            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation,$data["x_test_request"]);
             $this->context->smarty->assign($data);
         }
     }
 
-    public function PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation) {
-        $this->Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation);
+    public function PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$textMode) {
+        $this->Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode);
     }
 
 
-    private function Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation) {
+    private function Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode) {
 
-           $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE','P_KEY','PUBLIC_KEY','P_TEST_REQUEST'));  
-           $x_cust_id_cliente=trim($config['P_CUST_ID_CLIENTE']);
-           $x_key=trim($config['P_KEY']);
-           $idorder=$extra1;
-           $x_cod_response=(int)$response;
-           $x_signature=hash('sha256',
+        $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE','P_KEY','PUBLIC_KEY','P_TEST_REQUEST'));
+        $x_cust_id_cliente=trim($config['P_CUST_ID_CLIENTE']);
+        $x_key=trim($config['P_KEY']);
+        $idorder=$extra1;
+        $x_cod_response=(int)$response;
+        $x_signature=hash('sha256',
             $x_cust_id_cliente.'^'
             .$x_key.'^'
             .$referencia.'^'
             .$transid.'^'
             .$amount.'^'
             .$currency
-          );
+        );
 
-          $payment=false;
-          $state = 'PAYCO_OS_REJECTED';
-          if ($x_cod_response == 4)
-            $state = 'PAYCO_OS_FAILED';
-          else if ($x_cod_response == 2)
+        $payment=false;
+        if($textMode == "TRUE"){
+            $state = 'PAYCO_OS_REJECTED_TEST';
+            if ($x_cod_response == 4)
+                $state = 'PAYCO_OS_FAILED_TEST';
+            else if ($x_cod_response == 2)
+                $state = 'PAYCO_OS_REJECTED_TEST';
+            else if ($x_cod_response == 3){
+                $state = 'PAYCO_OS_PENDING_TEST';
+                $statePending = $state;
+            }
+            else if ($x_cod_response == 9)
+                $state = 'PAYCO_OS_EXPIRED_TEST';
+            else if ($x_cod_response == 10)
+                $state = 'PAYCO_OS_ABANDONED_TEST';
+            else if ($x_cod_response == 11)
+                $state = 'PAYCO_OS_CANCELED_TEST';
+            else if ($x_cod_response == 1){
+                $state = 'PS_OS_PAYMENT';
+                $payment=true;
+            }
+        }else{
             $state = 'PAYCO_OS_REJECTED';
-          else if ($x_cod_response == 3){
-            $state = 'PAYCO_OS_PENDING';
-          }
-          else if ($x_cod_response == 9)
-            $state = 'PAYCO_OS_EXPIRED';
-          else if ($x_cod_response == 10)
-            $state = 'PAYCO_OS_ABANDONED';
-          else if ($x_cod_response == 11)
-            $state = 'PAYCO_OS_CANCELED';
-          else if ($x_cod_response == 1){
-             $state = 'PS_OS_PAYMENT';
-             $payment=true;
-          }
+            if ($x_cod_response == 4)
+                $state = 'PAYCO_OS_FAILED';
+            else if ($x_cod_response == 2)
+                $state = 'PAYCO_OS_REJECTED';
+            else if ($x_cod_response == 3){
+                $state = 'PAYCO_OS_PENDING';
+                $statePending = $state;
+            }
+            else if ($x_cod_response == 9)
+                $state = 'PAYCO_OS_EXPIRED';
+            else if ($x_cod_response == 10)
+                $state = 'PAYCO_OS_ABANDONED';
+            else if ($x_cod_response == 11)
+                $state = 'PAYCO_OS_CANCELED';
+            else if ($x_cod_response == 1){
+                $state = 'PS_OS_PAYMENT';
+                $payment=true;
+            }
+        }
 
-          if($x_signature==$signature){
-
+        if($x_signature==$signature) {
             $order = new Order((int)Order::getOrderByCartId((int)$idorder));
-
-            if ($x_cod_response == 3 && !EpaycoOrder::ifStockDiscount($order->id) && (int)Configuration::get('P_REDUCE_STOCK_PENDING') == 1) {
-                EpaycoOrder::updateStockDiscount($order->id,1);
-            }else{
-
-                if(!$confirmation){
-                    EpaycoOrder::updateStockDiscount($order->id,1);
-                    $this->RestoreStock($order,'+');
-                }
+            $current_state = $order->current_state;
+            if (!EpaycoOrder::ifStockDiscount($order->id)) {
+                EpaycoOrder::updateStockDiscount($order->id, 1);
             }
 
-            $current_state = $order->current_state;
-            if ($current_state != Configuration::get($state))
-            {
+            if ($current_state != Configuration::get($state)) {
+                if ($confirmation && !$payment && $x_cod_response != 3 && EpaycoOrder::ifStockDiscount($order->id)) {
+                    $this->RestoreStock($order, '+');
+                    $history = new OrderHistory();
+                    $history->id_order = (int)$order->id;
+                    $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                }
                 $history = new OrderHistory();
                 $history->id_order = (int)$order->id;
 
-                if($payment){
-                  $history->changeIdOrderState((int)$this->p_state_end_transaction, $order, true);
+                if ($payment) {
+                    $orderStatus = Db::getInstance()->executeS('
+                        SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
+                        WHERE `id_order_state` = ' . (int)$this->p_state_end_transaction);
+                    $orderStatusName = $textMode == "TRUE" ? $orderStatus[0]['name'] . " Prueba" : $orderStatus[0]['name'];
+                    $orderStatusEndId = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
+                        'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
+                        WHERE `name` = "' . $orderStatusName . '"'
+                    );
+                    $history->changeIdOrderState((int)$orderStatusEndId, $order, true);
 
-                    if(!$confirmation){
-                        $this->RestoreStock($order,'-');
+                } else {
+                    if (($x_cod_response == 2 || $x_cod_response == 4) && EpaycoOrder::ifStockDiscount($order->id)) {
+                        if ($current_state != Configuration::get($state)) {
+                            $this->RestoreStock($order, '+');
+                        }
                     }
-                }else{
 
-                    if($current_state == Configuration::get('PAYCO_OS_PENDING') && ($x_cod_response == 2 || $x_cod_response == 4) && EpaycoOrder::ifStockDiscount($order->id))
-                    {
-                        $this->RestoreStock($order,'+');
-                    }
-
-                  $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                    $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                 }
                 $history->addWithemail(false);
             }
 
-
+        }
             if($confirmation){
                 header("HTTP/1.1 200 OK");
                 echo $state;
@@ -954,10 +980,8 @@ class Payco extends PaymentModule
                     Tools::redirect(Configuration::get('P_URL_RESPONSE'));
                 }
             }
-
-          } 
-
     }
+
 
 
     private function RestoreStock($orderId,$operation){
