@@ -957,7 +957,13 @@ class Payco extends PaymentModule
                     $history->changeIdOrderState((int)$orderStatusEndId, $order, true);
 
                 } else {
-                    if (($x_cod_response == 2 || $x_cod_response == 4) && EpaycoOrder::ifStockDiscount($order->id)) {
+                    if (($x_cod_response == 2 
+                        || $x_cod_response == 4
+                        || $x_cod_response == 6
+                        || $x_cod_response == 9
+                        || $x_cod_response == 10
+                        || $x_cod_response == 11
+                        ) && EpaycoOrder::ifStockDiscount($order->id)) {
                         if ($current_state != Configuration::get($state)) {
                             $this->RestoreStock($order, '+');
                         }
