@@ -72,7 +72,7 @@ class EpaycoOrder extends ObjectModel{
 	}
 
 	/**
-	 * Actualizar que ya se le descontó el stock a una orden
+	 * Actualizar que ya se le descont贸 el stock a una orden
 	 * @param int $orderId
 	 */	
 	public static function updateStockDiscount($orderId)

@@ -29,7 +29,7 @@
 </div>
 <p style="text-align: center;" class="epayco-title">
     <span class="animated-points">Cargando metodos de pago</span>
-   <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con ePayco"</small>
+   <br><small class="epayco-subtitle"> Si no se cargan autom谩ticamente, de clic en el bot贸n "Pagar con ePayco"</small>
 </p>
 <style>
     .epayco-title{
@@ -148,42 +148,43 @@
         }
     }
 </style>
+<script type="text/javascript" src="https://checkout.epayco.co/checkout.js"></script>
 
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://checkout.epayco.co/checkout.js"
-        class="epayco-button"
-        data-epayco-key="{$public_key}"
-        data-epayco-amount="{$total|escape:'htmlall':'UTF-8'}"
-        data-epayco-tax="{$iva|escape:'htmlall':'UTF-8'}"
-        data-epayco-tax-base="{$baseDevolucionIva|escape:'htmlall':'UTF-8'}"    
-        data-epayco-name="{$descripcion|escape:'htmlall':'UTF-8'}"
-        data-epayco-description="{$descripcion|escape:'htmlall':'UTF-8'}"
-        data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"
-        data-epayco-country="{$iso|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-test="{$merchanttest}"
-        data-epayco-extra1="{$extra1|escape:'htmlall':'UTF-8'}"
-        data-epayco-extra2="{$extra2|escape:'htmlall':'UTF-8'}"
-        data-epayco-extra3="{$refVenta|escape:'htmlall':'UTF-8'}"
-        data-epayco-external="{$external|escape:'htmlall':'UTF-8'}"
-        data-epayco-response="{$p_url_response|unescape: 'html' nofilter}" 
-        data-epayco-confirmation="{$p_url_confirmation|unescape: 'html' nofilter}"
-        data-epayco-email-billing="{$p_billing_email|escape:'htmlall':'UTF-8'}"
-        data-epayco-name-billing="{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}"
-        data-epayco-address-billing="{$p_billing_address|escape:'htmlall':'UTF-8'}"
-        data-epayco-lang="{$lang|escape:'htmlall':'UTF-8'}"
-        data-epayco-button="{$button_img|escape:'htmlall':'UTF-8'}"
-        data-epayco-mobilephone-billing="{$p_billing_phone|escape:'htmlall':'UTF-8'}"
-        data-epayco-autoClick="true"
-        >
-    </script>
-</form>
+     <a href="#" onclick="return theFunction();">
+        <img src="{$url_button|escape:'htmlall':'UTF-8'}" />
+    </a>
+    <script type="text/javascript">
+        var handler = ePayco.checkout.configure({
+            key: "{$public_key}",
+            test: "{$merchanttest}"
+        })
+        var data={
+            name: "{$descripcion}",
+            description: "{$descripcion}",
+            invoice: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            currency: "{$currency|lower|escape:'htmlall':'UTF-8'}",
+            amount: "{$total|escape:'htmlall':'UTF-8'}",
+            tax: "{$iva|escape:'htmlall':'UTF-8'}",
+            tax_base: "{$baseDevolucionIva|escape:'htmlall':'UTF-8'}",
+            country: "{$iso|lower|escape:'htmlall':'UTF-8'}",
+            external: "{$external|escape:'htmlall':'UTF-8'}",
+            response: "{$p_url_response|unescape: 'html' nofilter}",
+            confirmation: "{$p_url_confirmation|unescape: 'html' nofilter}",
+            email_billing: "{$p_billing_email|escape:'htmlall':'UTF-8'}",
+            name_billing: "{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}",
+            address_billing: "{$p_billing_address|escape:'htmlall':'UTF-8'}",
+            lang: "{$lang|escape:'htmlall':'UTF-8'}",
+            extra1: "{$extra1|escape:'htmlall':'UTF-8'}",
+            extra2: "{$extra2|escape:'htmlall':'UTF-8'}",
+            }
+            handler.open(data)
+                function theFunction () {
+                handler.open(data)
+            }
 
-    {literal} 
-<script>
-    
 </script>
-    {/literal}
+    
 {else}
 <p class="warning">
   {l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro departamento de Soporte' mod='payco'}
