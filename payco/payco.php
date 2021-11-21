@@ -702,6 +702,8 @@ class Payco extends PaymentModule
             }
 
         }
+        
+
 
         if($ref_payco!="" and $url!=""){
             $responseData = $this->PostCurl($url,false,$this->StreamContext());
@@ -780,6 +782,7 @@ class Payco extends PaymentModule
             }
         }
 
+
         if($x_signature==$signature) {
             $order = new Order((int)Order::getOrderByCartId((int)$idorder));
             $current_state = $order->current_state;
@@ -827,13 +830,11 @@ class Payco extends PaymentModule
             }
 
         }
+
         if($confirmation){
             header("HTTP/1.1 200 OK");
-            
-            if(Configuration::get('P_URL_RESPONSE') != Context::getContext()->link->getModuleLink('payco', 'response'))
-            {
-                Tools::redirect(Configuration::get('P_URL_RESPONSE'));
-            }
+            echo $x_cod_response;
+            die();
            
         }else{
 
