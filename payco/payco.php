@@ -842,10 +842,9 @@ class Payco extends PaymentModule
            
         }else{
 
-            if(Configuration::get('P_URL_RESPONSE') != Context::getContext()->link->getModuleLink('payco', 'response'))
-            {
+          
                 Tools::redirect(Configuration::get('P_URL_RESPONSE'));
-            }
+            
         }
 
     }
