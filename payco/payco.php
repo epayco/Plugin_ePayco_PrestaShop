@@ -821,7 +821,9 @@ class Payco extends PaymentModule
                         ) && EpaycoOrder::ifStockDiscount($order->id)) {
                         if ($current_state != Configuration::get($state)) {
                             if(trim($x_cod_transaction_state) == 10){
+				if(!$confirmation){
                                 $this->RestoreStock($order, '+');
+				}
                             }
                             
                         }
