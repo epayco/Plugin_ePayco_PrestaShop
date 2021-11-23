@@ -118,13 +118,12 @@
                     }
                     $(document).ready(function() {
                     //llave publica del comercio
-
                     //Referencia de payco que viene por url
-                    var ref_payco = "{$ref_payco|escape:'htmlall':'UTF-8'}";
+                    var ref_payco = getQueryParam('ref_payco');
                     //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
-                    var urlapp = "{$url|unescape: 'html' nofilter}";
+                    var urlapp = "https://secure.epayco.co/validation/v1/reference/"+ref_payco;
                     
-                    $.get(urlapp, function(response) {
+                    $.get(urlapp, function(response,error) {
 
 
                         if (response.success) {
