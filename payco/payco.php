@@ -713,17 +713,17 @@ class Payco extends PaymentModule
             $data["ref_payco"]=$ref_payco;
             $data["url"]=$url;
 
-            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation,$data["x_test_request"]);
+            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation,$data["x_test_request"],$data["x_cod_transaction_state"]);
             $this->context->smarty->assign($data);
         }
     }
 
-    public function PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$textMode) {
-        $this->Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode);
+    public function PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$textMode,$x_cod_transaction_state) {
+        $this->Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode,$x_cod_transaction_state);
     }
 
 
-    private function Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode) {
+    private function Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode,$x_cod_transaction_state) {
 
         $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE','P_KEY','PUBLIC_KEY','P_TEST_REQUEST','P_STATE_END_TRANSACTION'));
         $x_cust_id_cliente=trim($config['P_CUST_ID_CLIENTE']);
@@ -820,7 +820,10 @@ class Payco extends PaymentModule
                             || $x_cod_response == 11
                         ) && EpaycoOrder::ifStockDiscount($order->id)) {
                         if ($current_state != Configuration::get($state)) {
-                            //$this->RestoreStock($order, '+');
+                            if(trim($x_cod_transaction_state) == 10){
+                                $this->RestoreStock($order, '+');
+                            }
+                            
                         }
                     }
 
@@ -828,6 +831,7 @@ class Payco extends PaymentModule
                 }
                 $history->addWithemail(false);
             }
+            
 
         }
 
