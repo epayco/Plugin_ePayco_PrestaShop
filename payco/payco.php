@@ -686,7 +686,7 @@ class Payco extends PaymentModule
             $public_key=$config["PUBLIC_KEY"];
             $ref_payco=$_REQUEST["x_ref_payco"];
             $url ="https://secure.payco.co/restpagos/transaction/response.json?ref_payco=$ref_payco&public_key=".$public_key;
-            $confirmation=true;
+            $confirmation=false;
         }
 
         if(isset($_REQUEST["?ref_payco"])!="" || isset($_REQUEST["ref_payco"]) || $ref_payco){
