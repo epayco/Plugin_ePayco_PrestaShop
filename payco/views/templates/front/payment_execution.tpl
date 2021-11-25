@@ -1,5 +1,5 @@
 {*
-* 2007-2014 PrestaShop
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -17,8 +17,9 @@
 * versions in the future. If you wish to customize PrestaShop for your
 * needs please refer to http://www.prestashop.com for more information.
 *
-*  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2014 PrestaShop SA
+*  @author ePayco SAS <desarrollo@epayco.co>
+*  @copyright  2011-2017 ePayco SAS
+*  @version  Release: $Revision: 100 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
@@ -35,7 +36,7 @@
 		<form action="{$link->getModuleLink('payco', 'validation', [], true)|escape:'html'}" method="post">
 			<div class="box cheque-box">
 				<h3 class="page-subheading" style="text-align: center; font-size: 10px;">
-					<img src="{$this_path_bw}boton.png" alt="{l s='Bank wire' mod='bankwire'}"/>
+					<img src="boton.png" alt="{l s='ePayco' mod='payco'}"/>
 					<div>
 						{l s='Ha elegido pagar con ePayco.' mod='payco'}
 					</div>

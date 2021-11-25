@@ -28,7 +28,7 @@
     <div class="loading"></div>
 </div>
 <p style="text-align: center;" class="epayco-title">
-    <span class="animated-points">Cargando metodos de pago</span>
+    <span class="animated-points">Cargando métodos de pago</span>
    <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con ePayco"</small>
 </p>
 <style>
@@ -150,29 +150,35 @@
 </style>
 
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://checkout.epayco.co/checkout.js"
-            class="epayco-button"
-            data-epayco-key="{$public_key}"
-            data-epayco-amount="{$total|escape:'htmlall':'UTF-8'}"
-            data-epayco-tax="{$iva|escape:'htmlall':'UTF-8'}"
-            data-epayco-tax-base="{$baseDevolucionIva|escape:'htmlall':'UTF-8'}" 
-            data-epayco-name="ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}"
-            data-epayco-description="ORDEN DE COMPRA # {$refVenta|escape:'htmlall':'UTF-8'}"
-            data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
-            data-epayco-country="co"
-            data-epayco-test="{$merchanttest}",
-            data-epayco-invoice="{$refVenta|unescape: 'html' nofilter}",
-            data-epayco-external="false"
-            data-epayco-extra1="{$extra1}"
-            data-epayco-extra2="{$extra2}"
-            data-epayco-response="{$returnurl}"
-            data-epayco-confirmation="{$returnurl}"
-            data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png"
-            data-epayco-autoClick="true">
-        </script>
-</form>
-</div>
 
+    <script src="https://checkout.epayco.co/checkout.js"
+        class="epayco-button"
+        data-epayco-key="{$public_key}"
+        data-epayco-amount="{$total|escape:'htmlall':'UTF-8'}"
+        data-epayco-tax="{$iva|escape:'htmlall':'UTF-8'}"
+        data-epayco-tax-base="{$baseDevolucionIva|escape:'htmlall':'UTF-8'}"    
+        data-epayco-name="{$descripcion}"
+        data-epayco-description="{$descripcion}"
+        data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
+        data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"
+        data-epayco-country="{$iso|lower|escape:'htmlall':'UTF-8'}"
+        data-epayco-test={$merchanttest}
+        data-epayco-extra1="{$extra1|escape:'htmlall':'UTF-8'}"
+        data-epayco-extra2="{$extra2|escape:'htmlall':'UTF-8'}"
+        data-epayco-extra3="{$refVenta|escape:'htmlall':'UTF-8'}"
+        data-epayco-external="{$external|escape:'htmlall':'UTF-8'}"
+        data-epayco-response="{$p_url_response|unescape: 'html' nofilter}" 
+        data-epayco-confirmation="{$p_url_confirmation|unescape: 'html' nofilter}"
+        data-epayco-email-billing="{$p_billing_email|escape:'htmlall':'UTF-8'}"
+        data-epayco-name-billing="{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}"
+        data-epayco-address-billing="{$p_billing_address|escape:'htmlall':'UTF-8'}"
+        data-epayco-lang="{$lang|escape:'htmlall':'UTF-8'}"
+        data-epayco-button="{$url_button|escape:'htmlall':'UTF-8'}"
+        data-epayco-autoClick="true"
+        >
+    </script>
+
+</form> 
 {else}
 <p class="warning">
   {l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro departamento de Soporte' mod='payco'}

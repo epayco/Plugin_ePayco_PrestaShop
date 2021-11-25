@@ -24,30 +24,39 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-class PaycoResponseModuleFrontController extends ModuleFrontController
-{   
+class PaycoConfirmationModuleFrontController extends ModuleFrontController
+{
 
-    public $ssl = true;
-    public $display_column_left = true;
-    public $display_column_right = true;
+ 	public $ssl = true;
+    public $display_column_left = false;
+    public $display_column_right = false;
 
     public function initContent()
     { 
-        parent::initContent();  
-       
+	    
+	    parent::initContent();	
+	   
     }
 
-    public function postProcess()
-    {
-        $payco = new Payco();
-        $history = Tools::getHttpHost(true).__PS_BASE_URI__.'index.php?controller=history';
-        $payco->PaymentReturnOnpage();
-        $this->context->smarty->assign(array(
-            'base_url'=> Tools::getHttpHost(true).__PS_BASE_URI__,
-            'history' => $history
-            )
-        );
-        $this->setTemplate('module:payco/views/templates/front/response.tpl');
+    public function postProcess(){
+
+    	$payco = new Payco();
+		if (isset($_REQUEST['x_cod_response']))
+		{	
+			$extra1=trim($_REQUEST['x_extra1']);
+			$response=trim($_REQUEST['x_cod_response']);
+			$referencia=trim($_REQUEST['x_ref_payco']);
+			$transid=trim($_REQUEST['x_transaction_id']);
+			$amount=trim($_REQUEST['x_amount']);
+			$currency=trim($_REQUEST['x_currency_code']);
+			$signature=trim($_REQUEST['x_signature']);
+			$confirmation=true;
+			$x_test_request=trim($_REQUEST['x_test_request']);
+			$x_cod_transaction_state= trim($_REQUEST['x_cod_transaction_state']);
+		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$x_test_request,$x_cod_transaction_state,0);
+		}else{
+			
+		}
+
     }
-    
 }
