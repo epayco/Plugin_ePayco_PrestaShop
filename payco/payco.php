@@ -713,17 +713,17 @@ class Payco extends PaymentModule
             $data["ref_payco"]=$ref_payco;
             $data["url"]=$url;
 
-            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation,$data["x_test_request"],$data["x_cod_transaction_state"],$ref_payco);
+            $this->Acentarpago($data["x_extra1"],$data["x_cod_response"],$data["x_ref_payco"],$data["x_transaction_id"],$data["x_amount"],$data["x_currency_code"],$data["x_signature"],$confirmation,$data["x_test_request"],$data["x_cod_transaction_state"],$ref_payco,$data["x_approval_code"]);
             $this->context->smarty->assign($data);
         }
     }
 
-    public function PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$textMode,$x_cod_transaction_state,$ref_payco) {
-        $this->Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode,$x_cod_transaction_state,$ref_payco);
+    public function PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$textMode,$x_cod_transaction_state,$ref_payco,$x_approval_code) {
+        $this->Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode,$x_cod_transaction_state,$ref_payco,$x_approval_code);
     }
 
 
-    private function Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode,$x_cod_transaction_state,$old_ref_payco) {
+    private function Acentarpago($extra1,$response,$referencia,$transid,$amount,$currency,$signature,$confirmation,$textMode,$x_cod_transaction_state,$old_ref_payco,$x_approval_code) {
 
         $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE','P_KEY','PUBLIC_KEY','P_TEST_REQUEST','P_STATE_END_TRANSACTION'));
         $x_cust_id_cliente=trim($config['P_CUST_ID_CLIENTE']);
@@ -781,26 +781,89 @@ class Payco extends PaymentModule
                 $payment=true;
             }
         }
+        
+        $order = new Order((int)Order::getOrderByCartId((int)$idorder));
+        $keepOn = false;
+        if($this->p_test_request==1){
+              $test="yes";
+            }else{
+              $test="no";
+            }
+        $isTestTransaction = $textMode == 'TRUE' ? "yes" : "no";
+        $orderAmount = floatval($order->getOrdersTotalPaid());
+        if($orderAmount == floatval($amount)){
+            
+            if($isTestTransaction == "yes"  && $x_approval_code == "000000"){
+               $validation = true;  
+            }
+           
 
+            if($isTestTransaction == "no" ){
+                if($x_approval_code != "000000" && $x_cod_response == 1){
+                    $validation = true;
+                }else{
+                    if($x_cod_response != 1){
+                        $validation = true;
+                    }else{
+                        $validation = false;
+                    }
+                }
+                            
+            }
 
-        if($x_signature==$signature) {
-            $order = new Order((int)Order::getOrderByCartId((int)$idorder));
+        }
+            $orderStatusPre = Db::getInstance()->executeS('
+            SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
+            WHERE `id_order_state` = ' . (int)$order->current_state);
+            $orderStatusPreName = $orderStatusPre[0]['name'];
+
+            if($test == "yes")
+            {
+                if(
+                    $orderStatusPreName == "ePayco Pago Rechazado Prueba" ||
+                    $orderStatusPreName == "ePayco Pago Cancelado Prueba" ||
+                    $orderStatusPreName == "ePayco Pago Abandonado Prueba"||
+                    $orderStatusPreName == "ePayco Pago Expirado Prueba"  ||
+                    $orderStatusPreName == "ePayco Pago Fallido Prueba"
+                ){
+                    $validacionOrderName = false;
+                }else{
+                    $validacionOrderName = true;
+                    }
+            }else{
+                if(
+                    $orderStatusPreName == "ePayco Pago Rechazado" ||
+                    $orderStatusPreName == "ePayco Pago Cancelado" ||
+                    $orderStatusPreName == "ePayco Pago Abandonado"||
+                    $orderStatusPreName == "ePayco Pago Expirado"  ||
+                    $orderStatusPreName == "ePayco Pago Fallido"
+                ){
+                    $validacionOrderName = false;
+                }else{
+                    $validacionOrderName = true;
+                }
+            }
+
+        if($x_signature==$signature && $validation) {
             $current_state = $order->current_state;
+            
             if (!EpaycoOrder::ifStockDiscount($order->id)) {
                 EpaycoOrder::updateStockDiscount($order->id, 1);
             }
-
             if ($current_state != Configuration::get($state)) {
                 if ($confirmation && !$payment && $x_cod_response != 3 && EpaycoOrder::ifStockDiscount($order->id)) {
-                    $this->RestoreStock($order, '+');
-                    $history = new OrderHistory();
-                    $history->id_order = (int)$order->id;
-                    $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                    if(!$validacionOrderName){
+                        $this->RestoreStock($order, '+');
+                        $history = new OrderHistory();
+                        $history->id_order = (int)$order->id;
+                        $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                    }
                 }
+                
                 $history = new OrderHistory();
                 $history->id_order = (int)$order->id;
-
-                if ($payment) {
+                    
+                if ($payment && $validacionOrderName) {
                     $orderStatus = Db::getInstance()->executeS('
                         SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
                         WHERE `id_order_state` = ' . (int)$config['P_STATE_END_TRANSACTION']);
@@ -809,9 +872,9 @@ class Payco extends PaymentModule
                         'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
                         WHERE `name` = "' . $orderStatusName . '"'
                     );
-                    $history->changeIdOrderState((int)$orderStatusEndId, $order, true);
-
+                    $history->changeIdOrderState((int)$orderStatusEndId, $order, true);        
                 } else {
+                    
                     if (($x_cod_response == 2
                             || $x_cod_response == 4
                             || $x_cod_response == 6
@@ -821,22 +884,42 @@ class Payco extends PaymentModule
                         ) && EpaycoOrder::ifStockDiscount($order->id)) {
                         if ($current_state != Configuration::get($state)) {
                             if(trim($x_cod_transaction_state) == 10){
-				if(!$confirmation){
-                                $this->RestoreStock($order, '+');
-				}
+                				if(!$confirmation && !$validacionOrderName){
+                                    $this->RestoreStock($order, '+');
+                				}
                             }
+                            if($orderStatusPreName == "ePayco Esperando Pago"){
+                                $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                                $this->RestoreStock($order, '+');
+                            }
+                           
                             
                         }
                     }
-
-                    $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                  
+                    if(!$validacionOrderName){
+                        if(!$test && $orderStatusPreName != "ePayco Pago Rechazado" || $orderStatusPreName != "ePayco Pago Cancelado" || $orderStatusPreName != "ePayco Pago Fallido"){
+                            $keepOn = true;
+                        }
+                        if($test && $orderStatusPreName != "ePayco Pago Rechazado Prueba" || $orderStatusPreName != "ePayco Pago Cancelado Prueba" || $orderStatusPreName != "ePayco Pago Fallido Prueba" ){
+                            $keepOn = true;
+                        }
+                        if(!$keepOn){
+                            $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                        }
+                    }
                 }
+                 if(!$validacionOrderName && !$keepOn){
                 $history->addWithemail(false);
+                 }
             }
             
 
+        }else{
+            $history->changeIdOrderState((int)Configuration::get("PS_OS_ERROR"), $order, true);
+             $this->RestoreStock($order, '+');
+             $history->addWithemail(false);
         }
-
         if($confirmation){
             header("HTTP/1.1 200 OK");
             echo $x_cod_response;

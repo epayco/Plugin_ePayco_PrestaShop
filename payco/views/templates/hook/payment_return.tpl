@@ -179,6 +179,14 @@
     </script>
 
 </form> 
+<script language="Javascript">
+    const app = document.getElementById("epayco_form");
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        }, false);
+    } 
+</script>
 {else}
 <p class="warning">
   {l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro departamento de Soporte' mod='payco'}
