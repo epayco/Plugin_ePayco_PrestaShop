@@ -843,7 +843,7 @@ class Payco extends PaymentModule
                     $validacionOrderName = true;
                 }
             }
-
+            
         if($x_signature==$signature && $validation) {
             $current_state = $order->current_state;
             
@@ -862,19 +862,34 @@ class Payco extends PaymentModule
                 
                 $history = new OrderHistory();
                 $history->id_order = (int)$order->id;
-                    
+
                 if ($payment && $validacionOrderName) {
                     $orderStatus = Db::getInstance()->executeS('
                         SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
                         WHERE `id_order_state` = ' . (int)$config['P_STATE_END_TRANSACTION']);
-                    $orderStatusName = $textMode == "TRUE" ? $orderStatus[0]['name'] . " Prueba" : $orderStatus[0]['name'];
-                    $orderStatusEndId = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
-                        'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
-                        WHERE `name` = "' . $orderStatusName . '"'
-                    );
+                    if($test == $isTestTransaction){
+                        $orderStatusName = $textMode == "TRUE" ? $orderStatus[0]['name'] . " Prueba" : $orderStatus[0]['name'];
+                        $newOrderName = $orderStatusName;
+                        $orderStatusEndId = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
+                            'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
+                            WHERE `name` = "' . $orderStatusName . '"'
+                        );
+                    }else{
+                        $orderStatusName = $orderStatus[0]['name'] . " Prueba";
+                        $newOrderName = $orderStatusName;
+                        $orderStatusEndId = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
+                            'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
+                            WHERE `name` = "' . $orderStatusName . '"'
+                        );
+                        if($orderStatusEndId != $current_state){
+                            if($orderStatusPreName != "ePayco Pago Pendiente Prueba"){
+                                $this->RestoreStock($order, '+'); 
+                            }
+                        }
+                    }
                     $history->changeIdOrderState((int)$orderStatusEndId, $order, true);        
                 } else {
-                    
+
                     if (($x_cod_response == 2
                             || $x_cod_response == 4
                             || $x_cod_response == 6
@@ -896,7 +911,7 @@ class Payco extends PaymentModule
                             
                         }
                     }
-                  
+
                     if(!$validacionOrderName){
                         if(!$test && $orderStatusPreName != "ePayco Pago Rechazado" || $orderStatusPreName != "ePayco Pago Cancelado" || $orderStatusPreName != "ePayco Pago Fallido"){
                             $keepOn = true;
@@ -904,6 +919,28 @@ class Payco extends PaymentModule
                         if($test && $orderStatusPreName != "ePayco Pago Rechazado Prueba" || $orderStatusPreName != "ePayco Pago Cancelado Prueba" || $orderStatusPreName != "ePayco Pago Fallido Prueba" ){
                             $keepOn = true;
                         }
+                        if($keepOn && $orderStatusPreName == "ePayco Pago Rechazado" ){
+                            if($x_cod_response == 1){
+                                $orderStatus = Db::getInstance()->executeS('
+                                    SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
+                                    WHERE `id_order_state` = ' . (int)$config['P_STATE_END_TRANSACTION']);
+                                $orderStatusName = $textMode == "TRUE" ? $orderStatus[0]['name'] . " Prueba" : $orderStatus[0]['name'];
+                                $orderStatusEndId = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
+                                    'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
+                                    WHERE `name` = "' . $orderStatusName . '"'
+                            );
+                                if($isTestTransaction == "yes"){
+                                    $history->changeIdOrderState((int)$orderStatusEndId, $order, true); 
+                                }
+                            }
+                            if($textMode == "TRUE" && $x_cod_response != 1){
+                                $history->changeIdOrderState((int)$orderStatusEndId, $order, true); 
+                            }else{
+                                if($x_cod_response != 1){
+                                    $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                                } 
+                            } 
+                    }
                         if(!$keepOn){
                             $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                         }
