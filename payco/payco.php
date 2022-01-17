@@ -793,7 +793,7 @@ class Payco extends PaymentModule
         $orderAmount = floatval($order->getOrdersTotalPaid());
         if($orderAmount == floatval($amount)){
             
-            if($isTestTransaction == "yes"  && $x_approval_code == "000000"){
+            if($isTestTransaction == "yes"){
                $validation = true;  
             }
            
@@ -953,9 +953,19 @@ class Payco extends PaymentModule
             
 
         }else{
-            $history->changeIdOrderState((int)Configuration::get("PS_OS_ERROR"), $order, true);
-             $this->RestoreStock($order, '+');
-             $history->addWithemail(false);
+            $history = new OrderHistory();
+            $history->id_order = (int)$order->id;
+            if($test == "yes"){
+                if($orderStatusPreName != "ePayco Pago Fallido Prueba"){
+                    $this->RestoreStock($order, '+'); 
+                }
+                 $history->changeIdOrderState((int)Configuration::get("PAYCO_OS_FAILED_TEST"), $order, true);
+            }else{
+               if($orderStatusPreName != "ePayco Pago Fallido"){
+                    $this->RestoreStock($order, '+'); 
+                }
+                 $history->changeIdOrderState((int)Configuration::get("PAYCO_OS_FAILED"), $order, true); 
+            }
         }
         if($confirmation){
             header("HTTP/1.1 200 OK");
