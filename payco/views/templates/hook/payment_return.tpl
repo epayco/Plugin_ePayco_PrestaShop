@@ -179,6 +179,24 @@
     </script>
 
 </form> 
+<script language="Javascript">
+    const app = document.getElementById("epayco_form");
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        }, false);
+    } 
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).keydown(function (event) {
+        if (event.keyCode == 123) {
+            return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {        
+            return false;
+        }
+    });
+</script>
 {else}
 <p class="warning">
   {l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro departamento de Soporte' mod='payco'}
