@@ -679,14 +679,7 @@ class Payco extends PaymentModule
                 $ref_payco=$arr_refpayco[1];
             }
         }
-
-        if(isset($_REQUEST["x_ref_payco"])){
-            $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE','P_KEY','PUBLIC_KEY','P_TEST_REQUEST'));
-            $public_key=$config["PUBLIC_KEY"];
-            $ref_payco=$_REQUEST["x_ref_payco"];
-            $url ="https://secure.payco.co/restpagos/transaction/response.json?ref_payco=$ref_payco&public_key=".$public_key;
-            $confirmation=false;
-        }
+        
 
         if(isset($_REQUEST["?ref_payco"])!="" || isset($_REQUEST["ref_payco"]) || $ref_payco){
 
@@ -697,13 +690,12 @@ class Payco extends PaymentModule
             if(isset($_REQUEST["ref_payco"])){
                 $ref_payco=$_REQUEST["ref_payco"];
             }
-            if($url==""){
-                $url = 'https://secure.epayco.io/validation/v1/reference/'.$ref_payco;
-            }
+           
+            $url = 'https://secure.epayco.io/validation/v1/reference/'.$ref_payco;
+            
 
         }
         
-
 
         if($ref_payco!="" and $url!=""){
             $responseData = $this->PostCurl($url,false,$this->StreamContext());
@@ -816,7 +808,7 @@ class Payco extends PaymentModule
             SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
             WHERE `id_order_state` = ' . (int)$order->current_state);
             $orderStatusPreName = $orderStatusPre[0]['name'];
-
+            
             if($test == "yes")
             {
                 if(
@@ -874,6 +866,12 @@ class Payco extends PaymentModule
                             'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
                             WHERE `name` = "' . $orderStatusName . '"'
                         );
+                        if(!$orderStatusEndId){
+                            $orderStatusEndId = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
+                                'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
+                            WHERE `name` = "' . $orderStatus[0]['name'] . '"'
+                            );
+                        }
                     }else{
                         $orderStatusName = $orderStatus[0]['name'] . " Prueba";
                         $newOrderName = $orderStatusName;
