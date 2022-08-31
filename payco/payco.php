@@ -54,7 +54,7 @@ class Payco extends PaymentModule
        
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.9.0.1';
+        $this->version = '1.9.1.2';
         $this->author = 'payco';
         $this->need_instance = 0;
 
@@ -102,6 +102,17 @@ class Payco extends PaymentModule
         if (!sizeof(Currency::checkPaymentCurrencies($this->id)))
         $this->warning = $this->l('No currency set for this module');
 
+    }
+
+    /**
+     * @return void
+     */
+    public function hookDisplayHeader()
+    {
+        $this->context->controller->registerJavascript('epayco-checkout','https://checkout.epayco.co/checkout.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerStylesheet(
+            'epayco-checkout-css',$this->getPathUri() .'views/css/back.css',['media' => 'all', 'priority' => 150]
+        );
     }
 
     /**
@@ -464,7 +475,7 @@ class Payco extends PaymentModule
     public function hookHeader()
     {
         $this->context->controller->addJS($this->_path.'/views/js/front.js');
-        $this->context->controller->addCSS($this->_path.'/views/css/front.css');
+        $this->context->controller->addCSS($this->_path.'/views/css/back.css');
     }
 
     /**
@@ -645,6 +656,7 @@ class Payco extends PaymentModule
           } else {
               $this->smarty->assign('status', 'failed');
           }
+        $this->context->controller->addCSS($this->_path.'/views/css/back.css');
           //redirige al checkout
           //luego al controlador response.php
         return $this->display(__FILE__, 'views/templates/hook/payment_return.tpl');
@@ -693,7 +705,6 @@ class Payco extends PaymentModule
            
             $url = 'https://secure.epayco.io/validation/v1/reference/'.$ref_payco;
             
-
         }
         
 
