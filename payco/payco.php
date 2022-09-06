@@ -508,7 +508,7 @@ class Payco extends PaymentModule
             return;
         }
         $this->context->smarty->assign(array("titulo"=>$this->p_titulo));
-        $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."/modules/payco/views/img/logo.png";
+        $url = "https://multimedia.epayco.co/epayco-landing/btns/epayco-logo-fondo-oscuro-lite.png";
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
         $modalOption->setCallToActionText($this->l(''))
                       ->setAction($this->context->link->getModuleLink($this->name, 'validation', array(), true))
@@ -612,10 +612,11 @@ class Payco extends PaymentModule
             $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
             $lang = $this->context->language->language_code;
             if($lang == "es"){
-                $url_button = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/Boton-color-espanol.png";
+                $url_button = "https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png";
             }else{
-                $url_button = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REWRITEBASE']."modules/payco/views/img/Boton-color-Ingles.png";
+                $url_button = "https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color-Ingles.png";
                 $lang = "en";
+                
             }
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
@@ -815,12 +816,13 @@ class Payco extends PaymentModule
             }
 
         }
-            $orderStatusPre = Db::getInstance()->executeS('
-            SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
-            WHERE `id_order_state` = ' . (int)$order->current_state);
-            $orderStatusPreName = $orderStatusPre[0]['name'];
-            
-            if($test == "yes")
+        
+        $orderStatusPre = Db::getInstance()->executeS('
+        SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
+        WHERE `id_order_state` = ' . (int)$order->current_state);
+        $orderStatusPreName = $orderStatusPre[0]['name'];
+        
+        if($test == "yes")
             {
                 if(
                     $orderStatusPreName == "ePayco Pago Rechazado Prueba" ||
@@ -846,6 +848,7 @@ class Payco extends PaymentModule
                     $validacionOrderName = true;
                 }
             }
+           
             
         if($x_signature==$signature && $validation) {
             $current_state = $order->current_state;
@@ -854,6 +857,7 @@ class Payco extends PaymentModule
                 EpaycoOrder::updateStockDiscount($order->id, 1);
             }
             if ($current_state != Configuration::get($state)) {
+              
                 if ($confirmation && !$payment && $x_cod_response != 3 && EpaycoOrder::ifStockDiscount($order->id)) {
                     if(!$validacionOrderName){
                         $this->RestoreStock($order, '+');
@@ -916,8 +920,6 @@ class Payco extends PaymentModule
                                 $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                                 $this->RestoreStock($order, '+');
                             }
-                           
-                            
                         }
                     }
 
@@ -928,7 +930,8 @@ class Payco extends PaymentModule
                         if($test && $orderStatusPreName != "ePayco Pago Rechazado Prueba" || $orderStatusPreName != "ePayco Pago Cancelado Prueba" || $orderStatusPreName != "ePayco Pago Fallido Prueba" ){
                             $keepOn = true;
                         }
-                        if($keepOn && $orderStatusPreName == "ePayco Pago Rechazado" ){
+                       
+                        if($keepOn ){
                             if($x_cod_response == 1){
                                 $orderStatus = Db::getInstance()->executeS('
                                     SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
@@ -938,9 +941,8 @@ class Payco extends PaymentModule
                                     'SELECT * FROM `' . _DB_PREFIX_ . 'order_state_lang` 
                                     WHERE `name` = "' . $orderStatusName . '"'
                             );
-                                if($isTestTransaction == "yes"){
-                                    $history->changeIdOrderState((int)$orderStatusEndId, $order, true); 
-                                }
+                                $history->changeIdOrderState((int)$orderStatusEndId, $order, true); 
+                                $this->RestoreStock($order, '-'); 
                             }
                             if($textMode == "TRUE" && $x_cod_response != 1){
                                 $history->changeIdOrderState((int)$orderStatusEndId, $order, true); 
@@ -956,7 +958,7 @@ class Payco extends PaymentModule
                     }
                 }
                  if(!$validacionOrderName && !$keepOn){
-                $history->addWithemail(false);
+                    $history->addWithemail(false);
                  }
             }
             
@@ -989,13 +991,9 @@ class Payco extends PaymentModule
                 Tools::redirect($p_url_response."?ref_payco=".$old_ref_payco);
             }
            else{
-              
-                 header("location:index.php?controller=history");
-              
+                header("location:index.php?controller=history");
            }
-            
-                
-            
+        
         }
 
     }
@@ -1034,17 +1032,16 @@ class Payco extends PaymentModule
     }
 
     private function StreamContext(){
-
-                $context = stream_context_create(array(
-                    'http' => array(
-                        'method' => 'POST',
-                        'header' => 'Content-Type: application/x-www-form-urlencoded',
-                        'protocol_version' => 1.1,
-                        'timeout' => 10,
-                        'ignore_errors' => true
-                    )
-                ));
-                return $context;
+        $context = stream_context_create(array(
+            'http' => array(
+                'method' => 'POST',
+                'header' => 'Content-Type: application/x-www-form-urlencoded',
+                'protocol_version' => 1.1,
+                'timeout' => 10,
+                'ignore_errors' => true
+            )
+        ));
+        return $context;
     }
 
 }
