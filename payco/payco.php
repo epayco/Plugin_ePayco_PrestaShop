@@ -704,7 +704,7 @@ class Payco extends PaymentModule
                 $ref_payco=$_REQUEST["ref_payco"];
             }
            
-            $url = 'https://secure.epayco.io/validation/v1/reference/'.$ref_payco;
+            $url = 'https://secure.epayco.co/validation/v1/reference/'.$ref_payco;
             
         }
         
