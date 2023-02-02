@@ -608,8 +608,8 @@ class Payco extends PaymentModule
                 EpaycoOrder::create($order->id,1);
             }
 
-            $p_url_response=Context::getContext()->link->getModuleLink('payco', 'response');
-            $p_url_confirmation=Context::getContext()->link->getModuleLink('payco', 'confirmation');
+            $p_url_response = !empty($this->p_url_response) ? $this->p_url_response : Context::getContext()->link->getModuleLink('payco', 'response');
+            $p_url_confirmation = !empty($this->p_url_confirmation) ? $this->p_url_confirmation : Context::getContext()->link->getModuleLink('payco', 'confirmation');
             $lang = $this->context->language->language_code;
             if($lang == "es"){
                 $url_button = "https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png";
