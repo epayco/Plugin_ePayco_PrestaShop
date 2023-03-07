@@ -44,6 +44,7 @@ class Payco extends PaymentModule
     public $p_key;
     public $public_key;
     public $p_test_request;
+    public $lenguaje;
     public $p_url_response;
     public $p_url_confirmation;
     public $p_state_end_transaction;
@@ -70,6 +71,7 @@ class Payco extends PaymentModule
         $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE',
                                                 'P_KEY','PUBLIC_KEY',
                                                 'P_TEST_REQUEST',
+                                                'LENGUAJE',
                                                 'P_TITULO',
                                                 'P_TYPE_CHECKOUT',
                                                 'P_STATE_END_TRANSACTION',
@@ -85,6 +87,8 @@ class Payco extends PaymentModule
             $this->public_key = trim($config['PUBLIC_KEY']);  
         if (isset($config['P_TEST_REQUEST']))
             $this->p_test_request = $config['P_TEST_REQUEST'];
+        if (isset($config['LENGUAJE']))
+            $this->lenguaje = $config['LENGUAJE'];          
         if (isset($config['P_TITULO']))
             $this->p_titulo = trim($config['P_TITULO']); 
         if (isset($config['P_TYPE_CHECKOUT']))
@@ -137,6 +141,7 @@ class Payco extends PaymentModule
         Configuration::updateValue('P_KEY', '');
         Configuration::updateValue('PUBLIC_KEY', '');
         Configuration::updateValue('P_TEST_REQUEST', false);
+        Configuration::updateValue('LENGUAJE', false);
         Configuration::updateValue('P_STATE_END_TRANSACTION', '');
         Configuration::updateValue('P_REDUCE_STOCK_PENDING', true); 
         Configuration::updateValue('P_URL_RESPONSE', Context::getContext()->link->getModuleLink('payco', 'response'));
@@ -168,6 +173,7 @@ class Payco extends PaymentModule
         Configuration::deleteByName('P_KEY');
         Configuration::deleteByName('PUBLIC_KEY');
         Configuration::deleteByName('P_TEST_REQUEST');
+        Configuration::deleteByName('LENGUAJE');
         Configuration::deleteByName('P_STATE_END_TRANSACTION');
         Configuration::deleteByName('P_REDUCE_STOCK_PENDING');
         Configuration::deleteByName('payco', false);
@@ -310,6 +316,24 @@ class Payco extends PaymentModule
                         ),
                     ),
                     array(
+                        'type' => 'radio',
+                        'label'=> $this->trans('Idioma del checkout', array(), 'Modules.Payment.Admin'),
+                        'name' => "LENGUAJE",
+                        'is_bool' => true,
+                        'values' => array(
+                            array(
+                                'id' => 'LANGUAJE_ES',
+                                'value' => true,
+                                'label' => $this->trans('Español', array(), 'Modules.Payment.Admin'),
+                            ),
+                            array(
+                                'id' => 'LANGUAJE_EN',
+                                'value' => false,
+                                'label' => $this->trans('Ingles', array(), 'Modules.Payment.Admin'),
+                            )
+                        ),
+                    ),
+                    array(
                         'type' => 'text',
                         'label' => $this->trans('Página de Respuesta', array(), 'Modules.Payco.Admin'),
                         'name' => 'P_URL_RESPONSE',
@@ -399,6 +423,7 @@ class Payco extends PaymentModule
             'P_KEY' => Tools::getValue('P_KEY', Configuration::get('P_KEY')),
             'PUBLIC_KEY' => Tools::getValue('PUBLIC_KEY', Configuration::get('PUBLIC_KEY')),
             'P_TEST_REQUEST' => Tools::getValue('P_TEST_REQUEST', Configuration::get('P_TEST_REQUEST')),
+            'LENGUAJE' => Tools::getValue('LENGUAJE', Configuration::get('LENGUAJE')),
             'P_STATE_END_TRANSACTION' => Tools::getValue('P_STATE_END_TRANSACTION', Configuration::get('P_STATE_END_TRANSACTION')),
             'P_REDUCE_STOCK_PENDING' => Tools::getValue('P_REDUCE_STOCK_PENDING', Configuration::get('P_REDUCE_STOCK_PENDING')),
             'P_TYPE_CHECKOUT' => Tools::getValue('P_TYPE_CHECKOUT', Configuration::get('P_TYPE_CHECKOUT')),
@@ -446,6 +471,7 @@ class Payco extends PaymentModule
             Configuration::updateValue('P_KEY', Tools::getValue('P_KEY'));
             Configuration::updateValue('PUBLIC_KEY', Tools::getValue('PUBLIC_KEY'));
             Configuration::updateValue('P_TEST_REQUEST', Tools::getValue('P_TEST_REQUEST'));
+            Configuration::updateValue('LENGUAJE', Tools::getValue('LENGUAJE'));
             Configuration::updateValue('P_TITULO', $p_titulo);
             Configuration::updateValue('P_STATE_END_TRANSACTION', Tools::getValue('P_STATE_END_TRANSACTION'));
             Configuration::updateValue('P_REDUCE_STOCK_PENDING', Tools::getValue('P_REDUCE_STOCK_PENDING'));
@@ -576,6 +602,12 @@ class Payco extends PaymentModule
             }else{
               $test="false";
             }
+
+            if($this->lenguaje==1){
+                $lenguaje="es";
+              }else{
+                $lenguaje="en";
+              }
             
             if($this->p_type_checkout==1){
               $external="false";
@@ -648,7 +680,7 @@ class Payco extends PaymentModule
               'p_billing_city'=>$addressdelivery->city,
               'p_billing_country'=>$addressdelivery->id_state,
               'p_billing_phone'=>"",
-              'lang' => $lang,
+              'lang' => $lenguaje,
               'descripcion' => $descripcion,
               'url_button' => $url_button
               )
