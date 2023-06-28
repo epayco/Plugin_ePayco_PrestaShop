@@ -55,7 +55,7 @@ class Payco extends PaymentModule
        
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.9.1.2';
+        $this->version = '1.9.4.0';
         $this->author = 'payco';
         $this->need_instance = 0;
 
@@ -1012,6 +1012,7 @@ class Payco extends PaymentModule
         }
         if($confirmation){
             header("HTTP/1.1 200 OK");
+            $history->addWithemail(true);
             echo $x_cod_response;
             die();
            
