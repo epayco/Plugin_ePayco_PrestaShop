@@ -31,36 +31,45 @@
     <span class="animated-points">Cargando métodos de pago</span>
    <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con ePayco"</small>
 </p>
-
+<a id="btn_epayco" href="#">
+    <img src="{$url_button|escape:'htmlall':'UTF-8'}">
+</a>
 <form id="epayco_form" style="text-align: center;">
-
-    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"
-        class="epayco-button"
-        data-epayco-key="{$public_key}"
-        data-epayco-amount="{$total|escape:'htmlall':'UTF-8'}"
-        data-epayco-tax="{$iva|escape:'htmlall':'UTF-8'}"
-        data-epayco-tax-base="{$baseDevolucionIva|escape:'htmlall':'UTF-8'}"    
-        data-epayco-name="{$descripcion}"
-        data-epayco-description="{$descripcion}"
-        data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"
-        data-epayco-country="{$iso|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-test="{$merchanttest}"
-        data-epayco-extra1="{$extra1|escape:'htmlall':'UTF-8'}"
-        data-epayco-extra2="{$extra2|escape:'htmlall':'UTF-8'}"
-        data-epayco-extra3="{$refVenta|escape:'htmlall':'UTF-8'}"
-        data-epayco-external="{$external|escape:'htmlall':'UTF-8'}"
-        data-epayco-response="{$p_url_response|unescape: 'html' nofilter}" 
-        data-epayco-confirmation="{$p_url_confirmation|unescape: 'html' nofilter}"
-        data-epayco-email-billing="{$p_billing_email|escape:'htmlall':'UTF-8'}"
-        data-epayco-name-billing="{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}"
-        data-epayco-address-billing="{$p_billing_address|escape:'htmlall':'UTF-8'}"
-        data-epayco-lang="{$lang|escape:'htmlall':'UTF-8'}"
-        data-epayco-button="{$url_button|escape:'htmlall':'UTF-8'}"
-        data-epayco-autoClick="true"
-        >
+    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"></script>
+     <script>
+        var handler = ePayco.checkout.configure({
+            key: "{$public_key}",
+            test: "{$merchanttest}"
+        })
+        var date = new Date().getTime();
+        var data = {
+            name: "{$descripcion}",
+            description: "{$descripcion}",
+            invoice: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            currency: "{$currency|lower|escape:'htmlall':'UTF-8'}",
+            amount: "{$total|escape:'htmlall':'UTF-8'}",
+            tax_base: "{$baseDevolucionIva|escape:'htmlall':'UTF-8'}",
+            tax: "{$iva|escape:'htmlall':'UTF-8'}",
+            taxIco: "0",
+            country: "{$iso|lower|escape:'htmlall':'UTF-8'}",
+            lang: "{$lang|escape:'htmlall':'UTF-8'}",
+            external: "{$external|escape:'htmlall':'UTF-8'}",
+            confirmation: "{$p_url_confirmation|unescape: 'html' nofilter}",
+            response: "{$p_url_response|unescape: 'html' nofilter}",
+            name_billing: "{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}",
+            address_billing: "{$p_billing_address|escape:'htmlall':'UTF-8'}",
+            email_billing: "{$p_billing_email|escape:'htmlall':'UTF-8'}",
+            extra1: "{$extra1|escape:'htmlall':'UTF-8'}",
+            extra2: "{$extra2|escape:'htmlall':'UTF-8'}",
+            extra3: "{$refVenta|escape:'htmlall':'UTF-8'}"
+        }
+        var openChekout = function () {
+            handler.open(data);
+        }
+        var bntPagar = document.getElementById("btn_epayco");
+        bntPagar.addEventListener("click", openChekout);
+        setTimeout(openChekout, 2000)  
     </script>
-
 </form> 
 <script language="Javascript">
     const app = document.getElementById("epayco_form");
