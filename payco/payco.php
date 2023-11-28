@@ -43,6 +43,7 @@ class Payco extends PaymentModule
     public $p_cust_id_cliente;
     public $p_key;
     public $public_key;
+    public $private_key;
     public $p_test_request;
     public $lenguaje;
     public $p_url_response;
@@ -55,7 +56,7 @@ class Payco extends PaymentModule
        
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.9.4.0';
+        $this->version = '1.9.5.0';
         $this->author = 'payco';
         $this->need_instance = 0;
 
@@ -69,7 +70,7 @@ class Payco extends PaymentModule
         $this->description = $this->l('ePayco, Tarjetas de Credito, Debito PSE, SafetyPay y Efectivo');
         $this->confirmUninstall = $this->l('Esta seguro de desistalar este modulo?');
         $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE',
-                                                'P_KEY','PUBLIC_KEY',
+                                                'P_KEY','PUBLIC_KEY','PRIVATE_KEY',
                                                 'P_TEST_REQUEST',
                                                 'LENGUAJE',
                                                 'P_TITULO',
@@ -84,7 +85,9 @@ class Payco extends PaymentModule
         if (isset($config['P_KEY']))
             $this->p_key = trim($config['P_KEY']);
         if (isset($config['PUBLIC_KEY']))
-            $this->public_key = trim($config['PUBLIC_KEY']);  
+            $this->public_key = trim($config['PUBLIC_KEY']); 
+        if (isset($config['PRIVATE_KEY']))
+            $this->private_key = trim($config['PRIVATE_KEY']);      
         if (isset($config['P_TEST_REQUEST']))
             $this->p_test_request = $config['P_TEST_REQUEST'];
         if (isset($config['LENGUAJE']))
@@ -113,7 +116,7 @@ class Payco extends PaymentModule
      */
     public function hookDisplayHeader()
     {
-        $this->context->controller->registerJavascript('epayco-checkout','https://checkout.epayco.co/checkout.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerJavascript('epayco-checkout','https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js', ['position' => 'bottom', 'priority' => 150]);
         $this->context->controller->registerStylesheet(
             'epayco-checkout-css',$this->getPathUri() .'views/css/back.css',['media' => 'all', 'priority' => 150]
         );
@@ -140,6 +143,7 @@ class Payco extends PaymentModule
         Configuration::updateValue('P_CUST_ID_CLIENTE', '');
         Configuration::updateValue('P_KEY', '');
         Configuration::updateValue('PUBLIC_KEY', '');
+        Configuration::updateValue('PRIVATE_KEY', '');
         Configuration::updateValue('P_TEST_REQUEST', false);
         Configuration::updateValue('LENGUAJE', false);
         Configuration::updateValue('P_STATE_END_TRANSACTION', '');
@@ -172,6 +176,7 @@ class Payco extends PaymentModule
         Configuration::deleteByName('P_CUST_ID_CLIENTE');
         Configuration::deleteByName('P_KEY');
         Configuration::deleteByName('PUBLIC_KEY');
+        Configuration::deleteByName('PRIVATE_KEY');
         Configuration::deleteByName('P_TEST_REQUEST');
         Configuration::deleteByName('LENGUAJE');
         Configuration::deleteByName('P_STATE_END_TRANSACTION');
@@ -294,6 +299,13 @@ class Payco extends PaymentModule
                         'type' => 'text',
                         'label' => $this->trans('PUBLIC_KEY', array(), 'Modules.Payco.Admin'),
                         'name' => 'PUBLIC_KEY',
+                        'desc' => $this->trans('LLave para autenticar y consumir los servicios de ePayco.', array(), 'Modules.Payco.Admin'),
+                        'required' => true
+                    ),
+                    array(
+                        'type' => 'text',
+                        'label' => $this->trans('PRIVATE_KEY', array(), 'Modules.Payco.Admin'),
+                        'name' => 'PRIVATE_KEY',
                         'desc' => $this->trans('LLave para autenticar y consumir los servicios de ePayco.', array(), 'Modules.Payco.Admin'),
                         'required' => true
                     ),
@@ -422,6 +434,7 @@ class Payco extends PaymentModule
             'P_CUST_ID_CLIENTE' => Tools::getValue('P_CUST_ID_CLIENTE', Configuration::get('P_CUST_ID_CLIENTE')),
             'P_KEY' => Tools::getValue('P_KEY', Configuration::get('P_KEY')),
             'PUBLIC_KEY' => Tools::getValue('PUBLIC_KEY', Configuration::get('PUBLIC_KEY')),
+            'PRIVATE_KEY' => Tools::getValue('PRIVATE_KEY', Configuration::get('PRIVATE_KEY')),
             'P_TEST_REQUEST' => Tools::getValue('P_TEST_REQUEST', Configuration::get('P_TEST_REQUEST')),
             'LENGUAJE' => Tools::getValue('LENGUAJE', Configuration::get('LENGUAJE')),
             'P_STATE_END_TRANSACTION' => Tools::getValue('P_STATE_END_TRANSACTION', Configuration::get('P_STATE_END_TRANSACTION')),
@@ -440,6 +453,8 @@ class Payco extends PaymentModule
           $this->_postErrors[] = $this->l('\'P_KEY\' Campo Requerido.');
         if (!Tools::getValue('PUBLIC_KEY'))
           $this->_postErrors[] = $this->l('\'PUBLIC_KEY\' Campo Requerido.');
+          if (!Tools::getValue('PRIVATE_KEY'))
+          $this->_postErrors[] = $this->l('\'PRIVATE_KEY\' Campo Requerido.');
       }
     }
 
@@ -470,6 +485,7 @@ class Payco extends PaymentModule
             Configuration::updateValue('P_CUST_ID_CLIENTE', Tools::getValue('P_CUST_ID_CLIENTE'));
             Configuration::updateValue('P_KEY', Tools::getValue('P_KEY'));
             Configuration::updateValue('PUBLIC_KEY', Tools::getValue('PUBLIC_KEY'));
+            Configuration::updateValue('PRIVATE_KEY', Tools::getValue('PRIVATE_KEY'));
             Configuration::updateValue('P_TEST_REQUEST', Tools::getValue('P_TEST_REQUEST'));
             Configuration::updateValue('LENGUAJE', Tools::getValue('LENGUAJE'));
             Configuration::updateValue('P_TITULO', $p_titulo);
@@ -650,6 +666,7 @@ class Payco extends PaymentModule
                 $lang = "en";
                 
             }
+            $myIp = $this->getCustomerIp();
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
               'p_signature' => $p_signature,
@@ -669,6 +686,7 @@ class Payco extends PaymentModule
               'merchanttest'=> $test,
               'p_key'=>trim($this->p_key),
               'public_key'=>trim($this->public_key),
+              'private_key'=>trim($this->private_key),
               'custip' => $_SERVER['REMOTE_ADDR'],
               'custname' => $this->context->customer->firstname." ".$this->context->customer->lastname,
               'p_url_response' => $p_url_response,
@@ -682,7 +700,8 @@ class Payco extends PaymentModule
               'p_billing_phone'=>"",
               'lang' => $lenguaje,
               'descripcion' => $descripcion,
-              'url_button' => $url_button
+              'url_button' => $url_button,
+              'ip' => $myIp
               )
             );
 
@@ -711,6 +730,27 @@ class Payco extends PaymentModule
         return false;
     }
 
+    private function getCustomerIp(){
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        else if(isset($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        else if(isset($_SERVER['REMOTE_ADDR']))
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
+
     public function PaymentReturnOnpage(){
 
         $ref_payco="";
@@ -736,7 +776,7 @@ class Payco extends PaymentModule
                 $ref_payco=$_REQUEST["ref_payco"];
             }
            
-            $url = 'https://secure.epayco.co/validation/v1/reference/'.$ref_payco;
+            $url = 'https://secure.epayco.io/validation/v1/reference/'.$ref_payco;
             
         }
         
