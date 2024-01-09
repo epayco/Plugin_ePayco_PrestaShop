@@ -31,9 +31,11 @@
     <span class="animated-points">Cargando métodos de pago</span>
    <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con ePayco"</small>
 </p>
+<center>
 <a id="btn_epayco" href="#">
     <img src="{$url_button|escape:'htmlall':'UTF-8'}">
 </a>
+</center>
 <form id="epayco_form" style="text-align: center;">
     <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"></script>
      <script>
@@ -47,9 +49,9 @@
             description: "{$descripcion}",
             invoice: "{$refVenta|escape:'htmlall':'UTF-8'}",
             currency: "{$currency|lower|escape:'htmlall':'UTF-8'}",
-            amount: "{$total|escape:'htmlall':'UTF-8'}",
-            tax_base: "{$baseDevolucionIva|escape:'htmlall':'UTF-8'}",
-            tax: "{$iva|escape:'htmlall':'UTF-8'}",
+            amount: "{$total|escape:'htmlall':'UTF-8'}".toString(),
+            tax_base: "{$baseDevolucionIva|escape:'htmlall':'UTF-8'}".toString(),
+            tax: "{$iva|escape:'htmlall':'UTF-8'}".toString(),
             taxIco: "0",
             country: "{$iso|lower|escape:'htmlall':'UTF-8'}",
             lang: "{$lang|escape:'htmlall':'UTF-8'}",
@@ -61,14 +63,59 @@
             email_billing: "{$p_billing_email|escape:'htmlall':'UTF-8'}",
             extra1: "{$extra1|escape:'htmlall':'UTF-8'}",
             extra2: "{$extra2|escape:'htmlall':'UTF-8'}",
-            extra3: "{$refVenta|escape:'htmlall':'UTF-8'}"
+            extra3: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            autoclick: "true",
+            ip:  "{$ip|escape:'htmlall':'UTF-8'}",
+            test: "{$merchanttest|escape:'htmlall':'UTF-8'}".toString()
         }
+        const apiKey = "{$public_key}";
+        const privateKey = "{$private_key}";
         var openChekout = function () {
-            handler.open(data);
+            if(localStorage.getItem("invoicePayment") == null){
+            localStorage.setItem("invoicePayment", data.invoice);
+                makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
+            }else{
+                if(localStorage.getItem("invoicePayment") != data.invoice){
+                    localStorage.removeItem("invoicePayment");
+                    localStorage.setItem("invoicePayment", data.invoice);
+                        makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
+                }else{
+                    makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
+                }
+            }
+        }
+        var makePayment = function (privatekey, apikey, info, external) {
+            const headers = { "Content-Type": "application/json" } ;
+            headers["privatekey"] = privatekey;
+            headers["apikey"] = apikey;
+            var payment =   function (){
+                return  fetch("https://cms.epayco.io/checkout/payment/session", {
+                    method: "POST",
+                    body: JSON.stringify(info),
+                    headers
+                })
+                    .then(res =>  res.json())
+                    .catch(err => err);
+            }
+            payment()
+                .then(session => {
+                    if(session.data.sessionId != undefined){
+                        localStorage.removeItem("sessionPayment");
+                        localStorage.setItem("sessionPayment", session.data.sessionId);
+                        const handlerNew = window.ePayco.checkout.configure({
+                            sessionId: session.data.sessionId,
+                            external: external,
+                        });
+                        handlerNew.openNew()
+                    }
+                })
+                .catch(error => {
+                    error.message;
+                });
         }
         var bntPagar = document.getElementById("btn_epayco");
         bntPagar.addEventListener("click", openChekout);
-        setTimeout(openChekout, 2000)  
+        openChekout()  
     </script>
 </form> 
 <script language="Javascript">
