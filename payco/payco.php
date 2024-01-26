@@ -551,8 +551,9 @@ class Payco extends PaymentModule
         }
         $this->context->smarty->assign(array("titulo"=>$this->p_titulo));
         $url = "https://multimedia.epayco.co/epayco-landing/btns/epayco-logo-fondo-oscuro-lite.png";
+        $url = $this->getPathUri() .'logoepayco.svg';
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
-        $modalOption->setCallToActionText($this->l(''))
+        $modalOption->setCallToActionText($this->l('Pago con '))
                       ->setAction($this->context->link->getModuleLink($this->name, 'validation', array(), true))
                       ->setAdditionalInformation($this->context->smarty->fetch('module:payco/views/templates/hook/payment_onpage.tpl'))
                       ->setLogo($url);
