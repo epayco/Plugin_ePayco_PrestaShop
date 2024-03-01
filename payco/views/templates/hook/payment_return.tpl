@@ -45,7 +45,7 @@
         })
         var date = new Date().getTime();
         var extras_epayco = {
-            extra5:"p23"
+            extra5:"P23"
         };
         var data = {
             name: "{$descripcion}",
