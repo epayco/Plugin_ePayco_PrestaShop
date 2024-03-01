@@ -44,6 +44,9 @@
             test: "{$merchanttest}"
         })
         var date = new Date().getTime();
+        var extras_epayco = {
+            extra5:"P23"
+        };
         var data = {
             name: "{$descripcion}",
             description: "{$descripcion}",
@@ -67,7 +70,7 @@
             autoclick: "true",
             ip:  "{$ip|escape:'htmlall':'UTF-8'}",
             test: "{$merchanttest|escape:'htmlall':'UTF-8'}".toString(),
-            extras_epayco:{extra5:"P23"}
+            extras_epayco: extras_epayco
         }
         const apiKey = "{$public_key}";
         const privateKey = "{$private_key}";
