@@ -38,15 +38,12 @@
 </center>
 <form id="epayco_form" style="text-align: center;">
     <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"></script>
-     <script language="JavaScript" type="text/javascript">
+     <script>
         var handler = ePayco.checkout.configure({
             key: "{$public_key}",
             test: "{$merchanttest}"
         })
         var date = new Date().getTime();
-        var extras_epayco = {
-            extra5:"p23"
-        };
         var data = {
             name: "{$descripcion}",
             description: "{$descripcion}",
@@ -70,7 +67,7 @@
             autoclick: "true",
             ip:  "{$ip|escape:'htmlall':'UTF-8'}",
             test: "{$merchanttest|escape:'htmlall':'UTF-8'}".toString(),
-            extras_epayco: extras_epayco
+            extras_epayco:{extra5:"p23"}
         }
         const apiKey = "{$public_key}";
         const privateKey = "{$private_key}";
