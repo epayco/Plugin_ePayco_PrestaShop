@@ -79,8 +79,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_ORDERSTATE_WAITING_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_ORDERSTATE_WAITING_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_PENDING'))
@@ -113,8 +113,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_OS_PENDING_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_OS_PENDING_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_FAILED'))
@@ -144,9 +144,9 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
+            //$order_state->add();
 
-            Configuration::updateValue('PAYCO_OS_FAILED_TEST', (int)$order_state->id);
+            //Configuration::updateValue('PAYCO_OS_FAILED_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_REJECTED'))
@@ -175,8 +175,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_OS_REJECTED_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_OS_REJECTED_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_EXPIRED'))
@@ -205,8 +205,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_OS_EXPIRED_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_OS_EXPIRED_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_ABANDONED'))
@@ -235,8 +235,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_OS_ABANDONED_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_OS_ABANDONED_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_CANCELED'))
@@ -265,8 +265,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_OS_CANCELED_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_OS_CANCELED_TEST', (int)$order_state->id);
         }
 
         if (!Configuration::get('PAYCO_OS_PAYMENT'))
@@ -295,8 +295,8 @@ class CreditCard_OrderState extends ObjectModel
             $order_state->delivery = false;
             $order_state->logable = false;
             $order_state->invoice = false;
-            $order_state->add();
-            Configuration::updateValue('PAYCO_OS_PAYMENT_TEST', (int)$order_state->id);
+            //$order_state->add();
+            //Configuration::updateValue('PAYCO_OS_PAYMENT_TEST', (int)$order_state->id);
         }
     }
 
@@ -310,15 +310,15 @@ class CreditCard_OrderState extends ObjectModel
             'PAYCO_OS_EXPIRED',
             'PAYCO_OS_ABANDONED',
             'PAYCO_OS_CANCELED',
-            'PAYCO_OS_PAYMENT',
-            'PAYCO_ORDERSTATE_WAITING_TEST',
+            'PAYCO_OS_PAYMENT'
+            /*'PAYCO_ORDERSTATE_WAITING_TEST',
             'PAYCO_OS_PENDING_TEST',
             'PAYCO_OS_FAILED_TEST',
             'PAYCO_OS_REJECTED_TEST',
             'PAYCO_OS_EXPIRED_TEST',
             'PAYCO_OS_ABANDONED_TEST',
             'PAYCO_OS_CANCELED_TEST',
-            'PAYCO_OS_PAYMENT_TEST'
+            'PAYCO_OS_PAYMENT_TEST'*/
 
         ];
 
