@@ -25,3 +25,14 @@
 * Don't forget to prefix your containers with your own identifier
 * to avoid any conflicts with others containers.
 */
+/* payco.css */
+.epayco-payment-title {
+    display: inline-block; /* Asegura que el título se muestre en línea */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-weight: bold; /* Aplica un estilo de negrita */
+    margin-bottom: 10px; /* Añade un margen inferior para separación */
+}
+
+.epayco-payment-logo.hidden {
+    display: none; /* Oculta la imagen inicialmente */
+}

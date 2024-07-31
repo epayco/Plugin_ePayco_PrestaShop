@@ -120,6 +120,8 @@ class Payco extends PaymentModule
         $this->context->controller->registerStylesheet(
             'epayco-checkout-css',$this->getPathUri() .'views/css/back.css',['media' => 'all', 'priority' => 150]
         );
+        $this->context->controller->addCSS($this->_path.'views/css/front.css', 'all');
+        $this->context->controller->addJS($this->_path.'views/js/front.js', 'all');
     }
 
     /**
@@ -549,20 +551,21 @@ class Payco extends PaymentModule
         if (!$this->checkCurrency($params['cart'])) {
             return;
         }
-        $this->context->smarty->assign(array("titulo"=>$this->p_titulo));
-        $url = "https://multimedia.epayco.co/epayco-landing/btns/epayco-logo-fondo-oscuro-lite.png";
-        $url = $this->getPathUri() .'logoepayco.svg';
+        $this->context->smarty->assign(array(
+            "titulo" => $this->p_titulo,
+            "logo_url" => $this->getPathUri() .'logoepayco.svg'
+        ));
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
-        $modalOption->setCallToActionText($this->l('Pagar con '))
-                      ->setAction($this->context->link->getModuleLink($this->name, 'validation', array(), true))
-                      ->setAdditionalInformation($this->context->smarty->fetch('module:payco/views/templates/hook/payment_onpage.tpl'))
-                      ->setLogo($url);
+        $modalOption->setCallToActionText($this->l('Pagar con ePayco'))
+                    ->setAction($this->context->link->getModuleLink($this->name, 'validation', array(), true))
+                    ->setAdditionalInformation($this->context->smarty->fetch('module:payco/views/templates/hook/payment_onpage.tpl'));
         $payment_options = [
            $modalOption,
         ];
-
+    
         return $payment_options;
     }
+    
 
     /**
      * This hook is used to display the order confirmation page.
@@ -660,13 +663,14 @@ class Payco extends PaymentModule
             $p_url_response = !empty($this->p_url_response) ? $this->p_url_response : Context::getContext()->link->getModuleLink('payco', 'response');
             $p_url_confirmation = !empty($this->p_url_confirmation) ? $this->p_url_confirmation : Context::getContext()->link->getModuleLink('payco', 'confirmation');
             $lang = $this->context->language->language_code;
-            if($lang == "es"){
-                $url_button = "https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png";
-            }else{
-                $url_button = "https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color-Ingles.png";
+            
+            if ($lang == "es") {
+                $url_button = $this->getPathUri() . ' views/img/Boton-color-Ingles.png';
+            } else {
+                $url_button = $this->getPathUri() . 'views/img/Boton-color-espanol.png';
                 $lang = "en";
-                
             }
+
             $myIp = $this->getCustomerIp();
             $this->smarty->assign(array(
               'this_path_bw' => $this->_path,
