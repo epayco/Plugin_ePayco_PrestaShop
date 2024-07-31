@@ -24,6 +24,8 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<section>
-	<p>{$titulo|escape:'htmlall':'UTF-8'}</p>
-</section>
+<!-- payment_onpage.tpl -->
+<div class="epayco-payment-option">
+  
+    <img src="{$logo_url}" class="epayco-payment-logo hidden">
+</div>

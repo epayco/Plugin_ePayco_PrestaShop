@@ -37,7 +37,7 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"></script>
+    <script src="https://checkout.epayco.co/checkout.js"></script>
      <script>
         var handler = ePayco.checkout.configure({
             key: "{$public_key}",
@@ -93,7 +93,7 @@
             headers["privatekey"] = privatekey;
             headers["apikey"] = apikey;
             var payment =   function (){
-                return  fetch("https://cms.epayco.io/checkout/payment/session", {
+                return  fetch("https://cms.epayco.co/checkout/payment/session", {
                     method: "POST",
                     body: JSON.stringify(info),
                     headers
