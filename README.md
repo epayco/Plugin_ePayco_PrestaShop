@@ -46,7 +46,7 @@
 5. Busca el plugin ePayco en la lista de módulos.
 6. Haz clic en Instalar.
 7. Haz clic en "Seguir con la Instalación".
-8. Obtén el **P_CUST_ID_CLIENTE** y **P_KEY** desde el panel de clientes de ePayco.
+8. Obtén el **P_CUST_ID_CLIENTE**,**P_KEY**, **PUBLIC_KEY** y **PRIVATE_KEY** desde el panel de clientes de ePayco.
 9. Configura el plugin ingresando los datos en el formulario de configuración.
 
 ## Pasos
