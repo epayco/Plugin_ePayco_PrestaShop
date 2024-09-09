@@ -708,7 +708,7 @@ class Payco extends PaymentModule
                     'lang' => $lenguaje,
                     'descripcion' => $descripcion,
                     'url_button' => $url_button,
-                    'ip' => "179.12.113.12" //$myIp
+                    'ip' =>$myIp
                 )
             );
         } else {
@@ -786,7 +786,7 @@ class Payco extends PaymentModule
                 $ref_payco = $_REQUEST["ref_payco"];
             }
 
-            $url = 'https://secure.epayco.io/validation/v1/reference/' . $ref_payco;
+            $url = 'https://secure.epayco.io/validation/v1/reference/'.$ref_payco;
         }
 
 
