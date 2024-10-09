@@ -24,8 +24,10 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<!-- payment_onpage.tpl -->
-<div class="epayco-payment-option">
-  
-    <img src="{$logo_url}" class="epayco-payment-logo hidden">
+<div class="epayco-payment-option espacio">
+    <img src="{$logo_url}" class="epayco-payment-logo hidden" alt="Logo" width="480">
 </div>
+
+<section class="espacio">
+    <p>{$titulo|escape:'htmlall':'UTF-8'}</p>
+</section>
