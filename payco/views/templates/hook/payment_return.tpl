@@ -31,36 +31,96 @@
     <span class="animated-points">Cargando métodos de pago</span>
    <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con ePayco"</small>
 </p>
-
+<center>
+<a id="btn_epayco" href="#">
+    <img src="{$url_button|escape:'htmlall':'UTF-8'}">
+</a>
+</center>
 <form id="epayco_form" style="text-align: center;">
-
-    <script src="https://checkout.epayco.co/checkout.js"
-        class="epayco-button"
-        data-epayco-key="{$public_key}"
-        data-epayco-amount="{$total|escape:'htmlall':'UTF-8'}"
-        data-epayco-tax="{$iva|escape:'htmlall':'UTF-8'}"
-        data-epayco-tax-base="{$baseDevolucionIva|escape:'htmlall':'UTF-8'}"    
-        data-epayco-name="{$descripcion}"
-        data-epayco-description="{$descripcion}"
-        data-epayco-currency="{$currency|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-invoice="{$refVenta|escape:'htmlall':'UTF-8'}"
-        data-epayco-country="{$iso|lower|escape:'htmlall':'UTF-8'}"
-        data-epayco-test="{$merchanttest}"
-        data-epayco-extra1="{$extra1|escape:'htmlall':'UTF-8'}"
-        data-epayco-extra2="{$extra2|escape:'htmlall':'UTF-8'}"
-        data-epayco-extra3="{$refVenta|escape:'htmlall':'UTF-8'}"
-        data-epayco-external="{$external|escape:'htmlall':'UTF-8'}"
-        data-epayco-response="{$p_url_response|unescape: 'html' nofilter}" 
-        data-epayco-confirmation="{$p_url_confirmation|unescape: 'html' nofilter}"
-        data-epayco-email-billing="{$p_billing_email|escape:'htmlall':'UTF-8'}"
-        data-epayco-name-billing="{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}"
-        data-epayco-address-billing="{$p_billing_address|escape:'htmlall':'UTF-8'}"
-        data-epayco-lang="{$lang|escape:'htmlall':'UTF-8'}"
-        data-epayco-button="{$url_button|escape:'htmlall':'UTF-8'}"
-        data-epayco-autoClick="true"
-        >
+    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"></script>
+     <script>
+        var handler = ePayco.checkout.configure({
+            key: "{$public_key}",
+            test: "{$merchanttest}"
+        })
+        var date = new Date().getTime();
+        var extras_epayco = {
+            extra5:"P23"
+        };
+        var data = {
+            name: "{$descripcion}",
+            description: "{$descripcion}",
+            invoice: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            currency: "{$currency|lower|escape:'htmlall':'UTF-8'}",
+            amount: "{$total|escape:'htmlall':'UTF-8'}".toString(),
+            tax_base: "{$baseDevolucionIva|escape:'htmlall':'UTF-8'}".toString(),
+            tax: "{$iva|escape:'htmlall':'UTF-8'}".toString(),
+            taxIco: "0",
+            country: "{$iso|lower|escape:'htmlall':'UTF-8'}",
+            lang: "{$lang|escape:'htmlall':'UTF-8'}",
+            external: "{$external|escape:'htmlall':'UTF-8'}",
+            confirmation: "{$p_url_confirmation|unescape: 'html' nofilter}",
+            response: "{$p_url_response|unescape: 'html' nofilter}",
+            name_billing: "{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}",
+            address_billing: "{$p_billing_address|escape:'htmlall':'UTF-8'}",
+            email_billing: "{$p_billing_email|escape:'htmlall':'UTF-8'}",
+            extra1: "{$extra1|escape:'htmlall':'UTF-8'}",
+            extra2: "{$extra2|escape:'htmlall':'UTF-8'}",
+            extra3: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            autoclick: "true",
+            ip:  "{$ip|escape:'htmlall':'UTF-8'}",
+            test: "{$merchanttest|escape:'htmlall':'UTF-8'}".toString(),
+            extras_epayco: extras_epayco
+        }
+        const apiKey = "{$public_key}";
+        const privateKey = "{$private_key}";
+        var openChekout = function () {
+            if(localStorage.getItem("invoicePayment") == null){
+            localStorage.setItem("invoicePayment", data.invoice);
+                makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
+            }else{
+                if(localStorage.getItem("invoicePayment") != data.invoice){
+                    localStorage.removeItem("invoicePayment");
+                    localStorage.setItem("invoicePayment", data.invoice);
+                        makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
+                }else{
+                    makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
+                }
+            }
+        }
+        var makePayment = function (privatekey, apikey, info, external) {
+            const headers = { "Content-Type": "application/json" } ;
+            headers["privatekey"] = privatekey;
+            headers["apikey"] = apikey;
+            var payment =   function (){
+                return  fetch("https://cms.epayco.io/checkout/payment/session", {
+                    method: "POST",
+                    body: JSON.stringify(info),
+                    headers
+                })
+                    .then(res =>  res.json())
+                    .catch(err => err);
+            }
+            payment()
+                .then(session => {
+                    if(session.data.sessionId != undefined){
+                        localStorage.removeItem("sessionPayment");
+                        localStorage.setItem("sessionPayment", session.data.sessionId);
+                        const handlerNew = window.ePayco.checkout.configure({
+                            sessionId: session.data.sessionId,
+                            external: external,
+                        });
+                        handlerNew.openNew()
+                    }
+                })
+                .catch(error => {
+                    error.message;
+                });
+        }
+        var bntPagar = document.getElementById("btn_epayco");
+        bntPagar.addEventListener("click", openChekout);
+        openChekout()  
     </script>
-
 </form> 
 <script language="Javascript">
     const app = document.getElementById("epayco_form");
