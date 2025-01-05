@@ -50,6 +50,7 @@
 9. Obtén el **P_CUST_ID_CLIENTE**,**P_KEY**, **PUBLIC_KEY** y **PRIVATE_KEY** desde el panel de clientes de ePayco.
 10. Configura el plugin ingresando los datos en el formulario de configuración.
 
+
 ## Pasos
 
 <img src="ImgTutorialPrestaShop/tuto-1.png" width="400px"/>

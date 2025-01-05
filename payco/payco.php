@@ -71,6 +71,7 @@ class Payco extends PaymentModule
         parent::__construct();
         $this->displayName = $this->l('Pagar con epayco');
         $this->description = $this->l('ePayco: Paga con Tarjeta de crédito/débito nacional e internacional, PSE, Daviplata, Nequi, Paypal, Efectivo, Safetypay y muchos más.');
+
         // Definir constante global
         if (!defined('_EPAYCO_MULTIMEDIA_URL_')) {
             define('_EPAYCO_MULTIMEDIA_URL_', 'https://multimedia.epayco.co');
@@ -133,6 +134,7 @@ class Payco extends PaymentModule
         );
         $this->context->controller->addCSS($this->_path . 'views/css/front.css', 'all');
         $this->context->controller->addJS($this->_path . 'views/js/front.js', 'all');
+
         
     }
 
@@ -562,7 +564,9 @@ class Payco extends PaymentModule
         }
         $this->context->smarty->assign(array(
             "titulo" => $this->p_titulo,
+
              "logo_url" => _EPAYCO_MULTIMEDIA_URL_ . '/plugins-sdks/paymentLogo.svg',
+
         ));
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
         $modalOption->setCallToActionText($this->l('Pagar con ePayco'))
@@ -673,9 +677,11 @@ class Payco extends PaymentModule
             $lang = $this->context->language->language_code;
 
             if ($lang == "es") {
+
                 $url_button = _EPAYCO_MULTIMEDIA_URL_ . '/plugins-sdks/Boton-color-Ingles.png';
             } else {
                 $url_button = _EPAYCO_MULTIMEDIA_URL_ .'/plugins-sdks/Boton-color-espanol.png';
+
                 $lang = "en";
             }
 
