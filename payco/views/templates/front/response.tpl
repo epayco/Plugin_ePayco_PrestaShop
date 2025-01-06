@@ -97,14 +97,14 @@
                         <footer>
                             <div class="row">
                                 <div class="container">
-                                 <div class="col-lg-8 col-lg-offset-2">
-                                    <img src="{constant('_EPAYCO_MULTIMEDIA_URL_')}/plugins-sdks/paymentLogo.svg" 
-                                         style="margin-top: 10px; margin-left: auto; margin-right: auto; display: block; width: 730px;" 
-                                         alt="Logo de ePayco">
-                                </div>
-
-
-                                </div>
+                                  <div class="col-lg-8 col-lg-offset-2" style="display: flex; justify-content: center; margin-top: 10px;">
+                                        <img 
+                                            src="{constant('_EPAYCO_MULTIMEDIA_URL_')}/plugins-sdks/paymentLogo.svg" 
+                                            alt="Logo de ePayco" 
+                                            style="max-width: 100%; height: auto; width: 100%; max-height: 730px;" 
+                                        >
+                                    </div>
+                                 </div>
                             </div>
                         </footer>
                         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
