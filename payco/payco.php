@@ -60,7 +60,9 @@ class Payco extends PaymentModule
         $this->version = '1.9.5.1';
         $this->author = 'payco';
         $this->need_instance = 0;
+      
 
+        
         /**
          * Set $this->bootstrap to true if your module is compliant with bootstrap (PrestaShop 1.6)
          */
@@ -69,6 +71,11 @@ class Payco extends PaymentModule
         parent::__construct();
         $this->displayName = $this->l('Pagar con epayco');
         $this->description = $this->l('ePayco: Paga con Tarjeta de crédito/débito nacional e internacional, PSE, Daviplata, Nequi, Paypal, Efectivo, Safetypay y muchos más.');
+
+        // Definir constante global
+        if (!defined('_EPAYCO_MULTIMEDIA_URL_')) {
+            define('_EPAYCO_MULTIMEDIA_URL_', 'https://multimedia.epayco.co');
+        }
         $this->confirmUninstall = $this->l('Esta seguro de desistalar este modulo?');
         $config = Configuration::getMultiple(array(
             'P_CUST_ID_CLIENTE',
@@ -127,6 +134,8 @@ class Payco extends PaymentModule
         );
         $this->context->controller->addCSS($this->_path . 'views/css/front.css', 'all');
         $this->context->controller->addJS($this->_path . 'views/js/front.js', 'all');
+
+        
     }
 
     /**
@@ -555,7 +564,9 @@ class Payco extends PaymentModule
         }
         $this->context->smarty->assign(array(
             "titulo" => $this->p_titulo,
-            "logo_url" => $this->getPathUri() . 'logoepayco.svg'
+
+             "logo_url" => _EPAYCO_MULTIMEDIA_URL_ . '/plugins-sdks/paymentLogo.svg',
+
         ));
         $modalOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
         $modalOption->setCallToActionText($this->l('Pagar con ePayco'))
@@ -666,9 +677,11 @@ class Payco extends PaymentModule
             $lang = $this->context->language->language_code;
 
             if ($lang == "es") {
-                $url_button = $this->getPathUri() . 'views/img/Boton-color-Ingles.png';
+
+                $url_button = _EPAYCO_MULTIMEDIA_URL_ . '/plugins-sdks/Boton-color-Ingles.png';
             } else {
-                $url_button = $this->getPathUri() . 'views/img/Boton-color-espanol.png';
+                $url_button = _EPAYCO_MULTIMEDIA_URL_ .'/plugins-sdks/Boton-color-espanol.png';
+
                 $lang = "en";
             }
 
