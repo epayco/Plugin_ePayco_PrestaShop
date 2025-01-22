@@ -800,6 +800,7 @@ class Payco extends PaymentModule
             }
 
             $url = 'https://secure.epayco.co/validation/v1/reference/' . $ref_payco;
+
         }
 
 
