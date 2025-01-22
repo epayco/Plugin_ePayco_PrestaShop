@@ -97,10 +97,14 @@
                         <footer>
                             <div class="row">
                                 <div class="container">
-                                    <div class="col-lg-8 col-lg-offset-2">
-                                        <img src="https://multimedia.epayco.co/epayco-landing/btns/pagos_procesados_por_epayco_260px_.png" style="margin-top:10px; float:left"> <img src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/epayco/credibancologo.png" height="40px" style="margin-top:10px; float:right">
+                                  <div class="col-lg-8 col-lg-offset-2" style="display: flex; justify-content: center; margin-top: 10px;">
+                                        <img 
+                                            src="{constant('_EPAYCO_MULTIMEDIA_URL_')}/plugins-sdks/paymentLogo.svg" 
+                                            alt="Logo de ePayco" 
+                                            style="max-width: 100%; height: auto; width: 100%; max-height: 730px;" 
+                                        >
                                     </div>
-                                </div>
+                                 </div>
                             </div>
                         </footer>
                         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -167,5 +171,3 @@
 </script>
 </body>
 </html>
-
-
