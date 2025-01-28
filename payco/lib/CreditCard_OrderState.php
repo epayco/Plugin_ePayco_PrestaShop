@@ -16,7 +16,7 @@ class CreditCard_OrderState extends ObjectModel
 
         $states = OrderState::getOrderStates($cookie->id_lang);
 
-        $id_initial_state = Configuration::get('PAYCO_ORDERSTATE_WAITING');
+        $id_initial_state = self::getInitialState();
 
         foreach($states as $k => $state)
         {
@@ -326,20 +326,11 @@ class CreditCard_OrderState extends ObjectModel
             self::deleteOrderState((int)Configuration::get($state));
             Configuration::deleteByName($state);
         }
-
-        /*Configuration::deleteByName('PAYCO_OS_PENDING');
-        Configuration::deleteByName('PAYCO_OS_FAILED');
-        Configuration::deleteByName('PAYCO_OS_REJECTED');
-        Configuration::deleteByName('PAYCO_OS_EXPIRED');
-        Configuration::deleteByName('PAYCO_OS_ABANDONED');
-        Configuration::deleteByName('PAYCO_OS_CANCELED');*/
     }
 
     public static function deleteOrderState($id_order_state) {
-
         $orderState = new OrderState($id_order_state);
         $orderState->delete();
-
     }
 }
 

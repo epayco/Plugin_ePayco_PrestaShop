@@ -1,0 +1,880 @@
+/**
+* 2007-2024 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2024 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+/* latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Electrolize';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/electrolize/v18/cIf5Ma1dtE0zSiGSiED7AXEBuI8.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.ep-checkout-container {
+    border: 0 !important;
+    font: inherit !important;
+    font-size: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: baseline !important;
+    max-width: 452px !important;
+}
+
+.ep-checkout-container div,.ep-checkout-container p{
+    font-family: Poppins, Electrolize !important;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 16px;
+    margin: 0;
+    padding: 0 3px;
+    vertical-align: baseline;
+}
+
+.ep-test-mode-card {
+    background: rgb(247 110 5 / 15%) !important;
+    border: 2px solid #f73 !important;
+    border-radius: 7px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px !important;
+}
+
+.ep-test-mode-card-content {
+    align-items: baseline !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+}
+
+.ep-test-mode-badge {
+    align-items: center !important;
+    background: #f73 !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    display: flex !important;
+    flex-direction: row !important;
+    height: 16px !important;
+    justify-content: center !important;
+    margin-right: 16px !important;
+    width: 16px !important;
+}
+
+.ep-test-mode-title {
+    color: rgba(0, 0, 0, .9) !important;
+    font-weight: 700 !important;
+    margin-left: 16px !important;
+    padding: 0 !important;
+    margin: auto 0px !important;
+}
+
+.ep-input-element {
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+
+.ep-input-element .ep-input {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, .25);
+    border-radius: 8px !important;
+    display: flex !important;
+    width: 100% !important;
+    padding: 0 14px !important;
+}
+
+.ep-input-element-secure {
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+.ep-border{
+    border: 0px solid rgba(0, 0, 0, 0.25) !important;
+}
+.ep-input-element-secure .ep-input {
+    align-items: center !important;
+    /*background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, .25);*/
+    border-radius: 8px !important;
+    display: flex !important;
+    padding: 0px !important;
+}
+
+.ep-input-element-secure input {
+    width: 100% !important;
+    height: 48px !important;
+    background: rgb(255, 255, 255) !important;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 8px !important;
+    padding: 0px 14px !important;
+}
+
+
+input.ep-cellphone {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, .25);
+    border-radius: 8px !important;
+    display: flex !important;
+    height: 48px !important;
+    padding: 0 14px !important;
+    width: 100%;
+}
+
+.ep-input-element .ep-input:hover {
+    border: 1px solid black !important
+}
+
+.ep-input-element .ep-input:focus {
+    border: 1px solid black !important
+}
+input .ep-input:focus,
+.ep-input:focus {
+    border: 1px solid black !important
+}
+
+.ep-input-label {
+    align-items: flex-end !important;
+    color: rgba(0, 0, 0, .9) !important;
+    display: flex !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    height: 30px !important;
+    line-height: 18px !important;
+    padding-bottom: 4px !important;
+    width: 100% !important;
+}
+
+div .ep-error {
+    border: 2px solid #f23d4f !important;
+    color: #f23d4f !important;
+    border-radius: 8px !important;
+}
+
+.ep-helper .ep-helper-icon {
+    border-radius: 19px !important;
+    color: rgb(167, 10, 10) !important;
+    display: flex !important;
+    height: 14px !important;
+    align-content: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* font-size: 15px; */
+    font-weight: bold !important;
+    /* width: 17px; */
+    /* border-width: 5px; */
+    border-style: solid !important;
+    border-color: rgb(219 11 32) !important;
+    border-image: initial !important;
+    background: #fff !important;
+    border: 2px solid #f23d4f !important;
+    margin: 0 4px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+}
+
+
+.ep-helper {
+    align-items: center !important;
+    color: #f23d4f !important;
+    display: none;
+    font-family: Poppins, Electrolize !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    margin-top: 4px !important;
+}
+
+.ep-input-select-input {
+    align-items: center !important;
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, .25) !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    height: 48px !important;
+    width: 99%;
+}
+
+.ep-input-select-select {
+    background: #fff !important;
+    border: 0 !important;
+    color: #000 !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    height: 100% !important;
+    letter-spacing: 0 !important;
+    line-height: 20px !important;
+    /*margin: 0 12px !important;*/
+    outline: 0 !important;
+    width: 100% !important;
+    border: 1px solid rgba(0, 0, 0, .25) !important;
+    border-radius: 8px !important;
+    padding: 0 14px !important;
+}
+
+.flex-gap{
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 19px;
+}
+.ep-input-select-bank {
+    background: #fff !important;
+    border: 0 !important;
+    color: #000 !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    height: 100% !important;
+    letter-spacing: 0 !important;
+    line-height: 20px !important;
+    margin: 0 12px !important;
+    outline: 0 !important;
+    width: 100% !important;
+}
+
+.ep-terms-and-conditions-container label {
+    display: flex !important;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    justify-content: flex-start;
+    text-align: justify;
+}
+
+.ep-test-mode-credit-card {
+    background: rgba(198, 229, 248, 0.7) !important;
+    border: 2px solid #40A8E6 !important;
+    border-radius: 7px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    padding: 16px !important;
+    margin-top: 10px !important;
+}
+.ep-checkout-custom-card-form {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+.ep-checkout-custom-card-form .ep-checkout-custom-card-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.ep-checkout-custom-dual-column-row {
+    align-items: flex-start !important;
+    flex-direction: row !important;
+}
+
+.ep-checkout-custom-card-form .ep-checkout-custom-card-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.ep-checkout-custom-left-card-input {
+    margin-right: 16px !important;
+}
+
+.ep-checkout-custom-dual-column-row {
+    align-items: flex-start !important;
+    flex-direction: row !important;
+}
+
+.ep-input-table-container, .ep-input-table-list {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.ep-input-table-container {
+    align-items: center !important;
+    justify-content: center !important;
+}
+.ep-input-table-list {
+    border: 1px solid rgba(0, 0, 0, .25) !important;
+    border-radius: 6px !important;
+    list-style-type: none !important;
+    margin-left: 0 !important;
+    width: 100%;
+}
+.ep-input-table-item {
+    cursor: pointer !important;
+    margin: 0 16px !important;
+    padding: 0 4px 0 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, .25) !important;
+}
+.ep-input-table-list div:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, .25) !important;
+}
+.ep-input-table-label, .ep-input-table-option {
+    align-items: center !important;
+    display: flex !important;
+}
+.ep-input-table-label {
+    cursor: pointer !important;
+    justify-content: space-between !important;
+    padding: 16px 0 !important;
+    width: 100% !important;
+}
+.ep-input-table-option {
+    justify-content: flex-start !important;
+}
+option {
+    align-items: center !important;
+    display: flex !important;
+}
+.ep-input-table-row-text-image {
+    align-items: center !important;
+    color: #000000e5 !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+}
+
+.ep-input-radio-container {
+    display: flex;
+    position: relative !important;
+}
+.ep-input-table-row-text, .ep-input-table-row-text-image {
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 20px !important;
+    padding-left: 16px !important;
+}
+.ep-payment-method-logo-container, .ep-payment-method-logo-slider-container {
+    background: #fff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    justify-content: center !important;
+    padding: 4px !important;
+    width: 130px !important;
+    height: 36px !important;
+}
+
+.ep-checkout-ticket-text,
+.ep-checkout-ticket-terms-and-conditions{
+    margin: 14px !important;
+}
+
+.ep-input-table-container-link {
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 16px 0 24px !important;
+}
+.ep-input-table-link
+{
+    cursor: pointer !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    text-decoration: none !important;
+
+}
+/*
+.mp-checkout-container div, .mp-checkout-container dl, .mp-checkout-container dt, .mp-checkout-container em, .mp-checkout-container embed, .mp-checkout-container fieldset, .mp-checkout-container figcaption, .mp-checkout-container figure, .mp-checkout-container footer, .mp-checkout-container form, .mp-checkout-container h1, .mp-checkout-container h2, .mp-checkout-container h3, .mp-checkout-container h4, .mp-checkout-container h5, .mp-checkout-container h6, .mp-checkout-container header, .mp-checkout-container hgroup, .mp-checkout-container i, .mp-checkout-container iframe, .mp-checkout-container img, .mp-checkout-container input, .mp-checkout-container ins, .mp-checkout-container kbd, .mp-checkout-container label, .mp-checkout-container legend, .mp-checkout-container li, .mp-checkout-container li input, .mp-checkout-container mark, .mp-checkout-container menu, .mp-checkout-container nav, .mp-checkout-container object, .mp-checkout-container ol, .mp-checkout-container output, .mp-checkout-container p, .mp-checkout-container pre, .mp-checkout-container q, .mp-checkout-container ruby, .mp-checkout-container s, .mp-checkout-container samp, .mp-checkout-container section, .mp-checkout-container select, .mp-checkout-container small, .mp-checkout-container span, .mp-checkout-container strike, .mp-checkout-container strong, .mp-checkout-container sub, .mp-checkout-container summary, .mp-checkout-container sup, .mp-checkout-container table, .mp-checkout-container tbody, .mp-checkout-container td, .mp-checkout-container tfoot, .mp-checkout-container th, .mp-checkout-container thead, .mp-checkout-container time, .mp-checkout-container tr, .mp-checkout-container tt, .mp-checkout-container u, .mp-checkout-container ul, .mp-checkout-container var, .mp-checkout-container video {
+   font-family: Poppins, Electrolize !important;
+   font-size: 14px;
+   font-style: normal;
+   line-height: 16px;
+   margin: 0;
+   padding: 0 3px;
+   vertical-align: baseline;
+}
+
+.mp-checkout-custom-load {
+   align-items: center;
+   display: none;
+   justify-content: center;
+}
+
+.mp-checkout-custom-container {
+   background-color: #fff !important;
+   display: flex;
+   flex-direction: column !important;
+   justify-content: center !important;
+}
+
+.mp-test-mode-card {
+   background: rgb(247 110 5 / 15%) !important;
+   border: 2px solid #f73 !important;
+   border-radius: 7px !important;
+   display: flex !important;
+   flex-direction: column !important;
+   padding: 16px !important;
+}
+
+.mp-test-mode-credit-card {
+   background: rgba(198, 229, 248, 0.7) !important;
+   border: 2px solid #40A8E6 !important;
+   border-radius: 7px !important;
+   display: flex !important;
+   flex-direction: row !important;
+   padding: 16px !important;
+   margin-top: 10px !important;
+}
+
+div .mp-error {
+   border: 2px solid #f23d4f !important;
+   color: #f23d4f !important;
+   border-radius: 8px !important;
+}
+
+.mp-helper .mp-helper-icon {
+   border-radius: 19px !important;
+   color: rgb(167, 10, 10);
+   display: flex;
+   height: 13px;
+   align-content: center;
+   justify-content: center;
+   align-items: center;
+   font-weight: bold;
+   border-style: solid;
+   border-color: rgb(219 11 32);
+   border-image: initial;
+   background: #fff;
+   border: 2px solid #f23d4f;
+   margin: 0 4px;
+   font-size: 12px;
+   font-weight: bold;
+}
+
+.mp-helper {
+   align-items: center;
+   color: #f23d4f;
+   display: none;
+   font-family: Poppins, Electrolize !important;
+   font-size: 13px !important;
+   font-weight: bold !important;
+   margin-bottom: 10px !important;
+   margin-top: 4px !important;
+}
+
+.mp-test-mode-badge {
+   align-items: center !important;
+   background: #f73 !important;
+   border-radius: 12px !important;
+   color: #fff !important;
+   display: flex !important;
+   flex-direction: row !important;
+   height: 16px !important;
+   justify-content: center !important;
+   margin-right: 16px !important;
+   width: 16px !important;
+}
+.payment_method_woo-payco-custom{
+   padding-left: 0rem !important;
+}
+.payment_method_woo-payco-daviplata{
+   padding-left: 0rem !important;
+}
+.payment_method_woo-payco-pse{
+   padding-left: 0rem !important;
+   max-width: 500px;
+}
+.payment_method_woo-payco-ticket{
+   padding-left: 0rem !important;
+}
+.payment_method_woo-payco-checkout{
+   padding-left: 0rem !important;
+}
+.mp-test-mode-card-content {
+   align-items: baseline !important;
+   display: flex !important;
+   flex-direction: row !important;
+   justify-content: flex-start !important;
+}
+
+.mp-test-mode-badge {
+   align-items: center !important;
+   background: #f73 !important;
+   border-radius: 12px !important;
+   color: #fff !important;
+   display: flex !important;
+   flex-direction: row !important;
+   height: 16px !important;
+   justify-content: center !important;
+   margin-right: 16px !important;
+   width: 16px !important;
+}
+
+.mp-checkout-custom-card-form {
+   display: flex;
+   flex-direction: column !important;
+   justify-content: flex-start !important;
+}
+.mp-test-mode-description, .mp-test-mode-title {
+   font-size: 14px !important;
+   font-style: normal !important;
+   line-height: 120% !important;
+   margin-block-end: 0 !important;
+   margin-block-start: 0 !important;
+   margin-inline-end: 0 !important;
+   margin-inline-start: 0 !important;
+}
+.mp-test-mode-title {
+   color: rgba(0, 0, 0, .9) !important;
+   font-weight: 700 !important;
+   margin-left: 16px !important;
+   padding: 0 !important;
+}
+.mp-checkout-custom-dual-column-row {
+   align-items: flex-start !important;
+   flex-direction: row !important;
+}
+.mp-test-mode-card-content {
+   align-items: baseline !important;
+   display: flex !important;
+   flex-direction: row !important;
+   justify-content: flex-start !important;
+}
+.mp-test-mode-description {
+   color: #000 !important;
+   font-weight: 400 !important;
+   padding-left: 32px !important;
+   padding-top: 4px !important;
+   display: none;
+}
+.mp-test-mode-description, .mp-test-mode-title {
+   font-size: 14px !important;
+   font-style: normal !important;
+   line-height: 120% !important;
+   margin-block-end: 0 !important;
+   margin-block-start: 0 !important;
+   margin-inline-end: 0 !important;
+   margin-inline-start: 0 !important;
+}
+.mp-checkout-custom-card-form .mp-checkout-custom-card-row {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   margin-bottom: 10px;
+}
+
+.mp-checkout-custom-card-form .mp-checkout-custom-card-column {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 50%;
+}
+.mp-checkout-custom-left-card-input {
+   margin-right: 16px !important;
+}
+.mp-input-label {
+   align-items: flex-end !important;
+   color: rgba(0, 0, 0, .9) !important;
+   display: flex;
+   font-size: 14px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   height: 30px;
+   line-height: 18px !important;
+   padding-bottom: 4px !important;
+   width: 100% !important;
+}
+
+.mp-input-element {
+   border-radius: 8px !important;
+   box-shadow: none !important;
+   width: 100% !important;
+}
+
+.mp-input-document {
+   border-radius: 8px !important;
+   box-shadow: none !important;
+   width: 100% !important;
+}
+.mp-input-document .mp-input {
+   align-items: center !important;
+   background: #fff !important;
+   border: 1px solid rgba(0, 0, 0, .25);
+   border-radius: 8px !important;
+   display: flex !important;
+   height: 48px !important;
+}
+.mp-input-select-input {
+   align-items: center !important;
+   background: #fff !important;
+   border: 1px solid rgba(0, 0, 0, .25) !important;
+   border-radius: 8px !important;
+   display: flex !important;
+   height: 48px !important;
+}
+.mp-document-select, .mp-input-document {
+   background: #fff !important;
+   border: 0 !important;
+   color: #000 !important;
+   font-size: 14px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   line-height: 20px !important;
+   outline: 0 !important;
+}
+.mp-cellphone-select {
+   background: #fff !important;
+   color: #000 !important;
+   font-size: 14px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   line-height: 20px !important;
+   outline: 0 !important;
+   padding: 13px !important;
+   border: 1px solid rgba(0, 0, 0, .25);
+   border-radius: 8px;
+   transition: border-color 0.3s ease;
+   margin-bottom: 15px;
+   height: 100%;
+   width: 200px !important;
+   text-align: center;
+}
+.mp-document-select, .mp-cellphone{
+   align-items: center !important;
+   background: #fff !important;
+   border: 1px solid rgba(0, 0, 0, .25);
+   border-radius: 8px !important;
+   display: flex !important;
+   height: 45px !important;
+}
+.mp-input-element .mp-input {
+   align-items: center !important;
+   background: #fff !important;
+   border: 1px solid rgba(0, 0, 0, .25);
+   border-radius: 8px !important;
+   display: flex !important;
+   height: 48px !important;
+   width: 100%;
+}
+
+.with-country{
+   width: 100% !important
+}
+.mp-input-cellphone .mp-input {
+   align-items: center !important;
+   background: #fff !important;
+   display: flex !important;
+   height: 48px !important;
+   justify-content: space-between;
+   flex-direction: row;
+   gap: 10px;
+   width: 100%;
+}
+.mp-input-cellphone {
+   margin-bottom: 10px !important;
+}
+
+.mp-input-element .mp-input .mp-cellphone {
+   background: #fff !important;
+   border: 0 !important;
+   border-radius: 8px !important;
+   box-shadow: none !important;
+   color: #000;
+   font-size: 16px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   height: 100% !important;
+   line-height: 20px !important;
+   min-height: 38px !important;
+   outline: 0 !important;
+   padding: 0 14px !important;
+   width: 100% !important;
+}
+
+.mp-input-select-select {
+   background: #fff !important;
+   border: 0 !important;
+   color: #000 !important;
+   cursor: pointer !important;
+   font-size: 16px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   height: 100% !important;
+   letter-spacing: 0 !important;
+   line-height: 20px !important;
+   margin: 0 12px !important;
+   outline: 0 !important;
+   width: 100% !important;
+}
+.mp-input-select-bank {
+   background: #fff !important;
+   border: 0 !important;
+   color: #000 !important;
+   cursor: pointer !important;
+   font-size: 16px !important;
+   font-style: normal !important;
+   font-weight: 400 !important;
+   height: 100% !important;
+   letter-spacing: 0 !important;
+   line-height: 20px !important;
+   margin: 0 12px !important;
+   outline: 0 !important;
+   width: 100% !important;
+}
+
+input.mp-cellphone {
+   align-items: center !important;
+   background: #fff !important;
+   border: 1px solid rgba(0, 0, 0, .25);
+   border-radius: 8px !important;
+   display: flex !important;
+   height: 48px !important;
+   padding: 0 14px !important;
+   width: 102%;
+}
+.mp-input-element .mp-input:hover {
+   border: 1px solid black !important
+}
+
+.mp-input-element .mp-input:focus {
+   border: 1px solid black !important
+}
+.mp-input-table-container, .mp-input-table-list {
+   display: flex !important;
+   flex-direction: column !important;
+}
+
+.mp-input-table-container {
+   align-items: center !important;
+   justify-content: center !important;
+}
+.mp-input-table-list {
+   border: 1px solid rgba(0, 0, 0, .25) !important;
+   border-radius: 6px !important;
+   list-style-type: none !important;
+   margin-left: 0 !important;
+   width: 100%;
+}
+.mp-input-table-item {
+   cursor: pointer !important;
+   margin: 0 16px !important;
+   padding: 0 4px 0 0 !important;
+   border-bottom: 1px solid rgba(0, 0, 0, .25) !important;
+}
+.mp-input-table-list div:not(:last-child) {
+   border-bottom: 1px solid rgba(0, 0, 0, .25) !important;
+ }
+.mp-input-table-label, .mp-input-table-option {
+   align-items: center !important;
+   display: flex !important;
+}
+.mp-input-table-label {
+   cursor: pointer !important;
+   justify-content: space-between !important;
+   padding: 16px 0 !important;
+   width: 100% !important;
+}
+.mp-input-table-option {
+   justify-content: flex-start !important;
+}
+option {
+   align-items: center !important;
+   display: flex !important;
+}
+.mp-input-table-row-text-image {
+   align-items: center !important;
+   color: #000000e5 !important;
+   display: flex !important;
+   flex-direction: row-reverse !important;
+}
+
+.mp-input-radio-container {
+   display: flex;
+   position: relative !important;
+}
+.mp-input-table-row-text, .mp-input-table-row-text-image {
+   font-size: 16px !important;
+   font-style: normal !important;
+   font-weight: 700 !important;
+   line-height: 20px !important;
+   padding-left: 16px !important;
+}
+
+.mp-payment-method-logo-container, .mp-payment-method-logo-slider-container {
+   background: #fff !important;
+   border: 1px solid #e5e5e5 !important;
+   border-radius: 4px !important;
+   box-sizing: border-box !important;
+   display: flex;
+   justify-content: center !important;
+   padding: 4px !important;
+   width: 130px !important;
+   height: 36px !important;
+}
+
+.mp-checkout-ticket-text,
+.mp-checkout-ticket-terms-and-conditions{
+   margin: 14px !important;
+}
+.mp-terms-and-conditions-container{
+   display: flex !important;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.mp-terms-and-conditions-container label {
+   display: flex;
+   align-items: center;
+   font-size: 14px;
+   gap: 10px
+}
+
+.svg-logo{
+   margin-top: 10px !important;
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+}
+
+ */

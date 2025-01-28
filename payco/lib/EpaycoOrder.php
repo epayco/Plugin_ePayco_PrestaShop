@@ -12,7 +12,7 @@ class EpaycoOrder extends ObjectModel{
 	public $order_status;
 	
 	public static $definition = array(
-		'table' => _DB_PREFIX_.'payco',
+		'table' => _DB_PREFIX_.'epaycoTarjetaDeCredito',
 		'primary' => 'id',
 		'multilang' => false,
 		'fields' => array(
@@ -35,7 +35,7 @@ class EpaycoOrder extends ObjectModel{
 		
 		$db = Db::getInstance();
 			$result = $db->execute('
-			INSERT INTO `'._DB_PREFIX_.'payco`
+			INSERT INTO `'._DB_PREFIX_.'epaycoTarjetaDeCredito`
 			( `order_id`, `order_stock_restore` )
 			VALUES
 			("'.intval($orderId).'","'.$stock.'")');
@@ -78,7 +78,7 @@ class EpaycoOrder extends ObjectModel{
 	public static function updateStockDiscount($orderId)
 	{
 		$db = Db::getInstance();
-		$result = $db->update('payco', array('order_stock_discount'=>1), 'order_id = '.(int)$orderId );
+		$result = $db->update('epaycoTarjetaDeCredito', array('order_stock_discount'=>1), 'order_id = '.(int)$orderId );
 
 		return $result ? true : false;
 	}
@@ -90,7 +90,7 @@ class EpaycoOrder extends ObjectModel{
 	public static function setup()
 	{
 		$sql = array();
-		$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payco` (
+		$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'epaycoTarjetaDeCredito` (
 		    `id` int(11) NOT NULL AUTO_INCREMENT,
 		    `id_payco` INT(11) NULL,
 		    `order_id` INT NULL,

@@ -65,7 +65,7 @@
 			$db = Db::getInstance();
 
 			//Create table to store credit card data
-			$db->execute("CREATE TABLE `"._DB_PREFIX_."creditcard_order` (
+			$db->execute("CREATE TABLE IF NOT EXISTS`"._DB_PREFIX_."creditcard_order` (
 				`id_record` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 				`id_order` INT NOT NULL ,
 				`data_string` TEXT NOT NULL ,
