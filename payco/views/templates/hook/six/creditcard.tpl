@@ -242,7 +242,6 @@
 
 {if $public_key != ''}
     <script type="text/javascript" src="https://cms.epayco.io/js/library.js"/>
-    <div hidden="true" id="public_key">{$public_key|escape:'htmlall':'UTF-8'}</div>
 {/if}
 
 

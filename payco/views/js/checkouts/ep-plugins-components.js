@@ -400,8 +400,7 @@
                     }))
                     , n.addEventListener("focusout", (() => {
                     var type;
-                    //const lang = wc_epayco_checkout_components_params.lang;
-                    const lang = "en";
+                    const lang = lenguaje;
                     if(lang === 'es'){
                         type = 'Tipo';
                     }else{
@@ -1490,8 +1489,7 @@
                     var mesActual = fechaActual.getMonth() + 1;
                     let a = document.querySelector(".ep-checkout-custom-card-column").querySelector("input-helper > div");
                     var expiration;
-                    //const lang = wc_epayco_checkout_components_params.lang;
-                    const lang = "en";
+                    const lang = lenguaje;
                     if(lang === 'es'){
                         expiration = 'Fecha invalida';
                     }else{
@@ -1724,8 +1722,7 @@
                     t.appendChild(this.createOption(e))
                 })),
                     t.addEventListener("change", (() => {
-                        //const lang = wc_epayco_checkout_components_params.lang;
-                        const lang = "en";
+                        const lang = lenguaje;
                         var text;
                         if(lang === 'es'){
                             text = 'Selecciona un banco';
@@ -1823,8 +1820,7 @@
 
             createLabel() {
                 var fees;
-                    //const lang = wc_epayco_checkout_components_params.lang;
-                    const lang = "en";
+                    const lang = lenguaje;
                     if(lang === 'es'){
                         fees = 'Cuotas';
                     }else{

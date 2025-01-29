@@ -77,7 +77,7 @@ class Payco extends PaymentModule
         $this->need_instance = 1;
         $this->bootstrap = true;
 
-        //Always update, because prestashop doesn't accept version coming from another variable (MP_VERSION)
+        //Always update, because prestashop doesn't accept version coming from another variable (EP_VERSION)
         $this->version = '4.17.2';
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 
@@ -274,6 +274,10 @@ class Payco extends PaymentModule
      */
     public function hookHeader()
     {
+        Media::addJsDef([
+            'ePaycoPublicKey' => Configuration::get('EPAYCO_PUBLIC_KEY'),
+            'lenguaje' => $this->context->language->iso_code
+        ]);
         $this->context->controller->addCSS($this->_path . 'views/css/checkouts/ep-plugins-components.css');
         $this->context->controller->addJS($this->_path . 'views/js/jquery-1.11.0.min.js');
         $this->context->controller->addJS($this->_path . 'views/js/front.js');

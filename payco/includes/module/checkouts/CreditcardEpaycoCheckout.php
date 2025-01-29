@@ -111,6 +111,10 @@ class CreditcardEpaycoCheckout
      */
     public function loadJsCustom()
     {
+        Media::addJsDef([
+            'ePaycoPublicKey' => Configuration::get('EPAYCO_PUBLIC_KEY'),
+            'lenguaje' => $this->context->language->iso_code
+        ]);
         $this->context->controller->addJS(
             $this->path . '/views/js/checkouts/creditcard/ep-creditcard-checkout.js.js?v=' . EP_VERSION
         );

@@ -246,6 +246,3 @@
 <script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/checkouts/creditcard/ep-creditcard-checkout.js?v={$version|escape:'htmlall':'UTF-8'}"/>
 
 
-{if $public_key != ''}
-    <div hidden="true" id="public_key">{$public_key|escape:'htmlall':'UTF-8'}</div>
-{/if}
