@@ -22,20 +22,6 @@
     * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
     * International Registered Trademark & Property of PrestaShop SA
     *}
-<style>
-    .loader_epayco {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 99999;
-        top: 0px;
-        left: 0px;
-    }
-</style>
 <div>
     <div id="loader_epayco" class="loader_epayco"></div>
     <form id="ep_standard_checkout" class="mp-checkout-form" method="post" action="{$redirect|escape:'html':'UTF-8'}">
@@ -44,21 +30,21 @@
     </form>
 </div>
 
-
-
 <script type="text/javascript" src='https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js'></script>
 <script>
     window.addEventListener('load', (event) => {
         const loader = document.getElementById('loader_epayco');
         loader.style.display = 'none';
-
+        const checkout = document.getElementById('checkout');
         document.forms['ep_standard_checkout'].onsubmit = function (e) {
             e.preventDefault();
             loader.style.display = 'flex';
-            fetch('index.php?fc=module&module=epayco&controller=standard')
+            checkout.classList.add("loader_epayco")
+            fetch('index.php?fc=module&module=payco&controller=standard')
             .then( response => response.json())
             .then(function(response) {
                 loader.style.display = 'none';
+                checkout.classList.remove("loader_epayco")
                 if (response.code == 200) {
                     if(response.preference.session.success){
                         let _external = response.preference.external === 'true';
@@ -76,6 +62,7 @@
             })
             .catch(function(error) {
                 loader.style.display = 'none';
+                checkout.classList.remove("loader_epayco")
                 console.log(error)
             });
         };

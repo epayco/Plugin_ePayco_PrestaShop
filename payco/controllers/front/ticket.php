@@ -31,12 +31,10 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once EP_ROOT_URL . '/includes/module/preference/StandardPreference.php';
+require_once EP_ROOT_URL . '/includes/module/preference/TicketPreference.php';
 
-
-class PaycoStandardModuleFrontController extends ModuleFrontController
+class PaycoTicketModuleFrontController extends ModuleFrontController
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -49,15 +47,15 @@ class PaycoStandardModuleFrontController extends ModuleFrontController
      */
     public function initContent()
     {
-        $preference = new StandardPreference();
-        try {
+        $preference = new TicketPreference();
+        try{
             $context = $this->context;
             $preference->verifyModuleParameters($context);
-            $preference->createPreference();
+            $ticket_info = Tools::getValue('epayco_ticket');
+            var_dump($ticket_info);
+            die();
         } catch (Exception $e) {
-            Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
+            $this->context->cookie->__set('redirect_message', Tools::displayError());
         }
     }
-
-
 }

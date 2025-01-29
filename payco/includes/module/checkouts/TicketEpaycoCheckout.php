@@ -47,7 +47,7 @@ class TicketEpaycoCheckout extends AbstractEpaycoCheckout
      */
     public function __construct($name, $context, $path)
     {
-        parent::__construct();
+        parent::__construct($context);
         $this->name = $name;
         $this->context = $context;
         $this->path = $path;
@@ -93,7 +93,6 @@ class TicketEpaycoCheckout extends AbstractEpaycoCheckout
     {
         $this->getTicketJS();
         $ticket = array();
-        $module = Module::getInstanceByName('payco');
         $ticketPaymentMethods = [
             [
                 'id' => 'efecty',

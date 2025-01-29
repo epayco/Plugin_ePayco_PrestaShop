@@ -241,7 +241,7 @@
 </form>
 
 <script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="https://cms.epayco.io/js/library.js"/>
+<script type="text/javascript" src={$module_dir|escape:'htmlall':'UTF-8'}views/js/crypto-v3.1.2.min.js"/>
 <script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/front.js?v={$version|escape:'htmlall':'UTF-8'}"/>
 <script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/checkouts/creditcard/ep-creditcard-checkout.js?v={$version|escape:'htmlall':'UTF-8'}"/>
 

@@ -30,34 +30,25 @@
 if (!defined('_PS_VERSION_')) {
     exit;
 }
+require_once EP_ROOT_URL . '/includes/module/preference/AbstractPreference.php';
 
-require_once EP_ROOT_URL . '/includes/module/preference/StandardPreference.php';
-
-
-class PaycoStandardModuleFrontController extends ModuleFrontController
+class TicketPreference extends AbstractPreference
 {
-
+    public $ticket_info;
     public function __construct()
     {
         parent::__construct();
     }
 
     /**
-     * Default function of Prestashop for init the controller
-     *
-     * @return void
+     * @pararm $cart
+     * @param $ticket_info
+     * @retrun bool|string
+     * @throw Exception
      */
-    public function initContent()
+    public function createPreference($cart, $ticket_info)
     {
-        $preference = new StandardPreference();
-        try {
-            $context = $this->context;
-            $preference->verifyModuleParameters($context);
-            $preference->createPreference();
-        } catch (Exception $e) {
-            Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
-        }
+        $this->ticket_info = $ticket_info;
     }
-
 
 }

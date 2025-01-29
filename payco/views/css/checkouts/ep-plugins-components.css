@@ -424,6 +424,19 @@ option {
     text-decoration: none !important;
 
 }
+
+.loader_epayco {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99999;
+    top: 0px;
+    left: 0px;
+}
 /*
 .mp-checkout-container div, .mp-checkout-container dl, .mp-checkout-container dt, .mp-checkout-container em, .mp-checkout-container embed, .mp-checkout-container fieldset, .mp-checkout-container figcaption, .mp-checkout-container figure, .mp-checkout-container footer, .mp-checkout-container form, .mp-checkout-container h1, .mp-checkout-container h2, .mp-checkout-container h3, .mp-checkout-container h4, .mp-checkout-container h5, .mp-checkout-container h6, .mp-checkout-container header, .mp-checkout-container hgroup, .mp-checkout-container i, .mp-checkout-container iframe, .mp-checkout-container img, .mp-checkout-container input, .mp-checkout-container ins, .mp-checkout-container kbd, .mp-checkout-container label, .mp-checkout-container legend, .mp-checkout-container li, .mp-checkout-container li input, .mp-checkout-container mark, .mp-checkout-container menu, .mp-checkout-container nav, .mp-checkout-container object, .mp-checkout-container ol, .mp-checkout-container output, .mp-checkout-container p, .mp-checkout-container pre, .mp-checkout-container q, .mp-checkout-container ruby, .mp-checkout-container s, .mp-checkout-container samp, .mp-checkout-container section, .mp-checkout-container select, .mp-checkout-container small, .mp-checkout-container span, .mp-checkout-container strike, .mp-checkout-container strong, .mp-checkout-container sub, .mp-checkout-container summary, .mp-checkout-container sup, .mp-checkout-container table, .mp-checkout-container tbody, .mp-checkout-container td, .mp-checkout-container tfoot, .mp-checkout-container th, .mp-checkout-container thead, .mp-checkout-container time, .mp-checkout-container tr, .mp-checkout-container tt, .mp-checkout-container u, .mp-checkout-container ul, .mp-checkout-container var, .mp-checkout-container video {
    font-family: Poppins, Electrolize !important;

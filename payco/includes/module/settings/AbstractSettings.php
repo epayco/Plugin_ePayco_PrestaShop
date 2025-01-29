@@ -49,10 +49,11 @@ class AbstractSettings
         $public_key = Configuration::get('EPAYCO_PUBLIC_KEY');
         $private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
         $test = (bool)Configuration::get('EPAYCO_PROD_STATUS');
+        $lang = $this->module->_context->language->iso_code == 'es' ? 'es' : "en";
         $this->epayco  = new Epayco\Epayco(array(
             "apiKey" => $public_key,
             "privateKey" => $private_key,
-            "lenguage" => 'es',
+            "lenguage" => $lang,
             "test" => !$test
         ));
     }

@@ -48,10 +48,9 @@
 
         function  epaycoFormHandler() {
             var epayco_submit = false;
-            const apikey = ePaycoPublicKey;
-            console.log(lenguaje)
-            //ePayco.setPublicKey(publicKey);
-            //ePayco.setLanguage("es");
+            debugger
+            ePaycoSubscription.setPublicKey(ePaycoPublicKey)
+            ePaycoSubscription.setLanguage(lenguaje)
             var CustomContent = document.getElementsByClassName("ep-checkout-creditcard-container")[0];
             var creditcardContent_ = document.getElementsByName('epayco_creditcard[name]')?? document.getElementsByName('epayco_creditcard[nameError]');
 

@@ -46,9 +46,9 @@ class PseCheckoutEpayco extends AbstractEpaycoCheckout
      */
     public $assetsExtMin;
 
-    public function __construct()
+    public function __construct($context)
     {
-        parent::__construct();
+        parent::__construct($context);
         $this->assetsExtMin = !_PS_MODE_DEV_ ? '.min' : '';
     }
     /**
@@ -84,7 +84,6 @@ class PseCheckoutEpayco extends AbstractEpaycoCheckout
      */
     private function getPsePaymentMethod()
     {
-        $module = Module::getInstanceByName('payco');
         $test = (bool)Configuration::get('EPAYCO_PROD_STATUS');
         $bancos = $this->epayco->bank->pseBank($test);
         if(isset($bancos) && isset($bancos->data) ){

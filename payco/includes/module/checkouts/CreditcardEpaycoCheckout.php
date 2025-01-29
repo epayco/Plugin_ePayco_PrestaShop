@@ -31,8 +31,9 @@
 if (!defined('_PS_VERSION_')) {
     exit;
 }
+require_once EP_ROOT_URL . '/includes/module/checkouts/AbstractEpaycoCheckout.php';
 
-class CreditcardEpaycoCheckout
+class CreditcardEpaycoCheckout extends AbstractEpaycoCheckout
 {
     public $name;
     public $context;
@@ -47,6 +48,7 @@ class CreditcardEpaycoCheckout
      */
     public function __construct($name, $context, $path)
     {
+        parent::__construct($context);
         $this->name = $name;
         $this->context = $context;
         $this->path = $path;
@@ -116,83 +118,12 @@ class CreditcardEpaycoCheckout
             'lenguaje' => $this->context->language->iso_code
         ]);
         $this->context->controller->addJS(
+            $this->path . '/views/js/crypto-v3.1.2.js.js?v=' . EP_VERSION
+        );
+        $this->context->controller->addJS(
             $this->path . '/views/js/checkouts/creditcard/ep-creditcard-checkout.js.js?v=' . EP_VERSION
         );
     }
 
 
-    /**
-     * Person identification allowed in PSE
-     *
-     * @return array
-     */
-    private function getIdentificationDocuments()
-    {
-        $module = Module::getInstanceByName('payco');
-        return array(
-            array(
-                "id" => $module->l('Type', 'CreditcardSettings'),
-                "name" => "",
-                "type" => 'text',
-                "min_length" => 0,
-                "max_length" => 0,
-            ),
-            array(
-                "id" => "NIT",
-                "name" => "NIT",
-                "type" => 'number',
-                "min_length" => 7,
-                "max_length" => 10,
-            ),
-            array(
-                "id" => "CC",
-                "name" => "CC",
-                "type" => 'number',
-                "min_length" => 5,
-                "max_length" => 15
-            ),
-            array(
-                "id" => "CE",
-                "name" => "CE",
-                "type" => 'number',
-                "min_length" => 4,
-                "max_length" => 8
-            ),
-            array(
-                "id" => "TI",
-                "name" => "TI",
-                "type" => 'number',
-                "min_length" => 4,
-                "max_length" => 20
-            ),
-            array(
-                "id" => "PPN",
-                "name" => "PPN",
-                "type" => 'text',
-                "min_length" => 4,
-                "max_length" => 12
-            ),
-            array(
-                "id" => "SSN",
-                "name" => "SSN",
-                "type" => 'number',
-                "min_length" => 9,
-                "max_length" => 9
-            ),
-            array(
-                "id" => "LIC",
-                "name" => "LIC",
-                "type" => 'number',
-                "min_length" => 1,
-                "max_length" => 20
-            ),
-            array(
-                "id" => "DNI",
-                "name" => "DNI",
-                "type" => 'text',
-                "min_length" => 1,
-                "max_length" => 20
-            ),
-        );
-    }
 }

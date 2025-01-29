@@ -34,18 +34,20 @@ if (!defined('_PS_VERSION_')) {
 
 class AbstractEpaycoCheckout
 {
-
+    public $context;
     public $epayco;
 
-    public function __construct()
+    public function __construct($context)
     {
+        $this->context = $context;
         $public_key = Configuration::get('EPAYCO_PUBLIC_KEY');
         $private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
         $test = (bool)Configuration::get('EPAYCO_PROD_STATUS');
+        $lang = $this->context->language->iso_code == 'es' ? 'es' : "en";
         $this->epayco  = new Epayco\Epayco(array(
             "apiKey" => $public_key,
             "privateKey" => $private_key,
-            "lenguage" => 'es',
+            "lenguage" => $lang,
             "test" => !$test
         ));
     }
@@ -60,7 +62,7 @@ class AbstractEpaycoCheckout
         $module = Module::getInstanceByName('payco');
         return array(
             array(
-                "id" => $module->l('Type', 'PseSettings'),
+                "id" => $module->l('Type', 'AbstractEpaycoCheckout'),
                 "name" => "",
                 "type" => 'text',
                 "min_length" => 0,

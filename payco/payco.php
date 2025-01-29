@@ -92,7 +92,7 @@ class Payco extends PaymentModule
         $this->path = $this->_path;
         $this->_context = $this->context;
         $this->standardCheckout = new StandardCheckoutEpayco($this->name,$this->_context, $this->path);
-        $this->pseCheckout = new PseCheckoutEpayco();
+        $this->pseCheckout = new PseCheckoutEpayco($this->_context);
         $this->creditcardCheckout = new CreditcardEpaycoCheckout($this->name,$this->_context, $this->path);
         $this->ticketCheckout = new TicketEpaycoCheckout($this->name,$this->_context, $this->path);
     }
@@ -280,6 +280,7 @@ class Payco extends PaymentModule
         ]);
         $this->context->controller->addCSS($this->_path . 'views/css/checkouts/ep-plugins-components.css');
         $this->context->controller->addJS($this->_path . 'views/js/jquery-1.11.0.min.js');
+        $this->context->controller->addJS($this->_path . 'views/js/crypto-v3.1.2.min.js');
         $this->context->controller->addJS($this->_path . 'views/js/front.js');
         $this->context->controller->addJS($this->_path . 'views/js/checkouts/ep-plugins-components.js');
         //$this->context->controller->addJS("https://cms.epayco.io/js/library.js");
