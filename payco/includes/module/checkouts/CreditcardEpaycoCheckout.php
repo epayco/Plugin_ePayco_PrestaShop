@@ -118,10 +118,10 @@ class CreditcardEpaycoCheckout extends AbstractEpaycoCheckout
             'lenguaje' => $this->context->language->iso_code
         ]);
         $this->context->controller->addJS(
-            $this->path . '/views/js/crypto-v3.1.2.js.js?v=' . EP_VERSION
+            $this->path . '/views/js/library.min.js?v=' . EP_VERSION
         );
         $this->context->controller->addJS(
-            $this->path . '/views/js/checkouts/creditcard/ep-creditcard-checkout.js.js?v=' . EP_VERSION
+            $this->path . '/views/js/checkouts/creditcard/ep-creditcard-checkout.js?v=' . EP_VERSION
         );
     }
 

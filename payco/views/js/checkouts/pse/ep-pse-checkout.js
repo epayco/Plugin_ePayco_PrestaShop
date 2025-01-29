@@ -32,8 +32,6 @@
 (function ($) {
     'use strict';
     $(function () {
-
-        console.log('pse payco')
         function uncheckConditionTerms() {
             const conditionTermsCheckbox = document.getElementById('conditions_to_approve[terms-and-conditions]');
 

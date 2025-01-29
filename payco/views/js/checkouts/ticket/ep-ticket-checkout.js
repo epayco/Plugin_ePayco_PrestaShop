@@ -33,7 +33,6 @@
     'use strict';
     $(function () {
 
-        console.log('ticket payco')
         function uncheckConditionTerms() {
             const conditionTermsCheckbox = document.getElementById('conditions_to_approve[terms-and-conditions]');
 

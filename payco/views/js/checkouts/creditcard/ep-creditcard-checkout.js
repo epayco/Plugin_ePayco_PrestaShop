@@ -31,7 +31,7 @@
 (function ($) {
     'use strict';
     $(function () {
-        console.log('credit card payco')
+        const creditcardForm = document.getElementById('ep_creditcard_checkout');
         function uncheckConditionTerms() {
             const conditionTermsCheckbox = document.getElementById('conditions_to_approve[terms-and-conditions]');
 
@@ -47,8 +47,9 @@
         }
 
         function  epaycoFormHandler() {
+
+            //creditcardForm.parentElement.classList.add("loader_epayco")
             var epayco_submit = false;
-            debugger
             ePaycoSubscription.setPublicKey(ePaycoPublicKey)
             ePaycoSubscription.setLanguage(lenguaje)
             var CustomContent = document.getElementsByClassName("ep-checkout-creditcard-container")[0];
@@ -164,7 +165,6 @@
             let validation = d(nameHelpers) || d(cardNumberHelpers) || d(cardExpirationHelpers) || d(cardSecurityHelpers) || d(documentHelpers) || d(addressHelpers) || d(emailHelpers) || d(cellphoneHelpers) || d(countryHelpers) || !termanAndContictionContent.checked;
 
             const nn = {
-                "epayco_creditcard[cardTokenId]": "token",
                 "epayco_creditcard[name]": customContentName.value,
                 "epayco_creditcard[address]": customContentAddress.value,
                 "epayco_creditcard[email]": customContentEmail.value,
@@ -188,26 +188,27 @@
             if (  validation  ) {
                 disableFinishOrderButton();
                 uncheckConditionTerms();
+                creditcardForm.parentElement.classList.remove("loader_epayco")
+                return epayco_submit;
             } else {
                 const request =  createToken(CustomContent)
-                    .then((resultado) => resultado)
-                    .catch((error) => error);
-                if(!request) return epayco_submit;
-                epayco_submit = true;
+                    .then((resultado) => {
+                        nn["epayco_creditcard[cardTokenId]"]=CustomContent
+                        creditcardForm.submit()
+                    })
+                    .catch((error) => console.error(error));
+                //if(!request) return epayco_submit;
+                //epayco_submit = true;
             }
-            return epayco_submit;
+
         }
 
 
 
         async function  createToken($form) {
             return await new Promise(function(resolve, reject) {
-                resolve("token")
-                /*ePayco.token.create($form, function(data) {
-                    var customContent = document.querySelector("form.checkout").getElementsByClassName("mp-checkout-custom-container")[0];
-                    customContent.querySelector('#form-checkout__cardNumber-container').querySelector('input').value='';
-                    customContent.querySelector('#form-checkout__expirationDate-container').querySelector('input').value='';
-                    customContent.querySelector('#form-checkout__securityCode-container').querySelector('input').value='';
+                ePaycoSubscription.token.create($form, function(data) {
+                    creditcardForm.parentElement.classList.remove("loader_epayco")
                     if(data.status=='error'){
                         const parsedError = handleCardFormErrors(data);
                         console.error('ePayco cardForm error: ', parsedError);
@@ -216,7 +217,7 @@
                         document.querySelector('#cardTokenId').value = data.data.token;
                         resolve(data.data.token)
                     }
-                });*/
+                });
             });
         }
 
@@ -233,7 +234,6 @@
 
 
         waitForElement('#payment-confirmation').then(() => {
-            const creditcardForm = document.getElementById('ep_creditcard_checkout');
             creditcardForm.onsubmit = () => {
                 const creditcardRadioInput = document.getElementById('ep_creditcard_checkout').parentNode.previousElementSibling.querySelector('input');
                 const creditcardIsSelected = creditcardRadioInput.checked;

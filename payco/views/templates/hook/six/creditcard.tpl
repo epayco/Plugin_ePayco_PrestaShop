@@ -241,7 +241,7 @@
 </form>
 
 {if $public_key != ''}
-    <script type="text/javascript" src="https://cms.epayco.io/js/library.js"/>
+    <!--<script type="text/javascript" src="https://cms.epayco.io/js/library.js"/>-->
 {/if}
 
 

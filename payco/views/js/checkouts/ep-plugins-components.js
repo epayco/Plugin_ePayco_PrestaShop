@@ -142,7 +142,7 @@
 
             createRetryButton() {
                 const t = this.getAttribute("retryButtonText"), e = document.createElement("button");
-                return e.classList.add("mp-alert-details-retry-button"), e.innerHTML = t, e.onclick = () => document.location.reload(), e
+                return e.classList.add("ep-alert-details-retry-button"), e.innerHTML = t, e.onclick = () => document.location.reload(), e
             }
         }
         customElements.define("alert-details", t)
@@ -915,7 +915,7 @@
                     n.setAttribute("data-checkout", this.getAttribute("inputDataCheckout")),
                     n.setAttribute("data-cy", "card[name]"),
                     n.classList.add("ep-cellphone"),
-                    n.setAttribute("data-payco", "card[name]"),
+                    n.setAttribute("data-epayco", "card[name]"),
                     n.placeholder = this.getAttribute("placeholder"),
                     n.type = "text",
                     n.inputMode = "text",
@@ -1092,7 +1092,7 @@
                     n.setAttribute("data-checkout", this.getAttribute("inputDataCheckout")),
                     n.setAttribute("data", "email"),
                     n.classList.add("ep-cellphone"),
-                    n.setAttribute("data-payco", "card[email]"),
+                    n.setAttribute("data-epayco", "card[email]"),
                     n.placeholder = this.getAttribute("placeholder"),
                     n.type = "text",
                     n.inputMode = "text",
@@ -1204,7 +1204,7 @@
                 const n = document.createElement("input");
                 return n.setAttribute("name", this.getAttribute("input-card-number")),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
-                    n.setAttribute("data-payco", "card[number]"),
+                    n.setAttribute("data-epayco", "card[number]"),
                     //n.classList.add("ep-cellphone"),
                     n.style.outline = "none",
                     n.style.flex = "48px",
@@ -1263,7 +1263,7 @@
 
             createHelper(t) {
                 const e = document.createElement("input-helper");
-                return e.setAttribute("isVisible", !1), e.setAttribute("message", t), e.setAttribute("input-id", "mp-card-number-helper"), e
+                return e.setAttribute("isVisible", !1), e.setAttribute("message", t), e.setAttribute("input-id", "ep-card-number-helper"), e
             }
         }
         customElements.define("input-card-number", t)
@@ -1320,7 +1320,7 @@
                 const n = document.createElement("input");
                 return n.setAttribute("name", this.getAttribute("inputName")),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
-                    n.setAttribute("data-payco", "card[cvc]"),
+                    n.setAttribute("data-epayco", "card[cvc]"),
                     n.placeholder = this.getAttribute("placeholder"),
                     //n.classList.add("ep-cellphone"),
                     n.style="-webkit-text-security: disc;",
@@ -1434,7 +1434,7 @@
                 const n = document.createElement("input");
                 return n.setAttribute("name", this.getAttribute("inputName")),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
-                    n.setAttribute("data-payco", "card[date_exp]"),
+                    n.setAttribute("data-epayco", "card[date_exp]"),
                     //n.classList.add("ep-cellphone"),
                     n.placeholder = this.getAttribute("placeholder"),
                     n.type = "text",
