@@ -302,10 +302,11 @@
             }
             createSelect(i, ee, n, s) {
                 const t = document.createElement("select"),
-                    e = this.getAttribute("name");
+                    e = this.getAttribute("select-id"),
+                    os = this.getAttribute("select-name");
                 t.classList.add("ep-input-select-bank"),
                     t.setAttribute("id", e),
-                    t.setAttribute("name", e),
+                    t.setAttribute("name", os),
                     t.setAttribute("data-checkout", this.getAttribute("select-data-checkout")),
                     t.setAttribute("data-cy", "select-countrye");
                 if (this.getAttribute("default-option")) {
@@ -557,10 +558,11 @@
 
         createSelect(i, ee, n, s) {
             const t = document.createElement("select"),
-                e = this.getAttribute("name");
+                e = this.getAttribute("select-id"),
+                os = this.getAttribute("select-name");
             t.classList.add("ep-input-select-bank"),
                 t.setAttribute("id", e),
-                t.setAttribute("name", e),
+                t.setAttribute("name", os),
                 t.setAttribute("data-checkout", this.getAttribute("select-data-checkout")),
                 t.setAttribute("data-cy", "select-countrye");
             if (this.getAttribute("default-option")) {
@@ -782,10 +784,11 @@
 
             createSelect(i, ee, n, s) {
                 const t = document.createElement("select"),
-                    e = this.getAttribute("name");
+                    e = this.getAttribute("select-id"),
+                    os = this.getAttribute("select-name");
                 t.classList.add("ep-input-select-bank"),
                     t.setAttribute("id", e),
-                    t.setAttribute("name", e),
+                    t.setAttribute("name", os),
                     t.setAttribute("data-checkout", this.getAttribute("select-data-checkout")),
                     t.setAttribute("data-cy", "select-countrye");
                 if (this.getAttribute("default-option")) {

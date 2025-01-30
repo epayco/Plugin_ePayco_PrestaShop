@@ -22,211 +22,431 @@
 * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
 * International Registered Trademark & Property of PrestaShop SA
 *}
-{if isset($payment['metadata']['checkout_type']) && $payment['metadata']['checkout_type'] == 'ticket'}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="mp-ticket-return">
+{if $estado == 'Aceptada'}
+    <div style="max-width: 1092px; margin: auto; font-family: 'Poppins', Arial, sans-serif;">
 
-                <h2 class="ticket-return-title">{l s='Thank you for your purchase! We are awaiting the payment.' mod='mercadopago'}</h2>
+    <!-- Barra superior negra con el logo -->
+    <div style="background-color: #000; text-align: center; padding: 10px;">
+        <img src="https://multimedia.epayco.co/plugins-sdks/logo-gris-1.png" alt="ePayco Logo"
+             style="width: 100px;">
+    </div>
 
-                <div class="row mp-ticket-frame">
-                    <div class="col-md-12 mp-hg-100">
-                        <iframe src="{$payment['transaction_details']['external_resource_url']|escape:'htmlall':'UTF-8'}" id="ticket-frame" name="ticket-frame">
-                            <div class="lightbox" id="text">
-                                <div class="box">
-                                    <div class="content">
-                                        <div class="processing">
-                                            <span>{l s='Processing...' mod='mercadopago'}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </iframe>
-                    </div>
+    <!-- Contenedor principal -->
+    <div style="padding: 20px;">
 
-                    <div class="col-md-12">
-                        <a href="{$payment['transaction_details']['external_resource_url']|escape:'htmlall':'UTF-8'}" target="_blank" class="btn btn-primary">
-                            {l s='Print ticket' mod='mercadopago'}
-                        </a>
-                    </div>
+        <!-- Barra negra detrás del recibo -->
+        <div style="
+            background-color: #000;
+            height: 30px;
+            border-radius: 91px;
+            position: relative;
+            z-index: 0;
+            max-width: 121%;
+            margin: 0px auto -35px auto;
+            width: 55%;
+            " class="responsive-bar">
+        </div>
+
+        <!-- Contenedor del recibo -->
+        <div style="
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 90%;
+            margin: 20px auto;
+            width: 50%;
+        ">
+
+            <!-- Encabezado -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="https://multimedia.epayco.co/plugins-sdks/check.png" alt="Éxito"
+                     style="display: block; margin: auto; width: 70px; margin-bottom: 14px;">
+                <h2 style="color: #67C940; font-size: 22px;">Transacción Aceptada</h2>
+                <h4 style="color: #000; font-size: 17px; font-weight: bold;">Referencia ePayco #{$refPayco}</h4>
+                <p style="color: #000; font-size: 14px;">{$fecha}</p>
+            </div>
+
+            <!-- Información de la transacción -->
+            <div style="display: flex; flex-wrap: wrap; font-size: 14px; color: #333; line-height: 1.6;">
+                <div style="width: 50%; padding: 5px 50px;">
+                    <h5 style="font-weight: bold;">Medio de pago</h5>
+                    <span style="color: #8b8383;">Método de pago</span><br>
+                    <span>{$franquicia}</span>
                 </div>
+                <div style="width: 50%;padding: 5px 50px;margin-top:21px;">
+                    <span style="color: #8b8383;">Autorización</span><br>
+                    <span>{$autorizacion}</span>
+                </div>
+                <div style="width: 50%;padding: 5px 50px;margin-top: 3%;">
+                    <span style="color: #8b8383;">Recibo</span><br>
+                    <span>{$refPayco}</span>
+                </div>
+                <div style="width: 50%;padding: 5px 50px;margin-top: 13px;">
+                    <span style="color: #8b8383;">Dirección IP</span><br>
+                    <span>{$ip}</span>
+                </div>
+                <div style="width: 50%; padding: 5px 50px; margin-top:15px">
+                    <span style="color: #8b8383;">Respuesta</span><br>
+                    <span>{$respuesta}</span>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; font-size: 14px; color: #333; line-height: 1.6;">
+                <div style="width: 54%;padding: 5px 50px;">
+                    <h5 style="font-weight: bold;margin-bottom: 20px;margin-top: 7%;">Datos de la compra</h5>
+                    <span style="color: #8b8383;">Referencia Comercio</span><br>
+                    <span>{$refPayco}</span>
+                </div>
+                <div class="responsive-field" style="width: 49%;padding: 5px 64px;margin-top: 10%;margin-left: -8%;">
+                    <span style="color: #8b8383;">Descripción</span><br>
+                    <span>{$descripcion}</span>
+                </div>
+                <div style="width: 50%;padding: 5px 50px;margin-top: 3%;">
+                    <span style="color: #8b8383;">Descuento</span><br>
+                    {if $descuento == 0}
+                        <span>$ 0 COP</span>
+                    {else}
+                        <span>$ {$descuento|number_format:2:',':'.'} COP</span>
+                    {/if}
+                </div>
+                <div style="width: 50%;padding: 5px 50px;margin-top: 14px;margin-left: -1%;">
+                    <span style="color: #8b8383;">Subtotal</span><br>
+                    <span>$ {($valor - $descuento)|number_format:2:',':'.'} COP</span>
+                </div>
+                <div style="width: 50%; padding: 5px 50px;margin-top: 20px;">
+                    <span style="color: #8b8383;">Valor total</span><br>
+                    <span>$ {$valor|number_format:2:',':'.'} COP</span>
+                </div>
+
+                <!-- Botón para descargar el recibo -->
 
             </div>
         </div>
     </div>
-{/if}
-{if isset($payment['metadata']['checkout_type']) && $payment['metadata']['checkout_type'] == 'pix'}
-    <div class="row">
-        <div class="col-md-12">
-            <div id="pix-order" class="mp-pix-container">
-                <div class="mp-pix-confirmation">
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 col-12">
-                            <h2>{l s='Almost there! Pay via Pix to complete your purchase' mod='mercadopago'}</h2>
-                        </div>
+    <p style="text-align: center;">
+        <a href="{$baseurl}" target="_blank" class="btn btn-primary" style="
+                       color: #fff;
+                       background-color: #212121;
+                       border-color: transparent;
+                       max-width: 100%; /* Hace que el botón ocupe el 100% del contenedor en pantallas pequeñas */
+                       width: 300px; /* Ajusta el tamaño del botón en pantallas grandes */
+                       padding: 10px 20px;
+                       display: inline-block;
+                       margin: 0 auto; /* Centra el botón en su contenedor */
+                       text-align: center;
+                   ">
+            Descargar Recibo ePayco
+        </a>
+    </p>
+
+    <!-- Estilos para dispositivos móviles -->
+    <style>
+        @media (max-width: 768px) {
+            div[style*="width: 50%;"] {
+                width: 100% !important;
+            }
+
+            div[style*="max-width: 1092px;"] {
+                padding: 10px !important;
+            }
+
+            .responsive-bar {
+                width: 100% !important;
+            }
+        }
+    </style>
+
+    {elseif $estado == 'Pendiente'}
+    <div style="max-width: 1092px; margin: auto; font-family: 'Poppins', Arial, sans-serif;">
+
+        <!-- Barra superior negra con el logo -->
+        <div style="background-color: #000; text-align: center; padding: 10px;">
+            <img src="https://multimedia.epayco.co/plugins-sdks/logo-gris-1.png" alt="ePayco Logo"
+                 style="width: 100px;">
+        </div>
+
+        <!-- Contenedor principal -->
+        <div style="padding: 20px;">
+
+            <!-- Barra negra detrás del recibo -->
+            <div style="
+            background-color: #000;
+            height: 30px;
+            border-radius: 91px;
+            position: relative;
+            z-index: 0;
+            max-width: 121%;
+            margin: 0px auto -35px auto;
+            width: 55%;
+            " class="responsive-bar">
+            </div>
+
+            <!-- Contenedor del recibo -->
+            <div style="
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 90%;
+            margin: 20px auto;
+            width: 50%;
+        ">
+
+                <!-- Encabezado -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="https://multimedia.epayco.co/plugins-sdks/warning.png" alt="Pendiente"
+                         style="display: block; margin: auto; width: 70px; margin-bottom: 14px;">
+                    <h2 style="color: #FFD100; font-size: 22px;">Transacción Pendiente</h2>
+                    <h4 style="color: #000; font-size: 17px; font-weight: bold;">Referencia ePayco #{$refPayco}</h4>
+                    <p style="color: #000; font-size: 14px;">{$fecha}</p>
+                </div>
+
+                <!-- Información de la transacción -->
+                <div style="display: flex; flex-wrap: wrap; font-size: 14px; color: #333; line-height: 1.6;">
+                    <div style="width: 50%; padding: 5px 50px;">
+                        <h5 style="font-weight: bold;">Medio de pago</h5>
+                        <span style="color: #8b8383;">Método de pago</span><br>
+                        <span>{$franquicia}</span>
                     </div>
-
-                    <div class="row mp-pt-25">
-                        <div class="col-xs-6 col-md-6 col-6">
-                            <div class="mp-pix-container mp-pix-box mp-pix-container-column">
-                                <span class="mp-pix-box-title">{l s='Amount' mod='mercadopago'}</span>
-                                <span class="mp-pix-box-subtitle mp-pt-5">{$total_paid_amount|escape:'htmlall':'UTF-8'}</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-md-6 col-6">
-                            <div class="mp-pix-container mp-pix-box mp-pix-container-column">
-                                <span class="mp-pix-box-title">{l s='Expiration' mod='mercadopago'}</span>
-                                <span class="mp-pix-box-subtitle mp-pt-5">{$pix_expiration|escape:'htmlall':'UTF-8'}</span>
-                            </div>
-                        </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top:21px;">
+                        <span style="color: #8b8383;">Autorización</span><br>
+                        <span>{$autorizacion}</span>
                     </div>
-
-                    <div class="mp-pix-container-desktop">
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <span class="mp-pix-text-subtitle">{l s='Scan this QR code to pay' mod='mercadopago'}</span>
-                                <div class="mp-pix-tooltip">
-                                    <img class="mp-badge-info" src="{$module_dir|escape:'html':'UTF-8'}views/img/icons/badge_info_blue.png"/>
-                                    <span class="mp-pix-tooltip-text">{l s='Before you confirming your purchase, you will see the amount to pay and the seller\'s information.' mod='mercadopago'}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <ol class="mp-pix-text-subtitle-item">
-                                    <li>{l s='Access your bank or payment app' mod='mercadopago'}</li>
-                                    <li>{l s='Choose the option to pay via Pix with QR code' mod='mercadopago'}</li>
-                                    <li>{l s='Scan the following code:' mod='mercadopago'}</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12 mp-pix-container">
-                                <img class="mp-pix-qrcode" src="data:image/png;base64, {$payment['point_of_interaction']['transaction_data']['qr_code_base64']|escape:'html':'UTF-8'}" alt="Qr code"/>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <h2>{l s='Or pay with Pix code "Copy and Paste"' mod='mercadopago'}</h2>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <p class="mp-pix-text-subtitle-item">{l s='Access your bank or payment app and choose the option to pay via Pix. Then, paste the following code:' mod='mercadopago'}</p>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-8 col-md-8 col-8">
-                                <input id="mp-pix-input-code" type="text" class="form-control mp-form-control" value="{$payment['point_of_interaction']['transaction_data']['qr_code']|escape:'html':'UTF-8'}">
-                            </div>
-                            <div class="col-md-4 col-xs-4 col-4">
-                                <button id="mp-pix-copy-code" class="btn btn-primary">{l s='Copy code' mod='mercadopago'}</button>
-                            </div>
-                        </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 3%;">
+                        <span style="color: #8b8383;">Recibo</span><br>
+                        <span>{$refPayco}</span>
                     </div>
-
-                    <div class="mp-pix-container-mobile">
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <h2>{l s='Use Pix Copy and Paste to pay' mod='mercadopago'}</h2>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <ol class="mp-pix-text-subtitle-item">
-                                    <li>{l s='Access your bank or payments app' mod='mercadopago'}</li>
-                                    <li>{l s='Choose to pay via Pix' mod='mercadopago'}</li>
-                                    <li>{l s='Paste the following code:' mod='mercadopago'}</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <input id="mp-pix-input-code" type="text" class="form-control mp-form-control" value="{$payment['point_of_interaction']['transaction_data']['qr_code']|escape:'html':'UTF-8'}">
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <button id="mp-pix-copy-code" class="btn btn-primary">{l s='Copy code' mod='mercadopago'}</button>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <h2>{l s='Or pay using QR Code' mod='mercadopago'}</h2>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12">
-                                <p class="mp-pix-text-subtitle-item">{l s='Access your bank or payments app and choose to pay via Pix with QR Code. Then, scan the following code:' mod='mercadopago'}</p>
-                            </div>
-                        </div>
-
-                        <div class="row mp-pt-25">
-                            <div class="col-xs-12 col-md-12 col-12 mp-pix-container">
-                                <img class="mp-pix-qrcode" src="data:image/png;base64, {$payment['point_of_interaction']['transaction_data']['qr_code_base64']|escape:'html':'UTF-8'}" alt="Qr code"/>
-                            </div>
-                        </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 13px;">
+                        <span style="color: #8b8383;">Dirección IP</span><br>
+                        <span>{$ip}</span>
                     </div>
+                    <div style="width: 50%; padding: 5px 50px; margin-top:15px">
+                        <span style="color: #8b8383;">Respuesta</span><br>
+                        <span>{$respuesta}</span>
+                    </div>
+                </div>
 
-                    <div class="row mp-pt-25">
-                        <div class="col-xs-12 col-md-12 col-12">
-                            <img class="mp-badge-info" src="{$module_dir|escape:'html':'UTF-8'}views/img/icons/badge_info_gray.png"/>
-                            <span class="mp-pix-text-info">
-                                {l s='Pix has a daily transfer limit. Please contact your bank for more information.' mod='mercadopago'}
-                            </span>
-                        </div>
+                <div style="display: flex; flex-wrap: wrap; font-size: 14px; color: #333; line-height: 1.6;">
+                    <div style="width: 54%;padding: 5px 50px;">
+                        <h5 style="font-weight: bold;margin-bottom: 20px;margin-top: 7%;">Datos de la compra</h5>
+                        <span style="color: #8b8383;">Referencia Comercio</span><br>
+                        <span>{$refPayco}</span>
+                    </div>
+                    <div class="responsive-field" style="width: 49%;padding: 5px 64px;margin-top: 10%;margin-left: -8%;">
+                        <span style="color: #8b8383;">Descripción</span><br>
+                        <span>{$descripcion}</span>
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 3%;">
+                        <span style="color: #8b8383;">Descuento</span><br>
+                        {if $descuento == 0}
+                            <span>$ 0 COP</span>
+                        {else}
+                            <span>$ {$descuento|number_format:2:',':'.'} COP</span>
+                        {/if}
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 14px;margin-left: -1%;">
+                        <span style="color: #8b8383;">Subtotal</span><br>
+                        <span>$ {($valor - $descuento)|number_format:2:',':'.'} COP</span>
+                    </div>
+                    <div style="width: 50%; padding: 5px 50px;margin-top: 20px;">
+                        <span style="color: #8b8383;">Valor total</span><br>
+                        <span>$ {$valor|number_format:2:',':'.'} COP</span>
                     </div>
 
                 </div>
+                <!-- Botón para descargar el recibo -->
+
+            </div>
+
+        </div>
+    </div>
+
+    <p style="text-align: center;">
+        <a href="{$baseurl}" target="_blank" class="btn btn-primary" style="
+                       color: #fff;
+                       background-color: #212121;
+                       border-color: transparent;
+                       max-width: 100%; /* Hace que el botón ocupe el 100% del contenedor en pantallas pequeñas */
+                       width: 300px; /* Ajusta el tamaño del botón en pantallas grandes */
+                       padding: 10px 20px;
+                       display: inline-block;
+                       margin: 0 auto; /* Centra el botón en su contenedor */
+                       text-align: center;
+                   ">
+            Descargar Recibo ePayco
+        </a>
+    </p>
+
+
+    <!-- Estilos para dispositivos móviles -->
+    <style>
+        @media (max-width: 768px) {
+            div[style*="width: 50%;"] {
+                width: 100% !important;
+            }
+
+            div[style*="max-width: 1092px;"] {
+                padding: 10px !important;
+            }
+
+            .responsive-bar {
+                width: 100% !important;
+            }
+        }
+    </style>
+
+    {elseif $estado == 'Rechazada'}
+    <div style="max-width: 1092px; margin: auto; font-family: 'Poppins', Arial, sans-serif;">
+
+        <!-- Barra superior negra con el logo -->
+        <div style="background-color: #000; text-align: center; padding: 10px;">
+            <img src="https://multimedia.epayco.co/plugins-sdks/logo-gris-1.png" alt="ePayco Logo"
+                 style="width: 100px;">
+        </div>
+
+        <!-- Contenedor principal -->
+        <div style="padding: 20px;">
+
+            <div style="
+            background-color: #000;
+            height: 30px;
+            border-radius: 91px;
+            position: relative;
+            z-index: 0;
+            max-width: 121%;
+            margin: 0px auto -35px auto;
+            width: 55%;
+            " class="responsive-bar">
+            </div>
+
+            <!-- Contenedor del recibo -->
+            <div style="
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 90%;
+            margin: 20px auto;
+            width: 50%;
+        ">
+
+                <!-- Encabezado -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="https://multimedia.epayco.co/plugins-sdks/error.png" alt="Rechazada"
+                         style="display: block; margin: auto; width: 70px; margin-bottom: 14px;">
+                    <h2 style="color: #E1251B; font-size: 22px;">Transacción Rechazada</h2>
+                    <h4 style="color: #000; font-size: 17px; font-weight: bold;">Referencia ePayco #{$refPayco}</h4>
+                    <p style="color: #000; font-size: 14px;">{$fecha}</p>
+                </div>
+
+                <!-- Información de la transacción -->
+                <div style="display: flex; flex-wrap: wrap; font-size: 14px; color: #333; line-height: 1.6;">
+                    <div style="width: 50%; padding: 5px 50px;">
+                        <h5 style="font-weight: bold;">Medio de pago</h5>
+                        <span style="color: #8b8383;">Método de pago</span><br>
+                        <span>{$franquicia}</span>
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top:21px;">
+                        <span style="color: #8b8383;">Autorización</span><br>
+                        <span>{$autorizacion}</span>
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 3%;">
+                        <span style="color: #8b8383;">Recibo</span><br>
+                        <span>{$refPayco}</span>
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 13px;">
+                        <span style="color: #8b8383;">Dirección IP</span><br>
+                        <span>{$ip}</span>
+                    </div>
+                    <div style="width: 50%; padding: 5px 50px; margin-top:15px">
+                        <span style="color: #8b8383;">Respuesta</span><br>
+                        <span>{$respuesta}</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-wrap: wrap; font-size: 14px; color: #333; line-height: 1.6;">
+                    <div style="width: 54%;padding: 5px 50px;">
+                        <h5 style="font-weight: bold;margin-bottom: 20px;margin-top: 7%;">Datos de la compra</h5>
+                        <span style="color: #8b8383;">Referencia Comercio</span><br>
+                        <span>{$refPayco}</span>
+                    </div>
+                    <div class="responsive-field" style="width: 49%;padding: 5px 64px;margin-top: 10%;margin-left: -8%;">
+                        <span style="color: #8b8383;">Descripción</span><br>
+                        <span>{$descripcion}</span>
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 3%;">
+                        <span style="color: #8b8383;">Descuento</span><br>
+                        {if $descuento == 0}
+                            <span>$ 0 COP</span>
+                        {else}
+                            <span>$ {$descuento|number_format:2:',':'.'} COP</span>
+                        {/if}
+                    </div>
+                    <div style="width: 50%;padding: 5px 50px;margin-top: 14px;margin-left: -1%;">
+                        <span style="color: #8b8383;">Subtotal</span><br>
+                        <span>$ {($valor - $descuento)|number_format:2:',':'.'} COP</span>
+                    </div>
+                    <div style="width: 50%; padding: 5px 50px;margin-top: 20px;">
+                        <span style="color: #8b8383;">Valor total</span><br>
+                        <span>$ {$valor|number_format:2:',':'.'} COP</span>
+                    </div>
+
+                </div>
+                <!-- Botón para descargar el recibo -->
+
             </div>
         </div>
     </div>
 
-    <script type="text/javascript">
-        const text = document.getElementById('mp-pix-input-code');
-        const copyButton = document.getElementById('mp-pix-copy-code');
+    <p style="text-align: center;">
+        <a href="{$baseurl}" target="_blank" class="btn btn-primary" style="
+                       color: #fff;
+                       background-color: #212121;
+                       border-color: transparent;
+                       max-width: 100%; /* Hace que el botón ocupe el 100% del contenedor en pantallas pequeñas */
+                       width: 300px; /* Ajusta el tamaño del botón en pantallas grandes */
+                       padding: 10px 20px;
+                       display: inline-block;
+                       margin: 0 auto; /* Centra el botón en su contenedor */
+                       text-align: center;
+                   ">
+            Descargar Recibo ePayco
+        </a>
+    </p>
 
-        copyButton.addEventListener('click', () => {
-            text.select();
-            document.execCommand('copy');
-        });
-    </script>
-{/if}
-{if isset($payment['metadata']['checkout_type']) && $payment['metadata']['checkout_type'] == 'credit_card' && $cost_of_installments > 0}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="mp-credit-card-return">
 
-                <h3 class="credit-card-return-title">{l s='PAYMENT DETAILS:' mod='mercadopago'}</h2>
+    <!-- Estilos para dispositivos móviles -->
+    <style>
+        @media (max-width: 768px) {
+            div[style*="width: 50%;"] {
+                width: 100% !important;
+            }
 
-                <div class="row mp-credit-card-frame">
-                    <div class="col-md-12 mp-hg-100">
-                        <span class="mp-credit-card-box-text">{l s='Cost of installments:' mod='mercadopago'}</span>
-                        <span class="mp-credit-card-box-text-bold">{$cost_of_installments_formated|escape:'htmlall':'UTF-8'}</span>
-                    </div>
-                    <div class="col-md-12 mp-hg-100">
-                        <span class="mp-credit-card-box-text">{l s='Total with installments:' mod='mercadopago'}</span>
-                        <span class="mp-credit-card-box-text-bold">{$total_paid_amount|escape:'htmlall':'UTF-8'}</span>
-                        <span class="mp-credit-card-box-text">{l s='(%s installments of %s)' sprintf=[$payment['installments'], {$installment_amount|escape:'htmlall':'UTF-8'}] mod='mercadopago'}</span>
-                    </div>
-                </div>
+            div[style*="max-width: 1092px;"] {
+                padding: 10px !important;
+            }
 
-            </div>
-        </div>
+            .responsive-bar {
+                width: 100% !important;
+            }
+        }
+    </style>
+
+    {else}
+    <div
+            style="max-width: 600px; margin: auto; font-family: 'Poppins', Arial, sans-serif; text-align: center; color: #d9534f; background-color: #fef2f2; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h2 style="font-size: 20px; font-weight: bold;">Su pago se encuentra en proceso de validacion. </h2>
+        <p style="font-size: 14px;">Por favor, inténtelo mas tarde.</p>
     </div>
 {/if}

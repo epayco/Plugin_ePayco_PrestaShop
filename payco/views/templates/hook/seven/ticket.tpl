@@ -94,7 +94,7 @@
                                 input-data-checkout="document_number"
                                 select-id="documentType"
                                 input-id="documentTypeNumber"
-                                select-name="epayco_tickete[documentType]"
+                                select-name="epayco_ticket[documentType]"
                                 select-data-checkout=document_type"
                                 flag-error="documentTypeError"
                                 documents='{$documents}'

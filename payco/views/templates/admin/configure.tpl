@@ -70,10 +70,6 @@
                 form_store_group[i].querySelector("p").style.width = "400px";
             }
         }
-
-        // ----- ticket configuration form ------ //
-        {include file='./checkouts/ticket_configuration.tpl'}
-
     }
 
     //Ticket payments

@@ -52,8 +52,7 @@ class PaycoTicketModuleFrontController extends ModuleFrontController
             $context = $this->context;
             $preference->verifyModuleParameters($context);
             $ticket_info = Tools::getValue('epayco_ticket');
-            var_dump($ticket_info);
-            die();
+            $preference->createPreference($this->context->cart, $ticket_info);
         } catch (Exception $e) {
             $this->context->cookie->__set('redirect_message', Tools::displayError());
         }

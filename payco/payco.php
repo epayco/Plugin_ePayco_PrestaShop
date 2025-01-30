@@ -498,6 +498,40 @@ class Payco extends PaymentModule
         if (!$this->active) {
             return;
         }
+        $epaycoData = $this->context->cookie->__get('redirect_epayco_message');
+        $paymentId = Tools::getValue('ref_payco');
+        $payment = json_decode($epaycoData);
+        return $this->getPaymentReturn($payment);
+    }
+
+    /**
+     * Get template of payment confirmation
+     *
+     * @param  mixed $payment
+     * @return string
+     */
+    public function getPaymentReturn($payment)
+    {
+        $this->context->smarty->assign(
+            array(
+                'status' => $payment->status,
+                'type' => $payment->type,
+                'refPayco' => $payment->refPayco,
+                'factura' => $payment->factura,
+                'descripcion' => $payment->descripcion,
+                'valor' => floatval($payment->valor),
+                'iva' => $payment->iva,
+                'ip' => $payment->ip,
+                'estado' => $payment->estado,
+                'respuesta' => $payment->respuesta,
+                'fecha' => $payment->fecha,
+                'descuento' =>  floatval($payment->descuento),
+                'autorizacion' =>  $payment->autorizacion,
+                'franquicia' => $payment->franquicia,
+                'extra1' => $payment->extra1,
+                'baseurl' => $payment->baseurl
+            )
+        );
 
         $versions = array(
             self::PRESTA16 => 'six',
