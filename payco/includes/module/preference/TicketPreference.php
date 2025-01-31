@@ -34,7 +34,6 @@ require_once EP_ROOT_URL . '/includes/module/preference/AbstractPreference.php';
 
 class TicketPreference extends AbstractPreference
 {
-    public $ticket_info;
 
     const CASH_ENTITIES = [
         [
@@ -96,7 +95,6 @@ class TicketPreference extends AbstractPreference
      */
     public function createPreference($cart, $ticket_info)
     {
-        $this->ticket_info = $ticket_info;
         $customer = new Customer($cart->id_customer);
         if (!Validate::isLoadedObject($customer))
             Tools::redirect('index.php?controller=order&step=1');

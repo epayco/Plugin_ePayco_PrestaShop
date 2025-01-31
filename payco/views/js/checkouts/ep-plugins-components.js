@@ -241,7 +241,8 @@
                         const selectedValue = e.target.value;
                         if(selectedValue == 'Type' || selectedValue == 'Tipo'){
                             aa.querySelector("input").classList.add("ep-error");
-                            tt.querySelector("select").classList.add("ep-error");
+                            tt.querySelector("select").parentElement.classList.add("ep-error");
+                            tt.parentElement.querySelector("input-helper > div").style.display = "flex";
                         }else{
                             let n = i.parentElement.querySelector("input");
                             switch (i.querySelector("select").value) {
@@ -286,11 +287,11 @@
                             }
                             if (n.value.length < n.minLength) {
                                 aa.querySelector("input").classList.add("ep-error");
-                                tt.querySelector("select").classList.add("ep-error");
+                                tt.querySelector("select").parentElement.classList.add("ep-error");
                                 tt.parentElement.querySelector("input-helper > div").style.display = "flex";
                             } else {
                                 aa.querySelector("input").classList.remove("ep-error");
-                                tt.querySelector("select").classList.remove("ep-error");
+                                tt.querySelector("select").parentElement.classList.remove("ep-error");
                                 tt.parentElement.querySelector("input-helper > div").style.display = "none";
                             }
                         }
@@ -332,6 +333,13 @@
             }
             createDocument(t, i) {
                 const n = document.createElement("input");
+                var type;
+                const lang = lenguaje;
+                if(lang === 'es'){
+                    type = 'Tipo';
+                }else{
+                    type = 'Type';
+                }
                 return n.setAttribute("name", this.getAttribute("input-name")),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
                     n.setAttribute("data-cy", "input-document"),
@@ -390,23 +398,21 @@
                                 t.querySelector("input").classList.add("ep-error"),
                                 i.parentElement.querySelector("input-helper > div").style.display = "flex";
                         } else {
-                            t.querySelector("input").classList.remove("ep-error"),
+                            if(i.querySelector("select").value ===  type){
+                                t.querySelector("input").classList.add("ep-error");
+                                 i.querySelector("select").parentElement.classList.add("ep-error"),
+                                 i.parentElement.querySelector("input-helper > div").style.display = "flex";
+                            }else{
+                                t.querySelector("input").classList.remove("ep-error");
                                 i.querySelector("select").parentElement.classList.remove("ep-error"),
-                                i.parentElement.querySelector("input-helper > div").style.display = "none";
+                                  i.parentElement.querySelector("input-helper > div").style.display = "none";
+                            }
                         }
                     })),
                     n.addEventListener("change", (() => {
                         //n.value = n.value.replace(/\D/g, '');
                     }))
                     , n.addEventListener("focusout", (() => {
-                    var type;
-                    const lang = lenguaje;
-                    if(lang === 'es'){
-                        type = 'Tipo';
-                    }else{
-                        type = 'Type';
-                    }
-
                     void 0 !== ((n.value !=='' &&  i.querySelector("select").value !==  type && n.value.length >= n.minLength)  ? (
                                 t.querySelector("input").classList.remove("ep-error"),
                                     i.querySelector("select").parentElement.classList.remove("ep-error"),
@@ -415,8 +421,8 @@
                             (
                                 i.querySelector("select").parentElement.classList.add("ep-error"),
                                     t.querySelector("input").classList.add("ep-error"),
-                                    i.parentElement.querySelector("input-helper > div").style.display = "flex",
-                                    n.setAttribute("name", this.getAttribute("flag-error"))
+                                    i.parentElement.querySelector("input-helper > div").style.display = "flex"
+                                    //n.setAttribute("name", this.getAttribute("flag-error"))
                             )
                     )
                 })),
@@ -655,8 +661,8 @@
                                 i.querySelector("select").parentElement.classList.add("ep-error"),
                                     //t.querySelector("input").parentElement.classList.add("ep-error"),
                                     n.classList.add("ep-error"),
-                                    i.parentElement.querySelector("input-helper > div").style.display = "flex",
-                                    n.setAttribute("name", this.getAttribute("flag-error"))
+                                    i.parentElement.querySelector("input-helper > div").style.display = "flex"
+                                   // n.setAttribute("name", this.getAttribute("flag-error"))
                             )
                     )
                 })),
@@ -852,8 +858,8 @@
                             (
                                 i.querySelector("select").parentElement.classList.add("ep-error"),
                                     t.querySelector("input").classList.add("ep-error"),
-                                    i.parentElement.querySelector("input-helper > div").style.display = "flex",
-                                    n.setAttribute("name", this.getAttribute("flag-error"))
+                                    i.parentElement.querySelector("input-helper > div").style.display = "flex"
+                                    //n.setAttribute("name", this.getAttribute("flag-error"))
                             )
                     )
                 })),
@@ -1028,8 +1034,8 @@
                                     n.setAttribute("eame", this.getAttribute("inputName"))) :
                                 (
                                     n.classList.add("ep-error"),
-                                        i.firstElementChild.style.display = "flex",
-                                        n.setAttribute("name", this.getAttribute("flagError"))
+                                        i.firstElementChild.style.display = "flex"
+                                       // n.setAttribute("name", this.getAttribute("flagError"))
                                 )
                         )
                     })), n
@@ -1127,8 +1133,8 @@
                                 (
                                     //t.classList.add("ep-error"),
                                     n.classList.add("ep-error"),
-                                    i.firstElementChild.style.display = "flex",
-                                    n.setAttribute("name", this.getAttribute("flagError"))
+                                    i.firstElementChild.style.display = "flex"
+                                   // n.setAttribute("name", this.getAttribute("flagError"))
                                 )
                         )
                     })), n
@@ -1255,8 +1261,8 @@
                                     n.setAttribute("name", this.getAttribute("inputName"))) :
                                 (
                                     t.classList.add("ep-error"),
-                                        i.firstElementChild.style.display = "flex",
-                                        n.setAttribute("name", this.getAttribute("flagError"))
+                                        i.firstElementChild.style.display = "flex"
+                                       // n.setAttribute("name", this.getAttribute("flagError"))
                                 )
                         )
                     })), n
@@ -1369,8 +1375,8 @@
                                     n.setAttribute("name", this.getAttribute("inputName"))) :
                                 (
                                     t.classList.add("ep-error"),
-                                        i.firstElementChild.style.display = "flex",
-                                        n.setAttribute("name", this.getAttribute("flagError"))
+                                        i.firstElementChild.style.display = "flex"
+                                        //n.setAttribute("name", this.getAttribute("flagError"))
                                 )
                         )
                     })), n
@@ -1465,8 +1471,8 @@
                                     n.setAttribute("name", this.getAttribute("inputName"))) :
                                 (
                                     t.classList.add("ep-error"),
-                                        i.firstElementChild.style.display = "flex",
-                                        n.setAttribute("name", this.getAttribute("flagError"))
+                                        i.firstElementChild.style.display = "flex"
+                                       // n.setAttribute("name", this.getAttribute("flagError"))
                                 )
                         )
                     })), n

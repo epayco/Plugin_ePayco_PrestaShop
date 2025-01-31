@@ -193,7 +193,7 @@
             function d(e) {
                 return e && "flex" === e.style.display
             }
-            
+
             if (  validation  ) {
                 disableFinishOrderButton();
                 uncheckConditionTerms();
@@ -202,7 +202,8 @@
             } else {
                 const request =  createToken(CustomContent)
                     .then((resultado) => {
-                        nn["epayco_creditcard[cardTokenId]"]=CustomContent
+                        nn["epayco_creditcard[cardTokenId]"]=resultado
+                        document.querySelector('#cardTokenId').value = resultado;
                         creditcardForm.submit()
                     })
                     .catch((error) => console.error(error));
@@ -223,7 +224,6 @@
                         console.error('ePayco cardForm error: ', parsedError);
                         reject(false)
                     }else{
-                        document.querySelector('#cardTokenId').value = data.data.token;
                         resolve(data.data.token)
                     }
                 });
