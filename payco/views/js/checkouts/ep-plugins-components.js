@@ -205,8 +205,7 @@
             createInput(t,i,e,aa, tt) {
                 var documents;
                 var type;
-                //const lang = wc_epayco_checkout_components_params.lang;
-                const lang = "en";
+                const lang = lenguaje;
                     if(lang === 'es'){
                         type = 'Tipo';
                         documents = [
@@ -407,6 +406,7 @@
                     }else{
                         type = 'Type';
                     }
+
                     void 0 !== ((n.value !=='' &&  i.querySelector("select").value !==  type && n.value.length >= n.minLength)  ? (
                                 t.querySelector("input").classList.remove("ep-error"),
                                     i.querySelector("select").parentElement.classList.remove("ep-error"),
@@ -768,7 +768,7 @@
                         "emoji": "🇦🇫"
                     }
                 ]
-                const lang = "en";
+                const lang = lenguaje;
                 const n = countryList.map(item => {
                         if(lang == 'es'){
                             return  `${item.name_es}`

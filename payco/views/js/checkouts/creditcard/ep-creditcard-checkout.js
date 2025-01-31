@@ -102,6 +102,14 @@
                 }
             }
 
+            const verifyTypeDocument= (cardContentTypeDocument) =>{
+                if (("Type" == cardContentTypeDocument ||"Tipo"  == cardContentTypeDocument)) {
+                    current.querySelector('input-document').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-document').querySelector("select").parentElement.classList.add("ep-error");
+                    documentHelpers.style.display = 'flex';
+                }
+            }
+
             const customContentAddress = current.querySelector('input-address').querySelector('input');
             const addressHelpers =  current.querySelector('input-address').querySelector("input-helper").querySelector("div");
             const verifyAddress = (addressElement) => {
@@ -155,14 +163,15 @@
             "" === cardNumberContentName.value && verifyCardNumber(cardNumberContentName);
             "" === cardExpirationContentName.value && verifyCardExpiration(cardExpirationContentName);
             "" === cardSecurityContentName.value && verifyCardSecurity(cardSecurityContentName);
-            "Type"||"Tipo" === doc_type.value && verifyDocument(cardContentDocument);
+            ("Type" == doc_type.value ||"Tipo"  == doc_type.value) && verifyTypeDocument(doc_type.value);
             "" === cardContentDocument.value && verifyDocument(cardContentDocument);
             "" === customContentAddress.value && verifyAddress(customContentAddress);
             "" === customContentEmail.value && verifyEmail(customContentEmail);
             "" === customContentCellphone.value && verifyCellphone(customContentCellphone);
             "" === countryContentCountry.value && verifyCountry(countryContentCountry);
             !termanAndContictionContent.checked && termanAndContictionHelpers.classList.add("ep-error");
-            let validation = d(nameHelpers) || d(cardNumberHelpers) || d(cardExpirationHelpers) || d(cardSecurityHelpers) || d(documentHelpers) || d(addressHelpers) || d(emailHelpers) || d(cellphoneHelpers) || d(countryHelpers) || !termanAndContictionContent.checked;
+            let validDoctype = ("Type" == doc_type.value ||"Tipo"  == doc_type.value)  ? true : false;
+            let validation = d(nameHelpers) || d(cardNumberHelpers) || d(cardExpirationHelpers) || d(cardSecurityHelpers) || d(documentHelpers) || d(addressHelpers) || d(emailHelpers) || d(cellphoneHelpers) || d(countryHelpers) || !termanAndContictionContent.checked || validDoctype;
 
             const nn = {
                 "epayco_creditcard[name]": customContentName.value,
@@ -184,7 +193,7 @@
             function d(e) {
                 return e && "flex" === e.style.display
             }
-
+            
             if (  validation  ) {
                 disableFinishOrderButton();
                 uncheckConditionTerms();

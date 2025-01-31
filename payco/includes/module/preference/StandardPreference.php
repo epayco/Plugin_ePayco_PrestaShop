@@ -114,8 +114,7 @@ class StandardPreference extends AbstractPreference
                 'description' => $descripcion,
                 'external' => $external,
                 'currency' => $currency->iso_code,
-                //'ip' =>$myIp,
-                'ip' =>'186.97.212.162',
+                'ip' =>$myIp,
                 'autoclick'=> 'true',
                 'test' => $test,
                 'method_confirmation'=> "POST"

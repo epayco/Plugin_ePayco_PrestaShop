@@ -103,6 +103,14 @@
                 }
             }
 
+            const verifyTypeDocument= (pseContentTypeDocument) =>{
+                if (("Type" == pseContentTypeDocument ||"Tipo"  == pseContentTypeDocument)) {
+                    current.querySelector('input-document').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-document').querySelector("select").parentElement.classList.add("ep-error");
+                    documentHelpers.style.display = 'flex';
+                }
+            }
+
             //const pseContentCountry = document.getElementsByName('epayco_pse[country]')[0];
             const pseContentCountry = current.querySelector('input-country').querySelector('input');
             const countryType = pseContentCountry.parentElement.parentElement.querySelector(".ep-input-select-bank");
@@ -163,12 +171,12 @@
             "" === pseContentAddress.value && verifyAddress(pseContentAddress.value);
             "" === pseContentCellphone.value && verifyCellphone(pseContentCellphone.value);
             //"" === cellphoneType && verifyCellphone(cellphoneType);
-            "Type"||"Tipo" === doc_type.value && verifyDocument(doc_number_value.value);
+            ("Type" == doc_type.value ||"Tipo"  == doc_type.value) && verifyTypeDocument(doc_type.value);
             "" === doc_number_value.value && verifyDocument(doc_number_value.value);
             "" === pseContentCountry.value && verifyCountry(pseContentCountry.value);
             !termanAndContictionContent.checked && termanAndContictionHelpers.classList.add("ep-error");
-
-            let validation = d(nameHelpers) || d(addressHelpers) ||d(emailHelpers) || d(cellphoneHelpers)|| d(documentHelpers) ||  d(bankHelper) || d(countryHelpers) || !termanAndContictionContent.checked;
+            let validDoctype = ("Type" == doc_type.value ||"Tipo"  == doc_type.value)  ? true : false;
+            let validation = d(nameHelpers) || d(addressHelpers) ||d(emailHelpers) || d(cellphoneHelpers)|| d(documentHelpers) ||  d(bankHelper) || d(countryHelpers) || !termanAndContictionContent.checked ||validDoctype;
 
             if (  validation  ) {
                 disableFinishOrderButton();
