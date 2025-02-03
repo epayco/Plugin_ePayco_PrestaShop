@@ -933,6 +933,14 @@
                         if (!regex.test(n.value)) {
                             n.value = n.value.replace(/[^A-Za-z\s]/g, '');
                         }
+                        // Comprobar que haya al menos dos palabras (mínimo 2 secuencias separadas por espacios)
+                        if (n.value.trim().split(/\s+/).length  < 2) {
+                            n.classList.add("ep-error");
+                            i.firstElementChild.style.display = "flex";
+                        }else{
+                            n.classList.remove("ep-error");
+                            i.firstElementChild.style.display = "none";
+                        }
                     })),
                     n.addEventListener("focus", (() => {
                         n.classList.add("ep-focus"),
@@ -942,19 +950,24 @@
                     n.addEventListener("focusout", (() => {
                         n.classList.remove("ep-focus");
                         if (n.value !== '') {
-                            if(n.value.length >= 2){
-                                n.classList.remove("ep-error");
-                                i.firstElementChild.style.display = "none";
-                                n.setAttribute("name", this.getAttribute("inputName"));
+                            if(n.value.trim().length >= 2){
+                                if (n.value.trim().split(/\s+/).length  < 2) {
+                                    n.classList.add("ep-error");
+                                    i.firstElementChild.style.display = "flex";
+                                }else{
+                                    n.classList.remove("ep-error");
+                                    i.firstElementChild.style.display = "none";
+                                    n.setAttribute("name", this.getAttribute("inputName"));
+                                }
                             }else{
                                 n.classList.add("ep-error");
                                 i.firstElementChild.style.display = "flex";
-                                n.setAttribute("name", this.getAttribute("flagError"));
+                                //n.setAttribute("name", this.getAttribute("flagError"));
                             }
                         } else {
                             n.classList.add("ep-error");
                             i.firstElementChild.style.display = "flex";
-                            n.setAttribute("name", this.getAttribute("flagError"));
+                            //n.setAttribute("name", this.getAttribute("flagError"));
                         }
                     })), n
             }
@@ -1114,8 +1127,8 @@
                         if (!this.validateEmail(n.value)) {
                             n.classList.add("ep-error"),
                             //t.classList.add("ep-error"),
-                            i.firstElementChild.style.display = "flex",
-                            n.setAttribute("name", this.getAttribute("flagError"))
+                            i.firstElementChild.style.display = "flex"
+                            //n.setAttribute("name", this.getAttribute("flagError"))
                             //i.firstElementChild.textContent = "Por favor, introduce un email válido."; // Mensaje de error
                         } else {
                             //t.classList.remove("ep-error");
@@ -1356,14 +1369,14 @@
                                 t.classList.add("ep-error")
                                 n.classList.remove("ep-border"),
                                 i.firstElementChild.style.display = "flex"
-                                n.setAttribute("name", this.getAttribute("flagError"))
+                                //n.setAttribute("name", this.getAttribute("flagError"))
                             }else{
                                 i.firstElementChild.style.display = "none"
                                 n.setAttribute("name", this.getAttribute("inputName"))
                             }
                         }else{
                             i.firstElementChild.style.display = "flex"
-                            n.setAttribute("name", this.getAttribute("flagError"))
+                           // n.setAttribute("name", this.getAttribute("flagError"))
                         }
                     })),
                     n.addEventListener("focusout", (() => {
