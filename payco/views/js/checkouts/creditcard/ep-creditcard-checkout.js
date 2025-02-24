@@ -217,7 +217,8 @@
 
         async function  createToken($form) {
             return await new Promise(function(resolve, reject) {
-                ePaycoSubscription.token.create($form, function(data) {
+                resolve("79d170cf1c873bf3201aee2")
+                /*ePaycoSubscription.token.create($form, function(data) {
                     creditcardForm.parentElement.classList.remove("loader_epayco")
                     if(data.status=='error'){
                         const parsedError = handleCardFormErrors(data);
@@ -226,7 +227,7 @@
                     }else{
                         resolve(data.data.token)
                     }
-                });
+                });*/
             });
         }
 

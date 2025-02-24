@@ -33,10 +33,10 @@
 
 
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
+<!--<ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#template_1" role="tab" data-toggle="tab" id="a_template_1">{l s='Set Up ePayco' mod='payco'}</a></li>
     <li class="ep-plugin-version"><a>{l s='Current version:' mod='payco'} <span>v{$ep_version|escape:'html':'UTF-8'}</span></a></li>
-</ul>
+</ul>-->
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -46,6 +46,17 @@
 <!-- JavaScript -->
 <script type="text/javascript">
     window.onload = function() {
+        console.log("ePayco plugin loaded");
+        var form_store_group = document.querySelectorAll(".form-group");
+        var form_store_append = "<div class='row'>\
+            <div class='col-md-12'>\
+                <p class='ep-title-checkout-body'>{l s='Store ID' mod='payco'}</p>\
+                <p class='ep-title-checkout-body'>{l s='Public Key' mod='payco'}</p>\
+                <p class='ep-title-checkout-body'>{l s='Private Key' mod='payco'}</p>\
+            </div>\
+        </div>";
+
+        debugger;
         var element = document.querySelectorAll("#module_form");
         for (var i=0; i < element.length; i++) {
             element[i].id = "module_form_" + i;
@@ -53,7 +64,9 @@
 
         // ----- credentials form ----- //
         var form_credentials_prepend = document.createElement("div");
-        var form_credentials = document.querySelector("#module_form_0 .panel .form-wrapper");
+        var form_credentials = document.querySelector("#module_form");
+
+        form_credentials.classList.add("ep-settings-credentials");
 
         form_credentials_prepend.innerHTML = "<div class='row'>\
             <div class='col-md-12'>\

@@ -64,7 +64,7 @@ class Client extends GraphqlClient
              * Set heaToken bearer
              */
          
-            //if(!isset($_COOKIE[$api_key])) {
+            if(!isset($_COOKIE[$api_key])) {
               $dataAuth =$this->authentication($api_key,$private_key, $apify);
               $json = json_decode($dataAuth);
               if(!is_object($json)) {
@@ -83,12 +83,12 @@ class Client extends GraphqlClient
                   }
                   throw new ErrorException($msj, 422);
               }
-            /*  $cookie_name = $api_key;
+              $cookie_name = $api_key;
               $cookie_value = $bearer_token;
               setcookie($cookie_name, $cookie_value, time() + (60 * 14), "/");
             }else{
                 $bearer_token = $_COOKIE[$api_key];
-            }*/
+            }
 
         } catch (\Exception $e) {
             $data = [

@@ -139,6 +139,7 @@ abstract class AbstractPreference
         return $ipaddress;
     }
 
+
     /**
      * Get response with preference
      *

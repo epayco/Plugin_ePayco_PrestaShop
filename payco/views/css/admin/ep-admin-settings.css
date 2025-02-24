@@ -57,34 +57,102 @@
     margin: 0 55px 0 23px;
     font-size: 16px;
     min-width: 550px;
-    font-family: "Poppins", -apple-system, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+    font-family: "Poppins" !important
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings {
+        margin: 0 0 0 -10px;
+    }
 }
 
 .ep-settings-header {
-    height: 340px;
-    position: relative
+    height: 380px !important;
+    position: relative;
+    background: url("../../../views/img/frame.png") no-repeat center;
+    background-size: cover;
+    border-radius: 10px;
+}
+@media screen and (max-width: 780px) {
+    .ep-settings-header {
+        height: 250px;
+    }
 }
 
 .ep-settings-header-img {
-    width: 100%;
-    height: 100%;
-    background: url("../../../views/img/banner.jpg") no-repeat center;
+    margin: 30px;
+    width: 92%;
+    height: 85%;
+    background: url("../../../views/img/banner.png") no-repeat center;
     background-size: cover;
-    position: absolute
+    position: absolute;
+    border-radius: 10px;
 }
-
+@media screen and (min-width: 425px) {
+    .ep-settings-header-img {
+        width: 92%;
+    }
+}
 
 .ep-settings-header-logo {
     position: relative;
-    background: url("../../../views/img/logo2.svg") 98% 50% no-repeat transparent;
-    width: 190px;
-    height: 70px;
+    background: url("../../../views/img/logo2.png") 98% 50% no-repeat transparent;
+    width: 295px;
+    height: 100px;
     top: 60px;
     line-height: 36px;
     flex: none;
     flex-grow: 0;
-    margin: 16px 0 0 0px
+    margin: 0px;
 }
+
+.ep-settings-header-title {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-header-title {
+        width: 70%;
+    }
+}
+
+.ep-settings-context {
+    font-weight: 500 !important;
+    color: black !important;
+    font-size: 14px !important;
+    margin: 0px 50px !important;
+    line-height: 18px !important;
+}
+
+.ep-settings-header p {
+    position: relative;
+    top: 70px !important;
+    font-size: 2rem;
+    line-height: 36px;
+    color: #fff;
+    flex: none;
+    flex-grow: 0;
+    margin: 16px 16px 0 50px !important;
+    font-family: 'Poppins';
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-header p {
+        top: 55px !important;
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-context {
+        margin-top: 20px !important;
+    }
+}
+
+
+
 
 .ep-settings-header-hr {
     position: relative;
@@ -99,11 +167,259 @@
 .ep-settings-header p {
     position: relative;
     top: 70px;
-    font-family: sans-serif;
+    font-family: 'Poppins';
     font-size: 1.5rem;
     line-height: 36px;
     color: #fff;
     flex: none;
     flex-grow: 0;
     margin: 16px 0 0 50px
+}
+
+.ep-settings-title-align {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 0px #16161D4D;
+    height: 60px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    border-radius: 4px;
+    border-width: 1px;
+    font-size: 16px;
+    align-items: normal;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-title-align {
+        height: 70px;
+    }
+}
+
+.ep-settings-title-align:hover {
+    border-color: red;
+    color: #FF6720;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+    box-shadow: 2px 2px 4px 0px #16161D4D;
+}
+
+.ep-settings-title-container {
+    display: flex;
+}
+
+.ep-settings-margin-left {
+    margin-left: 8px;
+}
+
+.ep-settings-title-container {
+    display: flex;
+}
+
+.ep-settings-font-color {
+    font-family: "Poppins", -apple-system, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    color: rgba(0, 0, 0, .9);
+}
+
+.ep-settings-title-blocks {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    margin: auto;
+}
+
+.ep-settings-payment-block {
+    border-radius: unset;
+    border-bottom: 1px solid #c6c6c6;
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+}
+
+.ep-settings-payment-block:hover {
+    border-color: transparent;
+    color: #FF6720;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-payment-block {
+        margin: unset;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-title-blocks {
+        font-size: 1.25rem;
+    }
+}
+
+.ep-settings-icon-success {
+    background: url("../../../views/img/icon-success.png") 100% 50% no-repeat transparent;
+    background-size: 16px;
+    padding-right: 16px !important;
+}
+
+.ep-settings-icon-open {
+    background: url("../../../views/img/CaretDownFill.png") 100% 50% no-repeat transparent;
+    background-size: 12px;
+    padding-right: 16px !important;
+    transition: .3s;
+}
+
+.ep-settings-block-align-top {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdown-hidden {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown-visible {
+    max-height: 2200px;
+    opacity: 1;
+    transform: translateY(0);
+    /*position: absolute;*/
+}
+
+.custom-form-class {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.custom-input-class {
+    border: 2px solid #007bff;
+    padding: 10px;
+}
+
+.ep-settings-icon-open.ep-arrow-up {
+    transform: rotate(180deg);
+    transition: .3s
+}
+
+.ep-settings-link {
+    /* width: 75%; */
+    display: flex;
+    text-decoration: none !important;
+}
+
+.ep-settings-align-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-align-div {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.ep-block-flex {
+    flex: 2;
+}
+
+.ep-block {
+    padding: 24px;
+    background-color: #fff;
+    box-shadow: 0 6px 16px rgb(0 0 0 / 10%);
+    border-radius: 0px 0px 6px 6px;
+    border: 1px solid #D3D3D4;
+    box-shadow: 1px 1px 4px 0px #16161D4D;
+}
+
+.ep-settings-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ep-settings-margin-title-payment{
+    margin: 0 16px 0 16px;
+    max-width: 1000px;
+}
+
+.ep-settings-subtitle-font-size {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.ep-settings-badge-active {
+    width: 83px;
+    height: 32px;
+    padding: auto;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    display: flex;
+    gap: 6px;
+    border-radius: 4px;
+    justify-content: center;
+    text-align: center;
+    color: #FF6720;
+    background: #EEEEEE;
+    font-size: 14px;
+    font-weight: 400;
+    align-items: center;
+}
+
+.ep-settings-badge-inactive {
+    width: 83px;
+    height: 32px;
+    padding: auto;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    display: flex;
+    gap: 6px;
+    border-radius: 4px;
+    justify-content: center;
+    text-align: center;
+    color: #737377;
+    background: #EEEEEE;
+    font-size: 14px;
+    font-weight: 400;
+    align-items: center;
+}
+.ep-settings-icon-body {
+    display: flex;
+    /* justify-content: space-between; */
+    cursor: pointer;
+    /* box-shadow: 1px 1px 4px 0px #16161D4D; */
+    height: 26px;
+    border: 1px solid #eeeeee00;
+    background: #EEEEEE;
+    padding-top: 11px;
+    padding-bottom: 6px;
+    border-radius: 4px;
+    border-width: 1px;
+    font-size: 16px;
+    align-items: center;
+    margin-left: 10px;
+}
+.ep-settings-icon-body:hover {
+    color: #FF6720;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+    box-shadow: 2px 2px 4px 0px #16161D4D;
+}
+.ep-settings-icon-config {
+    background: url("../../../views/img/icon-config.png") center center no-repeat transparent;
+    padding-right: 16px !important;
+    width: 32px;
+    height: 32px;
 }

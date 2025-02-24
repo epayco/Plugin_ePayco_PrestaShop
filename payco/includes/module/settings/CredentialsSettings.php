@@ -79,6 +79,7 @@ class CredentialsSettings extends AbstractSettings
                         'label' => $this->module->l('No', 'CredentialsSettings')
                     )
                 ),
+                'class' => 'custom-switch-class'
             ),
             array(
                 'col' => 8,
@@ -95,7 +96,8 @@ class CredentialsSettings extends AbstractSettings
                 'desc' => '',
                 'name' => 'EPAYCO_P_CUST_ID_CLIENTE',
                 'label' => $this->module->l('P_CUST_ID_CLIENTE', 'CredentialsSettings'),
-                'required' => true
+                'required' => true,
+                'class' => 'custom-html-class'
             ),
             array(
                 'col' => 8,
@@ -103,7 +105,8 @@ class CredentialsSettings extends AbstractSettings
                 'desc' => '',
                 'name' => 'EPAYCO_P_KEY',
                 'label' => $this->module->l('P_KEY', 'CredentialsSettings'),
-                'required' => true
+                'required' => true,
+                'class' => 'custom-html-class'
             ),
             array(
                 'col' => 8,
@@ -111,7 +114,8 @@ class CredentialsSettings extends AbstractSettings
                 'desc' => '',
                 'name' => 'EPAYCO_PUBLIC_KEY',
                 'label' => $this->module->l('PUBLIC_KEY', 'CredentialsSettings'),
-                'required' => true
+                'required' => true,
+                'class' => 'custom-html-class'
             ),
             array(
                 'col' => 8,
@@ -119,7 +123,8 @@ class CredentialsSettings extends AbstractSettings
                 'desc' => '',
                 'name' => 'EPAYCO_PRIVATE_KEY',
                 'label' => $this->module->l('PRIVATE_KEY', 'CredentialsSettings'),
-                'required' => true
+                'required' => true,
+                'class' => 'custom-html-class'
             ),
             array(
                 'type' => 'select',
@@ -136,6 +141,7 @@ class CredentialsSettings extends AbstractSettings
                     ),
                     'query' => $order_states,
                 ),
+                'class' => 'custom-html-class'
             )
         );
 

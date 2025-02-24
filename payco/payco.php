@@ -165,7 +165,8 @@ class Payco extends PaymentModule
         //add css to configuration page
         $this->context->controller->addCSS($this->_path . 'views/css/admin/ep-admin-settings.css');
         //add js to configuration page
-        $this->context->controller->addJS($this->_path . 'views/js/payco.js');
+        $this->context->controller->addJS($this->_path . 'views/js/epayco.js');
+        $this->context->controller->addJS($this->_path . 'views/js/admin/ep-admin-settings.min.js');
 
         $this->context->smarty->assign('module_dir', $this->_path);
 
@@ -262,7 +263,14 @@ class Payco extends PaymentModule
             'fields_value' => $values,
             'languages' => $this->context->controller->getLanguages(),
             'id_language' => $this->context->language->id,
+            'class' => 'custom-form-class',
         );
+
+        foreach ($form['input'] as &$input) {
+            if (!isset($input['class'])) {
+                $input['class'] = 'custom-input-class';
+            }
+        }
 
         return $helper->generateForm(array($form));
     }
