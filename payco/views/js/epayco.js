@@ -94,6 +94,7 @@
             const creditcard_status = mpStatusPaymentMethod("EPAYCO_CREDITCARD_CHECKOUT");
             const pse_status = mpStatusPaymentMethod("EPAYCO_PSE_CHECKOUT");
             const standard_status = mpStatusPaymentMethod("EPAYCO_STANDARD_CHECKOUT");
+            const daviplata_status = mpStatusPaymentMethod("EPAYCO_DAVIPLATA_CHECKOUT");
             const response = {
                 "success": true,
                 "data": [
@@ -110,19 +111,19 @@
                       "no": "Disabled"
                     }
                   },
-                 /* {
+                 {
                     "id": "woo-epayco-daviplata",
                     "title_gateway": "Daviplata",
                     "description": "Add the Daviplata payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
                     "title": "Daviplata",
-                    "enabled": "yes",
+                    "enabled": daviplata_status,
                     "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/DPA50.png",
-                    "link": "http://localhost:86/wordpress/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woo-epayco-daviplata",
+                    "link": "#daviplata_checkout",
                     "badge_translator": {
                       "yes": "Enabled",
                       "no": "Disabled"
                     }
-                  },*/
+                  },
                   {
                     "id": "epayco-creditcard",
                     "title_gateway": "Tarjetas de crédito",

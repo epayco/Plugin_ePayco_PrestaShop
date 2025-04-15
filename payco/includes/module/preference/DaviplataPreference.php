@@ -32,7 +32,7 @@ if (!defined('_PS_VERSION_')) {
 }
 require_once EP_ROOT_URL . '/includes/module/preference/AbstractPreference.php';
 
-class CreditcardPreference extends AbstractPreference
+class DaviplataPreference extends AbstractPreference
 {
     public function __construct()
     {
@@ -41,18 +41,17 @@ class CreditcardPreference extends AbstractPreference
 
     /**
      * @pararm $cart
-     * @param $creditcard_info
+     * @param $dp_info
      * @retrun bool|string
      * @throw Exception
      */
-    public function createPreference($cart, $creditcard_info)
+    public function createPreference($cart, $dp_info)
     {
         $customer = new Customer($cart->id_customer);
         if (!Validate::isLoadedObject($customer))
             Tools::redirect('index.php?controller=order&step=1');
-        $addressdelivery = new Address((int)($cart->id_address_delivery));
         $paymentData = $this->createSessionPayment();
-        $orderData = array_merge($paymentData, $creditcard_info);
+        $orderData = array_merge($paymentData, $dp_info);
         if ($orderData) {
             $value = floatval($orderData['total_paid']);
             $valorBaseDevolucion = floatval($orderData['total_paid_tax_excl']);
@@ -87,45 +86,51 @@ class CreditcardPreference extends AbstractPreference
             $test = (bool)Configuration::get('EPAYCO_PROD_STATUS');
             if ($iva == 0) $valorBaseDevolucion = 0;
 
+            $order = new Order($extra2);
+            $uri = Context::getContext()->shop->getBaseURL(). $lang  . '/confirmacion-pedido';
+            $uri .= '?id_cart=' . $order->id_cart;
+            $uri .= '&key=' . $order->secure_key;
+            $uri .= '&id_order=' . $order->id;
+            $uri .= '&id_module=' . $this->module->id;
+            $cellphonetype = $orderData['cellphoneType'];
+            $cellphonetypeIn = explode("+", $cellphonetype)[1];
             $response = array(
-                "token_card" => $orderData["cardTokenId"],
-                "customer_id" => 'customer_id',
-                'bill' => $orderData['reference'],
-                "dues" => $orderData["installmet"],
+                'invoice' => $orderData['reference'],
                 //'id_order' => $this->module->currentOrder,
                 'value' => strval($value),
-                'tax_base' => strval($valorBaseDevolucion),
+                'taxBase' => strval($valorBaseDevolucion),
                 'tax' => strval($iva),
-                'url_response' => $p_url_response,
-                'url_confirmation' => $p_url_confirmation,
+                'taxIco' => '0',
+                "type_person" => "0",
+                'urlResponse' => $p_url_response,
+                'urlConfirmation' => $p_url_confirmation,
                 'email' => $orderData['email'],
                 'name' => $orderData['name'],
-                'last_name' => $orderData['name'],
-                'address' => strval($orderData['address']),
+                'lastName' => $orderData['name'],
+                'address' => $addressdelivery->address1 . " " . $addressdelivery->address2,
                 'city' => $addressdelivery->city,
-                'country' => $addressdelivery->country === "Colombia" ? "CO":"US",
-                "cell_phone" => $orderData['cellphone'],
-                "doc_type" => $orderData['documentType'],
-                "doc_number" =>  $orderData['document'],
+                'country' => "CO",
+                "indCountry" => $cellphonetypeIn,
+                "phone" => $orderData['cellphone'],
+                "docType" => $orderData['documentType'],
+                "document" =>  $orderData['document'],
                 'extra1' => strval($extra1),
                 'extra2' => strval($extra2),
                 'lang' => $lang,
                 'description' => $descripcion,
                 'currency' => $currency->iso_code,
-                'ip' =>$myIp,
-                "use_default_card_customer" => true,
+                //'ip' =>$myIp,
+                'ip' =>'186.97.212.162',
                 "testMode" => $test,
                 "extras_epayco"=>["extra5"=>"P19"],
-                'metodoconfirmacion'=> "POST"
+                'methodConfirmation'=> "POST"
             );
-            $charge = $this->epayco->charge->create($response);
-            $response = json_decode(json_encode($charge), true);
+            $dp = $this->epayco->daviplata->create($response);
+            $response = json_decode(json_encode($dp), true);
+
             if (is_array($response) && $response['success']) {
-                $ref_payco = $response['data']['refPayco']??$response['data']['ref_payco'];
-                if (in_array(strtolower($response['data']['estado']),["rechazada","fallida","cancelada","abandonada"])) {
-                    Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
-                }else{
-                    $order = new Order($extra2);
+                if (in_array(strtolower($response['data']['estado']),["pendiente","pending"])) {
+                    $ref_payco = $response['data']['refPayco']??$response['data']['ref_payco'];
                     $descuento = $order->total_discounts_tax_incl;
                     $params = http_build_query([
                         'refPayco' =>  $ref_payco,
@@ -164,22 +169,11 @@ class CreditcardPreference extends AbstractPreference
                     ];
                     $this->context->cookie->__set('redirect_epayco_message', json_encode($epaycoOrder));
                     $this->context->cookie->write();
-
-                    $uri = __PS_BASE_URI__ . 'index.php?controller=order-confirmation';
-                    $uri .= '&id_cart=' . $order->id_cart;
-                    $uri .= '&key=' . $order->secure_key;
-                    $uri .= '&id_order=' . $order->id;
-                    $uri .= '&id_module=' . $this->module->id;
-                    $uri .= '&ref_payco=' . $ref_payco;
-                    if (in_array(strtolower($response['data']['estado']),["aceptada","acepted"])) {
-                        $orderHistory = new OrderHistory();
-                        $orderHistory->id_order = (int)$order->id;
-                        $default_order_state = Configuration::get('EPAYCO_STANDARD_STATE_END_TRANSACTION');
-                        $orderHistory->changeIdOrderState((int)$default_order_state, (int)$order->id);
-                        $orderHistory->add();
-                    }
                     //redirect to order confirmation page
-                    Tools::redirect($uri);
+                    $response_urlPayment = 'https://vtex.epayco.io/daviplata?refPayco='.$ref_payco;
+                    Tools::redirect($response_urlPayment);
+                }else{
+                    Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
                 }
             }else{
                 Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');

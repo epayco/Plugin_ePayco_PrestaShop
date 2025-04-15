@@ -33,7 +33,7 @@
                                 title="{l s='Offline Methods in Test Mode' mod='payco'}"
                                 description="You can test the flow to generate an invoice, but you cannot finalize the payment."
                                 link-text="See the rules for the test mode."
-                                link-src="">
+                                link-src="https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/warning.png">
                         </test-mode-epayco>
                     {/if}
                 </div>
@@ -146,12 +146,3 @@
     </div>
 </form>
 
-<script type="text/javascript">
-    window.onload = loadTicket();
-    function loadTicket() {
-        var site_id = '{$site_id|escape:"javascript":"UTF-8"}';
-        //mpValidateSellerInfo(site_id, 'six');
-        //validateDocumentInputs();
-        //mercadoPagoFormHandlerTicket();
-    }
-</script>

@@ -54,10 +54,10 @@
                             });
                             handlerNew.openNew()
                         }else{
-                            window.location.href = 'pedido';
+                           // window.location.href = 'pedido';
                         }
                     }else{
-                        window.location.href = 'pedido';
+                       // window.location.href = 'pedido';
                     }
                 })
                 .catch(function(error) {

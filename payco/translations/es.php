@@ -11,7 +11,7 @@ $_MODULE['<{payco}prestashop>psecheckoutepayco_12ba9fd7c3e020274a1501c1b5814c68'
 $_MODULE['<{payco}prestashop>psecheckoutepayco_aa71a8f207588e0d0981a0dcf0732263'] = 'Persona jurídica';
 $_MODULE['<{payco}prestashop>abstractepaycocheckout_a1fa27779242b4902f7ae3bdd5c6d508'] = 'Tipo';
 $_MODULE['<{payco}prestashop>abstractpreference_e2b7dec8fa4b498156dfee6e4c84b156'] = 'Este método de pago no está disponible.';
-$_MODULE['<{payco}prestashop>abstractsettings_c9cc8cce247e49bae79f15173ce97354'] = 'Ahorrar';
+$_MODULE['<{payco}prestashop>abstractsettings_c9cc8cce247e49bae79f15173ce97354'] = 'Guardar';
 $_MODULE['<{payco}prestashop>abstractsettings_3ab680f48073ee8546504b763ca75e5b'] = 'credenciales no válidas';
 $_MODULE['<{payco}prestashop>abstractsettings_4d9ac946f92f7211e40671513c72fd09'] = 'La configuración se guardó correctamente.';
 $_MODULE['<{payco}prestashop>abstractsettings_36ac045205b16f9bb7cd8bb5641e839d'] = 'El momento de guardar las preferencias de pago';

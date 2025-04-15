@@ -9658,7 +9658,7 @@
 
             createImage() {
                 const t = document.createElement("img");
-                return t.src = this.getAttribute("icon-src"),
+                return t.src = this.getAttribute("link-src"),
                     t.alt = 'warning',
                     t.style.height="25px",
                     t

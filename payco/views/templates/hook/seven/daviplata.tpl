@@ -23,11 +23,11 @@
 * International Registered Trademark & Property of PrestaShop SA
 *}
 
-<form id="ep_pse_checkout"  method="post" action="{$redirect|escape:'htmlall':'UTF-8'}">
+<form id="ep_daviplata_checkout" action="{$redirect|escape:'htmlall':'UTF-8'}" method="post" class="mp-custom-checkout-six">
     <div class='ep-checkout-container'>
-        <div class="ep-checkout-pse-container" style="max-width: 452px;margin: auto;">
-            <div class="ep-checkout-pse-content">
-                <div class="ep-checkout-pse-test-mode">
+        <div class="ep-checkout-ticket-container" style="max-width: 452px;margin: auto;">
+            <div class="ep-checkout-ticket-content">
+                <div class="ep-checkout-ticket-test-mode">
                     {if $payment_method_info["test"]}
                         <test-mode-epayco
                                 title="{l s='Offline Methods in Test Mode' mod='payco'}"
@@ -44,52 +44,40 @@
                     <p style="margin-left: 10px; color:black; font-weight: bold !important;">{l s='Customer data' mod='payco'}</p>
                 </div>
                 <div id="ep-custom-checkout-form-container" style="margin: 10px;">
-                    <div class="ep-checkout-pse-input-document">
+                    <div class="ep-checkout-ticket-input-document">
                         <input-name-epayco
                                 labelMessage="{l s='Name' mod='payco'}"
                                 helperMessage="{l s='Invalid name' mod='payco'}"
                                 placeholder="Ex: John Doe"
-                                inputName='epayco_pse[name]'
-                                flagError='epayco_pse[nameError]'
+                                inputName='epayco_daviplata[name]'
+                                flagError='epayco_daviplata[nameError]'
                                 validate=true
                                 hiddenId="hidden-name-ticket"
                         >
                         </input-name-epayco>
                     </div>
-                    <div class='ep-checkout-pse-input-cellphone'>
-                        <input-address-epayco
-                                labelMessage="{l s='Address' mod='payco'}"
-                                helperMessage="{l s='Invalid address' mod='payco'}"
-                                placeholder="Street 123"
-                                inputName='epayco_pse[address]'
-                                flagError='epayco_pse[addressError]'
-                                validate=true
-                                hiddenId= "hidden-adress-pse"
-                        >
-                        </input-address-epayco>
-                    </div>
-                    <div class="ep-checkout-pse-input-document">
+                    <div class="ep-checkout-ticket-input-document">
                         <input-email-epayco
                                 labelMessage="{l s='Email' mod='payco'}"
                                 helperMessage="{l s='Invalid email' mod='payco'}"
                                 placeholder="jonhdoe@example.com"
-                                inputName='epayco_pse[email]'
-                                flagError='epayco_pse[emailError]'
+                                inputName='epayco_daviplata[email]'
+                                flagError='epayco_daviplata[emailError]'
                                 validate=true
-                                hiddenId= "hidden-email-pse"
+                                hiddenId= "hidden-email-ticket"
                         >
                         </input-email-epayco>
                     </div>
-                    <div class='ep-checkout-pse-input-cellphone'>
+                    <div class='ep-checkout-ticket-input-cellphone'>
                         <input-cellphone-epayco
                                 label-message="{l s='Cellphone' mod='payco'}"
                                 helper-message="{l s='Invalid Cellphone' mod='payco'}"
-                                input-name='epayco_pse[cellphone]'
+                                input-name-epayco='epayco_daviplata[cellphone]'
                                 hidden-id="cellphoneType"
                                 input-data-checkout="cellphone_number"
                                 select-id="cellphoneType"
                                 input-id="cellphoneTypeNumber"
-                                select-name="epayco_pse[cellphoneType]"
+                                select-name="epayco_daviplata[cellphoneType]"
                                 select-data-checkout="cellphone_type"
                                 flag-error="cellphoneTypeError"
                                 validate=true
@@ -97,64 +85,28 @@
                         >
                         </input-cellphone-epayco>
                     </div>
-                    <div class="ep-checkout-pse-person">
-                        <input-select-epayco
-                                name="epayco_pse[person_type]"
-                                label="{l s='Select a type of person' mod='payco'}"
-                                optional="false"
-                                options="{$payment_method_info["persons_types"]}"
-                        >
-                        </input-select-epayco>
-                    </div>
-                    <div class="ep-checkout-pse-input-document">
+                    <div class="ep-checkout-ticket-input-document">
                         <input-document-epayco
                                 label-message="{l s='Document' mod='payco'}"
                                 helper-message="{l s='Invalid Document' mod='payco'}"
-                                input-name='epayco_pse[document]'
+                                input-name-epayco='epayco_daviplata[document]'
                                 hidden-id="documentType"
                                 input-data-checkout="document_number"
                                 select-id="documentType"
                                 input-id="documentTypeNumber"
-                                select-name="epayco_pse[documentType]"
+                                select-name="epayco_daviplata[documentType]"
                                 select-data-checkout=document_type"
                                 flag-error="documentTypeError"
-                                documents='{$payment_method_info["documents"]}'
+                                documents='{$documents}'
                                 validate=true
                                 placeholder="0000000000"
                         >
                         </input-document-epayco>
                     </div>
-                    <div class="ep-checkout-pse-input-document">
-                        <input-country-epayco
-                                label-message="{l s='Country' mod='payco'}"
-                                helper-message="{l s='Invalid City' mod='payco'}"
-                                input-name='epayco_pse[country]'
-                                hidden-id="countryType"
-                                input-data-checkout="country_number"
-                                select-id="countryType"
-                                input-id="countryTypeNumber"
-                                select-name="epayco_pse[countryType]"
-                                select-data-checkout="doc_type"
-                                flag-error="countryTypeError"
-                                validate=true
-                                placeholder="{l s='City' mod='payco'}"
-                        >
-                    </div>
-                    <div class="ep-checkout-pse-input-document">
-                        <input-banks-epayco
-                                name="epayco_pse[bank]"
-                                label="{l s='Banks' mod='payco'}"
-                                optional="false"
-                                options="{$payment_method_info["banks"]}"
-                                hidden-id= "hidden-financial-pse"
-                                helper-message="{l s='Invalid Banks' mod='payco'}"
-                                default-option="">
-                        </input-banks-epayco>
-                    </div>
+
                 </div>
                 <!-- NOT DELETE LOADING-->
                 <div id="ep-box-loading"></div>
-
             </div>
             <div style="margin: 14px !important;">
                 <terms-and-conditions
@@ -178,4 +130,5 @@
 
 <script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/front.js?v={$version|escape:'htmlall':'UTF-8'}"/>
-<script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/checkouts/pse/ep-pse-checkout.js?v={$version|escape:'htmlall':'UTF-8'}"/>
+<script type="text/javascript" src="{$module_dir|escape:'htmlall':'UTF-8'}views/js/checkouts/daviplata/ep-daviplata-checkout.js?v={$version|escape:'htmlall':'UTF-8'}"/>
+

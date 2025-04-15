@@ -33,7 +33,7 @@
                                 title="{l s='Offline Methods in Test Mode' mod='payco'}"
                                 description="You can test the flow to generate an invoice, but you cannot finalize the payment."
                                 link-text="See the rules for the test mode."
-                                link-src="">
+                                link-src="https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/warning.png">
                         </test-mode-epayco>
                         <div class="ep-test-mode-credit-card">
                             <img src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/icon-info.png" style="height: 25px" >

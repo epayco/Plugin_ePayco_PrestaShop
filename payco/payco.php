@@ -95,6 +95,7 @@ class Payco extends PaymentModule
         $this->pseCheckout = new PseCheckoutEpayco($this->_context);
         $this->creditcardCheckout = new CreditcardEpaycoCheckout($this->name,$this->_context, $this->path);
         $this->ticketCheckout = new TicketEpaycoCheckout($this->name,$this->_context, $this->path);
+        $this->daviplataCheckout = new DaviplataEpaycoCheckout($this->name,$this->_context, $this->path);
     }
 
     /**
@@ -105,6 +106,7 @@ class Payco extends PaymentModule
     public function loadFiles()
     {
         include_once EP_ROOT_URL . '/includes/module/checkouts/StandardCheckoutEpayco.php';
+        include_once EP_ROOT_URL . '/includes/module/checkouts/DaviplataEpaycoCheckout.php';
         include_once EP_ROOT_URL . '/includes/module/checkouts/PseCheckoutEpayco.php';
         include_once EP_ROOT_URL . '/includes/module/checkouts/CreditcardEpaycoCheckout.php';
         include_once EP_ROOT_URL . '/includes/module/checkouts/TicketEpaycoCheckout.php';
@@ -183,6 +185,8 @@ class Payco extends PaymentModule
         $creditcard_form = $this->renderForm($creditcard->submit, $creditcard->values, $creditcard->form);
         $ticket = new TicketSettings();
         $ticket_form = $this->renderForm($ticket->submit, $ticket->values, $ticket->form);
+        $daviplata = new DaviplataSettings();
+        $daviplata_form = $this->renderForm($daviplata->submit, $daviplata->values, $daviplata->form);
         //variables for admin configuration
         $public_key = Configuration::get('EPAYCO_PUBLIC_KEY');
         $private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
@@ -211,7 +215,8 @@ class Payco extends PaymentModule
                 'standard_form' => $standard_form,
                 'creditcard_form' => $creditcard_form,
                 'pse_form' => $pse_form,
-                'ticket_form' => $ticket_form
+                'ticket_form' => $ticket_form,
+                'daviplata_form' => $daviplata_form
             )
         )->fetch($this->local_path . 'views/templates/admin/configure.tpl');
 
@@ -229,6 +234,7 @@ class Payco extends PaymentModule
     {
         include_once EP_ROOT_URL . '/includes/module/settings/CreditcardSettings.php';
         include_once EP_ROOT_URL . '/includes/module/settings/StandardSettings.php';
+        include_once EP_ROOT_URL . '/includes/module/settings/DaviplataSettings.php';
         include_once EP_ROOT_URL . '/includes/module/settings/PseSettings.php';
         include_once EP_ROOT_URL . '/includes/module/settings/CredentialsSettings.php';
         include_once EP_ROOT_URL . '/includes/module/settings/TicketSettings.php';
@@ -266,11 +272,11 @@ class Payco extends PaymentModule
             'class' => 'custom-form-class',
         );
 
-        foreach ($form['input'] as &$input) {
+        /*foreach ($form['input'] as &$input) {
             if (!isset($input['class'])) {
                 $input['class'] = 'custom-input-class';
             }
-        }
+        }*/
 
         return $helper->generateForm(array($form));
     }
@@ -338,6 +344,7 @@ class Payco extends PaymentModule
 
         $checkouts = array(
             'EPAYCO_STANDARD_CHECKOUT' => 'getStandardCheckout',
+            'EPAYCO_DAVIPLATA_CHECKOUT' => 'getDaviplataCheckout',
             'EPAYCO_CREDITCARD_CHECKOUT' => 'getCreditcardCheckout',
             'EPAYCO_TICKET_CHECKOUT' => 'getTicketCheckout',
             'EPAYCO_PSE_CHECKOUT' => 'getPseCheckout',
@@ -394,6 +401,31 @@ class Payco extends PaymentModule
                 ->setLogo(_MODULE_DIR_ . 'payco/views/img/logo.png');
 
             return $standardCheckout;
+        }
+    }
+
+    /**
+     * @param  $cart
+     * @param  $version
+     * @return PaymentOption | string
+     */
+    public function getDaviplataCheckout($cart, $version)
+    {
+        if ($version == self::PRESTA16) {
+            $frontInformations = $this->daviplataCheckout->getDaviplataCheckoutPS16($cart);
+            $this->context->smarty->assign($frontInformations);
+            return $this->display(__FILE__, 'views/templates/hook/six/daviplata.tpl');
+        } else {
+            $title = Configuration::get('EPAYCO_DAVIPLATA_TITLE')??'pago con payco';
+            $frontInformations = $this->daviplataCheckout->getDaviplataCheckoutPS17($cart);
+            $infoTemplate = $this->context->smarty->assign($frontInformations)
+                ->fetch('module:payco/views/templates/hook/seven/daviplata.tpl');
+            $daviplataCheckout = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
+            $daviplataCheckout->setForm($infoTemplate)
+                ->setCallToActionText($this->l($title))
+                ->setLogo(_MODULE_DIR_ . 'payco/views/img/icon-daviplata.png');
+
+            return $daviplataCheckout;
         }
     }
 

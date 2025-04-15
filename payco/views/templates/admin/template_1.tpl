@@ -83,6 +83,7 @@
         <div class="tab-content">
             <div class="tab-pane" id="standard_checkout">{html_entity_decode($standard_form|escape:'html':'UTF-8')}</div>
             <div class="tab-pane" id="creditcard_checkout">{html_entity_decode($creditcard_form|escape:'html':'UTF-8')}</div>
+            <div class="tab-pane" id="daviplata_checkout">{html_entity_decode($daviplata_form|escape:'html':'UTF-8')}</div>
             <div class="tab-pane" id="pse_checkout">{html_entity_decode($pse_form|escape:'html':'UTF-8')}</div>
             <div class="tab-pane" id="ticket_checkout">{html_entity_decode($ticket_form|escape:'html':'UTF-8')}</div>
         </div>
