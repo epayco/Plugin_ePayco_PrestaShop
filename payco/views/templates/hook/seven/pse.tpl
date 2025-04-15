@@ -29,12 +29,12 @@
             <div class="ep-checkout-pse-content">
                 <div class="ep-checkout-pse-test-mode">
                     {if $payment_method_info["test"]}
-                        <test-mode
+                        <test-mode-epayco
                                 title="{l s='Offline Methods in Test Mode' mod='payco'}"
                                 description="You can test the flow to generate an invoice, but you cannot finalize the payment."
                                 link-text="See the rules for the test mode."
                                 link-src="">
-                        </test-mode>
+                        </test-mode-epayco>
                     {/if}
                 </div>
                 <div style="margin-top: 10px; font-weight: bold; display: flex; align-items: center;">
@@ -45,7 +45,7 @@
                 </div>
                 <div id="ep-custom-checkout-form-container" style="margin: 10px;">
                     <div class="ep-checkout-pse-input-document">
-                        <input-name
+                        <input-name-epayco
                                 labelMessage="{l s='Name' mod='payco'}"
                                 helperMessage="{l s='Invalid name' mod='payco'}"
                                 placeholder="Ex: John Doe"
@@ -54,10 +54,10 @@
                                 validate=true
                                 hiddenId="hidden-name-ticket"
                         >
-                        </input-name>
+                        </input-name-epayco>
                     </div>
                     <div class='ep-checkout-pse-input-cellphone'>
-                        <input-address
+                        <input-address-epayco
                                 labelMessage="{l s='Address' mod='payco'}"
                                 helperMessage="{l s='Invalid address' mod='payco'}"
                                 placeholder="Street 123"
@@ -66,10 +66,10 @@
                                 validate=true
                                 hiddenId= "hidden-adress-pse"
                         >
-                        </input-address>
+                        </input-address-epayco>
                     </div>
                     <div class="ep-checkout-pse-input-document">
-                        <input-email
+                        <input-email-epayco
                                 labelMessage="{l s='Email' mod='payco'}"
                                 helperMessage="{l s='Invalid email' mod='payco'}"
                                 placeholder="jonhdoe@example.com"
@@ -78,10 +78,10 @@
                                 validate=true
                                 hiddenId= "hidden-email-pse"
                         >
-                        </input-email>
+                        </input-email-epayco>
                     </div>
                     <div class='ep-checkout-pse-input-cellphone'>
-                        <input-cellphone
+                        <input-cellphone-epayco
                                 label-message="{l s='Cellphone' mod='payco'}"
                                 helper-message="{l s='Invalid Cellphone' mod='payco'}"
                                 input-name='epayco_pse[cellphone]'
@@ -95,19 +95,19 @@
                                 validate=true
                                 placeholder="0000000000"
                         >
-                        </input-cellphone>
+                        </input-cellphone-epayco>
                     </div>
                     <div class="ep-checkout-pse-person">
-                        <input-select
+                        <input-select-epayco
                                 name="epayco_pse[person_type]"
                                 label="{l s='Select a type of person' mod='payco'}"
                                 optional="false"
                                 options="{$payment_method_info["persons_types"]}"
                         >
-                        </input-select>
+                        </input-select-epayco>
                     </div>
                     <div class="ep-checkout-pse-input-document">
-                        <input-document
+                        <input-document-epayco
                                 label-message="{l s='Document' mod='payco'}"
                                 helper-message="{l s='Invalid Document' mod='payco'}"
                                 input-name='epayco_pse[document]'
@@ -122,10 +122,10 @@
                                 validate=true
                                 placeholder="0000000000"
                         >
-                        </input-document>
+                        </input-document-epayco>
                     </div>
                     <div class="ep-checkout-pse-input-document">
-                        <input-country
+                        <input-country-epayco
                                 label-message="{l s='Country' mod='payco'}"
                                 helper-message="{l s='Invalid City' mod='payco'}"
                                 input-name='epayco_pse[country]'
@@ -141,7 +141,7 @@
                         >
                     </div>
                     <div class="ep-checkout-pse-input-document">
-                        <input-banks
+                        <input-banks-epayco
                                 name="epayco_pse[bank]"
                                 label="{l s='Banks' mod='payco'}"
                                 optional="false"
@@ -149,7 +149,7 @@
                                 hidden-id= "hidden-financial-pse"
                                 helper-message="{l s='Invalid Banks' mod='payco'}"
                                 default-option="">
-                        </input-banks>
+                        </input-banks-epayco>
                     </div>
                 </div>
                 <!-- NOT DELETE LOADING-->

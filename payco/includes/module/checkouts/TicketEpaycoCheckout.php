@@ -98,67 +98,67 @@ class TicketEpaycoCheckout extends AbstractEpaycoCheckout
                 'id' => 'efecty',
                 'name'              => 'Efecty',
                 'status'            => 'active',
-                'thumbnail'         => 'https://secure.epayco.co/img/efecty.png'
+                'thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Efecty.png'
             ],
             [
                 'id' => 'gana',
                 'name'              => 'Gana',
                 'status'            => 'active',
-                'thumbnail'         => 'https://secure.epayco.co/img/gana_no_red.png'
+                'thumbnail'         => _MODULE_DIR_ . 'payco/views/img/gana.png'
             ],
             [
                 'id' => 'puntored',
                 'name'              => 'Puntored',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/puntored.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Puntored.png'
             ],
             [
                 'id' => 'redservi',
                 'name'              => 'Redservi',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/redservi.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Redservi.png'
             ],
             [
                 'id' => 'sured',
                 'name'              => 'Sured',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/sured.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Sured.png'
             ],
             [
                 'id' => 'suchance',
                 'name'              => 'Suchance',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/suchance.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Suchance.png'
             ],
             [
                 'id' => 'laperla',
                 'name'              => 'Laperla',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/laperla.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Laperla.png'
             ],
             [
                 'id' => 'jer',
                 'name'              => 'Jer',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/jer.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Jer.png'
             ],
             [
                 'id' => 'pagatodo',
                 'name'              => 'Pagatodo',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/pagatodo.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Pagatodo.png'
             ],
             [
                 'id' => 'acertemos',
                 'name'              => 'Acertemos',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/acertemos.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Acertemos.png'
             ],
             [
                 'id' => 'ganagana',
                 'name'              => 'Ganagana',
                 'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/ganagana.jpg'
+                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Ganagana.png'
             ],
         ];
 

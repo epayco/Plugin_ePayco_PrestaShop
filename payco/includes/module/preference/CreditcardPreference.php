@@ -50,6 +50,7 @@ class CreditcardPreference extends AbstractPreference
         $customer = new Customer($cart->id_customer);
         if (!Validate::isLoadedObject($customer))
             Tools::redirect('index.php?controller=order&step=1');
+        $addressdelivery = new Address((int)($cart->id_address_delivery));
         $paymentData = $this->createSessionPayment();
         $orderData = array_merge($paymentData, $creditcard_info);
         if ($orderData) {
@@ -101,8 +102,8 @@ class CreditcardPreference extends AbstractPreference
                 'name' => $orderData['name'],
                 'last_name' => $orderData['name'],
                 'address' => strval($orderData['address']),
-                'city' => strval($orderData['country']),
-                'country' => strval($orderData['countryType']),
+                'city' => $addressdelivery->city,
+                'country' => $addressdelivery->country === "Colombia" ? "CO":"US",
                 "cell_phone" => $orderData['cellphone'],
                 "doc_type" => $orderData['documentType'],
                 "doc_number" =>  $orderData['document'],

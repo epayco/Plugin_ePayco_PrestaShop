@@ -29,12 +29,12 @@
             <div class="ep-checkout-ticket-content">
                 <div class="ep-checkout-ticket-test-mode">
                     {if $payment_method_info["test"]}
-                        <test-mode
+                        <test-mode-epayco
                                 title="{l s='Offline Methods in Test Mode' mod='payco'}"
                                 description="You can test the flow to generate an invoice, but you cannot finalize the payment."
                                 link-text="See the rules for the test mode."
                                 link-src="">
-                        </test-mode>
+                        </test-mode-epayco>
                     {/if}
                 </div>
                 <div style="margin-top: 10px; font-weight: bold; display: flex; align-items: center;">
@@ -45,7 +45,7 @@
                 </div>
                 <div id="ep-custom-checkout-form-container" style="margin: 10px;">
                     <div class="ep-checkout-ticket-input-document">
-                        <input-name
+                        <input-name-epayco
                                 labelMessage="{l s='Name' mod='payco'}"
                                 helperMessage="{l s='Invalid name' mod='payco'}"
                                 placeholder="Ex: John Doe"
@@ -54,10 +54,10 @@
                                 validate=true
                                 hiddenId="hidden-name-ticket"
                         >
-                        </input-name>
+                        </input-name-epayco>
                     </div>
                     <div class="ep-checkout-ticket-input-document">
-                        <input-email
+                        <input-email-epayco
                                 labelMessage="{l s='Email' mod='payco'}"
                                 helperMessage="{l s='Invalid email' mod='payco'}"
                                 placeholder="jonhdoe@example.com"
@@ -66,13 +66,13 @@
                                 validate=true
                                 hiddenId= "hidden-email-ticket"
                         >
-                        </input-email>
+                        </input-email-epayco>
                     </div>
                     <div class='ep-checkout-ticket-input-cellphone'>
-                        <input-cellphone
+                        <input-cellphone-epayco
                                 label-message="{l s='Cellphone' mod='payco'}"
                                 helper-message="{l s='Invalid Cellphone' mod='payco'}"
-                                input-name='epayco_ticket[cellphone]'
+                                input-name-epayco='epayco_ticket[cellphone]'
                                 hidden-id="cellphoneType"
                                 input-data-checkout="cellphone_number"
                                 select-id="cellphoneType"
@@ -83,13 +83,13 @@
                                 validate=true
                                 placeholder="0000000000"
                         >
-                        </input-cellphone>
+                        </input-cellphone-epayco>
                     </div>
                     <div class="ep-checkout-ticket-input-document">
-                        <input-document
+                        <input-document-epayco
                                 label-message="{l s='Document' mod='payco'}"
                                 helper-message="{l s='Invalid Document' mod='payco'}"
-                                input-name='epayco_ticket[document]'
+                                input-name-epayco='epayco_ticket[document]'
                                 hidden-id="documentType"
                                 input-data-checkout="document_number"
                                 select-id="documentType"
@@ -101,25 +101,25 @@
                                 validate=true
                                 placeholder="0000000000"
                         >
-                        </input-document>
+                        </input-document-epayco>
                     </div>
                     <div class="ep-checkout-ticket-payment-method">
                         <p class="ep-checkout-ticket-text" data-cy="checkout-ticket-text">
                             {l s='Select where you want to pay' mod='payco'}
                         </p>
 
-                        <input-table
+                        <input-table-epayco
                                 name="epayco_ticket[payment_method_id]"
                                 button-name="{l s='more options' mod='payco'}"
                             columns='{$ticket}'>
-                        </input-table>
+                        </input-table-epayco>
 
-                        <input-helper
+                        <input-helper-epayco
                                 isVisible=false
                                 message="{l s='Select a payment method' mod='payco'}"
                                 input-id="ep-payment-method-helper"
                                 id="payment-method-helper">
-                        </input-helper>
+                        </input-helper-epayco>
                     </div>
 
                 </div>

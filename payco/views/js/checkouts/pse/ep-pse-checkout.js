@@ -51,75 +51,75 @@
             //let pseContent = document.querySelector("form.checkout").getElementsByClassName("ep-checkout-pse-content")[0];
             const current =  document.querySelector(".ep-checkout-pse-container");
 
-            const pseContentName = current.querySelector('input-name').querySelector('input');
-            const nameHelpers =  current.querySelector('input-helper').querySelector("div");
+            const pseContentName = current.querySelector('input-name-epayco').querySelector('input');
+            const nameHelpers =  current.querySelector('input-helper-epayco').querySelector("div");
             const verifyName = (nameElement) => {
                 if (nameElement === '') {
-                    current.querySelector('input-name').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-name-epayco').querySelector("input").classList.add("ep-error");
                     nameHelpers.style.display = 'flex';
                 }
             }
 
-            const pseContentAddress = current.querySelector('input-address').querySelector('input');
-            const addressHelpers =  current.querySelector('input-address').querySelector("input-helper").querySelector("div");
+            const pseContentAddress = current.querySelector('input-address-epayco').querySelector('input');
+            const addressHelpers =  current.querySelector('input-address-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyAddress = (addressElement) => {
                 if (addressElement === '') {
-                    current.querySelector('input-address').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-address-epayco').querySelector("input").classList.add("ep-error");
                     addressHelpers.style.display = 'flex';
                 }
             }
 
-            const pseContentEmail = current.querySelector('input-email').querySelector('input');
-            const emailHelpers =  current.querySelector('input-email').querySelector("input-helper").querySelector("div");
+            const pseContentEmail = current.querySelector('input-email-epayco').querySelector('input');
+            const emailHelpers =  current.querySelector('input-email-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyEmail = (emailElement) => {
                 if (emailElement === '') {
-                    current.querySelector('input-email').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-email-epayco').querySelector("input").classList.add("ep-error");
                     emailHelpers.style.display = 'flex';
                 }
             }
 
-            const pseContentCellphone = current.querySelector('input-cellphone').querySelector('input');
-            const cellphoneHelpers =  current.querySelector('input-cellphone').querySelector("input-helper").querySelector("div");
+            const pseContentCellphone = current.querySelector('input-cellphone-epayco').querySelector('input');
+            const cellphoneHelpers =  current.querySelector('input-cellphone-epayco').querySelector("input-helper-epayco").querySelector("div");
             //const cellphoneType = document.getElementsByName('epayco_pse[cellphone]')[0].value;
             const cellphoneType = pseContentCellphone.parentElement.parentElement.querySelector(".ep-input-select-bank");
             const verifyCellphone = (cellphone) => {
                 if (cellphone === '') {
-                    current.querySelector('input-cellphone').querySelector("input").classList.add("ep-error");
-                    current.querySelector('input-cellphone').querySelector("select").parentElement.classList.add("ep-error");
+                    current.querySelector('input-cellphone-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-cellphone-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     cellphoneHelpers.style.display = 'flex';
                 }
             }
 
             const person_type_value = document.getElementsByName('epayco_pse[person_type]')[1];
             //const doc_type = document.getElementsByName('epayco_pse[documentType]')[0];
-            const doc_number_value = current.querySelector('input-document').querySelector('input');
+            const doc_number_value = current.querySelector('input-document-epayco').querySelector('input');
             const doc_type = doc_number_value.parentElement.parentElement.querySelector(".ep-input-select-bank");
-            const documentHelpers =  current.querySelector('input-document').querySelector("input-helper").querySelector("div");
+            const documentHelpers =  current.querySelector('input-document-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyDocument = (pseContentDocument) => {
                 if (pseContentDocument === '') {
-                    current.querySelector('input-document').querySelector("input").classList.add("ep-error");
-                    current.querySelector('input-document').querySelector("select").parentElement.classList.add("ep-error");
+                    current.querySelector('input-document-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-document-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     documentHelpers.style.display = 'flex';
                 }
             }
 
             const verifyTypeDocument= (pseContentTypeDocument) =>{
                 if (("Type" == pseContentTypeDocument ||"Tipo"  == pseContentTypeDocument)) {
-                    current.querySelector('input-document').querySelector("input").classList.add("ep-error");
-                    current.querySelector('input-document').querySelector("select").parentElement.classList.add("ep-error");
+                    current.querySelector('input-document-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-document-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     documentHelpers.style.display = 'flex';
                 }
             }
 
             //const pseContentCountry = document.getElementsByName('epayco_pse[country]')[0];
-            const pseContentCountry = current.querySelector('input-country').querySelector('input');
+            const pseContentCountry = current.querySelector('input-country-epayco').querySelector('input');
             const countryType = pseContentCountry.parentElement.parentElement.querySelector(".ep-input-select-bank");
             //const countryType = document.getElementsByName('epayco_pse[countryType]')[0];
-            const countryHelpers =  current.querySelector('input-country').querySelector("input-helper").querySelector("div");
+            const countryHelpers =  current.querySelector('input-country-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyCountry = (pseContentCountry) => {
                 if (pseContentCountry === '') {
-                    current.querySelector('input-country').querySelector("input").classList.add("ep-error");
-                    current.querySelector('input-country').querySelector("select").parentElement.classList.add("ep-error");
+                    current.querySelector('input-country-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-country-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     countryHelpers.style.display = 'flex';
                 }
             }

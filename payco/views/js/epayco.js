@@ -103,7 +103,7 @@
                     "description": "Add the cash payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
                     "title": "Efectivo",
                     "enabled": ticket_status,
-                    "icon": "http://localhost:86/wordpress/wp-content/plugins/-woocommerce-epayco-api/assets/images/icons/ticket-botton.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/ticket-botton.png",
                     "link": "#ticket_checkout",
                     "badge_translator": {
                       "yes": "Enabled",
@@ -116,7 +116,7 @@
                     "description": "Add the Daviplata payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
                     "title": "Daviplata",
                     "enabled": "yes",
-                    "icon": "http://localhost:86/wordpress/wp-content/plugins/-woocommerce-epayco-api/assets/images/icons/DPA50.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/DPA50.png",
                     "link": "http://localhost:86/wordpress/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woo-epayco-daviplata",
                     "badge_translator": {
                       "yes": "Enabled",
@@ -129,7 +129,7 @@
                     "description": "Accept fast and secure payments directly from your store using credit and debit cards from any bank. No redirects, ensuring a seamless shopping experience.  (Visa, Mastercard, Amex & Dinners)",
                     "title": "Tarjetas de crédito",
                     "enabled": creditcard_status,
-                    "icon": "http://localhost:86/wordpress/wp-content/plugins/-woocommerce-epayco-api/assets/images/icons/credit-card-botton.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/credit-card-botton.png",
                     "link": "#creditcard_checkout",
                     "badge_translator": {
                       "yes": "Enabled",
@@ -142,7 +142,7 @@
                     "description": "Let your customers pay with direct bank transfers from any Colombian bank, all without leaving your online store. Secure, fast, and interruption-free.",
                     "title": "Pse por ePayco",
                     "enabled": pse_status,
-                    "icon": "http://localhost:86/wordpress/wp-content/plugins/-woocommerce-epayco-api/assets/images/icons/pse-botton.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/pse-botton.png",
                     "link": "#pse_checkout",
                     "badge_translator": {
                       "yes": "Enabled",
@@ -155,7 +155,7 @@
                     "description": "Offer your customers a complete payment experience with multiple options: cards, bank transfers, digital wallets, and cash. All in one secure and easy-to-use platform!",
                     "title": "Pago por Internet",
                     "enabled":standard_status,
-                    "icon": "http://localhost:86/wordpress/wp-content/plugins/-woocommerce-epayco-api/assets/images/icons/botoncheckout.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/botoncheckout.png",
                     "link": "#standard_checkout",
                     "badge_translator": {
                       "yes": "Enabled",
