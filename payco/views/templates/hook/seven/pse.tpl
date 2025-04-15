@@ -84,7 +84,7 @@
                         <input-cellphone-epayco
                                 label-message="{l s='Cellphone' mod='payco'}"
                                 helper-message="{l s='Invalid Cellphone' mod='payco'}"
-                                input-name='epayco_pse[cellphone]'
+                                input-name-epayco='epayco_pse[cellphone]'
                                 hidden-id="cellphoneType"
                                 input-data-checkout="cellphone_number"
                                 select-id="cellphoneType"
@@ -110,7 +110,7 @@
                         <input-document-epayco
                                 label-message="{l s='Document' mod='payco'}"
                                 helper-message="{l s='Invalid Document' mod='payco'}"
-                                input-name='epayco_pse[document]'
+                                input-name-epayco='epayco_pse[document]'
                                 hidden-id="documentType"
                                 input-data-checkout="document_number"
                                 select-id="documentType"
@@ -128,7 +128,7 @@
                         <input-country-epayco
                                 label-message="{l s='Country' mod='payco'}"
                                 helper-message="{l s='Invalid City' mod='payco'}"
-                                input-name='epayco_pse[country]'
+                                input-name-epayco='epayco_pse[country]'
                                 hidden-id="countryType"
                                 input-data-checkout="country_number"
                                 select-id="countryType"

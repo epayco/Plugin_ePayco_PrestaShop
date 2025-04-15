@@ -61,7 +61,7 @@ class CredentialsSettings extends AbstractSettings
             array(
                 'col' => 4,
                 'type' => 'switch',
-                'label' => $this->module->l('Test', 'CredentialsSettings'),
+                'label' => $this->module->l('Pruebas', 'CredentialsSettings'),
                 'name' => 'EPAYCO_PROD_STATUS',
                 'is_bool' => true,
                 'desc' => $this->module->l('Select "NO" only when you are ready to sell. ', 'CredentialsSettings') .
@@ -165,9 +165,9 @@ class CredentialsSettings extends AbstractSettings
         parent::postFormProcess();
 
         //activate checkout
-        if (Epayco::$form_alert != 'alert-danger') {
+        if (Payco::$form_alert != 'alert-danger') {
             //$access_token = $this->payco->token->create();
-            Epayco::$form_message = $this->module->l('Settings saved successfully. Now you can configure the module.', 'CredentialsSettings');
+            Payco::$form_message = $this->module->l('Settings saved successfully. Now you can configure the module.', 'CredentialsSettings');
 
             Configuration::updateValue('EPAYCO_CHECK_CREDENTIALS', true);
         }

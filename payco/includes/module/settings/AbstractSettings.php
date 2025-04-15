@@ -26,12 +26,13 @@
 * Don't forget to prefix your containers with your own identifier
 * to avoid any conflicts with others containers.
 */
-require_once EP_ROOT_URL . '/vendor/autoload.php';
+
+//require_once EP_ROOT_URL . '/vendor/epayco/epayco-php/src/Epayco.php';
 
 if (!defined('_PS_VERSION_')) {
     exit;
 }
-
+use Epayco as EpaycoSdk;
 class AbstractSettings
 {
     public $form;
@@ -50,7 +51,7 @@ class AbstractSettings
         $private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
         $test = (bool)Configuration::get('EPAYCO_PROD_STATUS');
         $lang = $this->module->_context->language->iso_code == 'es' ? 'es' : "en";
-        $this->epayco  = new Epayco\Epayco(array(
+        $this->epayco  = new EpaycoSdk\Epayco(array(
             "apiKey" => $public_key,
             "privateKey" => $private_key,
             "lenguage" => $lang,
@@ -115,12 +116,12 @@ class AbstractSettings
 
         if ($form_alert == false) {
             if(!$this->validateCredentials($this->values)){
-                Epayco::$form_alert = 'alert-danger';
-                Epayco::$form_message .= $this->module->l(
+                Payco::$form_alert = 'alert-danger';
+                Payco::$form_message .= $this->module->l(
                         'invalid credentials', 'AbstractSettings');
             }else{
-                Epayco::$form_alert = 'alert-success';
-                Epayco::$form_message = $this->module->l('Settings saved successfully.', 'AbstractSettings');
+                Payco::$form_alert = 'alert-success';
+                Payco::$form_message = $this->module->l('Settings saved successfully.', 'AbstractSettings');
             }
         }
     }
@@ -167,7 +168,7 @@ class AbstractSettings
                 'private_key' => $private_key,
             );
             $response           = $this->my_prestashop_post_request($uri, $headers, $body);
-            if(isset($response) && $response['token']){
+            if(isset($response) && isset($response['token'])){
                 return true;
             }else{
                 return false;

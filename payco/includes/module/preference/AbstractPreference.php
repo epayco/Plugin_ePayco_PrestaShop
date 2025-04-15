@@ -30,8 +30,8 @@
 if (!defined('_PS_VERSION_')) {
     exit;
 }
-require_once EP_ROOT_URL . '/vendor/autoload.php';
-
+//require_once EP_ROOT_URL . '/vendor/autoload.php';
+use Epayco as EpaycoSdk;
 abstract class AbstractPreference
 {
     public $module;
@@ -47,7 +47,7 @@ abstract class AbstractPreference
         $this->private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
         $test = (bool)Configuration::get('EPAYCO_PROD_STATUS');
         $lang = $this->module->_context->language->iso_code == 'es' ? 'es' : "en";
-        $this->epayco  = new Epayco\Epayco(array(
+        $this->epayco  = new EpaycoSdk\Epayco(array(
             "apiKey" => $this->public_key,
             "privateKey" => $this->private_key,
             "lenguage" => $lang,

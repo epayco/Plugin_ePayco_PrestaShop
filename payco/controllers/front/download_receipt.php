@@ -8,7 +8,7 @@ if (ini_get('zlib.output_compression')) {
     ini_set('zlib.output_compression', 'Off');
 }
 
-require_once EP_ROOT_URL . '/vendor/autoload.php';
+//require_once EP_ROOT_URL . '/vendor/autoload.php';
 
 use TCPDF;
 

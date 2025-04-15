@@ -55,7 +55,7 @@
             const nameHelpers =  current.querySelector('input-helper-epayco').querySelector("div");
             const verifyName = (nameElement) => {
                 if (nameElement === '') {
-                    current.querySelector('input-name-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-name-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     nameHelpers.style.display = 'flex';
                 }
             }
@@ -64,7 +64,7 @@
             const addressHelpers =  current.querySelector('input-address-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyAddress = (addressElement) => {
                 if (addressElement === '') {
-                    current.querySelector('input-address-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-address-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     addressHelpers.style.display = 'flex';
                 }
             }
@@ -73,7 +73,7 @@
             const emailHelpers =  current.querySelector('input-email-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyEmail = (emailElement) => {
                 if (emailElement === '') {
-                    current.querySelector('input-email-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-email-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     emailHelpers.style.display = 'flex';
                 }
             }
@@ -81,10 +81,10 @@
             const pseContentCellphone = current.querySelector('input-cellphone-epayco').querySelector('input');
             const cellphoneHelpers =  current.querySelector('input-cellphone-epayco').querySelector("input-helper-epayco").querySelector("div");
             //const cellphoneType = document.getElementsByName('epayco_pse[cellphone]')[0].value;
-            const cellphoneType = pseContentCellphone.parentElement.parentElement.querySelector(".ep-input-select-bank");
+            const cellphoneType = pseContentCellphone.parentElement.parentElement.querySelector(".ep-input-select-select");
             const verifyCellphone = (cellphone) => {
                 if (cellphone === '') {
-                    current.querySelector('input-cellphone-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-cellphone-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     current.querySelector('input-cellphone-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     cellphoneHelpers.style.display = 'flex';
                 }
@@ -93,11 +93,11 @@
             const person_type_value = document.getElementsByName('epayco_pse[person_type]')[1];
             //const doc_type = document.getElementsByName('epayco_pse[documentType]')[0];
             const doc_number_value = current.querySelector('input-document-epayco').querySelector('input');
-            const doc_type = doc_number_value.parentElement.parentElement.querySelector(".ep-input-select-bank");
+            const doc_type = doc_number_value.parentElement.parentElement.querySelector(".ep-input-select-select");
             const documentHelpers =  current.querySelector('input-document-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyDocument = (pseContentDocument) => {
                 if (pseContentDocument === '') {
-                    current.querySelector('input-document-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-document-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     current.querySelector('input-document-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     documentHelpers.style.display = 'flex';
                 }
@@ -105,7 +105,7 @@
 
             const verifyTypeDocument= (pseContentTypeDocument) =>{
                 if (("Type" == pseContentTypeDocument ||"Tipo"  == pseContentTypeDocument)) {
-                    current.querySelector('input-document-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-document-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     current.querySelector('input-document-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     documentHelpers.style.display = 'flex';
                 }
@@ -113,12 +113,12 @@
 
             //const pseContentCountry = document.getElementsByName('epayco_pse[country]')[0];
             const pseContentCountry = current.querySelector('input-country-epayco').querySelector('input');
-            const countryType = pseContentCountry.parentElement.parentElement.querySelector(".ep-input-select-bank");
+            const countryType =current.querySelector('input-country-epayco').parentElement.querySelector(".ep-input-select-select");
             //const countryType = document.getElementsByName('epayco_pse[countryType]')[0];
             const countryHelpers =  current.querySelector('input-country-epayco').querySelector("input-helper-epayco").querySelector("div");
             const verifyCountry = (pseContentCountry) => {
                 if (pseContentCountry === '') {
-                    current.querySelector('input-country-epayco').querySelector("input").classList.add("ep-error");
+                    current.querySelector('input-country-epayco').querySelector("input").parentElement.classList.add("ep-error");
                     current.querySelector('input-country-epayco').querySelector("select").parentElement.classList.add("ep-error");
                     countryHelpers.style.display = 'flex';
                 }
@@ -139,7 +139,8 @@
             });
 
             const bank = document.getElementsByName('epayco_pse[bank]')[1].value;
-            const bankHelper = document.getElementsByName('epayco_pse[bank]')[0].querySelector('input-helper').querySelector('div');
+            debugger
+            const bankHelper = document.querySelector("input-banks-epayco").querySelector("input-helper-epayco").querySelector("div");
             if("0" === bank){
                 m(bankHelper, "flex")
             }else{

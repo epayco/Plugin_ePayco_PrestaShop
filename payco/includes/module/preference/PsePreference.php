@@ -120,8 +120,7 @@ class PsePreference extends AbstractPreference
                 'lang' => $lang,
                 'description' => $descripcion,
                 'currency' => $currency->iso_code,
-                //'ip' =>$myIp,
-                'ip' =>'186.97.212.162',
+                'ip' =>$myIp,
                 "testMode" => $test,
                 "extras_epayco"=>["extra5"=>"P19"],
                 'methodConfirmation'=> "POST"
