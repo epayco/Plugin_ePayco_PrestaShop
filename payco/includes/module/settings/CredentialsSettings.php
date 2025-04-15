@@ -61,11 +61,11 @@ class CredentialsSettings extends AbstractSettings
             array(
                 'col' => 4,
                 'type' => 'switch',
-                'label' => $this->module->l('Production', 'CredentialsSettings'),
+                'label' => $this->module->l('Test', 'CredentialsSettings'),
                 'name' => 'EPAYCO_PROD_STATUS',
                 'is_bool' => true,
-                'desc' => $this->module->l('Select "YES" only when you are ready to sell. ', 'CredentialsSettings') .
-                    $this->module->l('Change to NO to activate the Sandbox ', 'CredentialsSettings') .
+                'desc' => $this->module->l('Select "NO" only when you are ready to sell. ', 'CredentialsSettings') .
+                    $this->module->l('Change to YES to activate the Sandbox ', 'CredentialsSettings') .
                     $this->module->l('test environment.', 'CredentialsSettings'),
                 'values' => array(
                     array(

@@ -3,7 +3,7 @@
 global $_MODULE;
 $_MODULE = array();
 $_MODULE['<{payco}prestashop>payco_d18a6de4fcbd9c54c8d875e7c715567b'] = 'ePayco';
-$_MODULE['<{payco}prestashop>payco_b9a2e0f33da43f952a816aa78f78ee2e'] = 'Customize the payment experience of your customers in your online store.';
+$_MODULE['<{payco}prestashop>payco_b9a2e0f33da43f952a816aa78f78ee2e'] = 'Personaliza la experiencia de pago de tus clientes en tu tienda online.';
 $_MODULE['<{payco}prestashop>payco_0f379daaee21894a7c6453950658fe8b'] = '¿Está seguro de que desea desinstalar el módulo?';
 $_MODULE['<{payco}prestashop>payco_a88f84d8cb58f8230240e1665058c7ff'] = 'Tienes que habilitar la extensión cURL.';
 $_MODULE['<{payco}prestashop>payco_d4423ad419d2bf8911d67aae2710b2bf'] = 'en su servidor para instalar este módulo.';
@@ -63,9 +63,9 @@ $_MODULE['<{payco}prestashop>standardsettings_5aa23b525e71e74a8f1738bdbd75c51c']
 $_MODULE['<{payco}prestashop>standardsettings_6a02c0cb3d450c1e23157b4ef4155a50'] = 'formulario sin salir de tu tienda. Si lo desactivas,';
 $_MODULE['<{payco}prestashop>standardsettings_ae47f9266c75b0b9cf904ce182f9b510'] = 'serán redirigidos a otra página.';
 $_MODULE['<{payco}prestashop>credentialssettings_2daf1cb573c2c61422faf64610cf9402'] = 'redenciales';
-$_MODULE['<{payco}prestashop>credentialssettings_756d97bb256b8580d4d71ee0c547804e'] = 'Producción';
-$_MODULE['<{payco}prestashop>credentialssettings_ebc4608a47aa08cb533d928e0259f1df'] = 'Seleccione \"SÍ\" sólo cuando esté listo para vender.';
-$_MODULE['<{payco}prestashop>credentialssettings_6087b8439a7036bff644affc8784da4b'] = 'Cambie a NO para activar entorno de prueba.';
+$_MODULE['<{payco}prestashop>credentialssettings_756d97bb256b8580d4d71ee0c547804e'] = 'Pruebas';
+$_MODULE['<{payco}prestashop>credentialssettings_ebc4608a47aa08cb533d928e0259f1df'] = 'Seleccione \"NO\" sólo cuando esté listo para vender.';
+$_MODULE['<{payco}prestashop>credentialssettings_6087b8439a7036bff644affc8784da4b'] = 'Cambie a SI para activar entorno de prueba.';
 $_MODULE['<{payco}prestashop>credentialssettings_3bc591c82367247890499e4b021a933e'] = 'entorno de prueba.';
 $_MODULE['<{payco}prestashop>credentialssettings_93cba07454f06a4a960172bbd6e2a435'] = 'Si';
 $_MODULE['<{payco}prestashop>credentialssettings_bafd7322c6e97d25b6299b5d6fe8920b'] = 'No';
