@@ -60,24 +60,24 @@ class DaviplataSettings extends AbstractSettings
                 'label' => $this->module->l('TITLE', 'DaviplataSettings'),
                 'name' => 'EPAYCO_DAVIPLATA_TITLE',
                 'required' => true,
-                'desc' => $this->module->l('Payment title.', 'DaviplataSettings'),
+                'desc' => $this->module->l('Título de pago', 'DaviplataSettings'),
             ),
             array(
                 'type' => 'switch',
                 'label' => $this->module->l('Activate checkout', 'DaviplataSettings'),
                 'name' => 'EPAYCO_DAVIPLATA_CHECKOUT',
-                'desc' => $this->module->l('Activate the Daviplata experience at the checkout of your store.', 'DaviplataSettings'),
+                'desc' => $this->module->l('Activa la experiencia Daviplata en el proceso de pago de tu tienda.', 'DaviplataSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_DAVIPLATA_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'DaviplataSettings')
+                        'label' => $this->module->l('Activo', 'DaviplataSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_DAVIPLATA_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'DaviplataSettings')
+                        'label' => $this->module->l('Inactivo', 'DaviplataSettings')
                     )
                 ),
             ),

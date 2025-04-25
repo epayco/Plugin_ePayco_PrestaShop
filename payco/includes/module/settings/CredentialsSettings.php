@@ -56,16 +56,16 @@ class CredentialsSettings extends AbstractSettings
         foreach ($states as $state) {
             $order_states[] = array("id" => $state["id_order_state"], "name" => $state["name"]);
         }
-        $title = $this->module->l('Credentials', 'CredentialsSettings');
+        $title = $this->module->l('Ajustes', 'CredentialsSettings');
         $fields = array(
             array(
                 'col' => 4,
                 'type' => 'switch',
-                'label' => $this->module->l('Pruebas', 'CredentialsSettings'),
+                'label' => $this->module->l('Habilitar modo de pruebas', 'CredentialsSettings'),
                 'name' => 'EPAYCO_PROD_STATUS',
                 'is_bool' => true,
-                'desc' => $this->module->l('Select "NO" only when you are ready to sell. ', 'CredentialsSettings') .
-                    $this->module->l('Change to YES to activate the Sandbox ', 'CredentialsSettings') .
+                'desc' => $this->module->l('Elige "NO" solo cuando estés listo para comenzar a vender en producción.. ', 'CredentialsSettings') .
+                    $this->module->l('Selecciona "SÍ" para activar el entorno Sandbox (pruebas). ', 'CredentialsSettings') .
                     $this->module->l('test environment.', 'CredentialsSettings'),
                 'values' => array(
                     array(
@@ -86,9 +86,9 @@ class CredentialsSettings extends AbstractSettings
                 'type' => 'html',
                 'name' => '',
                 'desc' => '',
-                'label' => $this->module->l('Load credentials', 'CredentialsSettings'),
-                'html_content' => '<a href="https://dashboard.payco.io/configuration" target="_blank" class="btn btn-default mp-btn-credenciais">'
-                    . $this->module->l('Search my credentials', 'CredentialsSettings') . '</a>'
+                'label' => $this->module->l('Cargar credenciales', 'CredentialsSettings'),
+                'html_content' => '<a href="https://dashboard.epayco.io/configuration" target="_blank" class="btn btn-default mp-btn-credenciais" style="background-color: #f8f9fa; color: #373737; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: normal; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor=\'#25b9d7\'; this.style.color=\'#fff\';" onmouseout="this.style.backgroundColor=\'#f8f9fa\'; this.style.color=\'#373737\';">'
+                    . $this->module->l('Buscar mis credenciales', 'CredentialsSettings') . '</a>'
             ),
             array(
                 'col' => 8,

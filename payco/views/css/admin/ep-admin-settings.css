@@ -34,6 +34,7 @@
     src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
     font-family: 'Poppins';
@@ -53,6 +54,7 @@
     src: url(https://fonts.gstatic.com/s/electrolize/v18/cIf5Ma1dtE0zSiGSiED7AXEBuI8.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 .ep-settings {
     margin: 0 55px 0 23px;
     font-size: 16px;
@@ -73,6 +75,7 @@
     background-size: cover;
     border-radius: 10px;
 }
+
 @media screen and (max-width: 780px) {
     .ep-settings-header {
         height: 250px;
@@ -88,6 +91,7 @@
     position: absolute;
     border-radius: 10px;
 }
+
 @media screen and (min-width: 425px) {
     .ep-settings-header-img {
         width: 92%;
@@ -134,8 +138,7 @@
     color: #fff;
     flex: none;
     flex-grow: 0;
-    margin: 16px 16px 0 50px !important;
-    font-family: 'Poppins';
+    /* font-family: 'Poppins'; */
 }
 
 @media screen and (max-width: 780px) {
@@ -164,17 +167,76 @@
     margin: 0px 0 0 45px;
 }
 
-.ep-settings-header p {
-    position: relative;
-    top: 70px;
-    font-family: 'Poppins';
-    font-size: 1.5rem;
-    line-height: 36px;
-    color: #fff;
-    flex: none;
-    flex-grow: 0;
-    margin: 16px 0 0 50px
+.ep-settings-header-title .ep-settings-header-p1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    color: black;
+    margin: 0px 50px;
+    font-size: 30px;
+    margin-bottom: 5px;
 }
+
+.ep-settings-header-title .ep-settings-header-p2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    color: #DF5C1F;
+    margin: 0px 50px;
+    font-size: 45px;
+    margin-bottom: 25px;
+}
+
+.ep-settings-header-title .ep-settings-header-p3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500 !important;
+    color: black !important;
+    font-size: 14px !important;
+    margin: 0px 50px !important;
+    line-height: 18px !important;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-header-title .ep-settings-header-p1 {
+        font-size: 20px;
+        margin: 0px 50px;
+    }
+
+    .ep-settings-header-title .ep-settings-header-p2 {
+        font-size: 30px;
+        margin: 0px 50px;
+        line-height: 16px !important;
+        margin-bottom: 10px;
+
+    }
+
+    .ep-settings-header-title .ep-settings-header-p3 {
+        font-size: 12px !important;
+        margin: 0px 50px !important;
+
+    }
+}
+
+.ep-settings-header-p4 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    margin: 10px 6px 10px !important;
+    font-weight: 600;
+    color: #16161D;
+    margin-bottom: 10px !important; 
+}
+#ep-settings-icon-credentials {
+    width: 30px;
+    height: 30px;
+    margin-top: 9px;
+}
+
+@media screen and (max-width: 780px) {
+    #ep-settings-icon-credentials {
+        width: 30px;
+        height: 30px;
+        margin-top: 9px;
+    }
+}
+
 
 .ep-settings-title-align {
     display: flex;
@@ -225,7 +287,7 @@
 
 .ep-settings-title-blocks {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 25px;
     margin: auto;
 }
@@ -325,6 +387,7 @@
         gap: 10px;
     }
 }
+
 .ep-block-flex {
     flex: 2;
 }
@@ -346,7 +409,7 @@
     justify-content: center;
 }
 
-.ep-settings-margin-title-payment{
+.ep-settings-margin-title-payment {
     margin: 0 16px 0 16px;
     max-width: 1000px;
 }
@@ -354,6 +417,7 @@
 .ep-settings-subtitle-font-size {
     font-size: 16px;
     line-height: 20px;
+    color: #373737;
 }
 
 .ep-settings-badge-active {
@@ -395,6 +459,7 @@
     font-weight: 400;
     align-items: center;
 }
+
 .ep-settings-icon-body {
     display: flex;
     /* justify-content: space-between; */
@@ -411,12 +476,14 @@
     align-items: center;
     margin-left: 10px;
 }
+
 .ep-settings-icon-body:hover {
     color: #FF6720;
     -webkit-transition: background-color .1s ease-in;
     transition: background-color .1s ease-in;
     box-shadow: 2px 2px 4px 0px #16161D4D;
 }
+
 .ep-settings-icon-config {
     background: url("../../../views/img/icon-config.png") center center no-repeat transparent;
     padding-right: 16px !important;

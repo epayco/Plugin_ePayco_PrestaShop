@@ -101,66 +101,66 @@
                   {
                     "id": "epayco-ticket",
                     "title_gateway": "Efectivo",
-                    "description": "Add the cash payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
+                    "description": "Añada la opción de pago en efectivo directamente en su tienda. Perfecto para los clientes que prefieren pagar en lugares físicos, sin complicaciones ni redireccionamiento.",
                     "title": "Efectivo",
                     "enabled": ticket_status,
                     "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/ticket-botton.png",
                     "link": "#ticket_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                      "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                  {
                     "id": "woo-epayco-daviplata",
                     "title_gateway": "Daviplata",
-                    "description": "Add the Daviplata payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
+                    "description": "Conéctate con millones de usuarios de Daviplata en Colombia. Los clientes pueden pagar directamente desde tu tienda sin pasos adicionales, se forma rápida y sencilla.",
                     "title": "Daviplata",
                     "enabled": daviplata_status,
                     "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/DPA50.png",
                     "link": "#daviplata_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                     "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                   {
                     "id": "epayco-creditcard",
                     "title_gateway": "Tarjetas de crédito",
-                    "description": "Accept fast and secure payments directly from your store using credit and debit cards from any bank. No redirects, ensuring a seamless shopping experience.  (Visa, Mastercard, Amex & Dinners)",
+                    "description": "Acepte pagos rápidos y seguros directamente desde su tienda con tarjetas de crédito y débito de cualquier banco. Sin redireccionamientos, garantizando una experiencia de compra sin interrupciones. (Visa, Matercard. Amex y Dinner)",
                     "title": "Tarjetas de crédito",
                     "enabled": creditcard_status,
                     "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/credit-card-botton.png",
                     "link": "#creditcard_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                     "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                   {
                     "id": "epayco-pse",
                     "title_gateway": "Pse por ePayco",
-                    "description": "Let your customers pay with direct bank transfers from any Colombian bank, all without leaving your online store. Secure, fast, and interruption-free.",
+                    "description": "Permita que sus clientes paguen con transferencia bancarias directas desde cualquier banco colombiano, todo sin salir de su tienda en línea. Seguro, rápido y sin interrupciones.",
                     "title": "Pse por ePayco",
                     "enabled": pse_status,
                     "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/pse-botton.png",
                     "link": "#pse_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                     "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                   {
                     "id": "epayco-checkout",
                     "title_gateway": "Pago por Internet",
-                    "description": "Offer your customers a complete payment experience with multiple options: cards, bank transfers, digital wallets, and cash. All in one secure and easy-to-use platform!",
+                    "description": "Ofrezca a sus cliente una experiencia de pago completa con multiples opciones: Tarjetas, transferencias bancarias, monederos digitales y efectivo. ¡Todo en una plataforma segura y fácil de usar!",
                     "title": "Pago por Internet",
                     "enabled":standard_status,
                     "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/botoncheckout.png",
                     "link": "#standard_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                     "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   }
                 ]
@@ -198,28 +198,56 @@
             return container;
         }
 
-        function getPaymentMethodComponent(e, t, n) {
-            const s = `\n    
-                <a href="${e.link}" class="ep-settings-link ep-settings-font-color" role="tab" data-toggle="tab">\n      
-                    <div class="ep-block ep-block-flex ep-settings-payment-block ep-settings-align-div">\n        
-                        <div class="ep-settings-align-div">\n          
-                            <div class="ep-settings-icon">\n            
-                                <img src="${e.icon}" alt="mp gateway icon" />\n         
-                            </div>\n\n          
-                            <span class="ep-settings-subtitle-font-size ep-settings-margin-title-payment">\n 
-                                <b>${e.title_gateway}</b> - ${e.description}\n          
-                            </span>\n\n   
-                            <div style="display: flex;">\n        
-                                <span class="${t}">${n}</span>\n   
-                                <div class="ep-settings-icon-body">\n          
-                                    <div class="ep-settings-icon-config"></div>\n        
-                                </div>\n    
-                            </div>\n     
-                        </div>\n    
-                    </div>\n   
-                </a>\n  `;
-            return (new DOMParser).parseFromString(s, "text/html").firstChild
-        }
+      /// Crear el componente del método de pago
+      //boton de configuracion 
+      function getPaymentMethodComponent(e, t, n) {
+        const s = `
+            <a href="${e.link}" class="ep-settings-link ep-settings-font-color" role="tab" data-toggle="tab">
+                <div class="ep-block ep-block-flex ep-settings-payment-block ep-settings-align-div">
+                    <div class="ep-settings-align-div">
+                        <div class="ep-settings-icon">
+                            <img src="${e.icon}" alt="mp gateway icon" />
+                        </div>
+                        <span class="ep-settings-subtitle-font-size ep-settings-margin-title-payment">
+                            <b>${e.title_gateway}</b> - ${e.description}
+                        </span>
+                        <div style="display: flex;">
+                            <span class="${t}">${n}</span>
+                            <div class="ep-settings-icon-body">
+                                <div class="ep-settings-icon-config"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `;
+    
+        const parser = new DOMParser();
+        const element = parser.parseFromString(s, "text/html").body.firstChild;
+    
+        element.addEventListener("click", function (event) {
+            event.preventDefault();
+    
+            // Selecciona el div al que se va a hacer scroll usando el ID del link
+            const scrollTarget = document.querySelector(e.link);
+            if (!scrollTarget) return;
+    
+            const offset = 100; // Puedes ajustar esto según el header fijo que tengas
+            const targetPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+    
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+    
+            // Opcional: activa la pestaña si hay comportamiento de tabs de Bootstrap
+            const tabTrigger = new bootstrap.Tab(element);
+            tabTrigger.show();
+        });
+    
+        return element;
+    }
+
 
         mpSettingsAccordionStart();
         mpGetPaymentMethods();
