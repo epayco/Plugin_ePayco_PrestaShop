@@ -57,7 +57,7 @@ class Payco extends PaymentModule
 
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.9.5.1';
+        $this->version = '1.9.5.2';
         $this->author = 'payco';
         $this->need_instance = 0;
       
@@ -611,7 +611,7 @@ class Payco extends PaymentModule
         $cart = $this->context->cart;
 
         $iso = 'CO';
-        if ($iva == 0) $valorBaseDevolucion = 0;
+        //if ($iva == 0) $valorBaseDevolucion = 0;
 
         $currency = $this->getCurrency();
         $idcurrency = $order->id_currency;
