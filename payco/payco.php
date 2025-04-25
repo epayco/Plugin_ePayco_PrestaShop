@@ -609,7 +609,10 @@ class Payco extends PaymentModule
         $cart = $this->context->cart;
 
         $iso = 'CO';
-        if ($iva == 0) $valorBaseDevolucion = 0;
+        if ($iva == 0){
+            $valorBaseDevolucion = $value;
+            $iva = "0";
+        }
 
         $currency = $this->getCurrency();
         $idcurrency = $order->id_currency;
