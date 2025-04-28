@@ -224,9 +224,10 @@
     margin-bottom: 10px !important; 
 }
 #ep-settings-icon-credentials {
-    width: 30px;
-    height: 30px;
-    margin-top: 9px;
+    width: 25px;
+    height: 25px;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 @media screen and (max-width: 780px) {

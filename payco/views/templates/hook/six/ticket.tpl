@@ -30,9 +30,9 @@
                 <div class="ep-checkout-ticket-test-mode">
                     {if $payment_method_info["test"]}
                         <test-mode-epayco
-                                title="{l s='Offline Methods in Test Mode' mod='payco'}"
-                                description="You can test the flow to generate an invoice, but you cannot finalize the payment."
-                                link-text="See the rules for the test mode."
+                                title="{l s='Métodos activos en modo pruebas' mod='payco'}"
+                                description="Puedes probar el flujo para generar una factura, pero no puedes finalizar el pago."
+                                link-text="Ver las reglas para el modo de prueba."
                                 link-src="https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/warning.png">
                         </test-mode-epayco>
                     {/if}
@@ -126,7 +126,7 @@
                 <!-- NOT DELETE LOADING-->
                 <div id="ep-box-loading"></div>
             </div>
-            <div style="margin: 14px !important;">
+            <div style="margin: 18px 17px 8px 5px  !important;">
                 <terms-and-conditions
                         label="{l s='I confirm and accept the' mod='payco'}"
                         description="{l s=' of ePayco.' mod='payco'}"
@@ -140,7 +140,7 @@
             </div>
             <div style="display: flex;justify-content: center; align-items: center;padding: 15px;">
                 <p>Secure by</p>
-                <img width="65px" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logo.png">
+                <img width="80px" style="margin-top:5px;" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logo.png">
             </div>
         </div>
     </div>

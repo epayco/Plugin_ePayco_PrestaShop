@@ -4358,7 +4358,7 @@
                 const ee = document.createElement("input-label");
                 ee.setAttribute("message", this.getAttribute("placeholder")),
                 ee.style.width="230px",
-                ee.style.marginLeft="-55px",
+                ee.style.marginLeft="-64px",
                     ee.setAttribute("isOptional", "false");
                 return tt.appendChild(e),
                     tt.appendChild(ee),

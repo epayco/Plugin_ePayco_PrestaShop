@@ -57,13 +57,26 @@
 }
 
 .ep-checkout-container {
-    border: 0 !important;
-    font: inherit !important;
-    font-size: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    vertical-align: baseline !important;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: sans-serif !important;
+    margin-bottom: 19px !important;
 }
+
+/* .payment-form{
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    font-family: sans-serif !important;
+    margin-bottom: 19px !important;
+}  */
 
 .ep-checkout-container a,
 .ep-checkout-container abbr,
@@ -157,23 +170,38 @@
 
 .ep-checkout-container a {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
-    font-size: 14px;
-    font-style: normal;
-    line-height: 16px;
-    margin: 0;
-    padding: 0 3px;
-    vertical-align: baseline;
+    font-size: 14px !important;
+    font-style: normal !important;
+    line-height: 16px !important;
+    margin: 0 !important;
+    padding: 0 3px !important;
+    vertical-align: baseline !important;
 }
 
 .ep-checkout-container p {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
-    font-size: 14px;
-    font-style: normal;
-    line-height: 16px;
+    font-size: 15px;
+    /* font-style: normal; */
+    line-height: 18px;
     margin: 0;
-    padding: 0 3px;
+    padding: 0px 0px 0px 9px;
     vertical-align: baseline;
+    text-align: left !important;
+    color: #1D1D1D;
+}
 
+.ep-test-mode-credit-card{
+    width: 100%;
+    /* max-width: 501%; */
+    background-color: #f2faff;
+    margin: 15px !important;
+    padding: 0px !important;
+    border-radius: 10px;
+    margin-bottom: 30px !important;
+    font-size: 27px !important;
+    border: 2px solid #40A8E6;
+    margin-right: auto !important;
+    margin-left: -2% !important;
 }
 
 #ep-daviplata .ep-checkout-container a {
@@ -207,9 +235,11 @@
     vertical-align: baseline;
     cursor: pointer;
 }
+
 .ep-input-radio-radio {
     display: none;
 }
+
 .ep-input-radio-label {
     display: inline-block;
     width: 40px;
@@ -227,7 +257,7 @@
     transition: all 0.3s ease;
 }
 
-.ep-input-radio-container-checked{
+.ep-input-radio-container-checked {
     color: green;
     background: url(https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/Boton_aceptado.png) no-repeat center;
     background-size: cover;
@@ -236,7 +266,8 @@
     position: relative;
     transform: scale(0.7);
 }
-.ep-input-radio-container-unchecked{
+
+.ep-input-radio-container-unchecked {
     color: green;
     background: url(https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/Boton.png) no-repeat center;
     background-size: cover;
@@ -254,7 +285,7 @@
 }
 
 .ep-checkout-custom-container {
-    background-color: #fff !important;
+    background-color: #f1f1f1 !important;
     display: flex;
     flex-direction: column !important;
     justify-content: center !important;
@@ -302,7 +333,7 @@ div .ep-error {
     font-weight: bold !important;
     flex-wrap: nowrap;
     width: 13px !important;
-    box-sizing:unset !important;
+    box-sizing: unset !important;
     word-break: keep-all !important;
 
 }
@@ -324,7 +355,7 @@ div .ep-error {
     align-items: center !important;
     background: #f73 !important;
     border-radius: 12px !important;
-    color: #fff !important;
+    color: #f1f1f1 !important;
     display: flex !important;
     flex-direction: row !important;
     height: 16px !important;
@@ -358,7 +389,7 @@ div .ep-error {
     align-items: center !important;
     background: #f73 !important;
     border-radius: 12px !important;
-    color: #fff !important;
+    color: #f1f1f1 !important;
     display: flex !important;
     flex-direction: row !important;
     height: 16px !important;
@@ -434,6 +465,7 @@ div .ep-error {
     flex-direction: column;
     justify-content: center;
     width: 50%;
+    margin-top: 9px !important;
 }
 
 .ep-checkout-custom-left-card-input {
@@ -442,14 +474,14 @@ div .ep-error {
 
 .ep-input-label {
     align-items: flex-end !important;
-    color: #2D3748 !important;
+    color: #1D1D1D !important;
     display: flex;
     font-size: 14px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     height: 30px;
     line-height: 18px !important;
-    padding-bottom: 4px !important;
+    padding-bottom: 6px !important;
     width: 100% !important;
 }
 
@@ -467,7 +499,7 @@ div .ep-error {
 
 .ep-input-document .ep-input {
     align-items: center !important;
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 1px solid rgba(0, 0, 0, .25);
     border-radius: 8px !important;
     display: flex !important;
@@ -476,7 +508,7 @@ div .ep-error {
 
 .ep-input-select-input {
     align-items: center !important;
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 1px solid rgba(0, 0, 0, .25) !important;
     border-radius: 8px !important;
     display: flex !important;
@@ -485,7 +517,7 @@ div .ep-error {
 
 .ep-document-select,
 .ep-input-document {
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 0 !important;
     color: #000 !important;
     font-size: 14px !important;
@@ -496,7 +528,7 @@ div .ep-error {
 }
 
 .ep-cellphone-select {
-    background: #fff !important;
+    background: #f1f1f1 !important;
     color: #000 !important;
     font-size: 14px !important;
     font-style: normal !important;
@@ -516,7 +548,7 @@ div .ep-error {
 .ep-document-select,
 .ep-cellphone {
     align-items: center !important;
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 1px solid rgba(0, 0, 0, .25);
     border-radius: 8px !important;
     display: flex !important;
@@ -525,7 +557,7 @@ div .ep-error {
 
 .ep-input-element .ep-input {
     align-items: center !important;
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 1px solid rgba(0, 0, 0, .25);
     border-radius: 8px !important;
     display: flex !important;
@@ -539,7 +571,7 @@ div .ep-error {
 
 .ep-input-cellphone-epayco .ep-input {
     align-items: center !important;
-    background: #fff !important;
+    background: #f1f1f1 !important;
     display: flex !important;
     height: 48px !important;
     justify-content: space-between;
@@ -553,11 +585,11 @@ div .ep-error {
 }
 
 .ep-input-element .ep-input .ep-cellphone {
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 0 !important;
     border-radius: 8px !important;
     box-shadow: none !important;
-    color: #000;
+    color: #16161D !important;
     font-size: 16px !important;
     font-style: normal !important;
     font-weight: 400 !important;
@@ -570,7 +602,7 @@ div .ep-error {
 }
 
 .ep-input-select-select {
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 0 !important;
     color: #000 !important;
     cursor: pointer !important;
@@ -586,7 +618,7 @@ div .ep-error {
 }
 
 .ep-input-select-bank {
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 0 !important;
     color: #000 !important;
     cursor: pointer !important;
@@ -603,7 +635,7 @@ div .ep-error {
 
 input.ep-cellphone {
     align-items: center !important;
-    background: #fff !important;
+    background: #f1f1f1 !important;
     border: 1px solid rgba(0, 0, 0, .25);
     border-radius: 8px !important;
     display: flex !important;
@@ -656,11 +688,13 @@ input.ep-cellphone {
     display: flex !important;
     width: 100%;
 }
-@media (max-width: 425px){
+
+@media (max-width: 425px) {
+
     .ep-input-table-epayco-label,
     .ep-input-table-epayco-option {
         flex-direction: column;
-    }  
+    }
 }
 
 .ep-input-table-epayco-label {
@@ -703,7 +737,7 @@ option {
 
 .ep-payment-method-logo-container,
 .ep-payment-method-logo-slider-container {
-    background: #fff !important;
+    background: #f1f1f1 !important;
     /*border: 1px solid #e5e5e5 !important;*/
     border-radius: 4px !important;
     box-sizing: border-box !important;
@@ -720,6 +754,51 @@ option {
     gap: 22px;
 }
 
+.ep-checkout-ticket-content .icon-payment-ticket {
+    margin-top: 10px !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    margin-left: -29px !important;
+    color: #1D1D1D !important;
+
+}
+
+.icon-payment-ticket .p1 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 16px;
+    margin: 2px 19px 0;
+    padding: 0 3px;
+    vertical-align: baseline;
+    font-weight: 700;
+    color: #1D1D1D;
+
+}
+
+.ep-checkout-ticket-content .icon-payment-daviplata {
+    margin-top: 10px !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    margin-left: -29px !important;
+    color: #1D1D1D !important;
+
+}
+
+.icon-payment-daviplata .p1 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 16px;
+    margin: 2px 19px 0;
+    padding: 0 3px;
+    vertical-align: baseline;
+    font-weight: 700;
+    color: #1D1D1D;
+
+}
 .ep-checkout-ticket-text,
 .ep-checkout-ticket-terms-and-conditions {
     margin: 14px !important;
@@ -731,10 +810,11 @@ option {
 }
 
 .ep-terms-and-conditions-container label {
-    display: flex;
+    display: flex !important;
     align-items: center;
     font-size: 14px;
-    gap: 10px;
+    gap: 0px;
+    margin-left: 22px;
 }
 
 .svg-logo {
