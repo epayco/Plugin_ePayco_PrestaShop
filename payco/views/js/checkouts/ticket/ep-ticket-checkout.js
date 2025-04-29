@@ -71,7 +71,7 @@
 
             const ticketContentCellphone = current.querySelector('input-cellphone-epayco').querySelector('input');
             const cellphoneHelpers =  current.querySelector('input-cellphone-epayco').querySelector("input-helper-epayco").querySelector("div");
-            //const cellphoneType = document.getElementsByName('epayco_ticket[cellphone]')[0].value;
+            //const cellphoneType = document.getElementsByName('epayco_daviplata[cellphone]')[0].value;
 
             const cellphoneType = ticketContentCellphone.parentElement.parentElement.querySelector(".ep-input-select-select");
             const verifyCellphone = (cellphone) => {
@@ -81,7 +81,7 @@
                     cellphoneHelpers.style.display = 'flex';
                 }
             }
-            //const doc_type = document.getElementsByName('epayco_ticket[documentType]')[0];
+            //const doc_type = document.getElementsByName('epayco_daviplata[documentType]')[0];
             const doc_number_value = current.querySelector('input-document-epayco').querySelector('input');
             const doc_type = doc_number_value.parentElement.parentElement.querySelector(".ep-input-select-select");
             const documentHelpers =  current.querySelector('input-document-epayco').querySelector("input-helper-epayco").querySelector("div");
@@ -143,7 +143,7 @@
             verifyDocument(doc_number_value.value);
             !termanAndContictionContent.checked && termanAndContictionHelpers.classList.add("ep-error");
 
-            let validation = d(nameHelpers)  ||d(emailHelpers) || d(cellphoneHelpers)|| d(documentHelpers) || d(paymentselpers) || !termanAndContictionContent.checked || "Tipo" === doc_type.value || "Type" === doc_type;
+            let validation = d(nameHelpers)  ||d(emailHelpers) || d(cellphoneHelpers)|| d(documentHelpers)  || !termanAndContictionContent.checked || "Tipo" === doc_type.value || "Type" === doc_type;
 
             if (  validation  ) {
                 disableFinishOrderButton();
@@ -157,16 +157,16 @@
 
 
         waitForElement('#payment-confirmation').then(() => {
-            const ticketForm = document.getElementById('ep_ticket_checkout');
+            const ticketForm = document.getElementById('ep_ticket1_checkout');
             ticketForm.onsubmit = () => {
-                const ticketRadioInput = document.getElementById('ep_ticket_checkout').parentNode.previousElementSibling.querySelector('input');
+                const ticketRadioInput = document.getElementById('ep_ticket1_checkout').parentNode.previousElementSibling.querySelector('input');
                 const ticketIsSelected = ticketRadioInput.checked;
                 if (!epaycoFormHandlerTicket()) return false;
                 ticketForm.submit();
             }
         })
 
-        $('form#ep_ticket_checkout').submit(function () {
+        $('form#ep_ticket1_checkout').submit(function () {
             return epaycoFormHandlerTicket();
         });
     })
