@@ -102,7 +102,7 @@ class CreditcardEpaycoCheckout extends AbstractEpaycoCheckout
                 "fees" => json_encode([["id"=>"", "description"=> "fees"],["id"=>"1", "description"=> "1"]])
             ],
 
-            "terms_url"      => 'terminos-y-condiciones-generales/',
+            "terms_url"      => 'https://epayco.com/terminos-y-condiciones-generales/'
         );
 
         return $checkoutInfo;
