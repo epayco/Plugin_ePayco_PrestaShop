@@ -95,70 +95,82 @@ class TicketEpaycoCheckout extends AbstractEpaycoCheckout
         $ticket = array();
         $ticketPaymentMethods = [
             [
-                'id' => 'efecty',
-                'name'              => 'Efecty',
-                'status'            => 'active',
-                'thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Efecty.png'
-            ],
-            [
-                'id' => 'gana',
-                'name'              => 'Gana',
-                'status'            => 'active',
-                'thumbnail'         => _MODULE_DIR_ . 'payco/views/img/gana.png'
-            ],
-            [
-                'id' => 'puntored',
-                'name'              => 'Puntored',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Puntored.png'
-            ],
-            [
-                'id' => 'redservi',
-                'name'              => 'Redservi',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Redservi.png'
-            ],
-            [
                 'id' => 'sured',
-                'name'              => 'Sured',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Sured.png'
-            ],
-            [
-                'id' => 'suchance',
-                'name'              => 'Suchance',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Suchance.png'
-            ],
-            [
-                'id' => 'laperla',
-                'name'              => 'Laperla',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Laperla.png'
-            ],
-            [
-                'id' => 'jer',
-                'name'              => 'Jer',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Jer.png'
+                'name' => 'Sured',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Sured.png'
             ],
             [
                 'id' => 'pagatodo',
-                'name'              => 'Pagatodo',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Pagatodo.png'
+                'name' => 'Pagatodo',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Pagatodo.png'
+            ],
+            [
+                'id' => 'gana',
+                'name' => 'Gana',
+                'status' => 'active',
+                'thumbnail' => _MODULE_DIR_ . 'payco/views/img/gana.png'
             ],
             [
                 'id' => 'acertemos',
-                'name'              => 'Acertemos',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Acertemos.png'
+                'name' => 'Acertemos',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Acertemos.png'
             ],
             [
                 'id' => 'ganagana',
-                'name'              => 'Ganagana',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Ganagana.png'
+                'name' => 'Ganagana',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Ganagana.png'
+            ],
+            [
+                'id' => 'suchance',
+                'name' => 'Suchance',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Suchance.png'
+            ],
+            [
+                'id' => 'redserviciosdelcesar',
+                'name' => 'Red Servicios del Cesar',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Reddeservicios.png'
+            ],
+            [
+                'id' => 'apuestas75',
+                'name' => 'Apuestas Cúcuta 75',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Apuestascucuta.png'
+            ],
+            [
+                'id' => 'jer',
+                'name' => 'Jer',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Jer.png'
+            ],
+            [
+                'id' => 'laperla',
+                'name' => 'Laperla',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Laperla.png'
+            ],
+            [
+                'id' => 'efecty',
+                'name' => 'Efecty',
+                'status' => 'active',
+                'thumbnail' => _MODULE_DIR_ . 'payco/views/img/Efecty.png'
+            ],
+            [
+                'id' => 'puntored',
+                'name' => 'Puntored',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Puntored.png'
+            ],
+            [
+                'id' => 'redservi',
+                'name' => 'Redservi',
+                'status' => 'active',
+                'secure_thumbnail' => _MODULE_DIR_ . 'payco/views/img/Redservi.png'
             ],
         ];
 

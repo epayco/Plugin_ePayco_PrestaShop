@@ -24,14 +24,14 @@ $_MODULE['<{payco}prestashop>abstractsettings_57278ca57cb61363c3e8b7ff1d3502b4']
 $_MODULE['<{payco}prestashop>abstractsettings_5a9523388e43d63653a49ddb31172a95'] = 'PUBLICK_KEY no puede estar vacía y debe ser válida.';
 $_MODULE['<{payco}prestashop>abstractsettings_70a3310642bad18fb8a649cad1c66863'] = 'PRIVATE_KEY no puede estar vacía y debe ser válida.';
 $_MODULE['<{payco}prestashop>psesettings_263485bdc392a068c22db476bfb5d0f2'] = 'Configuración básica';
-$_MODULE['<{payco}prestashop>psesettings_6f9dccd85b2e0786c8d522045365eb48'] = 'TÍTULO';
+$_MODULE['<{payco}prestashop>psesettings_6f9dccd85b2e0786c8d522045365eb48'] = 'Título';
 $_MODULE['<{payco}prestashop>psesettings_efdddfc44d77644bd942bfa19640b82e'] = 'Título de pago.';
 $_MODULE['<{payco}prestashop>psesettings_49c557074b8d2bdb3ad51b3e0a7de714'] = 'Activar pago';
 $_MODULE['<{payco}prestashop>psesettings_fecd9d45416f613b27cd828382239c1b'] = 'Activa la experiencia Pse en el checkout de tu tienda.';
 $_MODULE['<{payco}prestashop>psesettings_4d3d769b812b6faa6b76e1a8abaece2d'] = 'Activo';
 $_MODULE['<{payco}prestashop>psesettings_3cab03c00dbd11bc3569afa0748013f0'] = 'Inactivo';
 $_MODULE['<{payco}prestashop>ticketsettings_263485bdc392a068c22db476bfb5d0f2'] = 'Configuración básica';
-$_MODULE['<{payco}prestashop>ticketsettings_6f9dccd85b2e0786c8d522045365eb48'] = 'TÍTULO';
+$_MODULE['<{payco}prestashop>ticketsettings_6f9dccd85b2e0786c8d522045365eb48'] = 'Título';
 $_MODULE['<{payco}prestashop>ticketsettings_efdddfc44d77644bd942bfa19640b82e'] = 'Título de pago.';
 $_MODULE['<{payco}prestashop>ticketsettings_7d7ad4775c720af6567f212e5e4ec012'] = 'Activar Checkout de pagos en efectivo';
 $_MODULE['<{payco}prestashop>ticketsettings_c464d6c07376bc896eaef0a39673154a'] = 'Activa la opción de pagos en efectivo en tu tienda.';

@@ -143,7 +143,7 @@
             verifyDocument(doc_number_value.value);
             !termanAndContictionContent.checked && termanAndContictionHelpers.classList.add("ep-error");
 
-            let validation = d(nameHelpers)  ||d(emailHelpers) || d(cellphoneHelpers)|| d(documentHelpers)  || !termanAndContictionContent.checked || "Tipo" === doc_type.value || "Type" === doc_type;
+            let validation = d(nameHelpers)  ||d(emailHelpers) || d(cellphoneHelpers)|| d(documentHelpers) || d(paymentselpers) || !termanAndContictionContent.checked || "Tipo" === doc_type.value || "Type" === doc_type;
 
             if (  validation  ) {
                 disableFinishOrderButton();

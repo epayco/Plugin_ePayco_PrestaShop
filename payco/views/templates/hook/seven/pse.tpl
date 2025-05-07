@@ -118,7 +118,7 @@
                                 select-name="epayco_pse[documentType]"
                                 select-data-checkout=document_type"
                                 flag-error="documentTypeError"
-                                documents='{$payment_method_info["documents"]}'
+                                documents='{$payment_method_info["documents2"]}'
                                 validate=true
                                 placeholder="0000000000"
                         >
@@ -169,7 +169,7 @@
                 </terms-and-conditions>
             </div>
             <div style="display: flex;justify-content: center; align-items: center;padding: 15px;">
-                <p>Secure by</p>
+                <p>Secured by</p>
                       <img width="80px" style="margin-top:5px;" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logo.png">
             </div>
         </div>

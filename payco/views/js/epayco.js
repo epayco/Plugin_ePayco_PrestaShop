@@ -38,7 +38,7 @@
         form_credentials.classList.add("dropdown-hidden");
         var fieldset = document.querySelector("#fieldset_0");
         fieldset.classList.add("ep-settings-credentials");
-        var ep_settings  = document.querySelector("#ep-settings-step-one");
+        var ep_settings = document.querySelector("#ep-settings-step-one");
         ep_settings.insertAdjacentElement('afterend', form_credentials)
         //form_store_group[i].insertAdjacentHTML('afterend', form_store_append);
         function mpSettingsAccordionStart() {
@@ -78,9 +78,10 @@
             var field_status_ID;
             for (let i = 0; i < field.length; i++) {
                 if (field[i].checked) {
-                    field_status_ID = field[i].id;                } 
+                    field_status_ID = field[i].id;
+                }
             }
-            return field_status_ID.split('_')[3] =='off' ? 'no' : 'yes';
+            return field_status_ID.split('_')[3] == 'off' ? 'no' : 'yes';
         }
 
         function mpGetPaymentMethods() {
@@ -88,7 +89,8 @@
             var ticket_status_ID;
             for (let i = 0; i < ticket.length; i++) {
                 if (ticket[i].checked) {
-                    ticket_status_ID = ticket[i].id;                } 
+                    ticket_status_ID = ticket[i].id;
+                }
             }
             const ticket_status = mpStatusPaymentMethod("EPAYCO_TICKET_CHECKOUT");
             const creditcard_status = mpStatusPaymentMethod("EPAYCO_CREDITCARD_CHECKOUT");
@@ -98,86 +100,90 @@
             const response = {
                 "success": true,
                 "data": [
-                  {
-                    "id": "epayco-ticket",
-                    "title_gateway": "Efectivo",
-                    "description": "Añada la opción de pago en efectivo directamente en su tienda. Perfecto para los clientes que prefieren pagar en lugares físicos, sin complicaciones ni redireccionamiento.",
-                    "title": "Efectivo",
-                    "enabled": ticket_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/ticket-botton.png",
-                    "link": "#ticket_checkout",
-                    "badge_translator": {
-                      "yes": "Activo",
-                      "no": "Inactivo"
-                    }
-                  },
-                 {
-                    "id": "woo-epayco-daviplata",
-                    "title_gateway": "Daviplata",
-                    "description": "Conéctate con millones de usuarios de Daviplata en Colombia. Los clientes pueden pagar directamente desde tu tienda sin pasos adicionales, se forma rápida y sencilla.",
-                    "title": "Daviplata",
-                    "enabled": daviplata_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/DPA50.png",
-                    "link": "#daviplata_checkout",
-                    "badge_translator": {
-                     "yes": "Activo",
-                      "no": "Inactivo"
-                    }
-                  },
-                  {
-                    "id": "epayco-creditcard",
-                    "title_gateway": "Tarjetas de crédito",
-                    "description": "Acepte pagos rápidos y seguros directamente desde su tienda con tarjetas de crédito y débito de cualquier banco. Sin redireccionamientos, garantizando una experiencia de compra sin interrupciones. (Visa, Matercard. Amex y Dinner)",
-                    "title": "Tarjetas de crédito",
-                    "enabled": creditcard_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/credit-card-botton.png",
-                    "link": "#creditcard_checkout",
-                    "badge_translator": {
-                     "yes": "Activo",
-                      "no": "Inactivo"
-                    }
-                  },
-                  {
-                    "id": "epayco-pse",
-                    "title_gateway": "Pse por ePayco",
-                    "description": "Permita que sus clientes paguen con transferencia bancarias directas desde cualquier banco colombiano, todo sin salir de su tienda en línea. Seguro, rápido y sin interrupciones.",
-                    "title": "Pse por ePayco",
-                    "enabled": pse_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/pse-botton.png",
-                    "link": "#pse_checkout",
-                    "badge_translator": {
-                     "yes": "Activo",
-                      "no": "Inactivo"
-                    }
-                  },
-                  {
-                    "id": "epayco-checkout",
-                    "title_gateway": "Pago por Internet",
-                    "description": "Ofrezca a sus cliente una experiencia de pago completa con multiples opciones: Tarjetas, transferencias bancarias, monederos digitales y efectivo. ¡Todo en una plataforma segura y fácil de usar!",
-                    "title": "Pago por Internet",
-                    "enabled":standard_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/botoncheckout.png",
-                    "link": "#standard_checkout",
-                    "badge_translator": {
-                     "yes": "Activo",
-                      "no": "Inactivo"
-                    }
-                  }
+                    {
+                        "id": "epayco-checkout",
+                        "title_gateway": "Pago por Internet",
+                        "description": "Ofrezca a sus cliente una experiencia de pago completa con multiples opciones: Tarjetas, transferencias bancarias, monederos digitales y efectivo. ¡Todo en una plataforma segura y fácil de usar!",
+                        "title": "Pago por Internet",
+                        "enabled": standard_status,
+                        "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/botoncheckout.png",
+                        "link": "#standard_checkout",
+                        "badge_translator": {
+                            "yes": "Activo",
+                            "no": "Inactivo"
+                        }
+                    },
+                    {
+                        "id": "epayco-creditcard",
+                        "title_gateway": "Tarjetas de crédito",
+                        "description": "Acepte pagos rápidos y seguros directamente desde su tienda con tarjetas de crédito y débito de cualquier banco. Sin redireccionamientos, garantizando una experiencia de compra sin interrupciones. (Visa, Matercard. Amex y Dinner)",
+                        "title": "Tarjetas de crédito",
+                        "enabled": creditcard_status,
+                        "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/credit-card-botton.png",
+                        "link": "#creditcard_checkout",
+                        "badge_translator": {
+                            "yes": "Activo",
+                            "no": "Inactivo"
+                        }
+                    },
+                    {
+                        "id": "woo-epayco-daviplata",
+                        "title_gateway": "Daviplata",
+                        "description": "Conéctate con millones de usuarios de Daviplata en Colombia. Los clientes pueden pagar directamente desde tu tienda sin pasos adicionales, se forma rápida y sencilla.",
+                        "title": "Daviplata",
+                        "enabled": daviplata_status,
+                        "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/DPA50.png",
+                        "link": "#daviplata_checkout",
+                        "badge_translator": {
+                            "yes": "Activo",
+                            "no": "Inactivo"
+                        }
+                    },
+                    {
+                        "id": "epayco-pse",
+                        "title_gateway": "Pse por ePayco",
+                        "description": "Permita que sus clientes paguen con transferencia bancarias directas desde cualquier banco colombiano, todo sin salir de su tienda en línea. Seguro, rápido y sin interrupciones.",
+                        "title": "Pse por ePayco",
+                        "enabled": pse_status,
+                        "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/pse-botton.png",
+                        "link": "#pse_checkout",
+                        "badge_translator": {
+                            "yes": "Activo",
+                            "no": "Inactivo"
+                        }
+                    },
+                   
+                    {
+                        "id": "epayco-ticket",
+                        "title_gateway": "Efectivo",
+                        "description": "Añada la opción de pago en efectivo directamente en su tienda. Perfecto para los clientes que prefieren pagar en lugares físicos, sin complicaciones ni redireccionamiento.",
+                        "title": "Efectivo",
+                        "enabled": ticket_status,
+                        "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/ticket-botton.png",
+                        "link": "#ticket_checkout",
+                        "badge_translator": {
+                            "yes": "Activo",
+                            "no": "Inactivo"
+                        }
+                    },
+                   
+                 
+
                 ]
-              }
+            }
 
             const paymentContainer = document.getElementById("ep-payment");
-    
+
             // Eliminar todos los bloques de métodos de pago existentes
-            document.querySelectorAll(".ep-settings-payment-block").forEach(function(element) {
+            document.querySelectorAll(".ep-settings-payment-block").forEach(function (element) {
                 element.remove();
             });
-    
+
             // Insertar nuevos métodos de pago
-            response.data.reverse().forEach(function(paymentMethod) {
+            response.data.reverse().forEach(function (paymentMethod) {
                 paymentContainer.insertAdjacentElement("afterend", createMpPaymentMethodComponent(paymentMethod));
             });
-    
+
             // Llamar al callback de melidata si está disponible
             if (window.melidata && window.melidata.client && window.melidata.client.stepPaymentMethodsCallback) {
                 window.melidata.client.stepPaymentMethodsCallback();
@@ -188,20 +194,20 @@
             const badgeClass = paymentMethod.enabled === "yes" ? "ep-settings-badge-active" : "ep-settings-badge-inactive";
             const badgeText = paymentMethod.enabled === "yes" ? paymentMethod.badge_translator.yes : paymentMethod.badge_translator.no;
             const container = document.createElement("div");
-        
+
             container.style.display = "flex";
             container.style.flexDirection = "column";
-        
+
             const paymentMethodComponent = getPaymentMethodComponent(paymentMethod, badgeClass, badgeText);
             container.appendChild(paymentMethodComponent);
-        
+
             return container;
         }
 
-      /// Crear el componente del método de pago
-      //boton de configuracion 
-      function getPaymentMethodComponent(e, t, n) {
-        const s = `
+        /// Crear el componente del método de pago
+        //boton de configuracion 
+        function getPaymentMethodComponent(e, t, n) {
+            const s = `
             <a href="${e.link}" class="ep-settings-link ep-settings-font-color" role="tab" data-toggle="tab">
                 <div class="ep-block ep-block-flex ep-settings-payment-block ep-settings-align-div">
                     <div class="ep-settings-align-div">
@@ -221,32 +227,32 @@
                 </div>
             </a>
         `;
-    
-        const parser = new DOMParser();
-        const element = parser.parseFromString(s, "text/html").body.firstChild;
-    
-        element.addEventListener("click", function (event) {
-            event.preventDefault();
-    
-            // Selecciona el div al que se va a hacer scroll usando el ID del link
-            const scrollTarget = document.querySelector(e.link);
-            if (!scrollTarget) return;
-    
-            const offset = 100; // Puedes ajustar esto según el header fijo que tengas
-            const targetPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset - offset;
-    
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
+
+            const parser = new DOMParser();
+            const element = parser.parseFromString(s, "text/html").body.firstChild;
+
+            element.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                // Selecciona el div al que se va a hacer scroll usando el ID del link
+                const scrollTarget = document.querySelector(e.link);
+                if (!scrollTarget) return;
+
+                const offset = 100; // Puedes ajustar esto según el header fijo que tengas
+                const targetPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth"
+                });
+
+                // Opcional: activa la pestaña si hay comportamiento de tabs de Bootstrap
+                const tabTrigger = new bootstrap.Tab(element);
+                tabTrigger.show();
             });
-    
-            // Opcional: activa la pestaña si hay comportamiento de tabs de Bootstrap
-            const tabTrigger = new bootstrap.Tab(element);
-            tabTrigger.show();
-        });
-    
-        return element;
-    }
+
+            return element;
+        }
 
 
         mpSettingsAccordionStart();
