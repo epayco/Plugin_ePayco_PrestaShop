@@ -26,7 +26,7 @@
 
 
 //namespace Epayco\Prestashop;
-define('EP_VERSION', '4.17.2');
+define('EP_VERSION', '1.0.0');
 define('EP_ROOT_URL', dirname(__FILE__));
 
 if (!defined('_PS_VERSION_')) {
@@ -73,19 +73,17 @@ class Payco extends PaymentModule
         $this->loadFiles();
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->author = 'payco';
+        $this->author = 'ePayco';
         $this->need_instance = 1;
         $this->bootstrap = true;
-
-        //Always update, because prestashop doesn't accept version coming from another variable (EP_VERSION)
-        $this->version = '4.17.2';
+        $this->version = '1.0.0';
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 
         parent::__construct();
 
-        $this->displayName = $this->l('ePayco');
-        $this->description = $this->l('Customize the payment experience of your customers in your online store.');
-        $this->confirmUninstall = $this->l('Are you sure you want to uninstall the module?');
+        $this->displayName = $this->l('Epayco');
+        $this->description = $this->l('Acepta pagos fácilmente en tu tienda con ePayco: Tarjeta de crédito - débito, PSE, Daviplata, suscripciones y efectivo, todo en una integración rápida y segura.');
+        $this->confirmUninstall = $this->l('¿Estás seguro de que deseas desinstalar el módulo?');
         $this->module_key = '4380f33bbe84e7899aacb';
         $this->ps_version = _PS_VERSION_;
         $this->assets_ext_min = !_PS_MODE_DEV_ ? '.min' : '';
@@ -384,6 +382,8 @@ class Payco extends PaymentModule
      * @param  $version
      * @return PaymentOption | string
      */
+
+     //pago con payco checkout estandar
     public function getStandardCheckout($cart, $version)
     {
         if ($version == self::PRESTA16) {
@@ -398,7 +398,7 @@ class Payco extends PaymentModule
             $standardCheckout = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
             $standardCheckout->setForm($infoTemplate)
                 ->setCallToActionText($this->l($title))
-                ->setLogo(_MODULE_DIR_ . 'payco/views/img/logo.png');
+                ->setLogo(_MODULE_DIR_ . 'payco/views/img/botoncheckout2.png');
 
             return $standardCheckout;
         }
@@ -409,6 +409,36 @@ class Payco extends PaymentModule
      * @param  $version
      * @return PaymentOption | string
      */
+
+        //pago con payco checkout tarjeta de credito
+        public function getCreditcardCheckout($cart, $version)
+        {
+            if ($version == self::PRESTA16) {
+                $frontInformations = $this->creditcardCheckout->getCreditcardCheckoutPS16($cart);
+                $this->context->smarty->assign($frontInformations);
+                return $this->display(__FILE__, 'views/templates/hook/six/creditcard.tpl');
+            } else {
+                $title = Configuration::get('EPAYCO_CREDITCARD_TITLE')??'pago con payco';
+                $frontInformations = $this->creditcardCheckout->getCreditcardCheckoutPS17($cart);
+                $infoTemplate = $this->context->smarty->assign($frontInformations)
+                    ->fetch('module:payco/views/templates/hook/seven/creditcard.tpl');
+                $creditcardCheckout = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
+                $creditcardCheckout->setForm($infoTemplate)
+                    ->setCallToActionText($this->l($title))
+                    ->setLogo(_MODULE_DIR_ . 'payco/views/img/credit-card-botton-payment.png');
+    
+                return $creditcardCheckout;
+            }
+        }
+    
+
+    /**
+     * @param  $cart
+     * @param  $version
+     * @return PaymentOption | string
+     */
+
+     //pago con payco checkout daviplata
     public function getDaviplataCheckout($cart, $version)
     {
         if ($version == self::PRESTA16) {
@@ -423,7 +453,7 @@ class Payco extends PaymentModule
             $daviplataCheckout = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
             $daviplataCheckout->setForm($infoTemplate)
                 ->setCallToActionText($this->l($title))
-                ->setLogo(_MODULE_DIR_ . 'payco/views/img/icon-daviplata.png');
+                ->setLogo(_MODULE_DIR_ . 'payco/views/img/Daviplatacheckout.png');
 
             return $daviplataCheckout;
         }
@@ -434,33 +464,37 @@ class Payco extends PaymentModule
      * @param  $version
      * @return PaymentOption | string
      */
-    public function getCreditcardCheckout($cart, $version)
-    {
-        if ($version == self::PRESTA16) {
-            $frontInformations = $this->creditcardCheckout->getCreditcardCheckoutPS16($cart);
-            $this->context->smarty->assign($frontInformations);
-            return $this->display(__FILE__, 'views/templates/hook/six/creditcard.tpl');
-        } else {
-            $title = Configuration::get('EPAYCO_CREDITCARD_TITLE')??'pago con payco';
-            $frontInformations = $this->creditcardCheckout->getCreditcardCheckoutPS17($cart);
-            $infoTemplate = $this->context->smarty->assign($frontInformations)
-                ->fetch('module:payco/views/templates/hook/seven/creditcard.tpl');
-            $creditcardCheckout = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
-            $creditcardCheckout->setForm($infoTemplate)
-                ->setCallToActionText($this->l($title))
-                ->setLogo(_MODULE_DIR_ . 'payco/views/img/icon-blue-card.png');
-
-            return $creditcardCheckout;
+        //pago con payco checkout pse
+        public function getPseCheckout($cart, $version)
+        {
+            $pluginInfos = array(
+                'redirect_link' => $this->context->link->getModuleLink($this->name, PseCheckoutEpayco::PAYMENT_METHOD_NAME),
+                'module_dir' => $this->path,
+            );
+            $title = Configuration::get('EPAYCO_PSE_TITLE')??'PSE';
+            $templateData = $this->pseCheckout->getPseTemplateData($pluginInfos);
+            $infoTemplate = $this->context->smarty->assign($templateData)
+                ->fetch('module:payco/views/templates/hook/seven/pse.tpl');
+            $psePaymentOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
+            $psePaymentOption->setForm($infoTemplate)
+                ->setCallToActionText($this->l($title) )
+                ->setLogo(_MODULE_DIR_ . 'payco/views/img/pse-botton2.png');
+    
+            return $psePaymentOption;
         }
-    }
+    
 
+    
     /**
      * @param  $cart
      * @param  $version
      * @return PaymentOption | string
      */
+
+     //medio de pago efectivo en la tienda
     public function getTicketCheckout($cart, $version)
     {
+        
         if ($version == self::PRESTA16) {
             $frontInformations = $this->ticketCheckout->getTicketCheckoutPS16($cart);
             $this->context->smarty->assign($frontInformations);
@@ -473,35 +507,13 @@ class Payco extends PaymentModule
             $ticketCheckout = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
             $ticketCheckout->setForm($infoTemplate)
                 ->setCallToActionText($this->l($title))
-                ->setLogo(_MODULE_DIR_ . 'payco/views/img/icon-ticket.png');
+                ->setLogo(_MODULE_DIR_ . 'payco/views/img/ticket-botton.png');
 
             return $ticketCheckout;
         }
     }
     
 
-    /**
-     * @param  $cart
-     * @param  $version
-     * @return PaymentOption | string
-     */
-    public function getPseCheckout($cart, $version)
-    {
-        $pluginInfos = array(
-            'redirect_link' => $this->context->link->getModuleLink($this->name, PseCheckoutEpayco::PAYMENT_METHOD_NAME),
-            'module_dir' => $this->path,
-        );
-        $title = Configuration::get('EPAYCO_PSE_TITLE')??'PSE';
-        $templateData = $this->pseCheckout->getPseTemplateData($pluginInfos);
-        $infoTemplate = $this->context->smarty->assign($templateData)
-            ->fetch('module:payco/views/templates/hook/seven/pse.tpl');
-        $psePaymentOption = new PrestaShop\PrestaShop\Core\Payment\PaymentOption();
-        $psePaymentOption->setForm($infoTemplate)
-            ->setCallToActionText($this->l($title) )
-            ->setLogo(_MODULE_DIR_ . 'payco/views/img/icon-pse.png');
-
-        return $psePaymentOption;
-    }
 
 
     /**

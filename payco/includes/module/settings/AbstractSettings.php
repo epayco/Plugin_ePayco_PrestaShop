@@ -70,7 +70,7 @@ class AbstractSettings
             'form' => array(
                 'legend' => array(
                     'title' => $title,
-                    'icon' => 'icon-cogs',
+                   
                 ),
                 'class' => 'credentials',
                 'input' => $fields,

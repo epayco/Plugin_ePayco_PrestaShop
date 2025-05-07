@@ -56,7 +56,7 @@ class StandardSettings extends AbstractSettings
         $fields = array(
             array(
                 'type' => 'text',
-                'label' => $this->module->l('TITLE', 'StandardSettings'),
+                'label' => $this->module->l('Titulo', 'StandardSettings'),
                 'name' => 'EPAYCO_STANDARD_TITLE',
                 'required' => true,
                 'desc' => $this->module->l('Payment title.', 'StandardSettings'),

@@ -59,7 +59,7 @@ class PseSettings extends AbstractSettings
         $fields = array(
             array(
                 'type' => 'text',
-                'label' => $this->module->l('TITLE', 'PseSettings'),
+                'label' => $this->module->l('Título', 'PseSettings'),
                 'name' => 'EPAYCO_PSE_TITLE',
                 'required' => true,
                 'desc' => $this->module->l('Payment title.', 'PseSettings'),

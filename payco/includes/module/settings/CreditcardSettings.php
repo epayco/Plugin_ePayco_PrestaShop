@@ -55,7 +55,7 @@ class CreditcardSettings extends AbstractSettings
         $fields = array(
             array(
                 'type' => 'text',
-                'label' => $this->module->l('TITLE', 'CreditcardSettings'),
+                'label' => $this->module->l('Titulo', 'CreditcardSettings'),
                 'name' => 'EPAYCO_CREDITCARD_TITLE',
                 'required' => true,
                 'desc' => $this->module->l('Payment title.', 'CreditcardSettings'),

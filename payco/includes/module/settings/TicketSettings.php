@@ -57,7 +57,7 @@ class TicketSettings extends AbstractSettings
         $fields = array(
             array(
                 'type' => 'text',
-                'label' => $this->module->l('TITLE', 'TicketSettings'),
+                'label' => $this->module->l('Titulo', 'TicketSettings'),
                 'name' => 'EPAYCO_TICKET_TITLE',
                 'required' => true,
                 'desc' => $this->module->l('Payment title.', 'TicketSettings'),
@@ -167,70 +167,82 @@ class TicketSettings extends AbstractSettings
         );
         $ticketPaymentMethods = [
             [
-                'id' => 'efecty',
-                'name'              => 'Efecty',
-                'status'            => 'active',
-                'thumbnail'         => 'https://secure.epayco.co/img/efecty.png'
+            'id' => 'sured',
+            'name' => 'Sured',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/sured.jpg'
             ],
             [
-                'id' => 'gana',
-                'name'              => 'Gana',
-                'status'            => 'active',
-                'thumbnail'         => 'https://secure.epayco.co/img/gana_no_red.png'
+            'id' => 'pagatodo',
+            'name' => 'Pagatodo',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/pagatodo.jpg'
             ],
             [
-                'id' => 'puntored',
-                'name'              => 'Puntored',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/puntored.jpg'
+            'id' => 'gana',
+            'name' => 'Gana',
+            'status' => 'active',
+            'thumbnail' => 'https://secure.epayco.co/img/gana_no_red.png'
             ],
             [
-                'id' => 'redservi',
-                'name'              => 'Redservi',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/redservi.jpg'
+            'id' => 'acertemos',
+            'name' => 'Acertemos',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/acertemos.jpg'
             ],
             [
-                'id' => 'sured',
-                'name'              => 'Sured',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/sured.jpg'
+            'id' => 'ganagana',
+            'name' => 'Ganagana',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/ganagana.jpg'
             ],
             [
-                'id' => 'suchance',
-                'name'              => 'Suchance',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/suchance.jpg'
+            'id' => 'suchance',
+            'name' => 'Suchance',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/suchance.jpg'
             ],
             [
-                'id' => 'laperla',
-                'name'              => 'Laperla',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/laperla.jpg'
+            'id' => 'redserviciosdelcesar',
+            'name' => 'Red Servicios del Cesar',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/redserviciosdelcesar.jpg'
             ],
             [
-                'id' => 'jer',
-                'name'              => 'Jer',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/jer.jpg'
+            'id' => 'apuestas75',
+            'name' => 'Apuestas Cúcuta 75',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/apuestas75.jpg'
             ],
             [
-                'id' => 'pagatodo',
-                'name'              => 'Pagatodo',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/pagatodo.jpg'
+            'id' => 'jer',
+            'name' => 'Jer',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/jer.jpg'
             ],
             [
-                'id' => 'acertemos',
-                'name'              => 'Acertemos',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/acertemos.jpg'
+            'id' => 'laperla',
+            'name' => 'Laperla',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/laperla.jpg'
             ],
             [
-                'id' => 'ganagana',
-                'name'              => 'Ganagana',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/ganagana.jpg'
+            'id' => 'efecty',
+            'name' => 'Efecty',
+            'status' => 'active',
+            'thumbnail' => 'https://secure.epayco.co/img/efecty.png'
+            ],
+            [
+            'id' => 'puntored',
+            'name' => 'Puntored',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/puntored.jpg'
+            ],
+            [
+            'id' => 'redservi',
+            'name' => 'Redservi',
+            'status' => 'active',
+            'secure_thumbnail' => 'https://secure.epayco.co/img/redservi.jpg'
             ],
         ];
 

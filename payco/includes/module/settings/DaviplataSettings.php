@@ -50,34 +50,34 @@ class DaviplataSettings extends AbstractSettings
      */
     public function generateForm()
     {
-        $title = $this->module->l('Basic Configuration','DaviplataSettings');
+        $title = $this->module->l('Configuración básica','DaviplataSettings');
         // $fields = array();
 
         //if($this->module->isEnabledPaymentMethod('pse')){
         $fields = array(
             array(
                 'type' => 'text',
-                'label' => $this->module->l('TITLE', 'DaviplataSettings'),
+                'label' => $this->module->l('Titulo', 'DaviplataSettings'),
                 'name' => 'EPAYCO_DAVIPLATA_TITLE',
                 'required' => true,
-                'desc' => $this->module->l('Payment title.', 'DaviplataSettings'),
+                'desc' => $this->module->l('Título de pago', 'DaviplataSettings'),
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Activate checkout', 'DaviplataSettings'),
+                'label' => $this->module->l('Activar Checkout', 'DaviplataSettings'),
                 'name' => 'EPAYCO_DAVIPLATA_CHECKOUT',
-                'desc' => $this->module->l('Activate the Daviplata experience at the checkout of your store.', 'DaviplataSettings'),
+                'desc' => $this->module->l('Activa la experiencia Daviplata en el proceso de pago de tu tienda.', 'DaviplataSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_DAVIPLATA_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'DaviplataSettings')
+                        'label' => $this->module->l('Activo', 'DaviplataSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_DAVIPLATA_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'DaviplataSettings')
+                        'label' => $this->module->l('Inactivo', 'DaviplataSettings')
                     )
                 ),
             ),
@@ -94,7 +94,7 @@ class DaviplataSettings extends AbstractSettings
     public function postFormProcess()
     {
         $this->validate = ([
-            'EPAYCO_DAVIPLATA_TITLE' => 'title'
+            'EPAYCO_DAVIPLATA_TITLE' => 'Titulo'
         ]);
         parent::postFormProcess();
     }

@@ -259,35 +259,48 @@
             }
             createInput(t,i,e,aa, tt) {
                 var documents;
+                var documents2;
                 var type;
                 const lang = lenguaje;
-                    if(lang === 'es'){
-                        type = 'Tipo';
-                        documents = [
-                                {"id":"Tipo"},
-                                {"id":"CC"},
-                                {"id":"CE"},
-                                {"id":"NIT"},
-                                {"id":"TI"},
-                                {"id":"PPN"},
-                                {"id":"SSN"},
-                                {"id":"LIC"},
-                                {"id":"DNI"}
-                                ];
-                    }else{
-                        type = 'Type';
-                        documents = [
-                                {"id":"Type"},
-                                {"id":"CC"},
-                                {"id":"CE"},
-                                {"id":"NIT"},
-                                {"id":"TI"},
-                                {"id":"PPN"},
-                                {"id":"SSN"},
-                                {"id":"LIC"},
-                                {"id":"DNI"}
-                                ];
-                    }
+                if (lang === 'es') {
+                    type = 'Tipo';
+                    documents = [
+                        { "id": "Tipo" },
+                        { "id": "CC" },
+                        { "id": "NIT" },
+                        { "id": "CE" },
+                        { "id": "PPN" },
+                        { "id": "SSN" },
+                        { "id": "LIC" },
+                        { "id": "DNI" },
+                        { "id": "PEP" },
+                        { "id": "PPT" }
+                    ];
+                    documents2 = [
+                        { "id": "CC" },
+                        { "id": "CE" },
+                        { "id": "PPN" }
+                    ];
+                } else {
+                    type = 'Type';
+                    documents = [
+                        { "id": "Type" },
+                        { "id": "CC" },
+                        { "id": "NIT" },
+                        { "id": "CE" },
+                        { "id": "PPN" },
+                        { "id": "SSN" },
+                        { "id": "LIC" },
+                        { "id": "DNI" },
+                        { "id": "PEP" },
+                        { "id": "PPT" }
+                    ];
+                    documents2 = [
+                        { "id": "CC" },
+                        { "id": "CE" },
+                        { "id": "PPN" }
+                    ];
+                }
                 //const n = JSON.parse(this.getAttribute("documents")),
                 const n = documents,
                     s = this.getAttribute("validate"),
@@ -4358,7 +4371,7 @@
                 const ee = document.createElement("input-label");
                 ee.setAttribute("message", this.getAttribute("placeholder")),
                 ee.style.width="230px",
-                ee.style.marginLeft="-55px",
+                ee.style.marginLeft="-64px",
                     ee.setAttribute("isOptional", "false");
                 return tt.appendChild(e),
                     tt.appendChild(ee),

@@ -28,22 +28,27 @@
         <div>
             <div class="ep-settings-header-logo"></div>
                 <div class="ep-settings-header-title">
-                    <p style="font-weight: 900;color: black;margin:0px 50px;font-size: 19px;line-height: 20px">{l s='OPTIMIZE YOUR STORE WITH THE' mod='payco'}</p>
-                    <p style="font-weight: 900;color: #DF5C1F;margin:0px 50px;font-size: 29px">{l s='ePayco PLUGIN' mod='payco'}</p>
-                    <p class="ep-settings-context">{l s='Facilitate payments in your online store with the ePayco plugin. With this integration, you will be able to offer your customers a fast, secure and frictionless payment experience.' mod='payco'}</p>
+                    <p  class="ep-settings-header-p1">{l s='OPTIMIZA TU TIENDA CON EL' mod='payco'}</p>
+                    <p  class="ep-settings-header-p2">{l s='PLUGIN DE ePayco' mod='payco'}</p> 
+                   <p class="ep-settings-header-p3">
+                    {l s='Facilita los pagos en tu tienda online con el plugin de ePayco.' mod='payco'}<br>
+                    {l s='Con esta integración, podrás ofrecer a tus clientes una experiencia de pago' mod='payco'}<br>
+                    {l s='rápida, segura y sin fricciones.' mod='payco'}
+                </p>
+
                 </div>
         </div>
     </div>
-    <p style="font-size: 24px;margin: 10px 0px 10px;font-weight: 900;"> {l s='Configuration' mod='payco'}</p>
+    <p class="ep-settings-header-p4"> {l s='Configuración' mod='payco'}</p>
         
     <!-- forms rendered via class from payco.php -->
     <div class="ep-settings-credentials">
         <div class="ep-settings-title-align" id="ep-settings-step-one">
             <div class="ep-settings-title-container">
                 <span class="ep-settings-font-color ep-settings-title-blocks ep-settings-margin-right">
-                    1. {l s='Enter your credentials to integrate your store with ePayco' mod='payco'}
+                    1. {l s='Introduzca sus credenciales para integrar su tienda con ePayco' mod='payco'}
                 </span>
-                <img class="ep-settings-margin-left ep-settings-margin-right" id="ep-settings-icon-credentials">
+                <img class="ep-settings-margin-left ep-settings-margin-right" id="ep-settings-icon-credentials" src="{$module_dir}views/img/icon-success.png" alt="Credentials Icon">
             </div>
             <div class="ep-settings-title-container ep-settings-margin-left">
                 <img class="ep-settings-icon-open" id="ep-credentials-arrow-up">
@@ -58,9 +63,9 @@
             <div id="ep-settings-step-three" class="ep-settings-title-align">
                 <div class="ep-settings-title-container">
                     <span class="ep-settings-font-color ep-settings-title-blocks ep-settings-margin-right">
-                        2. {l s='Activate and set up payment methods' mod='payco'}                
+                        2. {l s='Activar y configurar los métodos de pago' mod='payco'}                
                     </span>
-                    <img class="ep-settings-margin-left ep-settings-margin-right" id="ep-settings-icon-payment">
+                  <img class="ep-settings-margin-left ep-settings-margin-right" id="ep-settings-icon-credentials" src="{$module_dir}views/img/icon-success.png" alt="Credentials Icon">
                 </div>
                 <div class="ep-settings-title-container ep-settings-margin-left">
                     <img class="ep-settings-icon-open" id="ep-payments-arrow-up">
