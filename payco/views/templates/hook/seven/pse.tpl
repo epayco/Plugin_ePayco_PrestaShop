@@ -161,7 +161,7 @@
                         label="{l s='Confirmo y acepto los' mod='payco'}"
                         description="{l s=' de ePayco.' mod='payco'}"
                         link-text="{l s='Términos y condiciones' mod='payco'}"
-                        link-src="https://epayco.com/terminos-y-condiciones-usuario-pagador-comprador/"
+                        link-src="https://epayco.com/terminos-y-condiciones-generales/"
                         link-condiction-text="{l s=' Política de tratamiento de datos personales' mod='payco'}"
                         and_the="{l s=' y la' mod='payco'}"
                         link-condiction-src="https://epayco.com/tratamiento-de-datos/"

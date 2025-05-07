@@ -93,7 +93,7 @@ class StandardCheckoutEpayco
             "redirect" => $redirect,
             "public_key" => Configuration::get('EPAYCO_PUBLIC_KEY'),
             "assets_ext_min" => $this->assets_ext_min,
-            "terms_url" => 'https://epayco.com/terminos-y-condiciones-usuario-pagador-comprador/',
+            "terms_url" => 'terminos-y-condiciones-generales/',
         );
         return $informations;
     }

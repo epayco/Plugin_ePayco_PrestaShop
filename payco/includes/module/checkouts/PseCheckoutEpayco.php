@@ -61,7 +61,7 @@ class PseCheckoutEpayco extends AbstractEpaycoCheckout
 
         //$redirect       = $this->context->link->getModuleLink($this->name, 'pse');
         $redirect = $pluginInfos['redirect_link'];
-        $termsUrl = 'https://epayco.com/terminos-y-condiciones-usuario-pagador-comprador/';
+        $termsUrl = 'terminos-y-condiciones-generales/';
         $moduleDir = $pluginInfos['module_dir'];
         $templateData = array(
             "payment_method_info" => $this->getPsePaymentMethod(),
