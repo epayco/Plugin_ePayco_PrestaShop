@@ -2,7 +2,7 @@
 <module>
 	<name>payco</name>
 	<displayName><![CDATA[payco]]></displayName>
-	<version><![CDATA[1.9.5.1]]></version>
+	<version><![CDATA[1.9.5.2]]></version>
 	<description><![CDATA[ePayco: Paga con Tarjeta de crédito/débito nacional e internacional, PSE, Daviplata, Nequi, Paypal, Efectivo, Safetypay y muchos más.]]></description>
 	<author><![CDATA[payco]]></author>
 	<tab><![CDATA[payments_gateways]]></tab>
