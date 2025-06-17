@@ -24,12 +24,13 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<div class="epayco-payment-option espacio" style="display: flex; justify-content: center; align-items: center;">
-    <img src="{$logo_url}" class="epayco-payment-logo hidden" alt="Logo"  style="max-width: 100%; height: auto; width: 100%; max-height: 480px; margin-left: -10%;"/>
+<div class="epayco-payment-option espacio" style="display: flex !important; justify-content: center !important; align-items: center !important; margin: 0 auto !important;">
+    <img src="{$logo_url}" class="epayco-payment-logo" alt="Loguito" style="max-width: 100% !important;height: auto !important;max-height: 480px !important;margin: -10px auto !important;margin-left: -4% !important;!i;!;">
 </div>
 
-<section class="espacio" style="text-align: left; margin-top: 20px;">
-    <p style="font-size: 16px; margin-bottom: 20px; margin-left: -5%;">{$titulo|escape:'htmlall':'UTF-8'}</p>
+<section class="espacio" style="text-align: left !important; margin-top: 20px !important; word-wrap: break-word !important;">
+    <p style="font-size: 14px !important;margin-bottom: 20px !important;text-align: left !important;word-wrap: break-word !important;margin-left: -4% !important;!i;!;">
+        {$titulo|escape:'htmlall':'UTF-8'}
+    </p>
 </section>
-
 
