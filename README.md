@@ -1,4 +1,4 @@
-# ePayco plugin para PrestaShop v1.9.5.1
+# ePayco plugin para PrestaShop v1.9.5.2
 
 **Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
 
@@ -10,6 +10,7 @@
 * [Pasos](#pasos)
 
 ## Versiones
+* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.1)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.0)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.4.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.4.1)
@@ -39,7 +40,7 @@
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.1).
+1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2).
 2. Descomprime el archivo que acabas de descargar y luego comprimer la carpeta llamada payco.
 3. Ingresa a tu administrador de PrestaShop.
 4. Ve a "Módulos o Servicios".

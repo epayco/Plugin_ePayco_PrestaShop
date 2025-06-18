@@ -70,7 +70,7 @@
             autoclick: "true",
             ip:  "{$ip|escape:'htmlall':'UTF-8'}",
             test: "{$merchanttest|escape:'htmlall':'UTF-8'}".toString(),
-            extras_epayco: extras_epayco
+            extras_epayco: extras_epayco,
         }
         const apiKey = "{$public_key}";
         const privateKey = "{$private_key}";
