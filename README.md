@@ -52,6 +52,28 @@
 10. Configura el plugin ingresando los datos en el formulario de configuración.
 
 
+## 🔄 Actualización Automática de Órdenes
+Para mantener los estados de sus pedidos actualizados en tiempo real, es necesario configurar una tarea programada (cron job) en su servidor. Esta tarea se encargará de consultar periódicamente el estado de las órdenes y actualizarlas automáticamente en su sistema.
+
+### Pasos para la configuración:
+1. Acceda a su servidor (por SSH o panel de control).
+2. Agregue la siguiente línea en el archivo de tareas programadas (crontab):
+
+````
+*/1 * * * * /usr/bin/php ruta/a/su/proyecto/prestashop/modules/payco/cron > /ruta/a/su/proyecto/var/log/cron_epayco.log 2>&1
+````
+
+- ```` * * * * * ```` → Ejecuta la tarea cada minuto (puede ajustar según el tiempo 
+
+mínimo permitido por su hosting).
+
+- /usr/bin/php → Ruta al ejecutable de PHP en su servidor.
+
+- /ruta/a/su/proyecto/... → Ruta completa al archivo del cron de su módulo.
+
+- ````>>```` ...log → (Opcional) Guarda un registro de ejecución para monitorear errores.
+
+
 ## Pasos
 
 <img src="ImgTutorialPrestaShop/tuto-1.png" width="400px"/>
