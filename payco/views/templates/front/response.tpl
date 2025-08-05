@@ -129,7 +129,7 @@
                         ref_payco = window.location.search.slice( count );
                     }
                     //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
-                    var urlapp = "https://secure.epayco.co/validation/v1/reference/"+ref_payco;
+                    var urlapp = "https://eks-checkout-service.epayco.io/validation/v1/reference/"+ref_payco;
                     
                     $.get(urlapp, function(response,error) {
 

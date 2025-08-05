@@ -37,63 +37,80 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://checkout.epayco.co/checkout.js"></script>
+    <script src="https://epayco-checkout-testing.s3.us-east-1.amazonaws.com/checkout.preprod_v1.js"></script>
      <script>
         var handler = ePayco.checkout.configure({
             key: "{$public_key}",
-            test: "{$merchanttest}"
+            test: "{$test}"
         })
         var date = new Date().getTime();
         var extras_epayco = {
             extra5:"P23"
         };
+        const params = JSON.parse(atob("{$checkout}"));
+        let {
+            description,
+            invoice,
+            currency,
+            amount,
+            tax_base,
+            tax,
+            taxIco,
+            country,
+            lang,
+            external,
+            confirmation,
+            response,
+            name_billing,
+            address_billing,
+            email_billing,
+            mobilephone_billing,
+            autoclick,
+            ip,
+            test,
+            extra1,
+            extra2,
+            bearerToken
+        } = params;
         var data = {
-            name: "{$descripcion}",
-            description: "{$descripcion}",
-            invoice: "{$refVenta|escape:'htmlall':'UTF-8'}",
-            currency: "{$currency|lower|escape:'htmlall':'UTF-8'}",
-            amount: "{$total|escape:'htmlall':'UTF-8'}".toString(),
-            tax_base: "{$baseDevolucionIva|escape:'htmlall':'UTF-8'}".toString(),
-            tax: "{$iva|escape:'htmlall':'UTF-8'}".toString(),
-            taxIco: "0",
-            country: "{$iso|lower|escape:'htmlall':'UTF-8'}",
-            lang: "{$lang|escape:'htmlall':'UTF-8'}",
-            external: "{$external|escape:'htmlall':'UTF-8'}",
-            confirmation: "{$p_url_confirmation|unescape: 'html' nofilter}",
-            response: "{$p_url_response|unescape: 'html' nofilter}",
-            name_billing: "{$p_billing_name|escape:'htmlall':'UTF-8'} {$p_billing_last_name|escape:'htmlall':'UTF-8'}",
-            address_billing: "{$p_billing_address|escape:'htmlall':'UTF-8'}",
-            email_billing: "{$p_billing_email|escape:'htmlall':'UTF-8'}",
-            extra1: "{$extra1|escape:'htmlall':'UTF-8'}",
-            extra2: "{$extra2|escape:'htmlall':'UTF-8'}",
-            extra3: "{$refVenta|escape:'htmlall':'UTF-8'}",
+            name: description,
+            description: description,
+            invoice,
+            currency,
+            amount,
+            tax_base:tax_base.toString(),
+            tax: tax.toString(),
+            taxIco: taxIco.toString(),
+            country,
+            lang,
+            external,
+            confirmation,
+            response,
+            name_billing,
+            address_billing,
+            email_billing,
+            extra1,
+            extra2,
+            extra3:invoice,
             autoclick: "true",
-            ip:  "{$ip|escape:'htmlall':'UTF-8'}",
-            test: "{$merchanttest|escape:'htmlall':'UTF-8'}".toString(),
-            extras_epayco: extras_epayco,
+            ip,
+            test:test.toString(),
+            method_confirmation:"POST",
+            extras_epayco:extras_epayco,
+            checkout_version:1
         }
         const apiKey = "{$public_key}";
         const privateKey = "{$private_key}";
+        const externalCheckout = data.external == "true"?true:false;
         var openChekout = function () {
-            if(localStorage.getItem("invoicePayment") == null){
-            localStorage.setItem("invoicePayment", data.invoice);
-                makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
-            }else{
-                if(localStorage.getItem("invoicePayment") != data.invoice){
-                    localStorage.removeItem("invoicePayment");
-                    localStorage.setItem("invoicePayment", data.invoice);
-                        makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
-                }else{
-                    makePayment(privateKey,apiKey,data, data.external == "true"?true:false)
-                }
-            }
+            //handler.open(data);
+            makePayment(bearerToken,data, externalCheckout)
         }
-        var makePayment = function (privatekey, apikey, info, external) {
+        var makePayment = function (bearerToken, info, external) {
             const headers = { "Content-Type": "application/json" } ;
-            headers["privatekey"] = privatekey;
-            headers["apikey"] = apikey;
+            headers["Authorization"] = "Bearer "+bearerToken;
             var payment =   function (){
-                return  fetch("https://cms.epayco.co/checkout/payment/session", {
+                return  fetch("https://eks-apify-service.epayco.io/checkout/payment/session/create", {
                     method: "POST",
                     body: JSON.stringify(info),
                     headers
@@ -104,17 +121,18 @@
             payment()
                 .then(session => {
                     if(session.data.sessionId != undefined){
-                        localStorage.removeItem("sessionPayment");
-                        localStorage.setItem("sessionPayment", session.data.sessionId);
                         const handlerNew = window.ePayco.checkout.configure({
                             sessionId: session.data.sessionId,
                             external: external,
                         });
                         handlerNew.openNew()
+                    }else{
+                        handler.open(data);
                     }
                 })
                 .catch(error => {
-                    error.message;
+                    console.error(error.message);
+                    handler.open(data);
                 });
         }
         var bntPagar = document.getElementById("btn_epayco");
