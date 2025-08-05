@@ -557,11 +557,13 @@ class Payco extends PaymentModule
                         $order['ref_payco'],
                         $response['autorizacion'],
                         $response['franchise']);
+                }else{
+                    $this->writeCronLog("no se encontro la refPayco: ". $order['ref_payco']);
                 }
             }
             echo json_encode([
                 "success" => true,
-                "message" => "cron ejecutado cmpletamente!"
+                "message" => "cron ejecutado!"
             ]);
             exit;
         }catch(\Exception $e){
