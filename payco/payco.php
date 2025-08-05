@@ -589,7 +589,6 @@ class Payco extends PaymentModule
 
     private function consultEpayco($ref_payco)
     {
-        /*
         $tokenResponse = $this->epaycoBerarToken();
         $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
         $headers = array(
@@ -600,9 +599,6 @@ class Payco extends PaymentModule
             'referencePayco' => $ref_payco
         );
         $transaction = $this->epayco_realizar_llamada_api("payment/transaction", $data, $headers);
-        
-        *///$this->writeCronLog(json_encode($transaction));
-        $transaction = json_decode('{"success":true,"titleResponse":"Correcto","textResponse":"Transacci\u00f3n consultada existosamente","lastAction":"Consultar Transaccion","data":{"transaction":{"clientId":9898,"refPayco":299282111,"invoice":"STXMSZZLQ","description":"Hummingbird printed t-shirt","amount":46.27,"amountCountry":189585.77,"amountOk":189585.77,"tax":32901.96,"ico":0,"baseTax":156683.81,"currency":"USD","bank":"EFECTY","cardNumber":"*******","quotas":"","response":"Pendiente","autorizacion":"000000","transactionId":"48772053691124","date":"2025-08-05 10:50:13","codeResponse":3,"responseReasonText":"Esperando pago del cliente en punto de servicio Efecty","codTransactionState":2,"status":"Rechazada","errorCode":"P004","franchise":"EF","nameBusiness":"SOPORTE PRUEBAS","docType":"","document":"","name":"","lastName":"","email":"ricardo.saldarriaga@epayco.com","phone":"","indCountry":"","country":"","city":"","address":"","ip":"181.134.248.46","signature":"41914fee6eff733e14bfa5ba23042fc6acd0c78d352b537943f561ef1bacccbf","testMode":"FALSE","extra1":"9","extra2":"9","extra3":"STXMSZZLQ","extra4":"","extra5":"","extra6":"","extra7":""}}}',true);
         if($transaction['success']){
             return $transaction['data']['transaction'];
         }
@@ -906,7 +902,7 @@ class Payco extends PaymentModule
                     $jsonData = null;
                 }
                 
-                $url = 'https://apify.epayco.co/'. $path;
+                $url = 'https://eks-apify-service.epayco.io/'. $path;
                 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
