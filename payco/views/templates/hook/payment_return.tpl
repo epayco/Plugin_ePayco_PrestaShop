@@ -37,7 +37,7 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://epayco-checkout-testing.s3.us-east-1.amazonaws.com/checkout.preprod_v1.js"></script>
+    <script src="https://epayco-checkout-testing.s3.us-east-1.amazonaws.com/checkout.preprod.js"></script>
      <script>
         var handler = ePayco.checkout.configure({
             key: "{$public_key}",
@@ -97,7 +97,7 @@
             test:test.toString(),
             method_confirmation:"POST",
             extras_epayco:extras_epayco,
-            checkout_version:1
+            checkout_version:2
         }
         const apiKey = "{$public_key}";
         const privateKey = "{$private_key}";
