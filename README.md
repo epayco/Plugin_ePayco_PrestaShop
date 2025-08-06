@@ -60,7 +60,7 @@ Para mantener los estados de sus pedidos actualizados en tiempo real, es necesar
 2. Agregue la siguiente línea en el archivo de tareas programadas (crontab):
 
 ````
-*/1 * * * * /usr/bin/php ruta/a/su/proyecto/prestashop/modules/payco/cron > /ruta/a/su/proyecto/var/log/cron_epayco.log 2>&1
+*/1 * * * * /usr/bin/php ruta/a/su/proyecto/prestashop/modules/payco/cron >> /ruta/a/su/proyecto/var/log/cron_epayco.log 2>&1
 ````
 
 - ```` * * * * * ```` → Ejecuta la tarea cada minuto (puede ajustar según el tiempo 
