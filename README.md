@@ -71,7 +71,7 @@ mínimo permitido por su hosting).
 
 - /ruta/a/su/proyecto/... → Ruta completa al archivo del cron de su módulo.
 
-- ````>>```` ...log → (Opcional) Guarda un registro de ejecución para monitorear errores.
+- ```` >> ```` ...log → (Opcional) Guarda un registro de ejecución para monitorear errores.
 3. para una actualización manual, ingrese a la siguiente ruta de su tienda: ````https://mi_tienda/modules/payco/cron```` de manera automatica el cron se ejecuta
 
 ## Pasos
