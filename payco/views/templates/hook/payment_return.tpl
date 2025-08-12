@@ -89,8 +89,8 @@
             name_billing,
             address_billing,
             email_billing,
-            extra1,
-            extra2,
+            extra1: (extra1 && extra1.toString().trim().length > 0) ? extra1.toString() : "N/A", 
+            extra2: (extra2 && extra2.toString().trim().length > 0) ? extra2.toString() : "N/A",
             extra3:invoice,
             autoclick: "true",
             ip,
@@ -110,7 +110,7 @@
             const headers = { "Content-Type": "application/json" } ;
             headers["Authorization"] = "Bearer "+bearerToken;
             var payment =   function (){
-                return  fetch("https://eks-apify-service.epayco.io/checkout/payment/session/create", {
+                return  fetch("https://eks-apify-service.epayco.io/payment/session/create", {
                     method: "POST",
                     body: JSON.stringify(info),
                     headers
