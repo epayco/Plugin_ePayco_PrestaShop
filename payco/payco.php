@@ -904,7 +904,7 @@ class Payco extends PaymentModule
                     $jsonData = null;
                 }
                 
-                $url = 'https://eks-apify-service.epayco.io/'. $path;
+                $url = 'https://apify.epayco.co/'. $path;
                 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -1000,7 +1000,7 @@ class Payco extends PaymentModule
                 $ref_payco = $_REQUEST["ref_payco"];
             }
 
-            $url = 'https://eks-checkout-service.epayco.io/validation/v1/reference/' . $ref_payco;
+            $url = 'https://secure.epayco.co/validation/v1/reference/' . $ref_payco;
         }
 
 

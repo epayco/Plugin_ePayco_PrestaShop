@@ -37,8 +37,8 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://epayco-checkout-testing.s3.us-east-1.amazonaws.com/checkout.preprod.js"></script>
-     <script>
+    <script src="https://checkout.epayco.co/checkout.js"></script>
+    <script>
         var handler = ePayco.checkout.configure({
             key: "{$public_key}",
             test: "{$test}"
@@ -110,7 +110,7 @@
             const headers = { "Content-Type": "application/json" } ;
             headers["Authorization"] = "Bearer "+bearerToken;
             var payment =   function (){
-                return  fetch("https://eks-apify-service.epayco.io/payment/session/create", {
+                return  fetch("https://apify.epayco.co/payment/session/create", {
                     method: "POST",
                     body: JSON.stringify(info),
                     headers
