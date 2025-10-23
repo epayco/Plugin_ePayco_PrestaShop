@@ -37,103 +37,21 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://checkout.epayco.co/checkout.js"></script>
+    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod-v2.js"></script>
     <script>
-        var handler = ePayco.checkout.configure({
-            key: "{$public_key}",
-            test: "{$test}"
-        })
-        var date = new Date().getTime();
-        var extras_epayco = {
-            extra5:"P23"
-        };
         const params = JSON.parse(atob("{$checkout}"));
         let {
-            description,
-            invoice,
-            currency,
-            amount,
-            tax_base,
-            tax,
-            taxIco,
-            country,
-            lang,
-            external,
-            confirmation,
-            response,
-            name_billing,
-            address_billing,
-            email_billing,
-            mobilephone_billing,
-            autoclick,
-            ip,
-            test,
-            extra1,
-            extra2,
-            bearerToken
+            sessionId,
+            type,
+            test
         } = params;
-        var data = {
-            name: description,
-            description: description,
-            invoice,
-            currency,
-            amount,
-            tax_base:tax_base.toString(),
-            tax: tax.toString(),
-            taxIco: taxIco.toString(),
-            country,
-            lang,
-            external,
-            confirmation,
-            response,
-            name_billing,
-            address_billing,
-            email_billing,
-            extra1: (extra1 && extra1.toString().trim().length > 0) ? extra1.toString() : "N/A", 
-            extra2: (extra2 && extra2.toString().trim().length > 0) ? extra2.toString() : "N/A",
-            extra3:invoice,
-            autoclick: "true",
-            ip,
-            test:test.toString(),
-            method_confirmation:"POST",
-            extras_epayco:extras_epayco,
-            checkout_version:2
-        }
-        const apiKey = "{$public_key}";
-        const privateKey = "{$private_key}";
-        const externalCheckout = data.external == "true"?true:false;
+        const checkout = ePayco.checkout.configure({
+            sessionId: sessionId,
+            type: type,
+            test: test
+        });
         var openChekout = function () {
-            //handler.open(data);
-            makePayment(bearerToken,data, externalCheckout)
-        }
-        var makePayment = function (bearerToken, info, external) {
-            const headers = { "Content-Type": "application/json" } ;
-            headers["Authorization"] = "Bearer "+bearerToken;
-            var payment =   function (){
-                return  fetch("https://apify.epayco.co/payment/session/create", {
-                    method: "POST",
-                    body: JSON.stringify(info),
-                    headers
-                })
-                    .then(res =>  res.json())
-                    .catch(err => err);
-            }
-            payment()
-                .then(session => {
-                    if(session.data.sessionId != undefined){
-                        const handlerNew = window.ePayco.checkout.configure({
-                            sessionId: session.data.sessionId,
-                            external: external,
-                        });
-                        handlerNew.openNew()
-                    }else{
-                        handler.open(data);
-                    }
-                })
-                .catch(error => {
-                    console.error(error.message);
-                    handler.open(data);
-                });
+            checkout.open();
         }
         var bntPagar = document.getElementById("btn_epayco");
         bntPagar.addEventListener("click", openChekout);
@@ -160,7 +78,7 @@
 </script>
 {else}
 <p class="warning">
-  {l s='Hemos notado un problema con tu orden, si crees que es un error puedes contactar a nuestro departamento de Soporte' mod='payco'}
+  {l s='Hemos notado un problema con tu orden, solicitamos contactar a nuestro departamento de Soporte' mod='payco'}
   {l s='' mod='payco'}.
 </p>
 {/if}
