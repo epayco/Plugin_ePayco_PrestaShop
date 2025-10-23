@@ -26,7 +26,38 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ### [1.1.0] - Versiones anteriores
 
+#### Funcionalidades Base
+
 - Funcionalidades base del plugin ePayco para PrestaShop
-- Integración con API de ePayco
-- Gestión de órdenes y estados de pago
-- Manejo de stock y restauración automática
+- Integración con API de ePayco para procesamiento de pagos
+- Gestión automática de órdenes y estados de pago
+- Sistema de validación de firmas para seguridad de transacciones
+
+#### Características Principales
+
+- Soporte para múltiples métodos de pago (tarjetas de crédito, débito, PSE, etc.)
+- Manejo automático de stock y restauración en caso de fallos
+- Sistema de cron jobs para sincronización de estados
+- Configuración de URLs de confirmación y respuesta personalizables
+- Soporte para modo de pruebas y producción
+- Validación de llaves públicas y privadas
+- Manejo de múltiples monedas (COP, USD)
+
+#### Implementación Técnica
+
+- Clase principal Payco extendiendo PaymentModule de PrestaShop
+- Sistema de logs integrado para debugging (`logs/cron.log`)
+- Manejo de excepciones y errores robusto
+- Validación de firmas SHA256 para seguridad
+- API REST endpoints para confirmación y validación de pagos
+- Sistema de metadata para tracking de transacciones
+- Clases auxiliares: `EpaycoOrder`, `CreditCard_Order`, `CreditCard_OrderState`
+
+#### Características de Seguridad
+
+- Validación de firmas digitales
+- Manejo seguro de credenciales
+- Sanitización de datos de entrada
+- Protección contra acceso directo a archivos (archivos `index.php`)
+- Validación de IPs y datos de transacción
+- Gestión segura de estados de órdenes y stock
