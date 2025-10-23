@@ -749,9 +749,9 @@ class Payco extends PaymentModule
             $addressdelivery = new Address((int)($cart->id_address_delivery));
 
             if ($this->p_test_request == 1) {
-                $test = "true";
+                $test = true;
             } else {
-                $test = "false";
+                $test = false;
             }
 
             if ($this->lenguaje == 1) {
@@ -761,9 +761,9 @@ class Payco extends PaymentModule
             }
 
             if ($this->p_type_checkout == 1) {
-                $external = "false";
+                $external = "onepage";
             } else {
-                $external = "true";
+                $external = "standard";
             }
 
             $descripcion = '';
@@ -804,48 +804,57 @@ class Payco extends PaymentModule
 
 
             $myIp = $this->getCustomerIp();
-            $tokenResponse = $this->epaycoBerarToken();
-            $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
+            $tokenResponse = $this->epaycoBerarToken(trim($this->public_key),trim($this->private_key));
+            $token = null;
+            if(isset($tokenResponse['token'])){
+                $token = $tokenResponse['token'];
+            }
+            $dataScript  = array(
+                "name"=>$descripcion,
+                "description"=>$descripcion,
+                "invoice"=>(string)$refVenta,
+                "currency"=>$currency,
+                "amount"=>floatval(number_format($value, 2, '.', '')),
+                "taxBase"=>floatval(number_format($valorBaseDevolucion, 2, '.', '')),
+                "tax"=>floatval(number_format($iva, 2, '.', '')),
+                "taxIco"=>floatval(0),
+                "country"=>$iso,
+                "lang"=>$lenguaje,
+                "confirmation"=>$p_url_confirmation,
+                "response"=>$p_url_response,
+                "billing" => [
+                    "name" =>$this->context->customer->firstname . " " . $this->context->customer->lastname,
+                    "address" => $addressdelivery->address1 . " " . $addressdelivery->address2,
+                    "email" => $this->context->customer->email,
+                ],
+                "autoclick"=> true,
+                "ip"=>$myIp,
+                "test"=>$test,
+                 "extras" => [
+                    "extra1" => (string)$extra1,
+                    "extra2" => (string)$extra2,
+                    "extra3" => $lang
+                ],
+                "extrasEpayco" => [
+                    "extra5" => "P23"
+                ],
+                "epaycoMethodsDisable" => [],
+                "method"=> "POST",
+                "checkout_version"=>"2",
+                "autoClick" => false,
+            );
+
+            $checkoutSessionResponse = $this->epaycoSessionCheckout($token, $dataScript);
+            $sessionId = null;
+            if(isset($checkoutSessionResponse['success'])){
+                $sessionId = $checkoutSessionResponse["data"]['sessionId'];
+            }
             $payload = array(
                 'this_path_bw' => $this->_path,
-                'p_signature' => $p_signature,
-                'bearerToken' => $bearerToken,
-                'total_to_pay' => $value,
-                'status' => 'ok',
-                'invoice' => $refVenta,
-                'custemail' => $emailComprador,
-                'extra1' => $extra1,
-                'extra2' => $extra2,
-                'amount' => number_format($value, 2, '.', ''),
-                'currency' => $currency,
-                'country' => $iso,
-                'tax' => number_format($iva, 2, '.', ''),
-                'tax_base' => number_format($valorBaseDevolucion, 2, '.', ''),
-                'merchantid' => trim($this->p_cust_id_cliente),
-                'external' => $external,
+                'sessionId' => $sessionId,
+                'status' => isset($sessionId) ? 'ok' : 'fail',
+                'type' => $external,
                 'test' => $test,
-                'p_key' => trim($this->p_key),
-                'public_key' => trim($this->public_key),
-                'private_key' => trim($this->private_key),
-                'custip' => $_SERVER['REMOTE_ADDR'],
-                'name_billing' => $this->context->customer->firstname . " " . $this->context->customer->lastname,
-                'response' => $p_url_response,
-                'confirmation' => $p_url_confirmation,
-                'email_billing' => $this->context->customer->email,
-                'p_billing_name' => $this->context->customer->firstname,
-                'p_billing_last_name' => $this->context->customer->lastname,
-                'address_billing' => $addressdelivery->address1 . " " . $addressdelivery->address2,
-                'p_billing_city' => $addressdelivery->city,
-                'p_billing_country' => $addressdelivery->id_state,
-                'p_billing_phone' => "",
-                'lang' => $lenguaje,
-                'description' => $descripcion,
-                'url_button' => $url_button,
-                'ip' => $myIp,
-                "extras_epayco" => [
-                    "extra5" => 'P23'
-                ],
-                "taxIco"=>0
             );
             $checkout =  base64_encode(json_encode($payload));            
 
@@ -869,10 +878,10 @@ class Payco extends PaymentModule
         return $this->display(__FILE__, 'views/templates/hook/payment_return.tpl');
     }
 
-    public function epaycoBerarToken()
-        {
-            $publicKey = trim($this->public_key);
-            $privateKey = trim($this->private_key);
+    public function epaycoBerarToken($public_key,$private_key)
+    {
+            $publicKey = trim($public_key);
+            $privateKey = trim($private_key);
             $bearer_token = base64_encode($publicKey . ":" . $privateKey);
             
             if (!isset($_COOKIE[$publicKey])) {
@@ -892,48 +901,24 @@ class Payco extends PaymentModule
             $data = array(
                 'public_key' => $publicKey
             );
-            return $this->epayco_realizar_llamada_api("login", [], $headers);
-        }
+            $url = 'https://eks-apify-service.epayco.io/login';
+            //return $this->epayco_realizar_llamada_api("login", [], $headers);
+            $responseData = $this->PostCurl($url, $data, $headers);
+            $jsonData = @json_decode($responseData, true);
+            return $jsonData ;
+    }
 
-        public function epayco_realizar_llamada_api($path, $data, $headers, $method = 'POST')
-        {
-            try{
-                if(!empty($data)){
-                    $jsonData = json_encode($data);
-                }else{
-                    $jsonData = null;
-                }
-                
-                $url = 'https://eks-apify-service.epayco.io/'. $path;
-                
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                CURLOPT_URL => $url,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => $jsonData,
-                CURLOPT_HTTPHEADER => $headers,
-                ));
-                $response = curl_exec($curl);
-                if ($response === false) {
-                    return array('curl_error' => curl_error($curl), 'curerrno' => curl_errno($curl));
-                }
-                curl_close($curl);
-                $responseTransaction = json_decode($response, true);
-                if(isset($responseTransaction["error"])){
-                    return false;
-                }
-                return $responseTransaction;
-            } catch(\Exception $e){
-                $this->writeCronLog("epayco_realizar_llamada_api: ".$e->getMessage());
-            }
-        }
+    private function epaycoSessionCheckout($bearer_token, $body){
+        $headers = array(
+                'Content-Type: application/json',
+                'Authorization: Bearer '.$bearer_token
+        );
 
+        $url = 'https://eks-apify-service.epayco.io/payment/session/create';
+        $responseData = $this->PostCurl($url, $body, $headers);
+        $jsonData = @json_decode($responseData, true);
+        return $jsonData;
+    }
 
     private function is_blank($var)
     {
@@ -1282,9 +1267,10 @@ class Payco extends PaymentModule
         }
     }
 
-    private function PostCurl($url)
+    private function PostCurl($url, $body, $headers, $method='POST')
     {
-        if (function_exists('curl_init')) {
+        try{
+            if (function_exists('curl_init')) {
             // Inicializamos cURL
             $ch = curl_init();
             $timeout = 5;
@@ -1292,25 +1278,49 @@ class Payco extends PaymentModule
 
             // Configuraciones de cURL
             curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    // Desactivar verificación de certificado SSL
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);    // Desactivar verificación de host SSL
-            curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);   // Establecer el agente de usuario
-            curl_setopt($ch, CURLOPT_HEADER, 0);                // No incluir encabezados en la salida
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);        // Seguir redirecciones
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);        // Devolver la respuesta como string
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout); // Tiempo de conexión máximo
-            curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);        // Tiempo de espera máximo
-            curl_setopt($ch, CURLOPT_MAXREDIRS, 10);            // Máximo de redirecciones permitidas
-
+            if(!$body){
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    // Desactivar verificación de certificado SSL
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);    // Desactivar verificación de host SSL
+                curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);   // Establecer el agente de usuario
+                curl_setopt($ch, CURLOPT_HEADER, 0);                // No incluir encabezados en la salida
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);        // Devolver la respuesta como string
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout); // Tiempo de conexión máximo
+                curl_setopt($ch, CURLOPT_MAXREDIRS, 10);            // Máximo de redirecciones permitidas
+            }else{
+                $jsonData = json_encode($body);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method); 
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData); 
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // Seguir redirecciones
+                curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); // Tiempo de espera máximo
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Tiempo de espera máximo
+                curl_setopt($ch,CURLOPT_SSLKEYPASSWD, '');
+                curl_setopt($ch,CURLOPT_ENCODING, "");
+                curl_setopt($ch,CURLOPT_MAXREDIRS, 10);
+                curl_setopt($ch,CURLOPT_TIMEOUT, 600);
+                curl_setopt($ch,CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            }
             $data = curl_exec($ch);
+            if ($data === false) {
+                return array('curl_error' => curl_error($ch), 'curerrno' => curl_errno($ch));
+            }
             curl_close($ch);
 
             return $data;
-        } else {
+            } else {
 
-            $data = @Tools::file_get_contents($url);
-            return $data;
+                $data = @Tools::file_get_contents($url);
+                return $data;
+            }
+        } catch (\Throwable $e) {
+            /* @phpstan-ignore-next-line */
+            var_dump($e);
+            die();
+        } catch (\Exception $e) {
+            var_dump($e);
+            die();
         }
+        
     }
 
     private function StreamContext()
