@@ -84,7 +84,8 @@
                                 sendEmail: true,         // Enviar comprobante por correo
                                 lang: response.data.x_extra3,   // Idioma del componente
                                 returnUrl: window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + "/index.php?controller=history"
-                                returnButton:"Mis Compras"
+                                buttonText:"Mis Compras",
+                                returnButton: true // Muestra botón de retorno a la tienda
                             });
                         } else {
                             alert("En este momento no podemos mostrarte el detalle de la orden, por favor contactar con el administrador")
@@ -112,4 +113,5 @@
             });
         </script>
     </body>
+
 </html>
