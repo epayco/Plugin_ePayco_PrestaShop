@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <footer>
-                            <div class="row">
+                           <div class="row">
                                 <div class="container">
                                     <div class="col-lg-8 col-lg-offset-2" style="display: flex; justify-content: center; margin-top: 10px;">
                                         <img 
@@ -100,7 +100,6 @@
                                             style="max-width: 100%; height: auto; width: 100%; max-height: 730px;" 
                                         >
                                     </div>
-                                 </div>
                                 </div>
                             </div>
                         </footer>
@@ -126,6 +125,7 @@
                         ref_payco = window.location.search.slice( count );
                     }
                     //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
+
                     var urlapp = "https://secure.epayco.co/validation/v1/reference/"+ref_payco;
                     
                     $.get(urlapp, function(response) {
@@ -168,5 +168,3 @@
 </script>
 </body>
 </html>
-
-
