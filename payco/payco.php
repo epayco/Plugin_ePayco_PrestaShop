@@ -187,6 +187,7 @@ class Payco extends PaymentModule
     public function uninstall()
     {
         $this->writeCronLog("fin ejecución ePayco");
+		EpaycoOrder::remove();
         // CreditCard_Order::remove();
         // CreditCard_OrderState::remove();
         // Configuration::deleteByName('PAYCO_LIVE_MODE');
@@ -1318,4 +1319,5 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
 
