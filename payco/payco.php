@@ -810,8 +810,8 @@ class Payco extends PaymentModule
                 $token = $tokenResponse['token'];
             }
             $dataScript  = array(
-                "name"=>$descripcion,
-                "description"=>$descripcion,
+                "name"=>$this->string_sanitize($descripcion),
+                "description"=>$this->string_sanitize($descripcion),
                 "invoice"=>(string)$refVenta,
                 "currency"=>$currency,
                 "amount"=>floatval(number_format($value, 2, '.', '')),
@@ -1301,6 +1301,16 @@ class Payco extends PaymentModule
         return $context;
     }
 
+	private function string_sanitize($string, $force_lowercase = true, $anal = false)
+    {
+
+        $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;", "â€”", "â€“", ",", "<", ".", ">", "/", "?");
+        $clean = trim(str_replace($strip, "", strip_tags($string)));
+        $clean = preg_replace('/\s+/', "_", $clean);
+        $clean = ($anal) ? preg_replace("/[^a-zA-Z0-9]/", "", $clean) : $clean;
+        return $clean;
+    }
+
     private function writeCronLog($message)
     {
         $logFile = _PS_MODULE_DIR_.'payco/logs/cron.log';
@@ -1308,3 +1318,4 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
