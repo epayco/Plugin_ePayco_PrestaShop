@@ -71,10 +71,6 @@
                                                 <td>Motivo</td>
                                                 <td id="motivo"></td>
                                             </tr>
-                                            <tr>
-                                                <td class="bold">Banco</td>
-                                                <td class="" id="banco">
-                                                </tr>
                                                 <tr>
                                                     <td class="bold">Recibo</td>
                                                     <td id="recibo"></td>
@@ -121,7 +117,7 @@
                         return param
                     }
                     $(document).ready(function() {
-                    //llave publica del comercio
+                     //llave publica del comercio
                     //Referencia de payco que viene por url
                     var ref_payco = getQueryParam('ref_payco');
                     if(ref_payco == "ref_payco"){
@@ -129,9 +125,10 @@
                         ref_payco = window.location.search.slice( count );
                     }
                     //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
-                    var urlapp = "hhttps://eks-checkout-service.epayco.io/validation/v1/reference/"+ref_payco;
+
+                    var urlapp = "https://secure.epayco.co/validation/v1/reference/"+ref_payco;
                     
-                    $.get(urlapp, function(response,error) {
+                    $.get(urlapp, function(response) {
 
 
                         if (response.success) {
