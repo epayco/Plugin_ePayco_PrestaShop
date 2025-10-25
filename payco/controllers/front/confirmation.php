@@ -57,7 +57,12 @@ class PaycoConfirmationModuleFrontController extends ModuleFrontController
 			$x_franchise=trim($_REQUEST['x_franchise']);
 		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$x_test_request,$x_cod_transaction_state,0,$x_approval_code,$x_franchise);
 		}else{
-			
+			/*
+             * An error occured and is shown on a new page.
+             */
+            $this->errors[] = $this->module->l('An error occured. Please contact the merchant to have more informations');
+
+            return $this->setTemplate('error.tpl');
 		}
 
     }
