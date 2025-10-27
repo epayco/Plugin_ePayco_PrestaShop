@@ -128,7 +128,7 @@ class Payco extends PaymentModule
      */
     public function hookDisplayHeader()
     {
-        $this->context->controller->registerJavascript('epayco-checkout', 'https://checkout.epayco.co/checkout-green-v2.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerJavascript('epayco-checkout', 'https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod-v2.js', ['position' => 'bottom', 'priority' => 150]);
         $this->context->controller->registerStylesheet(
             'epayco-checkout-css',
             $this->getPathUri() . 'views/css/back.css',
@@ -895,7 +895,7 @@ class Payco extends PaymentModule
             $data = array(
                 'public_key' => $publicKey
             );
-            $url = 'https://apify-green.epayco.co/login';
+            $url = 'https://eks-apify-service.epayco.io/login';
             //return $this->epayco_realizar_llamada_api("login", [], $headers);
             $responseData = $this->PostCurl($url, $data, $headers);
             $jsonData = @json_decode($responseData, true);
@@ -979,7 +979,7 @@ class Payco extends PaymentModule
                 $ref_payco = $_REQUEST["ref_payco"];
             }
 
-            $url = 'https://secure.epayco.co/validation/v1/reference/' . $ref_payco;
+            $url = 'https://eks-checkout-service.epayco.io/validation/v1/reference/' . $ref_payco;
         }
 
 
@@ -1319,6 +1319,7 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
 
 
 
