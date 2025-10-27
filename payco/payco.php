@@ -908,7 +908,7 @@ class Payco extends PaymentModule
                 'Authorization: Bearer '.$bearer_token
         );
 
-        $url = 'https://apify-green.epayco.co/payment/session/create';
+        $url = 'https://eks-apify-service.epayco.io/payment/session/create';
         $responseData = $this->PostCurl($url, $body, $headers);
         $jsonData = @json_decode($responseData, true);
         return $jsonData;
@@ -1319,6 +1319,7 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
 
 
 
