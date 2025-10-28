@@ -1,6 +1,6 @@
 # ePayco plugin para PrestaShop v1.9.5.2
 
-**Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
+**Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@epayco.com.**
 
 ## Tabla de contenido
 
