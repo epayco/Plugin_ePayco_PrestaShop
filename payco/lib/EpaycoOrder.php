@@ -12,7 +12,7 @@ class EpaycoOrder extends ObjectModel{
 	public $order_status;
 	
 	public static $definition = array(
-		'table' => _DB_PREFIX_.'payco',
+		'table' => _DB_PREFIX_.'epaycoTarjetaDeCredito',
 		'primary' => 'id',
 		'multilang' => false,
 		'fields' => array(
@@ -35,7 +35,7 @@ class EpaycoOrder extends ObjectModel{
 		
 		$db = Db::getInstance();
 			$result = $db->execute('
-			INSERT INTO `'._DB_PREFIX_.'payco`
+			INSERT INTO `'._DB_PREFIX_.'epaycoTarjetaDeCredito`
 			( `order_id`, `order_stock_restore` )
 			VALUES
 			("'.intval($orderId).'","'.$stock.'")');
@@ -72,43 +72,17 @@ class EpaycoOrder extends ObjectModel{
 	}
 
 	/**
-	 * Consultar si a una orden ya se le descconto el stock
-	 * @param int $orderId
-	 */	
-	public static function deletePaycoOrder($orderId)
-	{	
-		return Db::getInstance()->delete(
-			'payco',
-			'`order_id` = ' . (int)$orderId
-    	);
-	}
-
-	/**
 	 * Actualizar que ya se le descont贸 el stock a una orden
 	 * @param int $orderId
 	 */	
-	public static function updateStockDiscount($orderId, $stock, $refPayco)
+	public static function updateStockDiscount($orderId)
 	{
 		$db = Db::getInstance();
-		$result = $db->update('payco', array('order_stock_discount'=> $stock,'ref_payco' => $refPayco), 'order_id = '.(int)$orderId );
+		$result = $db->update('epaycoTarjetaDeCredito', array('order_stock_discount'=>1), 'order_id = '.(int)$orderId );
 
 		return $result ? true : false;
 	}
 	
-
-		/**
-	 * Actualizar que ya se le descont贸 el stock a una orden
-	 * @param int $orderId
-	 */	
-	public static function updateRefPayco($orderId, $refPayco)
-	{
-		$db = Db::getInstance();
-		$result = $db->update('payco', array('ref_payco' => $refPayco), 'order_id = '.(int)$orderId );
-
-		return $result ? true : false;
-	}
-
-
 	/**
 	 * Crear la tabla en la base de datos.
 	 * @return true or false
@@ -116,14 +90,13 @@ class EpaycoOrder extends ObjectModel{
 	public static function setup()
 	{
 		$sql = array();
-		$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payco` (
+		$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'epaycoTarjetaDeCredito` (
 		    `id` int(11) NOT NULL AUTO_INCREMENT,
 		    `id_payco` INT(11) NULL,
 		    `order_id` INT NULL,
 		    `order_stock_restore` INT NULL,
 		    `order_stock_discount` INT NULL,
 		    `order_status` TEXT NULL,
-			`ref_payco` TEXT NULL,
 		    PRIMARY KEY  (`id`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;';
 
