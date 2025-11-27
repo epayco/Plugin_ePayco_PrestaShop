@@ -4224,46 +4224,56 @@
                     "emoji": "🇿🇼"
                 }
             ]
-            const n = cellphoneList.map(item => `${item.emoji} ${item.dial_code}`),
-                //const n = JSON.parse(this.getAttribute("documents")),
-                s = this.getAttribute("validate"),
-                r = this.createSelect(i, t, n, s);
-            return i.classList.add("ep-input-select-input"),
-                r.addEventListener("change", ((e) => {
-                    i.classList.remove("ep-focus"),
-                    i.classList.remove("ep-error");
-                    const selectedValue = e.target.value;
-                    const codigoPais = selectedValue.split("+")[1];
-                    let n = i.parentElement.querySelector("input");
-                    const regexColombia = /^3\d{9}$/;
-                    if(codigoPais == 57){
-                        if (regexColombia.test(n.value)) {
-                            aa.querySelector("input").parentElement.classList.remove("ep-error");
-                            tt.querySelector("select").parentElement.classList.remove("ep-error");
-                            tt.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
+            // Consumir la API de países
+            fetch('https://cfeb0f7a-fea6-4cd5-af9c-49be89cfcb6e.mock.pstmn.io/create/resources/countries')
+                .then(response => response.json())
+                .then(data => {
+                    // Convertir el objeto en array
+                    const countryList = Object.values(data).map(country => ({
+                        name: country.name,
+                        dial_code: `+${country.phone[0]}`,
+                        flag: country.flag
+                    }));
+                    const n = countryList;
+                    const s = this.getAttribute("validate");
+                    const r = this.createSelect(i, t, n, s);
+                    i.classList.add("ep-input-select-input");
+                    r.addEventListener("change", (e) => {
+                        i.classList.remove("ep-focus");
+                        i.classList.remove("ep-error");
+                        const selectedIndex = r.selectedIndex;
+                        const selectedOption = r.options[selectedIndex];
+                        const codigoPais = selectedOption.value.replace(/[^0-9]/g, "");
+                        let nInput = i.parentElement.querySelector("input");
+                        const regexColombia = /^3\d{9}$/;
+                        if (codigoPais == 57) {
+                            if (regexColombia.test(nInput.value)) {
+                                aa.querySelector("input").parentElement.classList.remove("ep-error");
+                                tt.querySelector("select").parentElement.classList.remove("ep-error");
+                                tt.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
+                            } else {
+                                aa.querySelector("input").parentElement.classList.add("ep-error");
+                                tt.querySelector("select").parentElement.classList.add("ep-error");
+                                tt.parentElement.querySelector("input-helper-epayco > div").style.display = "flex";
+                            }
                         } else {
-                            aa.querySelector("input").parentElement.classList.add("ep-error");
-                            tt.querySelector("select").parentElement.classList.add("ep-error");
-                            tt.parentElement.querySelector("input-helper-epayco > div").style.display = "flex";
+                            const digitCount = selectedOption.value.replace(/[^0-9]/g, "").length;
+                            const cellphoneDigits = digitCount + nInput.value.length;
+                            if (cellphoneDigits < 10) {
+                                aa.querySelector("input").parentElement.classList.add("ep-error");
+                                tt.querySelector("select").parentElement.classList.add("ep-error");
+                                tt.parentElement.querySelector("input-helper-epayco > div").style.display = "flex";
+                            } else {
+                                aa.querySelector("input").parentElement.classList.remove("ep-error");
+                                tt.querySelector("select").parentElement.classList.remove("ep-error");
+                                tt.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
+                            }
                         }
-                    }else{
-                        const digitCount = i.querySelector("select").value.replace(/[^0-9]/g, "").length;
-                        const cellphoneDigits = digitCount+n.value.length;
-                        if (cellphoneDigits < 10) {
-                            aa.querySelector("input").parentElement.classList.add("ep-error");
-                            tt.querySelector("select").parentElement.classList.add("ep-error");
-                            tt.parentElement.querySelector("input-helper-epayco > div").style.display = "flex";
-                        } else {
-                            aa.querySelector("input").parentElement.classList.remove("ep-error");
-                            tt.querySelector("select").parentElement.classList.remove("ep-error");
-                            tt.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
-                        }
-                    }
-                    i.classList.remove("ep-focus");
-                    //i.classList.remove("ep-error");
-                })),
-                i.appendChild(r),
-                i
+                        i.classList.remove("ep-focus");
+                    });
+                    i.appendChild(r);
+                });
+            return i;
         }
 
 
@@ -4302,21 +4312,139 @@
                     e.innerHTML = this.getAttribute("default-option"),
                     t.appendChild(e)
             }
-            return n && 0 !== n.length && n.forEach((e => {
-                t.appendChild(this.createOption(e))
-            })),
-            n && (t.addEventListener("focus", (() => {
-                i.classList.add("ep-focus"),
-                    ee.firstElementChild.style.display = "none"
-            })), t.addEventListener("focusout", (() => {
-                i.classList.remove("ep-focus"),
-                    ee.firstElementChild.style.display = "none"
-            }))),
-                t
+            // Dropdown personalizado
+            let selectedIndex = 0;
+            const dropdown = document.createElement('div');
+            dropdown.className = 'ep-country-dropdown';
+            dropdown.style.position = 'relative';
+            dropdown.style.width = '100%';
+            // Visual seleccionado
+            const selectedDiv = document.createElement('div');
+            selectedDiv.className = 'ep-country-selected';
+            selectedDiv.style.display = 'flex';
+            selectedDiv.style.alignItems = 'center';
+            selectedDiv.style.gap = '8px';
+            selectedDiv.style.cursor = 'pointer';
+           
+          
+            selectedDiv.style.padding = '8px 7px';
+            selectedDiv.style.background = '#fff';
+            // Opciones
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'ep-country-options';
+            optionsDiv.style.position = 'absolute';
+            optionsDiv.style.top = '110%';
+            optionsDiv.style.left = '0';
+            optionsDiv.style.width = '100%';
+            optionsDiv.style.maxHeight = '180px';
+            optionsDiv.style.overflowY = 'auto';
+            optionsDiv.style.background = '#fff';
+            optionsDiv.style.border = '1px solid #ccc';
+            optionsDiv.style.borderRadius = '8px';
+            optionsDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+            optionsDiv.style.zIndex = '1000';
+            optionsDiv.style.display = 'none';
+            // Render opciones
+            function renderOptions() {
+                optionsDiv.innerHTML = '';
+                n.forEach((country, idx) => {
+                    const opt = document.createElement('div');
+                    opt.className = 'ep-country-option';
+                    opt.style.display = 'flex';
+                    opt.style.alignItems = 'center';
+                    opt.style.gap = '8px';
+                    opt.style.padding = '8px 12px';
+                    opt.style.cursor = 'pointer';
+                    opt.style.fontSize = '15px';
+                    opt.style.transition = 'background 0.2s';
+                    if (idx === selectedIndex) {
+                        opt.style.background = '#f2f2f2';
+                    }
+                    const img = document.createElement('img');
+                    img.src = country.flag;
+                    img.alt = 'Bandera';
+                    img.style.width = '24px';
+                    img.style.height = '16px';
+                    img.style.borderRadius = '3px';
+                    img.style.boxShadow = '0 0 2px #ccc';
+                    opt.appendChild(img);
+                    const span = document.createElement('span');
+                    span.textContent = country.dial_code;
+                    span.style.fontWeight = '500';
+                    span.style.color = '#444';
+                    opt.appendChild(span);
+                    opt.addEventListener('click', () => {
+                        selectedIndex = idx;
+                        updateSelected();
+                        optionsDiv.style.display = 'none';
+                        dropdown.dispatchEvent(new Event('change'));
+                    });
+                    optionsDiv.appendChild(opt);
+                });
+            }
+            // Actualizar visual seleccionado
+            function updateSelected() {
+                selectedDiv.innerHTML = '';
+                const country = n[selectedIndex];
+                if (country) {
+                    const img = document.createElement('img');
+                    img.src = country.flag;
+                    img.alt = 'Bandera';
+                    img.style.width = '24px';
+                    img.style.height = '16px';
+                    img.style.borderRadius = '3px';
+                    img.style.boxShadow = '0 0 2px #ccc';
+                    selectedDiv.appendChild(img);
+                    const span = document.createElement('span');
+                    span.textContent = country.dial_code;
+                    span.style.fontWeight = '500';
+                    span.style.fontSize = '16px';
+                    span.style.color = '#444';
+                    selectedDiv.appendChild(span);
+                    // Icono flecha SVG estilo nativo
+                    const arrow = document.createElement('span');
+                    arrow.style.marginLeft = '-5px';
+                    arrow.style.display = 'inline-flex';
+                    arrow.style.alignItems = 'center';
+                    arrow.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="#222" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+                    selectedDiv.appendChild(arrow);
+                }
+            }
+            selectedDiv.addEventListener('click', () => {
+                optionsDiv.style.display = optionsDiv.style.display === 'none' ? 'block' : 'none';
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    optionsDiv.style.display = 'none';
+                }
+            });
+            // Inicializar
+            updateSelected();
+            renderOptions();
+            dropdown.appendChild(selectedDiv);
+            dropdown.appendChild(optionsDiv);
+            // API para obtener el país seleccionado
+            dropdown.getSelectedCountry = () => n[selectedIndex];
+            // Simular evento change para validación
+            dropdown.addEventListener('change', () => {
+                // ...validación original...
+                if (typeof window.validateCellphoneCountry === 'function') {
+                    window.validateCellphoneCountry(n[selectedIndex]);
+                }
+            });
+            return dropdown;
         }
         createOption(t) {
             const e = document.createElement("option");
-            return e.innerHTML = t, e.value = t, e
+            if (typeof t === 'object' && t.flag && t.dial_code) {
+                e.innerHTML = `${t.dial_code}`;
+                e.value = t.dial_code;
+                e.dataset.flag = t.flag;
+            } else {
+                e.innerHTML = t;
+                e.value = t;
+            }
+            return e;
         }
         createDocument(t, i) {
             const n = document.createElement("input");
@@ -9488,26 +9616,26 @@
                 o
             }
 
-             updateIcons(e) {
-                 const element = document.getElementById(e);
-                const checkboxes = document.querySelectorAll(".ep-input-table-epayco-option");
-                 checkboxes.forEach((icon, index) => {
-                     if (checkboxes[index].querySelector('input').checked) {
-                         if(element == checkboxes[index].querySelector('input')){
-                             element.checked = true;
-                             checkboxes[index].querySelector('input-checkbox').querySelector('i').classList.remove("ep-input-radio-container-unchecked");
-                             checkboxes[index].querySelector('input-checkbox').querySelector('i').classList.add("ep-input-radio-container-checked");
-                         }else{
-                             checkboxes[index].querySelector('input').checked = false;
-                             checkboxes[index].querySelector('input-checkbox').querySelector('i').classList.remove("ep-input-radio-container-checked");
-                             checkboxes[index].querySelector('input-checkbox').querySelector('i').classList.add("ep-input-radio-container-unchecked");
-                         }
-                     } else {
-                         checkboxes[index].querySelector('input').checked = false;
-                         checkboxes[index].querySelector('input-checkbox').querySelector('i').classList.remove("ep-input-radio-container-checked");
-                         checkboxes[index].querySelector('input-checkbox').querySelector('i').classList.add("ep-input-radio-container-unchecked");
-                     }
-                 })
+            updateIcons(selectedId) {
+                // Selecciona todos los inputs tipo radio dentro de las opciones de pago
+                const radios = document.querySelectorAll('.ep-input-table-epayco-option input[type="radio"]');
+                radios.forEach((radio) => {
+                    // Buscar el ícono dentro del contenedor del radio
+                    const iconContainer = radio.parentElement;
+                    const icon = iconContainer.querySelector('i');
+                    
+                    if (icon) {
+                        if (radio.id === selectedId) {
+                            radio.checked = true;
+                            icon.classList.remove('ep-input-radio-container-unchecked');
+                            icon.classList.add('ep-input-radio-container-checked');
+                        } else {
+                            radio.checked = false;
+                            icon.classList.remove('ep-input-radio-container-checked');
+                            icon.classList.add('ep-input-radio-container-unchecked');
+                        }
+                    }
+                });
             }
 
             createOption(t, e, i, n, s, a, r) {
@@ -9516,16 +9644,47 @@
             }
 
             createRadio(t, e, i, n) {
-                //const s = document.createElement("input-radio");
-                const s = document.createElement("input-checkbox");
-                return s.setAttribute("name", e),
-                        s.setAttribute("value", i),
-                        s.setAttribute("identification", t),
-                        s.setAttribute("dataRate", n),
-                        s.addEventListener("click", (() => {
-                            s.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('input-helper-epayco').querySelector('div').style.display='none'
-                        })),
-                        s
+                // Crear contenedor para el radio y el ícono visual
+                const container = document.createElement("div");
+                container.style.display = "flex";
+                container.style.alignItems = "center";
+                container.style.gap = "8px";
+                
+                // Usar input-radio nativo para selección única
+                const s = document.createElement("input");
+                s.type = "radio";
+                s.name = e;
+                s.value = i;
+                s.id = t;
+                s.setAttribute("identification", t);
+                s.setAttribute("dataRate", n);
+                s.style.display = "none"; // Ocultar el input nativo
+                
+                // Crear ícono visual
+                const icon = document.createElement("i");
+                icon.classList.add("ep-input-radio-container-unchecked");
+                icon.style.cursor = "pointer";
+                icon.style.fontSize = "20px";
+                
+                s.addEventListener("click", (() => {
+                    // Ocultar helper si existe
+                    const helper = s.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('input-helper-epayco');
+                    if (helper && helper.querySelector('div')) {
+                        helper.querySelector('div').style.display = 'none';
+                    }
+                    // Actualizar iconos visuales
+                    this.updateIcons(t);
+                }));
+                
+                container.appendChild(s);
+                container.appendChild(icon);
+                
+                // Permitir hacer click en el ícono para activar el radio
+                icon.addEventListener("click", () => {
+                    s.click();
+                });
+                
+                return container;
             }
 
             createIcon(){
