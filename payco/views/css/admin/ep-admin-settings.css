@@ -57,7 +57,7 @@
     margin: 0 55px 0 23px;
     font-size: 16px;
     min-width: 550px;
-    font-family: "Poppins" !important
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 @media screen and (max-width: 780px) {
@@ -135,7 +135,7 @@
     flex: none;
     flex-grow: 0;
     margin: 16px 16px 0 50px !important;
-    font-family: 'Poppins';
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 @media screen and (max-width: 780px) {
@@ -167,7 +167,7 @@
 .ep-settings-header p {
     position: relative;
     top: 70px;
-    font-family: 'Poppins';
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
     font-size: 1.5rem;
     line-height: 36px;
     color: #fff;
@@ -219,7 +219,7 @@
 }
 
 .ep-settings-font-color {
-    font-family: "Poppins", -apple-system, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
     color: rgba(0, 0, 0, .9);
 }
 
@@ -422,4 +422,9 @@
     padding-right: 16px !important;
     width: 32px;
     height: 32px;
+}
+
+/* Aplicar Segoe UI a todos los elementos dentro del plugin */
+.ep-settings * {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }

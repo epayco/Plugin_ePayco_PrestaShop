@@ -49,7 +49,7 @@
   font-weight: 400;
   color: var(--black-black-60, #747474);
   padding: 1px 9px;
-  pointer-events: none;
+  /* pointer-events: none; */
   font-feature-settings: "salt" on, "liga" off;
 }
 
@@ -806,22 +806,27 @@ option {
 }
 /* Texto de términos y condiciones personalizado */
 .ep-terms-text {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+ font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
     font-size: 14px !important;
     font-style: normal !important;
     line-height: 16px !important;
     margin: 0 !important;
     vertical-align: baseline !important;
     text-align: left !important;
-    left: 56% !important;
+    /* left: 56% !important; */
     position: relative !important;
-    top: -34px !important;
-    width: 430px !important;
+    /* top: -34px !important; */
+    /* width: 429px !important; */
+    margin: 0;
+    /* width: 300px; */
+    gap: 5px;
+    align-items: flex-start;
+    display: inline-block;
 }
 /* Checkbox de términos y condiciones personalizado */
 .ep-terms-checkbox {
-     margin-left: 30% !important;
-    margin-top: 22px !important;
+     /* margin-left: 30% !important;
+    margin-top: 22px !important; */
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 10px !important;

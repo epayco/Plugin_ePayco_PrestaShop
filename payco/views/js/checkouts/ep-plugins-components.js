@@ -109,9 +109,22 @@
             }
             createLabel(){
                 const t = document.createElement("label");
-                const s = this.createInput(t);
+                const checkboxContainer = document.createElement("div");
+                checkboxContainer.classList.add("ep-terms-checkbox-container");
+                checkboxContainer.style.display = "flex";
+                checkboxContainer.style.gap = "10px";
+                checkboxContainer.style.alignItems = "flex-start";
+                checkboxContainer.style.width = "414px";
+                checkboxContainer.style.marginLeft = "50px";
+                checkboxContainer.style.marginBottom = "32px";
+                checkboxContainer.style.cursor = "pointer";
+                checkboxContainer.style.marginTop = "24px";
+                
+                const checkbox = this.createInput(checkboxContainer);
+                
                 const pp = document.createElement("p");
                 pp.classList.add("ep-terms-text");
+                pp.style.margin = "0";
                 let label = this.getAttribute("label")+
                     "<a target='_blank' href=\""+
                     this.getAttribute("link-src")+"\">"+
@@ -122,23 +135,37 @@
                     this.getAttribute("link-condiction-text")+"</a>"+
                     this.getAttribute("description");
                 pp.innerHTML = label;
-                return t.appendChild(s),
-                    t.appendChild(pp),
+                
+                checkboxContainer.appendChild(checkbox);
+                checkboxContainer.appendChild(pp);
+                return t.appendChild(checkboxContainer),
                     t;
             }
-            createInput(t) {
+            createInput(container) {
                 const n = document.createElement("input");
                 n.classList.add("ep-terms-checkbox");
-                return n.type = "checkbox",
-                    t.appendChild(n),
-                    n.addEventListener("click", (() => {
-                        if (n.checked) {
-                            n.parentElement.parentElement.classList.remove("ep-error")
-                        } else {
-                            n.parentElement.parentElement.classList.add("ep-error")
+                n.type = "checkbox";
+                n.style.minWidth = "20px";
+                n.style.width = "20px";
+                n.style.height = "20px";
+                n.style.marginTop = "4px";
+                n.style.cursor = "pointer";
+                
+                const parentLabel = container.closest("label") || container.parentElement;
+                
+                n.addEventListener("change", (() => {
+                    if (n.checked) {
+                        if (parentLabel) {
+                            parentLabel.classList.remove("ep-error");
                         }
-                    })),
-                    n
+                    } else {
+                        if (parentLabel) {
+                            parentLabel.classList.add("ep-error");
+                        }
+                    }
+                }));
+                
+                return n;
             }
         }
         customElements.define("terms-and-conditions", t)
