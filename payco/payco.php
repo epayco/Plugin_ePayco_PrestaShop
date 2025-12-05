@@ -844,14 +844,43 @@ class Payco extends PaymentModule
                 "checkout_version"=>"2",
                 "autoClick" => false,
             );
-
             $checkoutSessionResponse = $this->epaycoSessionCheckout($token, $dataScript);
             $sessionId = null;
             if(isset($checkoutSessionResponse['success'])){
-                $sessionId = $checkoutSessionResponse["data"]['sessionId'];
+                //$sessionId = $checkoutSessionResponse["data"]['sessionId'];
+                if (isset($checkoutSessionResponse['data']) && is_array($checkoutSessionResponse['data'])) {
+                    if (isset($checkoutSessionResponse['data']['sessionId'])) {
+                        $sessionId = $checkoutSessionResponse['data']['sessionId'];
+                    }
+                }
+            }else{
+                $messageError = $checkoutSessionResponse['textResponse'];
+                $errorMessage = "";
+                if (isset($checkoutSessionResponse['data']['errors'])) {
+                    $errors = $checkoutSessionResponse['data']['errors'];
+                    if(is_array($errors)){
+                        foreach ($errors as $error) {
+                            $errorMessage = $error['errorMessage'] . "\n";
+                        }
+                    }else{
+                        $errorMessage = $errors. "\n";
+                    }
+                } elseif (isset($epayco_status_session['data']['error']['errores'])) {
+                    $errores = $epayco_status_session['data']['error']['errores'];
+                    foreach ($errores as $error) {
+                        $errorMessage = $error['errorMessage'] . "\n";
+                    }
+                }
+                //$processReturnFailMessage = $messageError . " " . $errorMessage;
+                $processReturnFailMessage =  $errorMessage; 
+            }
+            if ($sessionId === null) {
+                $this->writeCronLog("Error creando sesión checkout: " . json_encode($checkoutSessionResponse));
             }
             $payload = array(
                 'sessionId' => $sessionId, 
+                'test' => $test,
+                'type' => $external
             );
             $checkout =  base64_encode(json_encode($payload));            
 
@@ -860,8 +889,8 @@ class Payco extends PaymentModule
                     'this_path_bw' => $this->_path,
                     'checkout' => $checkout,
                     'status' => isset($sessionId) ? 'ok' : 'fail',
-                    'type' => $external,
-                    'test' => $test,
+                    'test' => $test ? 'true' : 'false',
+                    'errorMessage' => isset($processReturnFailMessage) ? $processReturnFailMessage : '',
                 )
             );
         } else {
@@ -874,6 +903,7 @@ class Payco extends PaymentModule
 
     public function epaycoBerarToken($public_key,$private_key)
     {
+        try{
             $publicKey = trim($public_key);
             $privateKey = trim($private_key);
             $bearer_token = base64_encode($publicKey . ":" . $privateKey);
@@ -900,6 +930,9 @@ class Payco extends PaymentModule
             $responseData = $this->PostCurl($url, $data, $headers);
             $jsonData = @json_decode($responseData, true);
             return $jsonData ;
+        }catch (\Exception $e) {
+            return false;
+        }
     }
 
     private function epaycoSessionCheckout($bearer_token, $body){
