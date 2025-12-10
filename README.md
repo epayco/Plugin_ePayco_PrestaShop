@@ -1,6 +1,6 @@
 # ePayco plugin para PrestaShop v1.9.5.2
 
-**Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
+**Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@epayco.com.**
 
 ## Tabla de contenido
 
@@ -10,6 +10,7 @@
 * [Pasos](#pasos)
 
 ## Versiones
+* [ePayco plugin OnPage_Checkout_PrestaShop v2.0.0.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.0)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.6.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.6.0)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.1)
