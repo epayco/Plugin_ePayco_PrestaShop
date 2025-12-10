@@ -59,7 +59,7 @@ class Payco extends PaymentModule
 
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '1.9.5.2';
+        $this->version = '2.0.0.0';
         $this->author = 'ePayco';
         $this->need_instance = 0;
 
@@ -925,7 +925,7 @@ class Payco extends PaymentModule
             $data = array(
                 'public_key' => $publicKey
             );
-            $url = 'https://eks-apify-service.epayco.io/login';
+            $url = 'https://apify.epayco.co/login';
             //return $this->epayco_realizar_llamada_api("login", [], $headers);
             $responseData = $this->PostCurl($url, $data, $headers);
             $jsonData = @json_decode($responseData, true);
@@ -941,7 +941,7 @@ class Payco extends PaymentModule
                 'Authorization: Bearer '.$bearer_token
         );
 
-        $url = 'https://eks-apify-service.epayco.io/payment/session/create';
+        $url = 'https://apify.epayco.co/payment/session/create';
         $responseData = $this->PostCurl($url, $body, $headers);
         $jsonData = @json_decode($responseData, true);
         return $jsonData;
@@ -1012,7 +1012,7 @@ class Payco extends PaymentModule
                 $ref_payco = $_REQUEST["ref_payco"];
             }
 
-            $url = 'https://eks-checkout-service.epayco.io/validation/v1/reference/' . $ref_payco;
+            $url = 'https://secure.epayco.co/validation/v1/reference/' . $ref_payco;
         }
 
 
