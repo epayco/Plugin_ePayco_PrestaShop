@@ -11,10 +11,9 @@ class PaycoCronModuleFrontController extends ModuleFrontController
     public function display(){
         try
         {
-            if(!Tools::isPHPCLI()){
-                $this->ajaxRender('Forbidden: se fue permitido realizar la acción!');
-                return;
-            }
+            // Permitir ejecutar desde CLI o HTTP
+            // if(!Tools::isPHPCLI()){ permiso removido para permitir acceso HTTP }
+            
             PrestaShopLogger::addLog(
                 'Órdenes procesadas command: ',
                 1,      // Severidad (1=info, 2=alerta, 3=error)

@@ -39,31 +39,56 @@ class PaycoConfirmationModuleFrontController extends ModuleFrontController
     }
 
     public function postProcess(){
+    	try {
+    		$payco = new Payco();
 
-    	$payco = new Payco();
-		if (isset($_REQUEST['x_cod_response']))
-		{	
-			$extra1=trim($_REQUEST['x_extra1']);
-			$response=trim($_REQUEST['x_cod_response']);
-			$referencia=trim($_REQUEST['x_ref_payco']);
-			$transid=trim($_REQUEST['x_transaction_id']);
-			$amount=trim($_REQUEST['x_amount']);
-			$currency=trim($_REQUEST['x_currency_code']);
-			$signature=trim($_REQUEST['x_signature']);
-			$confirmation=true;
-			$x_test_request=trim($_REQUEST['x_test_request']);
-			$x_cod_transaction_state= trim($_REQUEST['x_cod_transaction_state']);
-			$x_approval_code = trim($_REQUEST['x_approval_code']);
-			$x_franchise=trim($_REQUEST['x_franchise']);
-		    $payco->PaymentSuccess($extra1,$response,$referencia,$transid,$amount,$currency,$signature, $confirmation,$x_test_request,$x_cod_transaction_state,0,$x_approval_code,$x_franchise);
-		}else{
-			/*
-             * An error occured and is shown on a new page.
-             */
-            $this->errors[] = $this->module->l('An error occured. Please contact the merchant to have more informations');
+    		// Obtener y sanitizar datos
+    		$extra1 = (int)trim($_REQUEST['x_extra1'] ?? 0);
+    		$response = (int)trim($_REQUEST['x_cod_response'] ?? 0);
+    		$referencia = pSQL(trim($_REQUEST['x_ref_payco'] ?? ''));
+    		$transid = pSQL(trim($_REQUEST['x_transaction_id'] ?? ''));
+    		$amount = (float)trim($_REQUEST['x_amount'] ?? 0);
+    		$currency = pSQL(trim($_REQUEST['x_currency_code'] ?? ''));
+    		$signature = pSQL(trim($_REQUEST['x_signature'] ?? ''));
+    		$confirmation = true;
+    		$x_test_request = pSQL(trim($_REQUEST['x_test_request'] ?? ''));
+    		$x_cod_transaction_state = (int)trim($_REQUEST['x_cod_transaction_state'] ?? 0);
+    		$x_approval_code = pSQL(trim($_REQUEST['x_approval_code'] ?? ''));
+    		$x_franchise = pSQL(trim($_REQUEST['x_franchise'] ?? ''));
 
-            return $this->setTemplate('error.tpl');
-		}
-
+    		// Procesar confirmación de pago
+    		$payco->PaymentSuccess(
+    			$extra1,
+    			$response,
+    			$referencia,
+    			$transid,
+    			$amount,
+    			$currency,
+    			$signature,
+    			$confirmation,
+    			$x_test_request,
+    			$x_cod_transaction_state,
+    			$referencia,
+    			$x_approval_code,
+    			$x_franchise
+    		);
+    		
+    		// Responder OK a ePayco
+    		http_response_code(200);
+    		echo json_encode(['success' => true, 'message' => 'Confirmación procesada']);
+    		exit;
+    		
+    	} catch (Throwable $e) {
+    		file_put_contents(_PS_MODULE_DIR_ . 'payco/logs/confirmation_error.log', 
+    			"[".date('Y-m-d H:i:s')."] Error: " . $e->getMessage() . 
+    			"\nArchivo: " . $e->getFile() . 
+    			"\nLínea: " . $e->getLine() . 
+    			"\n" . $e->getTraceAsString() . "\n\n", 
+    			FILE_APPEND);
+    		
+    		http_response_code(500);
+    		echo json_encode(['success' => false, 'error' => 'Error al procesar confirmación', 'details' => $e->getMessage()]);
+    		exit;
+    	}
     }
 }

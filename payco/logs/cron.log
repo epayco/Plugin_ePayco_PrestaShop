@@ -1,0 +1,108 @@
+[2025-12-18 04:19:52] Inicio ejecución ePayco
+[2025-12-18 04:33:34] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 13:38:26] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 13:42:04] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 13:43:32] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 13:45:34] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 13:48:07] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 16:10:59] Inicio ejecución cron ePayco
+[2025-12-18 16:10:59] actualizarEstados inicio
+[2025-12-18 16:11:34] Inicio ejecución cron ePayco
+[2025-12-18 16:11:34] actualizarEstados inicio
+[2025-12-18 16:12:02] Inicio ejecución cron ePayco
+[2025-12-18 16:12:02] actualizarEstados inicio
+[2025-12-18 16:45:07] Inicio ejecución cron ePayco
+[2025-12-18 16:45:07] actualizarEstados inicio
+[2025-12-18 17:05:53] Inicio ejecución cron ePayco
+[2025-12-18 17:05:53] actualizarEstados inicio
+[2025-12-18 17:06:01] Inicio ejecución cron ePayco
+[2025-12-18 17:06:01] actualizarEstados inicio
+[2025-12-18 17:06:44] Inicio ejecución cron ePayco
+[2025-12-18 17:06:44] actualizarEstados inicio
+[2025-12-18 17:08:27] Inicio ejecución cron ePayco
+[2025-12-18 17:08:27] actualizarEstados inicio
+[2025-12-18 17:12:45] Inicio ejecución cron ePayco
+[2025-12-18 17:12:45] actualizarEstados inicio
+[2025-12-18 17:13:53] Inicio ejecución cron ePayco
+[2025-12-18 17:13:53] actualizarEstados inicio
+[2025-12-18 17:13:57] Inicio ejecución cron ePayco
+[2025-12-18 17:13:57] actualizarEstados inicio
+[2025-12-18 17:14:19] Inicio ejecución cron ePayco
+[2025-12-18 17:14:19] actualizarEstados inicio
+[2025-12-18 17:15:45] Inicio ejecución cron ePayco
+[2025-12-18 17:15:45] actualizarEstados inicio
+[2025-12-18 17:15:46] Inicio ejecución cron ePayco
+[2025-12-18 17:15:46] actualizarEstados inicio
+[2025-12-18 17:15:49] Inicio ejecución cron ePayco
+[2025-12-18 17:15:49] actualizarEstados inicio
+[2025-12-18 17:15:54] Inicio ejecución cron ePayco
+[2025-12-18 17:15:54] actualizarEstados inicio
+[2025-12-18 17:16:06] Inicio ejecución cron ePayco
+[2025-12-18 17:16:06] actualizarEstados inicio
+[2025-12-18 17:20:49] Inicio ejecución cron ePayco
+[2025-12-18 17:20:49] actualizarEstados inicio
+[2025-12-18 17:20:59] Inicio ejecución cron ePayco
+[2025-12-18 17:20:59] actualizarEstados inicio
+[2025-12-18 17:23:54] Inicio ejecución cron ePayco
+[2025-12-18 17:23:54] actualizarEstados inicio
+[2025-12-18 17:27:20] Inicio ejecución cron ePayco
+[2025-12-18 17:27:20] actualizarEstados inicio
+[2025-12-18 21:00:13] Inicio ejecución cron ePayco
+[2025-12-18 21:00:13] === INICIO CRON actualizarEstados ===
+[2025-12-18 21:00:13] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM y4rm3_payco p
+                    LEFT JOIN y4rm3_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-18 21:00:13] Resultado de query - Filas encontradas: 2
+[2025-12-18 21:00:13] Orden ID: 6 | RefPayco: 325653263 | Estado: 2
+[2025-12-18 21:00:13] Orden ID: 5 | RefPayco: 325648230 | Estado: 2
+[2025-12-18 21:00:13] Órdenes encontradas: 2
+[2025-12-18 21:00:13] Procesando orden: 6 - RefPayco: 325653263
+[2025-12-18 21:58:34] Inicio ejecución ePayco
+[2025-12-18 22:04:27] Error creando sesión checkout: {"success":false,"titleResponse":"Error","textResponse":"Some fields are required, please correct the errors and try again","lastAction":"validation data","data":{"totalErrors":2,"errors":[{"codError":400,"errorMessage":"property Response is not a valid URL"},{"codError":400,"errorMessage":"property Confirmation is not a valid URL"}]}}
+[2025-12-18 22:22:44] Inicio ejecución cron ePayco
+[2025-12-18 22:22:44] === INICIO CRON actualizarEstados ===
+[2025-12-18 22:22:44] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-18 22:22:44] Resultado de query - Filas encontradas: 2
+[2025-12-18 22:22:44] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-18 22:22:44] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-18 22:22:44] Órdenes encontradas: 2
+[2025-12-18 22:22:44] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-18 22:23:08] Inicio ejecución cron ePayco
+[2025-12-18 22:23:08] === INICIO CRON actualizarEstados ===
+[2025-12-18 22:23:08] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-18 22:23:08] Resultado de query - Filas encontradas: 2
+[2025-12-18 22:23:08] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-18 22:23:08] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-18 22:23:08] Órdenes encontradas: 2
+[2025-12-18 22:23:08] Procesando orden: 2 - RefPayco: 325716585
