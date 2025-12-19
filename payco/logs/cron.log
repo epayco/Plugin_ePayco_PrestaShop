@@ -106,3 +106,793 @@
 [2025-12-18 22:23:08] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
 [2025-12-18 22:23:08] Órdenes encontradas: 2
 [2025-12-18 22:23:08] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:17:44] === Inicio ejecución cron manual ePayco ===
+[2025-12-19 00:17:44] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:17:44] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:17:44] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:17:44] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:17:44] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:17:44] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:17:44] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:17:44] Órdenes encontradas: 4
+[2025-12-19 00:17:44] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:19:32] === Inicio ejecución cron manual ePayco ===
+[2025-12-19 00:19:32] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:19:32] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:19:32] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:19:32] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:19:32] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:19:32] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:19:32] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:19:32] Órdenes encontradas: 4
+[2025-12-19 00:19:32] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:21:49] === Inicio ejecución cron manual ePayco ===
+[2025-12-19 00:21:49] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:21:49] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:21:49] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:21:49] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:21:49] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:21:49] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:21:49] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:21:49] Órdenes encontradas: 4
+[2025-12-19 00:21:49] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:21:49] Consultando ePayco ref: 325719573
+[2025-12-19 00:21:49] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:21:50] HTTP Code: 200
+[2025-12-19 00:21:50] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:21:50] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:21:50] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:21:50] Consultando ePayco ref: 325718503
+[2025-12-19 00:21:50] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:21:50] HTTP Code: 200
+[2025-12-19 00:21:50] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:21:50] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:21:50] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:21:50] Consultando ePayco ref: 325716585
+[2025-12-19 00:21:50] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:21:51] HTTP Code: 200
+[2025-12-19 00:21:51] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:21:51] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:21:51] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:21:51] Consultando ePayco ref: 325714986
+[2025-12-19 00:21:51] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:21:51] HTTP Code: 200
+[2025-12-19 00:21:51] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:21:51] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:21:51] === FIN CRON - Procesadas: 0, Fallidas: 4 ===
+[2025-12-19 00:22:38] Inicio ejecución cron ePayco
+[2025-12-19 00:22:38] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:22:38] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:22:38] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:22:38] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:22:38] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:22:38] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:22:38] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:22:38] Órdenes encontradas: 4
+[2025-12-19 00:22:38] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:22:38] Consultando ePayco ref: 325719573
+[2025-12-19 00:22:38] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:22:39] HTTP Code: 200
+[2025-12-19 00:22:39] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:22:39] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:22:39] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:22:39] Consultando ePayco ref: 325718503
+[2025-12-19 00:22:39] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:22:39] HTTP Code: 200
+[2025-12-19 00:22:39] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:22:39] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:22:39] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:22:39] Consultando ePayco ref: 325716585
+[2025-12-19 00:22:39] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:22:40] HTTP Code: 200
+[2025-12-19 00:22:40] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:22:40] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:22:40] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:22:40] Consultando ePayco ref: 325714986
+[2025-12-19 00:22:40] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:22:40] HTTP Code: 200
+[2025-12-19 00:22:40] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:22:40] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:22:40] === FIN CRON - Procesadas: 0, Fallidas: 4 ===
+[2025-12-19 00:23:52] Inicio ejecución cron ePayco
+[2025-12-19 00:23:52] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:23:52] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:23:52] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:23:52] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:23:52] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:23:52] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:23:52] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:23:52] Órdenes encontradas: 4
+[2025-12-19 00:23:52] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:23:52] Consultando ePayco ref: 325719573
+[2025-12-19 00:23:52] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:23:52] HTTP Code: 200
+[2025-12-19 00:23:52] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:23:52] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:23:52] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:23:52] Consultando ePayco ref: 325718503
+[2025-12-19 00:23:52] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:23:53] HTTP Code: 200
+[2025-12-19 00:23:53] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:23:53] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:23:53] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:23:53] Consultando ePayco ref: 325716585
+[2025-12-19 00:23:53] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:23:53] HTTP Code: 200
+[2025-12-19 00:23:53] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:23:53] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:23:53] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:23:53] Consultando ePayco ref: 325714986
+[2025-12-19 00:23:53] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:23:54] HTTP Code: 200
+[2025-12-19 00:23:54] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:23:54] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:23:54] === FIN CRON - Procesadas: 0, Fallidas: 4 ===
+[2025-12-19 00:29:13] Inicio ejecución cron ePayco
+[2025-12-19 00:29:13] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:29:13] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:29:13] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:29:13] Orden ID: 6 | Reference: RRVGSZUZF | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:29:13] Orden ID: 5 | Reference: GFXCCBLUS | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:29:13] Orden ID: 2 | Reference: HVSSDYRLC | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:29:13] Orden ID: 1 | Reference: NZCDCVZHF | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:29:13] Órdenes encontradas: 4
+[2025-12-19 00:29:13] Procesando orden: 6 - Reference: RRVGSZUZF - RefPayco: 325719573
+[2025-12-19 00:29:13] Consultando ePayco ref: RRVGSZUZF
+[2025-12-19 00:29:13] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/RRVGSZUZF
+[2025-12-19 00:29:13] HTTP Code: 200
+[2025-12-19 00:29:13] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:29:13] ERROR - No se encontró respuesta de ePayco para reference: RRVGSZUZF
+[2025-12-19 00:29:13] Procesando orden: 5 - Reference: GFXCCBLUS - RefPayco: 325718503
+[2025-12-19 00:29:13] Consultando ePayco ref: GFXCCBLUS
+[2025-12-19 00:29:13] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/GFXCCBLUS
+[2025-12-19 00:29:14] HTTP Code: 200
+[2025-12-19 00:29:14] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:29:14] ERROR - No se encontró respuesta de ePayco para reference: GFXCCBLUS
+[2025-12-19 00:29:14] Procesando orden: 2 - Reference: HVSSDYRLC - RefPayco: 325716585
+[2025-12-19 00:29:14] Consultando ePayco ref: HVSSDYRLC
+[2025-12-19 00:29:14] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/HVSSDYRLC
+[2025-12-19 00:29:14] HTTP Code: 200
+[2025-12-19 00:29:14] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:29:14] ERROR - No se encontró respuesta de ePayco para reference: HVSSDYRLC
+[2025-12-19 00:29:14] Procesando orden: 1 - Reference: NZCDCVZHF - RefPayco: 325714986
+[2025-12-19 00:29:14] Consultando ePayco ref: NZCDCVZHF
+[2025-12-19 00:29:14] URL consulta: https://eks-checkout-service.epayco.io/validation/v1/reference/NZCDCVZHF
+[2025-12-19 00:29:14] HTTP Code: 200
+[2025-12-19 00:29:14] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:29:14] ERROR - No se encontró respuesta de ePayco para reference: NZCDCVZHF
+[2025-12-19 00:29:14] === FIN CRON - Procesadas: 0, Fallidas: 4 ===
+[2025-12-19 00:36:37] Inicio ejecución cron ePayco
+[2025-12-19 00:36:37] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:36:37] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:36:37] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:36:37] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:36:37] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:36:37] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:36:37] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:36:37] Órdenes encontradas: 4
+[2025-12-19 00:36:37] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:36:37] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:36:38] HTTP Code: 200
+[2025-12-19 00:36:38] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:36:38] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:36:38] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:36:38] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:36:38] HTTP Code: 200
+[2025-12-19 00:36:38] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:36:38] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:36:38] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:36:38] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:36:39] HTTP Code: 200
+[2025-12-19 00:36:39] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:36:39] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:36:39] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:36:39] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:36:39] HTTP Code: 200
+[2025-12-19 00:36:39] ERROR - Respuesta de ePayco: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:36:39] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:36:39] === FIN CRON - Procesadas: 0, Fallidas: 4 ===
+[2025-12-19 00:39:16] Inicio ejecución cron ePayco
+[2025-12-19 00:39:16] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:39:16] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:39:16] Resultado de query - Filas encontradas: 4
+[2025-12-19 00:39:16] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:39:16] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:39:16] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:39:16] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:39:16] Órdenes encontradas: 4
+[2025-12-19 00:39:16] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:39:16] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:39:17] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:39:17] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:39:17] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:39:17] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:39:17] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:39:17] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:39:17] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:39:17] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:39:17] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:39:17] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:39:18] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:39:18] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:39:18] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:39:18] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:39:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:39:18] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:39:18] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:39:18] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:39:18] === FIN CRON - Procesadas: 0, Fallidas: 4 ===
+[2025-12-19 00:41:54] Inicio ejecución cron ePayco
+[2025-12-19 00:41:55] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:41:55] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:41:55] Resultado de query - Filas encontradas: 5
+[2025-12-19 00:41:55] Orden ID: 10 | RefPayco: 6944e573271543497e5887f6 | Estado: 18
+[2025-12-19 00:41:55] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:41:55] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:41:55] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:41:55] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:41:55] Órdenes encontradas: 5
+[2025-12-19 00:41:55] Procesando orden: 10 - RefPayco: 6944e573271543497e5887f6
+[2025-12-19 00:41:55] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/6944e573271543497e5887f6
+[2025-12-19 00:41:55] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325726075,"x_id_factura":"BZCCRSBOC","x_id_invoice":"BZCCRSBOC","x_description":"Play_5","x_mpd_points":0,"x_amount":30000,"x_amount_country":30000,"x_amount_ok":30000,"x_tax":0,"x_tax_ico":0,"x_amount_base":30000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325726075","x_fecha_transaccion":"2025-12-19 00:41:06","x_transaction_date":"2025-12-19 00:41:06","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******5","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"8322725ca07a4041a9d47eb314b5948ff12e260c06d64c828171b6d30c4fe5b4","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"11","x_extra2":"10","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 00:41:55] Transacción encontrada - Estado: 1
+[2025-12-19 00:41:55] Respuesta de ePayco recibida para: 10
+[2025-12-19 00:41:55] Datos: {"codTransactionState":1,"transactionId":"325726075","amount":30000,"currency":"COP","signature":"8322725ca07a4041a9d47eb314b5948ff12e260c06d64c828171b6d30c4fe5b4","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325726075}
+[2025-12-19 00:41:55] Orden actualizada exitosamente: 10
+[2025-12-19 00:41:55] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:41:55] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:41:56] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:41:56] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:41:56] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:41:56] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:41:56] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:41:56] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:41:56] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:41:56] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:41:56] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:41:56] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:41:57] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:41:57] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:41:57] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:41:57] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:41:57] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:41:57] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:41:57] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:41:57] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:41:57] === FIN CRON - Procesadas: 1, Fallidas: 4 ===
+[2025-12-19 00:44:31] Inicio ejecución cron ePayco
+[2025-12-19 00:44:31] === INICIO CRON actualizarEstados ===
+[2025-12-19 00:44:31] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 00:44:31] Resultado de query - Filas encontradas: 5
+[2025-12-19 00:44:31] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 00:44:31] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 00:44:31] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 00:44:31] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 00:44:31] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 00:44:31] Órdenes encontradas: 5
+[2025-12-19 00:44:31] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 00:44:31] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 00:44:32] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:44:32] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:44:32] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 00:44:32] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 00:44:32] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 00:44:32] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:44:32] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:44:32] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 00:44:32] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 00:44:32] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 00:44:32] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:44:32] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:44:32] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 00:44:32] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 00:44:32] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 00:44:33] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:44:33] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:44:33] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 00:44:33] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 00:44:33] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 00:44:33] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 00:44:33] ERROR - Respuesta inválida de ePayco
+[2025-12-19 00:44:33] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 00:44:33] === FIN CRON - Procesadas: 0, Fallidas: 5 ===
+[2025-12-19 11:32:15] Inicio ejecución cron ePayco
+[2025-12-19 11:32:16] === INICIO CRON actualizarEstados ===
+[2025-12-19 11:32:16] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 11:32:16] Resultado de query - Filas encontradas: 7
+[2025-12-19 11:32:16] Orden ID: 12 | RefPayco: 69456cd21a83f474b21986a6 | Estado: 19
+[2025-12-19 11:32:16] Orden ID: 11 | RefPayco: 69456bbb1a83f474b2197975 | Estado: 18
+[2025-12-19 11:32:16] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 11:32:16] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 11:32:16] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 11:32:16] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 11:32:16] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 11:32:16] Órdenes encontradas: 7
+[2025-12-19 11:32:16] Procesando orden: 12 - RefPayco: 69456cd21a83f474b21986a6
+[2025-12-19 11:32:16] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456cd21a83f474b21986a6
+[2025-12-19 11:32:16] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325781492,"x_id_factura":"WWEMNCVAR","x_id_invoice":"WWEMNCVAR","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"373118*******7642","x_quotas":"1","x_respuesta":"Pendiente","x_response":"Pendiente","x_approval_code":"000000","x_transaction_id":"325781492","x_fecha_transaccion":"2025-12-19 10:18:42","x_transaction_date":"2025-12-19 10:18:42","x_cod_respuesta":3,"x_cod_response":3,"x_response_reason_text":"Transacción pendiente por validación","x_cod_transaction_state":3,"x_transaction_state":"Pendiente","x_errorcode":"p01","x_franchise":"AM","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65********9","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"37*******4","x_customer_movil":"37*******4","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"13","x_extra2":"12","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 11:32:16] Transacción encontrada - Estado: 3
+[2025-12-19 11:32:16] Respuesta de ePayco recibida para: 12
+[2025-12-19 11:32:16] Datos: {"codTransactionState":3,"transactionId":"325781492","amount":15000,"currency":"COP","signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","testMode":"TRUE","autorizacion":"000000","franchise":"AM","x_ref_payco":325781492}
+[2025-12-19 11:32:16] Orden actualizada exitosamente: 12
+[2025-12-19 11:32:16] Procesando orden: 11 - RefPayco: 69456bbb1a83f474b2197975
+[2025-12-19 11:32:16] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456bbb1a83f474b2197975
+[2025-12-19 11:32:17] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325780259,"x_id_factura":"SDJJHGCQZ","x_id_invoice":"SDJJHGCQZ","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325780259","x_fecha_transaccion":"2025-12-19 10:14:03","x_transaction_date":"2025-12-19 10:14:03","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******6","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"12","x_extra2":"11","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 11:32:17] Transacción encontrada - Estado: 1
+[2025-12-19 11:32:17] Respuesta de ePayco recibida para: 11
+[2025-12-19 11:32:17] Datos: {"codTransactionState":1,"transactionId":"325780259","amount":15000,"currency":"COP","signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325780259}
+[2025-12-19 11:32:17] Orden actualizada exitosamente: 11
+[2025-12-19 11:32:17] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 11:32:17] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 11:32:18] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:32:18] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:32:18] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 11:32:18] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 11:32:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 11:32:18] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:32:18] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:32:18] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 11:32:18] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 11:32:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 11:32:19] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:32:19] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:32:19] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 11:32:19] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 11:32:19] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 11:32:19] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:32:19] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:32:19] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 11:32:19] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 11:32:19] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 11:32:20] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:32:20] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:32:20] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 11:32:20] === FIN CRON - Procesadas: 2, Fallidas: 5 ===
+[2025-12-19 11:33:17] Inicio ejecución cron ePayco
+[2025-12-19 11:33:17] === INICIO CRON actualizarEstados ===
+[2025-12-19 11:33:17] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 11:33:17] Resultado de query - Filas encontradas: 7
+[2025-12-19 11:33:17] Orden ID: 12 | RefPayco: 69456cd21a83f474b21986a6 | Estado: 19
+[2025-12-19 11:33:17] Orden ID: 11 | RefPayco: 69456bbb1a83f474b2197975 | Estado: 18
+[2025-12-19 11:33:17] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 11:33:17] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 11:33:17] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 11:33:17] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 11:33:17] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 11:33:17] Órdenes encontradas: 7
+[2025-12-19 11:33:17] Procesando orden: 12 - RefPayco: 69456cd21a83f474b21986a6
+[2025-12-19 11:33:17] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456cd21a83f474b21986a6
+[2025-12-19 11:33:18] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325781492,"x_id_factura":"WWEMNCVAR","x_id_invoice":"WWEMNCVAR","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"373118*******7642","x_quotas":"1","x_respuesta":"Pendiente","x_response":"Pendiente","x_approval_code":"000000","x_transaction_id":"325781492","x_fecha_transaccion":"2025-12-19 10:18:42","x_transaction_date":"2025-12-19 10:18:42","x_cod_respuesta":3,"x_cod_response":3,"x_response_reason_text":"Transacción pendiente por validación","x_cod_transaction_state":3,"x_transaction_state":"Pendiente","x_errorcode":"p01","x_franchise":"AM","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65********9","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"37*******4","x_customer_movil":"37*******4","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"13","x_extra2":"12","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 11:33:18] Transacción encontrada - Estado: 3
+[2025-12-19 11:33:18] Respuesta de ePayco recibida para: 12
+[2025-12-19 11:33:18] Datos: {"codTransactionState":3,"transactionId":"325781492","amount":15000,"currency":"COP","signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","testMode":"TRUE","autorizacion":"000000","franchise":"AM","x_ref_payco":325781492}
+[2025-12-19 11:33:18] Orden actualizada exitosamente: 12
+[2025-12-19 11:33:18] Procesando orden: 11 - RefPayco: 69456bbb1a83f474b2197975
+[2025-12-19 11:33:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456bbb1a83f474b2197975
+[2025-12-19 11:33:18] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325780259,"x_id_factura":"SDJJHGCQZ","x_id_invoice":"SDJJHGCQZ","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325780259","x_fecha_transaccion":"2025-12-19 10:14:03","x_transaction_date":"2025-12-19 10:14:03","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******6","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"12","x_extra2":"11","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 11:33:18] Transacción encontrada - Estado: 1
+[2025-12-19 11:33:18] Respuesta de ePayco recibida para: 11
+[2025-12-19 11:33:18] Datos: {"codTransactionState":1,"transactionId":"325780259","amount":15000,"currency":"COP","signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325780259}
+[2025-12-19 11:33:18] Orden actualizada exitosamente: 11
+[2025-12-19 11:33:18] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 11:33:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 11:33:19] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:33:19] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:33:19] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 11:33:19] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 11:33:19] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 11:33:19] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:33:19] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:33:19] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 11:33:19] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 11:33:19] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 11:33:20] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:33:20] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:33:20] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 11:33:20] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 11:33:20] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 11:33:20] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:33:20] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:33:20] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 11:33:20] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 11:33:20] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 11:33:21] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 11:33:21] ERROR - Respuesta inválida de ePayco
+[2025-12-19 11:33:21] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 11:33:21] === FIN CRON - Procesadas: 2, Fallidas: 5 ===
+[2025-12-19 12:33:17] === TRANSACCION PENDIENTE (x_cod_response=3) ===
+[2025-12-19 12:33:17] Order ID: 13 | Confirmation: true
+[2025-12-19 12:33:17] P_REDUCE_STOCK_PENDING configurado: false
+[2025-12-19 12:33:17] ¿Stock ya descontado?: NO
+[2025-12-19 12:33:17] ACCION: Configuración dice NO reducir stock en pendientes
+[2025-12-19 12:33:17]   → Stock no estaba descontado, acción completa
+[2025-12-19 12:33:17] Cambiando estado de orden a: PAYCO_OS_PENDING
+[2025-12-19 12:33:17] === FIN TRANSACCION PENDIENTE ===
+[2025-12-19 12:36:18] Inicio ejecución cron ePayco
+[2025-12-19 12:36:18] === INICIO CRON actualizarEstados ===
+[2025-12-19 12:36:18] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 12:36:18] Resultado de query - Filas encontradas: 7
+[2025-12-19 12:36:18] Orden ID: 12 | RefPayco: 69456cd21a83f474b21986a6 | Estado: 19
+[2025-12-19 12:36:18] Orden ID: 11 | RefPayco: 69456bbb1a83f474b2197975 | Estado: 18
+[2025-12-19 12:36:18] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 12:36:18] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 12:36:18] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 12:36:18] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 12:36:18] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 12:36:18] Órdenes encontradas: 7
+[2025-12-19 12:36:18] Procesando orden: 12 - RefPayco: 69456cd21a83f474b21986a6
+[2025-12-19 12:36:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456cd21a83f474b21986a6
+[2025-12-19 12:36:18] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325781492,"x_id_factura":"WWEMNCVAR","x_id_invoice":"WWEMNCVAR","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"373118*******7642","x_quotas":"1","x_respuesta":"Pendiente","x_response":"Pendiente","x_approval_code":"000000","x_transaction_id":"325781492","x_fecha_transaccion":"2025-12-19 10:18:42","x_transaction_date":"2025-12-19 10:18:42","x_cod_respuesta":3,"x_cod_response":3,"x_response_reason_text":"Transacción pendiente por validación","x_cod_transaction_state":3,"x_transaction_state":"Pendiente","x_errorcode":"p01","x_franchise":"AM","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65********9","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"37*******4","x_customer_movil":"37*******4","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"13","x_extra2":"12","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 12:36:18] Transacción encontrada - Estado: 3
+[2025-12-19 12:36:18] Respuesta de ePayco recibida para: 12
+[2025-12-19 12:36:18] Datos: {"codTransactionState":3,"transactionId":"325781492","amount":15000,"currency":"COP","signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","testMode":"TRUE","autorizacion":"000000","franchise":"AM","x_ref_payco":325781492}
+[2025-12-19 12:36:18] Orden actualizada exitosamente: 12
+[2025-12-19 12:36:18] Procesando orden: 11 - RefPayco: 69456bbb1a83f474b2197975
+[2025-12-19 12:36:18] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456bbb1a83f474b2197975
+[2025-12-19 12:36:19] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325780259,"x_id_factura":"SDJJHGCQZ","x_id_invoice":"SDJJHGCQZ","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325780259","x_fecha_transaccion":"2025-12-19 10:14:03","x_transaction_date":"2025-12-19 10:14:03","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******6","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"12","x_extra2":"11","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 12:36:19] Transacción encontrada - Estado: 1
+[2025-12-19 12:36:19] Respuesta de ePayco recibida para: 11
+[2025-12-19 12:36:19] Datos: {"codTransactionState":1,"transactionId":"325780259","amount":15000,"currency":"COP","signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325780259}
+[2025-12-19 12:36:19] Orden actualizada exitosamente: 11
+[2025-12-19 12:36:19] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 12:36:19] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 12:36:19] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:36:19] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:36:19] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 12:36:19] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 12:36:19] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 12:36:20] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:36:20] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:36:20] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 12:36:20] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 12:36:20] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 12:36:20] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:36:20] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:36:20] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 12:36:20] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 12:36:20] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 12:36:21] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:36:21] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:36:21] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 12:36:21] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 12:36:21] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 12:36:21] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:36:21] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:36:21] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 12:36:21] === FIN CRON - Procesadas: 2, Fallidas: 5 ===
+[2025-12-19 12:48:52] Inicio ejecución cron ePayco
+[2025-12-19 12:48:52] === INICIO CRON actualizarEstados ===
+[2025-12-19 12:48:52] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 12:48:52] Resultado de query - Filas encontradas: 7
+[2025-12-19 12:48:52] Orden ID: 12 | RefPayco: 69456cd21a83f474b21986a6 | Estado: 19
+[2025-12-19 12:48:52] Orden ID: 11 | RefPayco: 69456bbb1a83f474b2197975 | Estado: 18
+[2025-12-19 12:48:52] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 12:48:52] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 12:48:52] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 12:48:52] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 12:48:52] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 12:48:52] Órdenes encontradas: 7
+[2025-12-19 12:48:52] Procesando orden: 12 - RefPayco: 69456cd21a83f474b21986a6
+[2025-12-19 12:48:52] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456cd21a83f474b21986a6
+[2025-12-19 12:48:53] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325781492,"x_id_factura":"WWEMNCVAR","x_id_invoice":"WWEMNCVAR","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"373118*******7642","x_quotas":"1","x_respuesta":"Pendiente","x_response":"Pendiente","x_approval_code":"000000","x_transaction_id":"325781492","x_fecha_transaccion":"2025-12-19 10:18:42","x_transaction_date":"2025-12-19 10:18:42","x_cod_respuesta":3,"x_cod_response":3,"x_response_reason_text":"Transacción pendiente por validación","x_cod_transaction_state":3,"x_transaction_state":"Pendiente","x_errorcode":"p01","x_franchise":"AM","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65********9","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"37*******4","x_customer_movil":"37*******4","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"13","x_extra2":"12","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 12:48:53] Transacción encontrada - Estado: 3
+[2025-12-19 12:48:53] Respuesta de ePayco recibida para: 12
+[2025-12-19 12:48:53] Datos: {"codTransactionState":3,"transactionId":"325781492","amount":15000,"currency":"COP","signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","testMode":"TRUE","autorizacion":"000000","franchise":"AM","x_ref_payco":325781492}
+[2025-12-19 12:48:53] Orden actualizada exitosamente: 12
+[2025-12-19 12:48:53] Procesando orden: 11 - RefPayco: 69456bbb1a83f474b2197975
+[2025-12-19 12:48:53] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456bbb1a83f474b2197975
+[2025-12-19 12:48:54] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325780259,"x_id_factura":"SDJJHGCQZ","x_id_invoice":"SDJJHGCQZ","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325780259","x_fecha_transaccion":"2025-12-19 10:14:03","x_transaction_date":"2025-12-19 10:14:03","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******6","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"12","x_extra2":"11","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 12:48:54] Transacción encontrada - Estado: 1
+[2025-12-19 12:48:54] Respuesta de ePayco recibida para: 11
+[2025-12-19 12:48:54] Datos: {"codTransactionState":1,"transactionId":"325780259","amount":15000,"currency":"COP","signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325780259}
+[2025-12-19 12:48:54] Orden actualizada exitosamente: 11
+[2025-12-19 12:48:54] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 12:48:54] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 12:48:54] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:48:54] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:48:54] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 12:48:54] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 12:48:54] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 12:48:55] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:48:55] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:48:55] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 12:48:55] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 12:48:55] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 12:48:55] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:48:55] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:48:55] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 12:48:55] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 12:48:55] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 12:48:56] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:48:56] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:48:56] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 12:48:56] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 12:48:56] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 12:48:56] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 12:48:56] ERROR - Respuesta inválida de ePayco
+[2025-12-19 12:48:56] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 12:48:56] === FIN CRON - Procesadas: 2, Fallidas: 5 ===
+[2025-12-19 13:20:43] Inicio ejecución cron ePayco
+[2025-12-19 13:20:43] === INICIO CRON actualizarEstados ===
+[2025-12-19 13:20:43] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 13:20:43] Resultado de query - Filas encontradas: 7
+[2025-12-19 13:20:43] Orden ID: 12 | RefPayco: 69456cd21a83f474b21986a6 | Estado: 19
+[2025-12-19 13:20:43] Orden ID: 11 | RefPayco: 69456bbb1a83f474b2197975 | Estado: 18
+[2025-12-19 13:20:43] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 13:20:43] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 13:20:43] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 13:20:43] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 13:20:43] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 13:20:43] Órdenes encontradas: 7
+[2025-12-19 13:20:43] Procesando orden: 12 - RefPayco: 69456cd21a83f474b21986a6
+[2025-12-19 13:20:43] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456cd21a83f474b21986a6
+[2025-12-19 13:20:44] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325781492,"x_id_factura":"WWEMNCVAR","x_id_invoice":"WWEMNCVAR","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"373118*******7642","x_quotas":"1","x_respuesta":"Pendiente","x_response":"Pendiente","x_approval_code":"000000","x_transaction_id":"325781492","x_fecha_transaccion":"2025-12-19 10:18:42","x_transaction_date":"2025-12-19 10:18:42","x_cod_respuesta":3,"x_cod_response":3,"x_response_reason_text":"Transacción pendiente por validación","x_cod_transaction_state":3,"x_transaction_state":"Pendiente","x_errorcode":"p01","x_franchise":"AM","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65********9","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"37*******4","x_customer_movil":"37*******4","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"13","x_extra2":"12","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 13:20:44] Transacción encontrada - Estado: 3
+[2025-12-19 13:20:44] Respuesta de ePayco recibida para: 12
+[2025-12-19 13:20:44] Datos: {"codTransactionState":3,"transactionId":"325781492","amount":15000,"currency":"COP","signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","testMode":"TRUE","autorizacion":"000000","franchise":"AM","x_ref_payco":325781492}
+[2025-12-19 13:20:44] Orden actualizada exitosamente: 12
+[2025-12-19 13:20:44] Procesando orden: 11 - RefPayco: 69456bbb1a83f474b2197975
+[2025-12-19 13:20:44] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456bbb1a83f474b2197975
+[2025-12-19 13:20:45] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325780259,"x_id_factura":"SDJJHGCQZ","x_id_invoice":"SDJJHGCQZ","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325780259","x_fecha_transaccion":"2025-12-19 10:14:03","x_transaction_date":"2025-12-19 10:14:03","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******6","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"12","x_extra2":"11","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 13:20:45] Transacción encontrada - Estado: 1
+[2025-12-19 13:20:45] Respuesta de ePayco recibida para: 11
+[2025-12-19 13:20:45] Datos: {"codTransactionState":1,"transactionId":"325780259","amount":15000,"currency":"COP","signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325780259}
+[2025-12-19 13:20:45] Orden actualizada exitosamente: 11
+[2025-12-19 13:20:45] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 13:20:45] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 13:20:45] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:45] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:45] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 13:20:45] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 13:20:45] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 13:20:46] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:46] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:46] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 13:20:46] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 13:20:46] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 13:20:46] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:46] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:46] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 13:20:46] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 13:20:46] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 13:20:47] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:47] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:47] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 13:20:47] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 13:20:47] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 13:20:47] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:47] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:47] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 13:20:47] === FIN CRON - Procesadas: 2, Fallidas: 5 ===
+[2025-12-19 13:20:51] Inicio ejecución cron ePayco
+[2025-12-19 13:20:51] === INICIO CRON actualizarEstados ===
+[2025-12-19 13:20:51] SQL Query: SELECT p.order_id, 
+                        p.id_payco, 
+                        p.ref_payco, 
+                        o.current_state,
+                        o.total_paid,
+                        o.reference,
+                        o.id_order
+                    FROM ps_payco p
+                    LEFT JOIN ps_orders o 
+                        ON p.order_id = o.id_order
+                    WHERE p.ref_payco IS NOT NULL AND p.ref_payco != ""
+                    ORDER BY p.order_id DESC
+[2025-12-19 13:20:51] Resultado de query - Filas encontradas: 7
+[2025-12-19 13:20:51] Orden ID: 12 | RefPayco: 69456cd21a83f474b21986a6 | Estado: 19
+[2025-12-19 13:20:51] Orden ID: 11 | RefPayco: 69456bbb1a83f474b2197975 | Estado: 18
+[2025-12-19 13:20:51] Orden ID: 10 | RefPayco: 325726075 | Estado: 2
+[2025-12-19 13:20:51] Orden ID: 6 | RefPayco: 325719573 | Estado: 19
+[2025-12-19 13:20:51] Orden ID: 5 | RefPayco: 325718503 | Estado: 19
+[2025-12-19 13:20:51] Orden ID: 2 | RefPayco: 325716585 | Estado: 2
+[2025-12-19 13:20:51] Orden ID: 1 | RefPayco: 325714986 | Estado: 2
+[2025-12-19 13:20:51] Órdenes encontradas: 7
+[2025-12-19 13:20:51] Procesando orden: 12 - RefPayco: 69456cd21a83f474b21986a6
+[2025-12-19 13:20:51] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456cd21a83f474b21986a6
+[2025-12-19 13:20:51] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325781492,"x_id_factura":"WWEMNCVAR","x_id_invoice":"WWEMNCVAR","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"373118*******7642","x_quotas":"1","x_respuesta":"Pendiente","x_response":"Pendiente","x_approval_code":"000000","x_transaction_id":"325781492","x_fecha_transaccion":"2025-12-19 10:18:42","x_transaction_date":"2025-12-19 10:18:42","x_cod_respuesta":3,"x_cod_response":3,"x_response_reason_text":"Transacción pendiente por validación","x_cod_transaction_state":3,"x_transaction_state":"Pendiente","x_errorcode":"p01","x_franchise":"AM","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65********9","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"37*******4","x_customer_movil":"37*******4","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"13","x_extra2":"12","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 13:20:51] Transacción encontrada - Estado: 3
+[2025-12-19 13:20:51] Respuesta de ePayco recibida para: 12
+[2025-12-19 13:20:51] Datos: {"codTransactionState":3,"transactionId":"325781492","amount":15000,"currency":"COP","signature":"a2839d629f45934922bdff2662fdf0258d5ee61d7dd462f5d4e67b0dcfc1cdc1","testMode":"TRUE","autorizacion":"000000","franchise":"AM","x_ref_payco":325781492}
+[2025-12-19 13:20:51] Orden actualizada exitosamente: 12
+[2025-12-19 13:20:51] Procesando orden: 11 - RefPayco: 69456bbb1a83f474b2197975
+[2025-12-19 13:20:51] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/69456bbb1a83f474b2197975
+[2025-12-19 13:20:52] Respuesta: {"success":true,"title_response":"Correcto","text_response":"Transacción consultada existosamente","last_action":"Consultar Transaccion","data":{"x_cust_id_cliente":1547595,"x_ref_payco":325780259,"x_id_factura":"SDJJHGCQZ","x_id_invoice":"SDJJHGCQZ","x_description":"Play_5","x_mpd_points":0,"x_amount":15000,"x_amount_country":15000,"x_amount_ok":15000,"x_tax":0,"x_tax_ico":0,"x_amount_base":15000,"x_currency_code":"COP","x_bank_name":"","x_cardnumber":"457562*******0326","x_quotas":"1","x_respuesta":"Aceptada","x_response":"Aceptada","x_approval_code":"000000","x_transaction_id":"325780259","x_fecha_transaccion":"2025-12-19 10:14:03","x_transaction_date":"2025-12-19 10:14:03","x_cod_respuesta":1,"x_cod_response":1,"x_response_reason_text":"Aprobada","x_cod_transaction_state":1,"x_transaction_state":"Aceptada","x_errorcode":"00","x_franchise":"VS","x_business":"Juan Esteban Garcia Valencia","x_customer_doctype":"CC","x_customer_document":"65*******6","x_customer_name":"Ju*n","x_customer_lastname":"Ga***a","x_customer_email":"ju********a@epayco.com","x_customer_phone":"30*******8","x_customer_movil":"30*******8","x_customer_ind_pais":"CO","x_customer_country":"CO","x_customer_city":"Washington DC","x_customer_address":"Cr***********9","x_customer_ip":"44.223.225.99","x_signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","x_test_request":"TRUE","x_transaction_cycle":null,"x_extra1":"12","x_extra2":"11","x_extra3":"en","x_extra4":"","x_extra5":"","x_extra6":"","x_extra7":"","x_extra8":"","x_extra9":"","x_extra10":"","x_extra5_epayco":"P23","x_type_payment":"creditCard","x_secondary_step":""}}
+[2025-12-19 13:20:52] Transacción encontrada - Estado: 1
+[2025-12-19 13:20:52] Respuesta de ePayco recibida para: 11
+[2025-12-19 13:20:52] Datos: {"codTransactionState":1,"transactionId":"325780259","amount":15000,"currency":"COP","signature":"2957fe99489ae1d38491a8ff3b5e09e29f21f32b0f861bcc69f72b84f7a7c95c","testMode":"TRUE","autorizacion":"000000","franchise":"VS","x_ref_payco":325780259}
+[2025-12-19 13:20:52] Orden actualizada exitosamente: 11
+[2025-12-19 13:20:52] Procesando orden: 10 - RefPayco: 325726075
+[2025-12-19 13:20:52] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325726075
+[2025-12-19 13:20:52] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:52] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:52] ERROR - No se encontró respuesta de ePayco para refPayco: 325726075
+[2025-12-19 13:20:52] Procesando orden: 6 - RefPayco: 325719573
+[2025-12-19 13:20:52] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325719573
+[2025-12-19 13:20:53] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:53] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:53] ERROR - No se encontró respuesta de ePayco para refPayco: 325719573
+[2025-12-19 13:20:53] Procesando orden: 5 - RefPayco: 325718503
+[2025-12-19 13:20:53] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325718503
+[2025-12-19 13:20:53] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:53] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:53] ERROR - No se encontró respuesta de ePayco para refPayco: 325718503
+[2025-12-19 13:20:53] Procesando orden: 2 - RefPayco: 325716585
+[2025-12-19 13:20:53] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325716585
+[2025-12-19 13:20:54] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:54] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:54] ERROR - No se encontró respuesta de ePayco para refPayco: 325716585
+[2025-12-19 13:20:54] Procesando orden: 1 - RefPayco: 325714986
+[2025-12-19 13:20:54] Consultando ePayco URL: https://eks-checkout-service.epayco.io/validation/v1/reference/325714986
+[2025-12-19 13:20:54] Respuesta: {"status":false,"message":"Error de datos o conexión.","data":{"status":"error","description":"Error de datos o conexión verifique de nuevo."}}
+[2025-12-19 13:20:54] ERROR - Respuesta inválida de ePayco
+[2025-12-19 13:20:54] ERROR - No se encontró respuesta de ePayco para refPayco: 325714986
+[2025-12-19 13:20:54] === FIN CRON - Procesadas: 2, Fallidas: 5 ===
+[2025-12-19 13:55:11] RestoreStock llamada para orden ID: 20 con operación: +
+[2025-12-19 13:55:11] Restaurando stock para producto ID: 1, cantidad: 1
+[2025-12-19 14:00:14] RestoreStock llamada para orden ID: 21 con operación: -
+[2025-12-19 14:00:15] Restaurando stock para producto ID: 1, cantidad: 1
