@@ -15,6 +15,7 @@ class PaycoCronModuleFrontController extends ModuleFrontController
                 $this->ajaxRender('Forbidden: se fue permitido realizar la acción!');
                 return;
             }
+
             PrestaShopLogger::addLog(
                 'Órdenes procesadas command: ',
                 1,      // Severidad (1=info, 2=alerta, 3=error)
@@ -27,7 +28,7 @@ class PaycoCronModuleFrontController extends ModuleFrontController
             $this->ajaxRender('Ejecutando command Cron...');
             Hook::exec('actionCronJob');
         } catch (\Exception $e){
-            $this->writeCronLog("Inicio ejecución cron command ePayco"+ $e->getMessage());
+            $this->writeCronLog("Inicio ejecución cron command ePayco" . $e->getMessage());
         } 
 
     }
@@ -50,7 +51,7 @@ class PaycoCronModuleFrontController extends ModuleFrontController
             //$this->ajaxRender('Ejecutando Cron...');
             Hook::exec('actionCronJob');
         } catch (\Exception $e){
-            $this->writeCronLog("Inicio ejecución cron ePayco"+ $e->getMessage());
+            $this->writeCronLog("Inicio ejecución cron ePayco" . $e->getMessage());
         } 
         
     }
