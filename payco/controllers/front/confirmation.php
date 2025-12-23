@@ -79,12 +79,8 @@ class PaycoConfirmationModuleFrontController extends ModuleFrontController
     		exit;
     		
     	} catch (Throwable $e) {
-    		file_put_contents(_PS_MODULE_DIR_ . 'payco/logs/confirmation_error.log', 
-    			"[".date('Y-m-d H:i:s')."] Error: " . $e->getMessage() . 
-    			"\nArchivo: " . $e->getFile() . 
-    			"\nLínea: " . $e->getLine() . 
-    			"\n" . $e->getTraceAsString() . "\n\n", 
-    			FILE_APPEND);
+    		$errorMessage = "[" . date('Y-m-d H:i:s') . "] Error: " . $e->getMessage() . " | Archivo: " . $e->getFile() . " | Línea: " . $e->getLine() . "\n" . $e->getTraceAsString() . "\n\n";
+    		file_put_contents(_PS_MODULE_DIR_ . 'payco/logs/confirmation_error.log', $errorMessage, FILE_APPEND);
     		
     		http_response_code(500);
     		echo json_encode(['success' => false, 'error' => 'Error al procesar confirmación', 'details' => $e->getMessage()]);
