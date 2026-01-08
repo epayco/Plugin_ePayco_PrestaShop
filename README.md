@@ -10,6 +10,7 @@
 * [Pasos](#pasos)
 
 ## Versiones
+* * [ePayco plugin OnPage_Checkout_PrestaShop v2.0.0.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.1)
 * [ePayco plugin OnPage_Checkout_PrestaShop v2.0.0.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.0)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.6.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.6.0)
 * [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2)
@@ -42,7 +43,7 @@
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2).
+1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.1).
 2. Descomprime el archivo que acabas de descargar y luego comprimer la carpeta llamada payco.
 3. Ingresa a tu administrador de PrestaShop.
 4. Ve a "Módulos o Servicios".
@@ -74,7 +75,7 @@ mínimo permitido por su hosting).
 - /ruta/a/su/proyecto/... → Ruta completa al archivo del cron de su módulo.
 
 - ```` >> ```` ...log → (Opcional) Guarda un registro de ejecución para monitorear errores.
-3. para una actualización manual, ingrese a la siguiente ruta de su tienda: ````https://mi_tienda/modules/payco/cron```` de manera automatica el cron se ejecuta
+3. para una actualización manual, ingrese a la siguiente ruta de su tienda: ````https://mi_tienda/module/payco/cron```` de manera automatica el cron se ejecuta
 
 ## Pasos
 
