@@ -1,0 +1,433 @@
+/**
+* 2007-2024 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2024 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+/* latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Electrolize';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/electrolize/v18/cIf5Ma1dtE0zSiGSiED7AXEBuI8.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+.ep-settings {
+    margin: 0 55px 0 23px;
+    font-size: 16px;
+    min-width: 550px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings {
+        margin: 0 0 0 -10px;
+    }
+}
+
+.ep-settings-header {
+    height: 380px !important;
+    position: relative;
+    background: url("../../../views/img/frame.png") no-repeat center;
+    background-size: cover;
+    border-radius: 10px;
+}
+@media screen and (max-width: 780px) {
+    .ep-settings-header {
+        height: 250px;
+    }
+}
+
+.ep-settings-header-img {
+    margin: 30px;
+    width: 92%;
+    height: 85%;
+    background: url("../../../views/img/banner.png") no-repeat center;
+    background-size: cover;
+    position: absolute;
+    border-radius: 10px;
+}
+@media screen and (min-width: 425px) {
+    .ep-settings-header-img {
+        width: 92%;
+    }
+}
+
+.ep-settings-header-logo {
+    position: relative;
+    background: url("../../../views/img/logo2.png") 98% 50% no-repeat transparent;
+    width: 295px;
+    height: 100px;
+    top: 60px;
+    line-height: 36px;
+    flex: none;
+    flex-grow: 0;
+    margin: 0px;
+}
+
+.ep-settings-header-title {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-header-title {
+        width: 70%;
+    }
+}
+
+.ep-settings-context {
+    font-weight: 500 !important;
+    color: black !important;
+    font-size: 14px !important;
+    margin: 10px 50px !important;
+    line-height: 18px !important;
+}
+
+.ep-settings-header p {
+    position: relative;
+    top: 70px !important;
+    font-size: 2rem;
+    line-height: 36px;
+    color: #fff;
+    flex: none;
+    flex-grow: 0;
+    margin: 16px 16px 0 50px ;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-header p {
+        top: 55px !important;
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-context {
+        margin-top: 20px !important;
+    }
+}
+
+
+
+
+.ep-settings-header-hr {
+    position: relative;
+    top: 65px;
+    width: 75%;
+    border: 1px solid #f6f7f7;
+    flex: none;
+    flex-grow: 0;
+    margin: 0px 0 0 45px;
+}
+
+.ep-settings-header p {
+    position: relative;
+    top: 70px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 1.5rem;
+    line-height: 36px;
+    color: #fff;
+    flex: none;
+    flex-grow: 0;
+    margin: 16px 0 0 50px
+}
+
+.ep-settings-title-align {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 0px #16161D4D;
+    height: 60px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    border-radius: 4px;
+    border-width: 1px;
+    font-size: 16px;
+    align-items: normal;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-title-align {
+        height: 70px;
+    }
+}
+
+.ep-settings-title-align:hover {
+    border-color: red;
+    color: #FF6720;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+    box-shadow: 2px 2px 4px 0px #16161D4D;
+}
+
+.ep-settings-title-container {
+    display: flex;
+}
+
+.ep-settings-margin-left {
+    margin-left: 8px;
+}
+
+.ep-settings-title-container {
+    display: flex;
+}
+
+.ep-settings-font-color {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+    color: rgba(0, 0, 0, .9);
+}
+
+.ep-settings-title-blocks {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    margin: auto;
+}
+
+.ep-settings-payment-block {
+    border-radius: unset;
+    border-bottom: 1px solid #c6c6c6;
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+}
+
+.ep-settings-payment-block:hover {
+    border-color: transparent;
+    color: #4E565A;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-payment-block {
+        margin: unset;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-title-blocks {
+        font-size: 1.25rem;
+    }
+}
+
+.ep-settings-icon-success {
+    background: url("../../../views/img/icon-success.png") 100% 50% no-repeat transparent;
+    background-size: 16px;
+    padding-right: 16px !important;
+}
+
+.ep-settings-icon-open {
+    background: url("../../../views/img/CaretDownFill.png") 100% 50% no-repeat transparent;
+    background-size: 12px;
+    padding-right: 16px !important;
+    transition: .3s;
+}
+
+.ep-settings-block-align-top {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdown-hidden {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown-visible {
+    max-height: 2200px;
+    opacity: 1;
+    transform: translateY(0);
+    /*position: absolute;*/
+}
+
+.custom-form-class {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.custom-input-class {
+    border: 2px solid #007bff;
+    padding: 10px;
+}
+
+.ep-settings-icon-open.ep-arrow-up {
+    transform: rotate(180deg);
+    transition: .3s
+}
+
+.ep-settings-link {
+    /* width: 75%; */
+    display: flex;
+    text-decoration: none !important;
+}
+
+.ep-settings-align-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 780px) {
+    .ep-settings-align-div {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.ep-block-flex {
+    flex: 2;
+}
+
+.ep-block {
+    padding: 24px;
+    background-color: #fff;
+    box-shadow: 0 6px 16px rgb(0 0 0 / 10%);
+    border-radius: 0px 0px 6px 6px;
+    border: 1px solid #D3D3D4;
+    box-shadow: 1px 1px 4px 0px #16161D4D;
+}
+
+.ep-settings-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ep-settings-margin-title-payment{
+    margin: 0 16px 0 16px;
+    max-width: 1000px;
+}
+
+.ep-settings-subtitle-font-size {
+    font-size: 16px;
+    line-height: 20px;
+    color: #373737 !important;
+}
+
+.ep-settings-badge-active {
+    width: 83px;
+    height: 32px;
+    padding: auto;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    display: flex;
+    gap: 6px;
+    border-radius: 4px;
+    justify-content: center;
+    text-align: center;
+    color: #FF6720;
+    background: #EEEEEE;
+    font-size: 14px;
+    font-weight: 400;
+    align-items: center;
+}
+
+.ep-settings-badge-inactive {
+    width: 83px;
+    height: 32px;
+    padding: auto;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    display: flex;
+    gap: 6px;
+    border-radius: 4px;
+    justify-content: center;
+    text-align: center;
+    color: #737377;
+    background: #EEEEEE;
+    font-size: 14px;
+    font-weight: 400;
+    align-items: center;
+}
+.ep-settings-icon-body {
+    display: flex;
+    /* justify-content: space-between; */
+    cursor: pointer;
+    /* box-shadow: 1px 1px 4px 0px #16161D4D; */
+    height: 26px;
+    border: 1px solid #eeeeee00;
+    background: #EEEEEE;
+    padding-top: 11px;
+    padding-bottom: 6px;
+    border-radius: 4px;
+    border-width: 1px;
+    font-size: 16px;
+    align-items: center;
+    margin-left: 10px;
+}
+.ep-settings-icon-body:hover {
+    color: #FF6720;
+    -webkit-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+    box-shadow: 2px 2px 4px 0px #16161D4D;
+}
+.ep-settings-icon-config {
+    background: url("../../../views/img/icon-config.png") center center no-repeat transparent;
+    padding-right: 16px !important;
+    width: 32px;
+    height: 32px;
+}
+
+/* Aplicar Segoe UI a todos los elementos dentro del plugin */
+.ep-settings * {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+
