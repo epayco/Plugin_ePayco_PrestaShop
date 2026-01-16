@@ -53,40 +53,82 @@ class TicketSettings extends AbstractSettings
      */
     public function generateForm()
     {
-        $title = $this->module->l('Basic Configuration', 'TicketSettings');
+        $title = $this->module->l('Configuración básica', 'TicketSettings');
         $fields = array(
             array(
-                'type' => 'text',
-                'label' => $this->module->l('TITLE', 'TicketSettings'),
-                'name' => 'EPAYCO_TICKET_TITLE',
-                'required' => true,
-                'desc' => $this->module->l('Payment title.', 'TicketSettings'),
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <style>
+                        .epayco-section-title {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-title-2 {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-desc {
+                            font-size: 13px;
+                            color: #666;
+                            margin-bottom: 15px;
+                            line-height: 1.5;
+                            margin-left: -270px;
+                        }
+                    </style>
+                    <div class="epayco-section-title">
+                        ' . $this->module->l('Activar', 'TicketSettings') . '
+                    </div>
+                    <div class="epayco-section-desc">
+                        ' . $this->module->l('Al desactivarlo, desactivará los pagos en efectivo.', 'TicketSettings') . '
+                    </div>
+                ',
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Activate Checkout of face to face payments', 'TicketSettings'),
+                'label' => $this->module->l('El pago está habilitado', 'TicketSettings'),
                 'name' => 'EPAYCO_TICKET_CHECKOUT',
-                'desc' => $this->module->l('Activate the option of face to face payments in your store.', 'TicketSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_TICKET_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'TicketSettings')
+                        'label' => $this->module->l('Sí', 'TicketSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_TICKET_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'TicketSettings')
+                        'label' => $this->module->l('No', 'TicketSettings')
                     )
                 ),
             ),
             array(
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <div class="epayco-section-desc" style="margin-top: 10px; margin-bottom: 20px; margin-left: -270px;">
+                        ' . $this->module->l('Activa la opción de pagos en efectivo en tu tienda.', 'TicketSettings') . '
+                    </div>
+                    <div class="epayco-section-title-2">
+                        ' . $this->module->l('Métodos de pago', 'TicketSettings') . '
+                    </div>
+                    <div class="epayco-section-desc" style="margin-left: -270px;">
+                        ' . $this->module->l('Selecciona cómo deseas procesar los pagos en efectivo de tus clientes en PrestaShop.', 'TicketSettings') . '
+                    </div>
+                ',
+            ),
+            array(
                 'col' => 4,
                 'type' => 'checkbox',
-                'label' => $this->module->l('Payment methods', 'TicketSettings'),
+                'label' => '',
                 'name' => 'EPAYCO_TICKET_PAYMENT',
-                'hint' => $this->module->l('Enable the payment methods available to your customers.', 'TicketSettings'),
+                'hint' => $this->module->l('Habilite los métodos de pago disponibles para sus clientes.', 'TicketSettings'),
                 'class' => 'payment-ticket-checkbox',
                 'desc' => ' ',
                 'values' => array(
@@ -95,14 +137,6 @@ class TicketSettings extends AbstractSettings
                     'name' => 'name'
                 )
             ),
-            /*array(
-                'col' => 2,
-                'suffix' => $this->module->l('days', 'TicketSettings'),
-                'label' => $this->module->l('Payment due', 'TicketSettings'),
-                'type' => 'text',
-                'name' => 'EPAYCO_TICKET_EXPIRATION',
-                'desc' => $this->module->l('In how many days will the face to face payments expire.', 'TicketSettings'),
-            )*/
         );
 
         return $this->buildForm($title, $fields);
@@ -145,8 +179,8 @@ class TicketSettings extends AbstractSettings
 
         if ($count_checked == $count_total) {
             Epayco::$form_alert = 'alert-danger';
-            Epayco::$form_message = $this->module->l('It is not possible to remove ', 'TicketSettings') .
-                $this->module->l('all payment methods for ticket checkout.', 'TicketSettings');
+            Epayco::$form_message = $this->module->l('No es posible remover ', 'TicketSettings') .
+                $this->module->l('todos los métodos de pago para el checkout en efectivo.', 'TicketSettings');
             return false;
         }
 
@@ -161,64 +195,26 @@ class TicketSettings extends AbstractSettings
     public function getFormValues()
     {
         $form_values = array(
-            'EPAYCO_TICKET_TITLE' => Configuration::get('EPAYCO_TICKET_TITLE'),
             'EPAYCO_TICKET_CHECKOUT' => Configuration::get('EPAYCO_TICKET_CHECKOUT')
-            //'EPAYCO_TICKET_EXPIRATION' => Configuration::get('EPAYCO_TICKET_EXPIRATION'),
         );
         $ticketPaymentMethods = [
             [
-                'id' => 'efecty',
-                'name'              => 'Efecty',
+                'id' => 'sured',
+                'name'              => 'Su Red',
                 'status'            => 'active',
-                'thumbnail'         => 'https://secure.epayco.co/img/efecty.png'
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/sured.jpg'
+            ],
+            [
+                'id' => 'pagatodo',
+                'name'              => 'Pago Todo',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/pagatodo.jpg'
             ],
             [
                 'id' => 'gana',
                 'name'              => 'Gana',
                 'status'            => 'active',
                 'thumbnail'         => 'https://secure.epayco.co/img/gana_no_red.png'
-            ],
-            [
-                'id' => 'puntored',
-                'name'              => 'Puntored',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/puntored.jpg'
-            ],
-            [
-                'id' => 'redservi',
-                'name'              => 'Redservi',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/redservi.jpg'
-            ],
-            [
-                'id' => 'sured',
-                'name'              => 'Sured',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/sured.jpg'
-            ],
-            [
-                'id' => 'suchance',
-                'name'              => 'Suchance',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/suchance.jpg'
-            ],
-            [
-                'id' => 'laperla',
-                'name'              => 'Laperla',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/laperla.jpg'
-            ],
-            [
-                'id' => 'jer',
-                'name'              => 'Jer',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/jer.jpg'
-            ],
-            [
-                'id' => 'pagatodo',
-                'name'              => 'Pagatodo',
-                'status'            => 'active',
-                'secure_thumbnail'         => 'https://secure.epayco.co/img/pagatodo.jpg'
             ],
             [
                 'id' => 'acertemos',
@@ -228,9 +224,57 @@ class TicketSettings extends AbstractSettings
             ],
             [
                 'id' => 'ganagana',
-                'name'              => 'Ganagana',
+                'name'              => 'Gana Gana',
                 'status'            => 'active',
                 'secure_thumbnail'         => 'https://secure.epayco.co/img/ganagana.jpg'
+            ],
+            [
+                'id' => 'suchance',
+                'name'              => 'Suchance',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/suchance.jpg'
+            ],
+            [
+                'id' => 'redservi',
+                'name'              => 'Red Servicios del Cesar',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/redservi.jpg'
+            ],
+            [
+                'id' => 'apuestas',
+                'name'              => 'Apuestas Cúcuta 75',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/apuestas.jpg'
+            ],
+            [
+                'id' => 'jer',
+                'name'              => 'Jer',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/jer.jpg'
+            ],
+            [
+                'id' => 'laperla',
+                'name'              => 'La Perla',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/laperla.jpg'
+            ],
+            [
+                'id' => 'efecty',
+                'name'              => 'Efecty',
+                'status'            => 'active',
+                'thumbnail'         => 'https://secure.epayco.co/img/efecty.png'
+            ],
+            [
+                'id' => 'puntored',
+                'name'              => 'Punto Red',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/puntored.jpg'
+            ],
+            [
+                'id' => 'redseril',
+                'name'              => 'Red Servi',
+                'status'            => 'active',
+                'secure_thumbnail'         => 'https://secure.epayco.co/img/redseril.jpg'
             ],
         ];
 

@@ -23,10 +23,16 @@
 * International Registered Trademark & Property of PrestaShop SA
 *}
 
-<form id="ep_pse_checkout"  method="post" action="{$redirect|escape:'htmlall':'UTF-8'}">
-    <div class='ep-checkout-container'>
-        <div class="ep-checkout-pse-container" style="max-width: 452px;margin: auto;">
-            <div class="ep-checkout-pse-content">
+<div class="payment-method-wrapper">
+   
+    <form id="ep_pse_checkout"  method="post" action="{$redirect|escape:'htmlall':'UTF-8'}">
+        <div class='ep-checkout-container'>
+            <div class="ep-checkout-pse-container" style="right: 10px !important;
+    width: 579px;
+    position: relative;
+    margin-bottom: 28px;
+    margin-top: -15px;">
+                <div class="ep-checkout-pse-content">
                 <div class="ep-checkout-pse-test-mode">
                     {if $payment_method_info["test"]}
                         <test-mode-epayco
@@ -46,7 +52,7 @@
                 <div id="ep-custom-checkout-form-container" style="margin: 10px;">
                     <div class="ep-checkout-pse-input-document">
                         <input-name-epayco
-                                labelMessage="{l s='Name' mod='payco'}"
+                                labelMessage="{l s='Nombres y Apellidos' mod='payco'}"
                                 helperMessage="{l s='Invalid name' mod='payco'}"
                                 placeholder="Ex: John Doe"
                                 inputName='epayco_pse[name]'
@@ -58,7 +64,7 @@
                     </div>
                     <div class='ep-checkout-pse-input-cellphone'>
                         <input-address-epayco
-                                labelMessage="{l s='Address' mod='payco'}"
+                                labelMessage="{l s='Dirección' mod='payco'}"
                                 helperMessage="{l s='Invalid address' mod='payco'}"
                                 placeholder="Street 123"
                                 inputName='epayco_pse[address]'
@@ -82,7 +88,7 @@
                     </div>
                     <div class='ep-checkout-pse-input-cellphone'>
                         <input-cellphone-epayco
-                                label-message="{l s='Cellphone' mod='payco'}"
+                                label-message="{l s='Celular' mod='payco'}"
                                 helper-message="{l s='Invalid Cellphone' mod='payco'}"
                                 input-name-epayco='epayco_pse[cellphone]'
                                 hidden-id="cellphoneType"
@@ -100,7 +106,7 @@
                     <div class="ep-checkout-pse-person">
                         <input-select-epayco
                                 name="epayco_pse[person_type]"
-                                label="{l s='Select a type of person' mod='payco'}"
+                                label="{l s='Tipo de persona' mod='payco'}"
                                 optional="false"
                                 options="{$payment_method_info["persons_types"]}"
                         >
@@ -108,7 +114,7 @@
                     </div>
                     <div class="ep-checkout-pse-input-document">
                         <input-document-epayco
-                                label-message="{l s='Document' mod='payco'}"
+                                label-message="{l s='Documento' mod='payco'}"
                                 helper-message="{l s='Invalid Document' mod='payco'}"
                                 input-name-epayco='epayco_pse[document]'
                                 hidden-id="documentType"
@@ -169,7 +175,7 @@
                 </terms-and-conditions>
             </div>
             <div style="display: flex;justify-content: center; align-items: center;padding: 15px;">
-                <p>Secure by</p>
+                <p>Secured by</p>
                 <img width="65px" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logo.png">
             </div>
         </div>

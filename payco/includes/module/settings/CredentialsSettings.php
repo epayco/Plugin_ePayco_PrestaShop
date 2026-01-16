@@ -56,17 +56,15 @@ class CredentialsSettings extends AbstractSettings
         foreach ($states as $state) {
             $order_states[] = array("id" => $state["id_order_state"], "name" => $state["name"]);
         }
-        $title = $this->module->l('Credentials', 'CredentialsSettings');
+        $title = $this->module->l('Ajustes', 'CredentialsSettings');
         $fields = array(
             array(
                 'col' => 4,
                 'type' => 'switch',
-                'label' => $this->module->l('Pruebas', 'CredentialsSettings'),
+                'label' => $this->module->l('Habilitar modo de pruebas', 'CredentialsSettings'),
                 'name' => 'EPAYCO_PROD_STATUS',
                 'is_bool' => true,
-                'desc' => $this->module->l('Select "NO" only when you are ready to sell. ', 'CredentialsSettings') .
-                    $this->module->l('Change to YES to activate the Sandbox ', 'CredentialsSettings') .
-                    $this->module->l('test environment.', 'CredentialsSettings'),
+                'desc' => $this->module->l('Elija "NO" solo cuando esté listo para comenzar a vender en producción. Seleccione "Sí" para activar el Sandbox (pruebas), entorno de prueba.', 'CredentialsSettings'),
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_PROD_STATUS_ON',
@@ -86,9 +84,9 @@ class CredentialsSettings extends AbstractSettings
                 'type' => 'html',
                 'name' => '',
                 'desc' => '',
-                'label' => $this->module->l('Load credentials', 'CredentialsSettings'),
-                'html_content' => '<a href="https://dashboard.payco.io/configuration" target="_blank" class="btn btn-default mp-btn-credenciais">'
-                    . $this->module->l('Search my credentials', 'CredentialsSettings') . '</a>'
+                'label' => $this->module->l('Cargar credenciales', 'CredentialsSettings'),
+                'html_content' => '<a href="https://eks-dashboard-service.epayco.io/configuration" target="_blank" class="btn btn-default mp-btn-credenciais">'
+                    . $this->module->l('Buscar mis credenciales', 'CredentialsSettings') . '</a>'
             ),
             array(
                 'col' => 8,
@@ -128,16 +126,16 @@ class CredentialsSettings extends AbstractSettings
             ),
             array(
                 'type' => 'select',
-                'label' => $this->module->l('status Order','CredentialsSettings'),
+                'label' => $this->module->l('Estado orden','CredentialsSettings'),
                 'name' => 'EPAYCO_STANDARD_STATE_END_TRANSACTION',
-                'desc' => $this->module->l('Choose the payment status to apply when accepting the transaction.', 'CredentialsSettings'),
+                'desc' => $this->module->l('Elija el estado de pago a aplicar al aceptar la transacción.', 'CredentialsSettings'),
                 'required' => true,
                 'options' => array(
                     'id' => 'id',
                     'name' => 'name',
                     'default' => array(
                         'value' => '2',
-                        'label' => $this->module->l('Approved payment', 'CredentialsSettings')
+                        'label' => $this->module->l('Pago aceptado', 'CredentialsSettings')
                     ),
                     'query' => $order_states,
                 ),
@@ -167,7 +165,7 @@ class CredentialsSettings extends AbstractSettings
         //activate checkout
         if (Payco::$form_alert != 'alert-danger') {
             //$access_token = $this->payco->token->create();
-            Payco::$form_message = $this->module->l('Settings saved successfully. Now you can configure the module.', 'CredentialsSettings');
+            Payco::$form_message = $this->module->l('Configuración guardada exitosamente. Ahora puedes configurar el módulo.', 'CredentialsSettings');
 
             Configuration::updateValue('EPAYCO_CHECK_CREDENTIALS', true);
         }

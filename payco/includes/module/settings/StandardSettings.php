@@ -52,53 +52,133 @@ class StandardSettings extends AbstractSettings
     public function generateForm()
     {
 
-        $title = $this->module->l('Basic Configuration', 'StandardSettings');
+        $title = $this->module->l('Configuración básica', 'StandardSettings');
         $fields = array(
             array(
-                'type' => 'text',
-                'label' => $this->module->l('TITLE', 'StandardSettings'),
-                'name' => 'EPAYCO_STANDARD_TITLE',
-                'required' => true,
-                'desc' => $this->module->l('Payment title.', 'StandardSettings'),
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <style>
+                        .epayco-section-title {
+                            font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 20px 0 10px 0;
+    /* padding-bottom: 10px; */
+    /* border-bottom: 2px solid #007bff; */
+    margin-left: -270px;
+                        }
+     .epayco-section-title-2 {
+                            font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 20px 0 10px 0;
+    /* padding-bottom: 10px; */
+    /* border-bottom: 2px solid #007bff; */
+    margin-left: -270px;
+                        }
+                        .epayco-section-desc {
+                            font-size: 13px;
+                            color: #666;
+                            margin-bottom: 15px;
+                            line-height: 1.5;
+                            margin-left: -270px;
+                        }
+                        .epayco-form-group {
+                            margin-bottom: 20px;
+                        }
+                        .epayco-switch-wrapper {
+                            background-color: #f8f9fa;
+                            padding: 15px;
+                            border-radius: 5px;
+                            margin-bottom: 15px;
+                        }
+                        .epayco-switch-label {
+                            font-weight: 600;
+                            color: #333;
+                            font-size: 14px;
+                            margin-bottom: 5px;
+                            display: block;
+                        }
+                        .epayco-switch-desc {
+                            font-size: 12px;
+                            color: #666;
+                            margin-top: 5px;
+                        }
+                    </style>
+                    <div class="epayco-section-title">
+                        ' . $this->module->l('Activar ePayco Checkout', 'StandardSettings') . '
+                    </div>
+                    <div class="epayco-section-desc">
+                        ' . $this->module->l('Al desactivarlo, desactivará el pago de ePayco.', 'StandardSettings') . '
+                    </div>
+                ',
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Activate checkout', 'StandardSettings'),
+                'label' => $this->module->l('El pago está habilitado', 'StandardSettings'),
                 'name' => 'EPAYCO_STANDARD_CHECKOUT',
-                'desc' => $this->module->l('Activate the ePayco experience at the checkout of your store.', 'StandardSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_STANDARD_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'StandardSettings')
+                        'label' => $this->module->l('Sí', 'StandardSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_STANDARD_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'StandardSettings')
+                        'label' => $this->module->l('No', 'StandardSettings')
+                    )
+                ),
+            ),
+            array(
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <div class="epayco-section-title-2">
+                        ' . $this->module->l('Modo de pago', 'StandardSettings') . '
+                    </div>
+                    <div class="epayco-section-desc">
+                        ' . $this->module->l('Selecciona cómo deseas procesar los pagos de tus clientes en Prestashop.', 'StandardSettings') . '
+                    </div>
+                ',
+            ),
+            array(
+                'type' => 'switch',
+                'label' => $this->module->l('OnPage Checkout:', 'StandardSettings'),
+                'name' => 'EPAYCO_STANDARD_MODAL',
+                'is_bool' => true,
+                'desc' => $this->module->l('El pago se realiza dentro de la tienda, sin redirección.', 'StandardSettings'),
+                'values' => array(
+                    array(
+                        'id' => 'EPAYCO_STANDARD_MODAL_ON',
+                        'value' => true,
+                        'label' => $this->module->l('Activo', 'StandardSettings')
+                    ),
+                    array(
+                        'id' => 'EPAYCO_STANDARD_MODAL_OFF',
+                        'value' => false,
+                        'label' => $this->module->l('Inactivo', 'StandardSettings')
                     )
                 ),
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Modal checkout', 'StandardSettings'),
-                'name' => 'EPAYCO_STANDARD_MODAL',
+                'label' => $this->module->l('Estándar Checkout:', 'StandardSettings'),
+                'name' => 'EPAYCO_STANDARD_MODAL_INACTIVE',
                 'is_bool' => true,
-                'desc' =>
-                    $this->module->l('Your customers will access the ePayco payment ', 'StandardSettings') .
-                    $this->module->l('form without leaving your store. If you deactivate it, ', 'StandardSettings') .
-                    $this->module->l('they will be redirected to another page.', 'StandardSettings'),
+                'desc' => $this->module->l('Se abre una nueva página (landing de ePayco) para completar el pago.', 'StandardSettings'),
                 'values' => array(
                     array(
-                        'id' => 'EPAYCO_STANDARD_MODAL_ON',
-                        'value' => true,
-                        'label' => $this->module->l('Active', 'StandardSettings')
+                        'id' => 'EPAYCO_STANDARD_MODAL_INACTIVE_ON',
+                        'value' => false,
+                        'label' => $this->module->l('Activo', 'StandardSettings')
                     ),
                     array(
-                        'id' => 'EPAYCO_STANDARD_MODAL_OFF',
-                        'value' => false,
-                        'label' => $this->module->l('Inactive', 'StandardSettings')
+                        'id' => 'EPAYCO_STANDARD_MODAL_INACTIVE_OFF',
+                        'value' => true,
+                        'label' => $this->module->l('Inactivo', 'StandardSettings')
                     )
                 ),
             ),
@@ -130,9 +210,9 @@ class StandardSettings extends AbstractSettings
     public function getFormValues()
     {
         $form_values = array(
-            'EPAYCO_STANDARD_TITLE' => Configuration::get('EPAYCO_STANDARD_TITLE'),
             'EPAYCO_STANDARD_CHECKOUT' => Configuration::get('EPAYCO_STANDARD_CHECKOUT'),
             'EPAYCO_STANDARD_MODAL' => Configuration::get('EPAYCO_STANDARD_MODAL'),
+            'EPAYCO_STANDARD_MODAL_INACTIVE' => !Configuration::get('EPAYCO_STANDARD_MODAL'),
         );
 
         return $form_values;

@@ -57,7 +57,7 @@
     margin: 0 55px 0 23px;
     font-size: 16px;
     min-width: 550px;
-    font-family: "Poppins" !important
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 @media screen and (max-width: 780px) {
@@ -122,7 +122,7 @@
     font-weight: 500 !important;
     color: black !important;
     font-size: 14px !important;
-    margin: 0px 50px !important;
+    margin: 10px 50px !important;
     line-height: 18px !important;
 }
 
@@ -134,8 +134,8 @@
     color: #fff;
     flex: none;
     flex-grow: 0;
-    margin: 16px 16px 0 50px !important;
-    font-family: 'Poppins';
+    margin: 16px 16px 0 50px ;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 @media screen and (max-width: 780px) {
@@ -167,7 +167,7 @@
 .ep-settings-header p {
     position: relative;
     top: 70px;
-    font-family: 'Poppins';
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
     font-size: 1.5rem;
     line-height: 36px;
     color: #fff;
@@ -219,12 +219,12 @@
 }
 
 .ep-settings-font-color {
-    font-family: "Poppins", -apple-system, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
     color: rgba(0, 0, 0, .9);
 }
 
 .ep-settings-title-blocks {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 20px;
     line-height: 25px;
     margin: auto;
@@ -240,7 +240,7 @@
 
 .ep-settings-payment-block:hover {
     border-color: transparent;
-    color: #FF6720;
+    color: #4E565A;
     -webkit-transition: background-color .1s ease-in;
     transition: background-color .1s ease-in
 }
@@ -354,6 +354,7 @@
 .ep-settings-subtitle-font-size {
     font-size: 16px;
     line-height: 20px;
+    color: #373737 !important;
 }
 
 .ep-settings-badge-active {
@@ -423,3 +424,10 @@
     width: 32px;
     height: 32px;
 }
+
+/* Aplicar Segoe UI a todos los elementos dentro del plugin */
+.ep-settings * {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+

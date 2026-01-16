@@ -51,35 +51,70 @@ class CreditcardSettings extends AbstractSettings
      */
     public function generateForm()
     {
-        $title = $this->module->l('Basic Configuration', 'CreditcardSettings');
+        $title = $this->module->l('Configuración básica', 'CreditcardSettings');
         $fields = array(
             array(
-                'type' => 'text',
-                'label' => $this->module->l('TITLE', 'CreditcardSettings'),
-                'name' => 'EPAYCO_CREDITCARD_TITLE',
-                'required' => true,
-                'desc' => $this->module->l('Payment title.', 'CreditcardSettings'),
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <style>
+                        .epayco-section-title {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-title-2 {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-desc {
+                            font-size: 13px;
+                            color: #666;
+                            margin-bottom: 15px;
+                            line-height: 1.5;
+                            margin-left: -270px;
+                        }
+                    </style>
+                    <div class="epayco-section-title">
+                        ' . $this->module->l('Activar', 'CreditcardSettings') . '
+                    </div>
+                    <div class="epayco-section-desc">
+                        ' . $this->module->l('Al desactivarlo, desactivará todos los pagos con tarjeta de crédito.', 'CreditcardSettings') . '
+                    </div>
+                ',
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Activate checkout', 'CreditcardSettings'),
+                'label' => $this->module->l('El pago está habilitado', 'CreditcardSettings'),
                 'name' => 'EPAYCO_CREDITCARD_CHECKOUT',
-                'desc' => $this->module->l('Activate the Credit Card experience at the checkout of your store.', 'CreditcardSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_CREDITCARD_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'CreditcardSettings')
+                        'label' => $this->module->l('Sí', 'CreditcardSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_CREDITCARD_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'CreditcardSettings')
+                        'label' => $this->module->l('No', 'CreditcardSettings')
                     )
                 ),
             ),
-
+            array(
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <div class="epayco-section-desc" style="margin-top: 10px; margin-left: -270px;">
+                        ' . $this->module->l('Inicia y finaliza la compra dentro de la tienda sin ser redireccionado.', 'CreditcardSettings') . '
+                    </div>
+                ',
+            ),
         );
 
         return $this->buildForm($title, $fields);
@@ -92,11 +127,8 @@ class CreditcardSettings extends AbstractSettings
      */
     public function postFormProcess()
     {
-        $this->validate = ([
-            'EPAYCO_CREDITCARD_TITLE' => 'title'
-        ]);
+        $this->validate = array();
         parent::postFormProcess();
-
     }
 
     /**
@@ -107,7 +139,6 @@ class CreditcardSettings extends AbstractSettings
     public function getFormValues()
     {
         return array(
-            'EPAYCO_CREDITCARD_TITLE' => Configuration::get('EPAYCO_CREDITCARD_TITLE'),
             'EPAYCO_CREDITCARD_CHECKOUT' => Configuration::get('EPAYCO_CREDITCARD_CHECKOUT'),
         );
     }

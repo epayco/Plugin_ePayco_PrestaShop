@@ -23,10 +23,12 @@
 * International Registered Trademark & Property of PrestaShop SA
 *}
 
-<form action="{$redirect|escape:'htmlall':'UTF-8'}" method="post"  id="ep_creditcard_checkout">
-    <div class='ep-checkout-container'>
-        <div class="ep-checkout-creditcard-container" style="max-width: 452px;margin: auto;">
-            <div class="ep-checkout-creditcard-content">
+<div class="payment-method-wrapper">
+   
+    <form action="{$redirect|escape:'htmlall':'UTF-8'}" method="post"  id="ep_creditcard_checkout">
+        <div class='ep-checkout-container'>
+            <div class="ep-checkout-creditcard-container" style="max-width: 452px;margin: auto;">
+                <div class="ep-checkout-creditcard-content">
                 <div class="ep-checkout-creditcard-test-mode">
                     {if $payment_method_info["test"]}
                         <test-mode-epayco
@@ -230,7 +232,7 @@
                 </terms-and-conditions>
             </div>
             <div style="display: flex;justify-content: center; align-items: center;padding: 15px;">
-                <p>Secure by</p>
+                <p>Secured by</p>
                 <img width="65px" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logo.png">
             </div>
         </div>

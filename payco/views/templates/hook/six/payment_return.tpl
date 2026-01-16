@@ -23,7 +23,7 @@
 * International Registered Trademark & Property of PrestaShop SA
 *}
 {if $estado == 'Aceptada'}
-    <div style="max-width: 1092px; margin: auto; font-family: 'Poppins', Arial, sans-serif;">
+    <div style="max-width: 1092px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
     <!-- Barra superior negra con el logo -->
     <div style="background-color: #000; text-align: center; padding: 10px;">
@@ -162,7 +162,7 @@
     </style>
 
     {elseif $estado == 'Pendiente'}
-    <div style="max-width: 1092px; margin: auto; font-family: 'Poppins', Arial, sans-serif;">
+    <div style="max-width: 1092px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
         <!-- Barra superior negra con el logo -->
         <div style="background-color: #000; text-align: center; padding: 10px;">
@@ -304,7 +304,7 @@
     </style>
 
     {elseif $estado == 'Rechazada'}
-    <div style="max-width: 1092px; margin: auto; font-family: 'Poppins', Arial, sans-serif;">
+    <div style="max-width: 1092px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
         <!-- Barra superior negra con el logo -->
         <div style="background-color: #000; text-align: center; padding: 10px;">
@@ -445,7 +445,7 @@
 
     {else}
     <div
-            style="max-width: 600px; margin: auto; font-family: 'Poppins', Arial, sans-serif; text-align: center; color: #d9534f; background-color: #fef2f2; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            style="max-width: 600px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; color: #d9534f; background-color: #fef2f2; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
         <h2 style="font-size: 20px; font-weight: bold;">Su pago se encuentra en proceso de validacion. </h2>
         <p style="font-size: 14px;">Por favor, inténtelo mas tarde.</p>
     </div>

@@ -50,39 +50,73 @@ class DaviplataSettings extends AbstractSettings
      */
     public function generateForm()
     {
-        $title = $this->module->l('Basic Configuration','DaviplataSettings');
-        // $fields = array();
-
-        //if($this->module->isEnabledPaymentMethod('pse')){
+        $title = $this->module->l('Configuración básica','DaviplataSettings');
+        
         $fields = array(
             array(
-                'type' => 'text',
-                'label' => $this->module->l('TITLE', 'DaviplataSettings'),
-                'name' => 'EPAYCO_DAVIPLATA_TITLE',
-                'required' => true,
-                'desc' => $this->module->l('Payment title.', 'DaviplataSettings'),
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <style>
+                        .epayco-section-title {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-title-2 {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-desc {
+                            font-size: 13px;
+                            color: #666;
+                            margin-bottom: 15px;
+                            line-height: 1.5;
+                            margin-left: -270px;
+                        }
+                    </style>
+                    <div class="epayco-section-title">
+                        ' . $this->module->l('Activar', 'DaviplataSettings') . '
+                    </div>
+                    <div class="epayco-section-desc">
+                        ' . $this->module->l('Al desactivarlo, desactivará el pago DaviPlata.', 'DaviplataSettings') . '
+                    </div>
+                ',
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Activate checkout', 'DaviplataSettings'),
+                'label' => $this->module->l('El pago está habilitado', 'DaviplataSettings'),
                 'name' => 'EPAYCO_DAVIPLATA_CHECKOUT',
-                'desc' => $this->module->l('Activate the Daviplata experience at the checkout of your store.', 'DaviplataSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_DAVIPLATA_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'DaviplataSettings')
+                        'label' => $this->module->l('Sí', 'DaviplataSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_DAVIPLATA_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'DaviplataSettings')
+                        'label' => $this->module->l('No', 'DaviplataSettings')
                     )
                 ),
             ),
+            array(
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <div class="epayco-section-desc" style="margin-top: 10px; margin-left: -270px;">
+                        ' . $this->module->l('Activa la experiencia DaviPlata en el proceso de pago de tu tienda.', 'DaviplataSettings') . '
+                    </div>
+                ',
+            ),
         );
-        // }
+        
         return $this->buildForm($title, $fields);
     }
 
@@ -93,9 +127,7 @@ class DaviplataSettings extends AbstractSettings
      */
     public function postFormProcess()
     {
-        $this->validate = ([
-            'EPAYCO_DAVIPLATA_TITLE' => 'title'
-        ]);
+        $this->validate = [];
         parent::postFormProcess();
     }
 
@@ -108,9 +140,7 @@ class DaviplataSettings extends AbstractSettings
     public function getFormValues()
     {
         $formValues = array(
-            'EPAYCO_DAVIPLATA_TITLE' => Configuration::get('EPAYCO_DAVIPLATA_TITLE'),
             'EPAYCO_DAVIPLATA_CHECKOUT' => Configuration::get('EPAYCO_DAVIPLATA_CHECKOUT'),
-
         );
 
         return $formValues;

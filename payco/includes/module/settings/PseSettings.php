@@ -52,39 +52,73 @@ class PseSettings extends AbstractSettings
      */
     public function generateForm()
     {
-        $title = $this->module->l('Basic Configuration','PseSettings');
-       // $fields = array();
-
-        //if($this->module->isEnabledPaymentMethod('pse')){
+        $title = $this->module->l('Configuración básica','PseSettings');
+        
         $fields = array(
             array(
-                'type' => 'text',
-                'label' => $this->module->l('TITLE', 'PseSettings'),
-                'name' => 'EPAYCO_PSE_TITLE',
-                'required' => true,
-                'desc' => $this->module->l('Payment title.', 'PseSettings'),
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <style>
+                        .epayco-section-title {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-title-2 {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #333;
+                            margin: 20px 0 10px 0;
+                            margin-left: -270px;
+                        }
+                        .epayco-section-desc {
+                            font-size: 13px;
+                            color: #666;
+                            margin-bottom: 15px;
+                            line-height: 1.5;
+                            margin-left: -270px;
+                        }
+                    </style>
+                    <div class="epayco-section-title">
+                        ' . $this->module->l('Activar', 'PseSettings') . '
+                    </div>
+                    <div class="epayco-section-desc">
+                        ' . $this->module->l('Al desactivarlo, desactivará los pagos PSE.', 'PseSettings') . '
+                    </div>
+                ',
             ),
             array(
                 'type' => 'switch',
-                'label' => $this->module->l('Activate checkout', 'PseSettings'),
+                'label' => $this->module->l('El pago está habilitado', 'PseSettings'),
                 'name' => 'EPAYCO_PSE_CHECKOUT',
-                'desc' => $this->module->l('Activate the Pse experience at the checkout of your store.', 'PseSettings'),
                 'is_bool' => true,
                 'values' => array(
                     array(
                         'id' => 'EPAYCO_PSE_CHECKOUT_ON',
                         'value' => true,
-                        'label' => $this->module->l('Active', 'PseSettings')
+                        'label' => $this->module->l('Sí', 'PseSettings')
                     ),
                     array(
                         'id' => 'EPAYCO_PSE_CHECKOUT_OFF',
                         'value' => false,
-                        'label' => $this->module->l('Inactive', 'PseSettings')
+                        'label' => $this->module->l('No', 'PseSettings')
                     )
                 ),
             ),
+            array(
+                'type' => 'html',
+                'name' => '',
+                'html_content' => '
+                    <div class="epayco-section-desc" style="margin-top: 10px; margin-left: -270px;">
+                        ' . $this->module->l('Activa la experiencia PSE en el checkout de tu tienda.', 'PseSettings') . '
+                    </div>
+                ',
+            ),
         );
-       // }
+        
         return $this->buildForm($title, $fields);
     }
 
@@ -95,9 +129,7 @@ class PseSettings extends AbstractSettings
      */
     public function postFormProcess()
     {
-        $this->validate = ([
-            'EPAYCO_PSE_TITLE' => 'title'
-        ]);
+        $this->validate = [];
         parent::postFormProcess();
     }
 
@@ -110,7 +142,6 @@ class PseSettings extends AbstractSettings
     public function getFormValues()
     {
         $formValues = array(
-            'EPAYCO_PSE_TITLE' => Configuration::get('EPAYCO_PSE_TITLE'),
             'EPAYCO_PSE_CHECKOUT' => Configuration::get('EPAYCO_PSE_CHECKOUT'),
 
         );

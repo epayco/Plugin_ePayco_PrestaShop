@@ -42,7 +42,7 @@ class AbstractSettings
     public $process;
     public $epayco;
     protected $validate;
-    private const EP_APIFY  = "https://apify.epayco.io";
+    private const EP_APIFY  = "https://eks-apify-service.epayco.io";
 
     public function __construct()
     {
@@ -70,7 +70,7 @@ class AbstractSettings
             'form' => array(
                 'legend' => array(
                     'title' => $title,
-                    'icon' => 'icon-cogs',
+                    // 'icon' => 'icon-cogs',
                 ),
                 'class' => 'credentials',
                 'input' => $fields,
@@ -223,8 +223,8 @@ class AbstractSettings
                 case "title":
                     if ($value == '') {
                         Epayco::$form_alert = 'alert-danger';
-                        Epayco::$form_message = $this->module->l('Title can not be empty and must be valid. ', 'AbstractSettings') .
-                            $this->module->l('Please complete your title to enable the module.', 'AbstractSettings');
+                        Epayco::$form_message = $this->module->l('El título no puede estar vacío y debe ser válido. ', 'AbstractSettings') .
+                            $this->module->l('Por favor completa el título para habilitar el módulo.', 'AbstractSettings');
                         return false;
                     }
                     break;
@@ -232,8 +232,8 @@ class AbstractSettings
                 case "p_cust_id":
                     if ($value == '') {
                         Epayco::$form_alert = 'alert-danger';
-                        Epayco::$form_message = $this->module->l('P_CUST_ID can not be empty and must be valid. ', 'AbstractSettings') .
-                            $this->module->l('Please complete your credentials to enable the module.', 'AbstractSettings');
+                        Epayco::$form_message = $this->module->l('P_CUST_ID no puede estar vacío y debe ser válido. ', 'AbstractSettings') .
+                            $this->module->l('Por favor completa tus credenciales para habilitar el módulo.', 'AbstractSettings');
                         return false;
                     }
                     break;
@@ -241,8 +241,8 @@ class AbstractSettings
                 case "p_key":
                     if ($value == '') {
                         Epayco::$form_alert = 'alert-danger';
-                        Epayco::$form_message = $this->module->l('P_KEY can not be empty and must be valid. ', 'AbstractSettings') .
-                            $this->module->l('Please complete your credentials to enable the module.', 'AbstractSettings');
+                        Epayco::$form_message = $this->module->l('P_KEY no puede estar vacío y debe ser válido. ', 'AbstractSettings') .
+                            $this->module->l('Por favor completa tus credenciales para habilitar el módulo.', 'AbstractSettings');
                         return false;
                     }
                     break;
@@ -250,16 +250,16 @@ class AbstractSettings
                 case "public_key":
                     if ($value == '') {
                         Epayco::$form_alert = 'alert-danger';
-                        Epayco::$form_message = $this->module->l('PUBLICK_KEY can not be empty and must be valid. ', 'AbstractSettings') .
-                            $this->module->l('Please complete your credentials to enable the module.', 'AbstractSettings');
+                        Epayco::$form_message = $this->module->l('PUBLIC_KEY no puede estar vacío y debe ser válido. ', 'AbstractSettings') .
+                            $this->module->l('Por favor completa tus credenciales para habilitar el módulo.', 'AbstractSettings');
                         return false;
                     }
                     break;
                 case "private_key":
                     if ($value == '') {
                         Epayco::$form_alert = 'alert-danger';
-                        Epayco::$form_message = $this->module->l('PRIVATE_KEY can not be empty and must be valid. ', 'AbstractSettings') .
-                            $this->module->l('Please complete your credentials to enable the module.', 'AbstractSettings');
+                        Epayco::$form_message = $this->module->l('PRIVATE_KEY no puede estar vacío y debe ser válido. ', 'AbstractSettings') .
+                            $this->module->l('Por favor completa tus credenciales para habilitar el módulo.', 'AbstractSettings');
                         return false;
                     }
                     break;

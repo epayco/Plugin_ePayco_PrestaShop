@@ -99,68 +99,68 @@
                 "success": true,
                 "data": [
                   {
-                    "id": "epayco-ticket",
-                    "title_gateway": "Efectivo",
-                    "description": "Add the cash payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
-                    "title": "Efectivo",
-                    "enabled": ticket_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/ticket-botton.png",
-                    "link": "#ticket_checkout",
+                    "id": "epayco-checkout",
+                    "title_gateway": "Checkout ePayco",
+                    "description": "Ofrezca a sus cliente una experiencia de pago completa con múltiples opciones: Tarjetas, transferencias bancarias, monederos digitales y efectivo. ¡Todo en una plataforma segura y fácil de usar!",
+                    "title": "Checkout ePayco",
+                    "enabled":standard_status,
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/new/checkout.png",
+                    "link": "#standard_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
-                    }
-                  },
-                 {
-                    "id": "woo-epayco-daviplata",
-                    "title_gateway": "Daviplata",
-                    "description": "Add the Daviplata payment option directly in your store. Perfect for customers who prefer paying at physical locations, with no hassles or redirects.",
-                    "title": "Daviplata",
-                    "enabled": daviplata_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/DPA50.png",
-                    "link": "#daviplata_checkout",
-                    "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                      "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                   {
                     "id": "epayco-creditcard",
-                    "title_gateway": "Tarjetas de crédito",
-                    "description": "Accept fast and secure payments directly from your store using credit and debit cards from any bank. No redirects, ensuring a seamless shopping experience.  (Visa, Mastercard, Amex & Dinners)",
-                    "title": "Tarjetas de crédito",
+                    "title_gateway": "Tarjeta de crédito y/o débito",
+                    "description": "Acepta pagos rápidos y seguros directamente desde tu tienda con tarjetas de crédito y débito de cualquier banco. Sin redirecciones, garantizando una experiencia de compra sin interrupciones. (Visa, Mastercard, Amex y Dinners)",
+                    "title": "Tarjeta de crédito y/o débito",
                     "enabled": creditcard_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/credit-card-botton.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/new/tarjeta.png",
                     "link": "#creditcard_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                      "yes": "Activo",
+                      "no": "Inactivo"
+                    }
+                  },
+                  {
+                    "id": "woo-epayco-daviplata",
+                    "title_gateway": "DaviPlata",
+                    "description": "Conéctate con millones de usuarios de DaviPlata en Colombia. Los clientes pueden pagar directamente desde tu tienda sin pasos adicionales, se forma rápida y sencilla.",
+                    "title": "DaviPlata",
+                    "enabled": daviplata_status,
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/new/daviplata.png",
+                    "link": "#daviplata_checkout",
+                    "badge_translator": {
+                      "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                   {
                     "id": "epayco-pse",
-                    "title_gateway": "Pse por ePayco",
-                    "description": "Let your customers pay with direct bank transfers from any Colombian bank, all without leaving your online store. Secure, fast, and interruption-free.",
-                    "title": "Pse por ePayco",
+                    "title_gateway": "PSE",
+                    "description": "Permita que sus clientes paguen con transferencia bancarias directas desde cualquier banco colombiano, todo sin salir de su tienda en línea. Seguro, rápido y sin interrupciones.",
+                    "title": "PSE",
                     "enabled": pse_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/pse-botton.png",
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/new/pse.png",
                     "link": "#pse_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                      "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   },
                   {
-                    "id": "epayco-checkout",
-                    "title_gateway": "Pago por Internet",
-                    "description": "Offer your customers a complete payment experience with multiple options: cards, bank transfers, digital wallets, and cash. All in one secure and easy-to-use platform!",
-                    "title": "Pago por Internet",
-                    "enabled":standard_status,
-                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/botoncheckout.png",
-                    "link": "#standard_checkout",
+                    "id": "epayco-ticket",
+                    "title_gateway": "Efectivo",
+                    "description": "Añada la opción de pago en efectivo directamente en su tienda. Perfecto para los clientes que prefieren pagar en lugares físicos, sin complicaciones ni redirecciones.",
+                    "title": "Efectivo",
+                    "enabled": ticket_status,
+                    "icon": "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/efectivo.png",
+                    "link": "#ticket_checkout",
                     "badge_translator": {
-                      "yes": "Enabled",
-                      "no": "Disabled"
+                      "yes": "Activo",
+                      "no": "Inactivo"
                     }
                   }
                 ]

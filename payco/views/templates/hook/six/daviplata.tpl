@@ -23,10 +23,12 @@
 * International Registered Trademark & Property of PrestaShop SA
 *}
 
-<form id="ep_daviplata_checkout" action="{$redirect|escape:'htmlall':'UTF-8'}" method="post" class="mp-custom-checkout-six">
-    <div class='ep-checkout-container'>
-        <div class="ep-checkout-ticket-container" style="max-width: 452px;margin: auto;">
-            <div class="ep-checkout-ticket-content">
+<div class="payment-method-wrapper">
+   
+    <form id="ep_daviplata_checkout" action="{$redirect|escape:'htmlall':'UTF-8'}" method="post" class="mp-custom-checkout-six">
+        <div class='ep-checkout-container'>
+            <div class="ep-checkout-ticket-container" style="max-width: 452px;margin: auto;">
+                <div class="ep-checkout-ticket-content">
                 <div class="ep-checkout-ticket-test-mode">
                     {if $payment_method_info["test"]}
                         <test-mode-epayco
@@ -121,7 +123,7 @@
                 </terms-and-conditions>
             </div>
             <div style="display: flex;justify-content: center; align-items: center;padding: 15px;">
-                <p>Secure by</p>
+                <p>Secured by</p>
                 <img width="65px" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logo.png">
             </div>
         </div>
