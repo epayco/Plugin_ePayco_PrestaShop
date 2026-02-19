@@ -261,7 +261,7 @@
             </div>
             <div style="display: flex;justify-content: center; align-items: center;padding: 15px;  margin-top: -32px;">
                 <p>Secured by</p>
-                <img  style=" width:65px; top: 5px; position: relative;" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/logodavi.png">
+                <img  style=" width:65px; top: 5px; position: relative;" src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/Logodavi.png">
             </div>
         </div>
     </div>
