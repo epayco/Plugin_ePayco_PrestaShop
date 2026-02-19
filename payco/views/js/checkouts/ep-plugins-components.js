@@ -326,8 +326,8 @@ console.log('Epayco Checkout Components loaded');
                                 {"id": typeLabel},
                                 {"id": "CC"},
                                 {"id": "CE"},
-                                {"id": "PPN"},
-                                {"id": "NIT"}
+                                {"id": "PPN"}
+                              
                             ];
                         }
                     } else {
