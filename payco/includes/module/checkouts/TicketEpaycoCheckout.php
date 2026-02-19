@@ -92,85 +92,122 @@ class TicketEpaycoCheckout extends AbstractEpaycoCheckout
     public function getTicketCheckout($cart)
     {
         $this->getTicketJS();
-        $ticket = array();
+        
         $ticketPaymentMethods = [
             [
-                'id' => 'efecty',
-                'name'              => 'Efecty',
-                'status'            => 'active',
-                'thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Efecty.png'
-            ],
-            [
-                'id' => 'gana',
-                'name'              => 'Gana',
-                'status'            => 'active',
-                'thumbnail'         => _MODULE_DIR_ . 'payco/views/img/gana.png'
-            ],
-            [
-                'id' => 'puntored',
-                'name'              => 'Puntored',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Puntored.png'
-            ],
-            [
-                'id' => 'redservi',
-                'name'              => 'Redservi',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Redservi.png'
-            ],
-            [
                 'id' => 'sured',
-                'name'              => 'Sured',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Sured.png'
-            ],
-            [
-                'id' => 'suchance',
-                'name'              => 'Suchance',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Suchance.png'
-            ],
-            [
-                'id' => 'laperla',
-                'name'              => 'Laperla',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Laperla.png'
-            ],
-            [
-                'id' => 'jer',
-                'name'              => 'Jer',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Jer.png'
+                'name' => 'Su Red',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Sured.png"
             ],
             [
                 'id' => 'pagatodo',
-                'name'              => 'Pagatodo',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Pagatodo.png'
+                'name' => 'Paga Todo',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Pagatodo.png"
+            ],
+            [
+                'id' => 'gana',
+                'name' => 'Gana',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/gana.png"
             ],
             [
                 'id' => 'acertemos',
-                'name'              => 'Acertemos',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Acertemos.png'
+                'name' => 'Acertemos',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Acertemos.png"
             ],
             [
                 'id' => 'ganagana',
-                'name'              => 'Ganagana',
-                'status'            => 'active',
-                'secure_thumbnail'         => _MODULE_DIR_ . 'payco/views/img/Ganagana.png'
+                'name' => 'Gana Gana',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Ganagana.png"
+            ],
+            [
+                'id' => 'suchance',
+                'name' => 'SuChance',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/SuChance.png"
+            ],
+            [
+                'id' => 'redservicioscesar',
+                'name' => 'Red Servicios del Cesar',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Reddeservicios.png"
+            ],
+            [
+                'id' => 'apuestascucuta',
+                'name' => 'Apuestas Cúcuta 75',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Apuestascucuta.png"
+            ],
+            [
+                'id' => 'jer',
+                'name' => 'Jer',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Jer.png"
+            ],
+            [
+                'id' => 'laperla',
+                'name' => 'La Perla',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Laperla.png"
+            ],
+            [
+                'id' => 'efecty',
+                'name' => 'Efecty',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Efecty.png"
+            ],
+            [
+                'id' => 'puntored',
+                'name' => 'Punto Red',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Puntored.png"
+            ],
+            [
+                'id' => 'redservi',
+                'name' => 'Red Servi',
+                'status' => 'active',
+                'secure_thumbnail' => "https://multimedia-epayco-preprod.s3.us-east-1.amazonaws.com/plugins-sdks/cash/Redservi.png"
             ],
         ];
 
+        // Order of the payment methods to be displayed in the front, based on the name. If a method is not in the list, it will be displayed at the end.
+        $order = [
+            'Su Red',
+            'Paga Todo',
+            'Gana',
+            'Acertemos',
+            'Gana Gana',
+            'SuChance',
+            'Red Servicios del Cesar',
+            'Apuestas Cúcuta 75',
+            'Jer',
+            'La Perla',
+            'Efecty',
+            'Punto Red',
+            'Red Servi',
+        ];
+
+        $ticket = [];
         if (!empty($ticketPaymentMethods)) {
             foreach ($ticketPaymentMethods as $ticketPaymentMethod) {
-                if (Configuration::get('EPAYCO_TICKET_PAYMENT_' . $ticketPaymentMethod['id']) != "") {
+                $configValue = Configuration::get('EPAYCO_TICKET_PAYMENT_' . $ticketPaymentMethod['id']);
+                // Include by default. Only exclude if explicitly disabled ('0' or 'no')
+                if ($configValue !== '0' && $configValue !== 'no') {
                     $ticket[] = $ticketPaymentMethod;
                 }
             }
         }
 
-        sort($ticket);
+        // Order whith the array $order
+        usort($ticket, function ($a, $b) use ($order) {
+            $posA = array_search($a['name'], $order);
+            $posB = array_search($b['name'], $order);
+            return $posA - $posB;
+        });
 
         $address = new Address((int) $cart->id_address_invoice);
         $context = Context::getContext();
