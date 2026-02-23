@@ -37,7 +37,7 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://checkout.epayco.co/checkout-v2.js"></script>
+    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod-v2.js"></script>
     <script>
         const params = JSON.parse(atob("{$checkout}"));
         let {
@@ -89,7 +89,7 @@
     style="text-align: center;font-size: large;font-weight: 900;">
         <p class="warning">
             {l s='Hemos notado un problema con tu orden, solicitamos contactar a nuestro departamento de Soporte' mod='payco'}
-            {l s='{$errorMessage}' mod='payco'}.
+            {l s='$errorMessage' mod='payco'}.
         </p>
     </div>
 </div>
