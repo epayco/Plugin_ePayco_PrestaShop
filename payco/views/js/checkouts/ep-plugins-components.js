@@ -292,22 +292,22 @@ console.log('Epayco Checkout Components loaded');
                 var type;
                 const lang = lenguaje;
                 
-                // Determinar si es PSE y si es el documento de PSE específicamente
+                // Determine if it's PSE and if it's the specific PSE document
                 const isPSE = document.getElementById("ep_pse_checkout") !== null;
                 const selectName = this.getAttribute("select-name");
                 const isPSEDocument = isPSE && selectName && selectName.includes("epayco_pse");
                 
-                // Función para obtener documentos según tipo de persona en PSE
+                // Function to get documents according to person type in PSE
                 const getDocumentsByPersonType = () => {
                     if (isPSEDocument) {
-                        // Para PSE, obtener tipo de persona
+                        // For PSE, get person type
                         const personTypeSelect = document.querySelector('select[name="epayco_pse[person_type]"]');
                         const personType = personTypeSelect ? personTypeSelect.value : '';
                         
                         const typeLabel = lang === 'es' ? 'Tipo' : 'Type';
                         
                         if (personType === 'PN') {
-                            // Persona Natural: CC, CE, PPN
+                            // Natural Person: CC, CE, PPN
                             return [
                                 {"id": typeLabel},
                                 {"id": "CC"},
@@ -315,13 +315,13 @@ console.log('Epayco Checkout Components loaded');
                                 {"id": "PPN"}
                             ];
                         } else if (personType === 'PJ') {
-                            // Persona Jurídica: NIT
+                            // Legal Person: NIT
                             return [
                                 {"id": typeLabel},
                                 {"id": "NIT"}
                             ];
                         } else {
-                            // Por defecto, mostrar todos
+                            // By default, show all
                             return [
                                 {"id": typeLabel},
                                 {"id": "CC"},
@@ -331,7 +331,7 @@ console.log('Epayco Checkout Components loaded');
                             ];
                         }
                     } else {
-                        // Para otros métodos de pago: CC, NIT, CE, PPN, SSN, LIC, DNI, PEP, PPT
+                        // For other payment methods: CC, NIT, CE, PPN, SSN, LIC, DNI, PEP, PPT
                         if(lang === 'es'){
                             type = 'Tipo';
                             return [
@@ -379,7 +379,7 @@ console.log('Epayco Checkout Components loaded');
                         tt.querySelector("select").parentElement.classList.add("ep-error");
                     }else{
                         let n = i.parentElement.querySelector("input");
-                        n.value = ''; // Limpiar valor al cambiar tipo de documento
+                        n.value = ''; 
                         
                         switch (i.querySelector("select").value) {
                             case "NIT":
@@ -420,7 +420,7 @@ console.log('Epayco Checkout Components loaded');
                                 break;
                         }
                         
-                        // Limpiar estados de error al cambiar
+                      
                         aa.querySelector("input").parentElement.classList.remove("ep-error");
                         tt.querySelector("select").parentElement.classList.remove("ep-error");
                         tt.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
@@ -430,7 +430,7 @@ console.log('Epayco Checkout Components loaded');
                 
                 i.appendChild(r);
                 
-                // Agregar listener para PSE después de que ambos elementos estén en el DOM
+                // Add listener for PSE after both elements are in the DOM
                 if (isPSEDocument) {
                     setTimeout(() => {
                         const personTypeSelect = document.querySelector('select[name="epayco_pse[person_type]"]');
@@ -451,7 +451,7 @@ console.log('Epayco Checkout Components loaded');
                                     });
                                     documentSelectRefresh.selectedIndex = 0;
                                     
-                                    // Limpiar el campo de entrada
+                                
                                     const inputField = documentSelectRefresh.closest(".ep-input-element").querySelector("input");
                                     if (inputField) {
                                         inputField.value = '';
@@ -514,18 +514,18 @@ console.log('Epayco Checkout Components loaded');
                         const docValue = n.value.trim();
                         switch (i.querySelector("select").value) {
                             case "NIT":
-                                // Permitir solo dígitos y guion
+                               
                                 n.value = n.value.replace(/[^0-9\-]/g, '');
                                 
-                                // Limitar máximo 11 caracteres (9 dígitos + guion + 1 dígito verificador)
+                            
                                 if (n.value.length > 11) {
                                     n.value = n.value.substring(0, 11);
                                 }
                                 
-                                // Permitir solo un guion (al final)
+                           
                                 const guionesCount = (n.value.match(/-/g) || []).length;
                                 if (guionesCount > 1) {
-                                    // Remover todos los guiones y re-agregar al final si es necesario
+                                  
                                     const numeros = n.value.replace(/-/g, '');
                                     if (numeros.length > 9) {
                                         n.value = numeros.substring(0, 9) + '-' + numeros.substring(9, 10);
@@ -534,7 +534,7 @@ console.log('Epayco Checkout Components loaded');
                                     }
                                 }
                                 
-                                // Si hay guion, debe estar en posición 9
+                         
                                 if (n.value.includes('-') && n.value.indexOf('-') !== 9) {
                                     const numeros = n.value.replace(/-/g, '');
                                     if (numeros.length >= 10) {
@@ -557,10 +557,10 @@ console.log('Epayco Checkout Components loaded');
                                 n.minLength = "5";
                                 break;
                             case "CE":
-                                // Limpiar espacios y caracteres especiales
+                                
                                 n.value = n.value.replace(/\s/g, '');
                                 n.value = n.value.replace(/[^A-Za-z0-9]/g, '');
-                                // Limitar a máximo 10 caracteres
+                              
                                 if (n.value.length > 10) {
                                     n.value = n.value.substring(0, 10);
                                 }
@@ -568,9 +568,9 @@ console.log('Epayco Checkout Components loaded');
                                 n.minLength = "4";
                                 break;
                             case "PPN":
-                                // Permitir letras, números, guiones y guiones bajos
+                                
                                 n.value = n.value.replace(/[^a-zA-Z0-9_-]/g, '');
-                                // Limitar a máximo 12 caracteres
+                             
                                 if (n.value.length > 12) {
                                     n.value = n.value.substring(0, 12);
                                 }
@@ -609,9 +609,9 @@ console.log('Epayco Checkout Components loaded');
                                 n.minLength = "4";
                                 break;
                             case "PPT":
-                                // Permitir solo letras y números
+                              
                                 n.value = n.value.replace(/[^a-zA-Z0-9]/g, '');
-                                // Limitar a máximo 13 caracteres
+                               
                                 if (n.value.length > 13) {
                                     n.value = n.value.slice(0, 13);
                                 }
@@ -632,13 +632,13 @@ console.log('Epayco Checkout Components loaded');
                         type = 'Type';
                     }
 
-                    // NIT - Validación en focusout
+                 
                     if (i.querySelector("select").value === "NIT") {
                         const nitValue = n.value.trim();
                         const helperDiv = i.parentElement.querySelector("input-helper-epayco > div");
                         let isValid = false;
 
-                        // Si está vacío, es válido (se valida después en el bloque general)
+                 
                         if (nitValue === '') {
                             isValid = true;
                         } else {
@@ -671,23 +671,17 @@ console.log('Epayco Checkout Components loaded');
                         }
                     }
 
-                    // PPN - Pasaporte
+                 
                     if (i.querySelector("select").value === "PPN") {
                         const ppnValue = n.value.trim();
                         const helperDiv = i.parentElement.querySelector("input-helper-epayco > div");
                         let isValid = false;
 
-                        // Si está vacío, es válido (se valida después en el bloque general)
+                       
                         if (ppnValue === '') {
                             isValid = true;
                         } else {
-                            // Validación ESTRICTA del PPN según regulación colombiana
-                            // Regex: /^[a-zA-Z0-9][a-zA-Z0-9_-]{3,11}$/
-                            // Significa:
-                            // [a-zA-Z0-9] = Primer carácter: letra (a-zA-Z) o número (0-9) - NO guiones ni guiones bajos
-                            // [a-zA-Z0-9_-]{3,11} = Siguientes 3-11 caracteres: letras, números, guiones o guiones bajos
-                            // Longitud total: 4-12 caracteres
-                            // Ejemplos válidos: A1234, ABC123, ABC_123, ABC-123
+                     
                             
                             const ppnRegex = /^[a-zA-Z0-9][a-zA-Z0-9_-]{3,11}$/;
 
@@ -718,13 +712,13 @@ console.log('Epayco Checkout Components loaded');
                         }
                     }
 
-                    // CE - Cédula de Extranjería
+                    // CE - Foreign ID Card
                     if (i.querySelector("select").value === "CE") {
-                        // Limpiar espacios y caracteres especiales
+                        // Clean spaces and special characters
                         n.value = n.value.replace(/\s/g, '');
                         n.value = n.value.replace(/[^A-Za-z0-9]/g, '');
                         
-                        // Limitar a máximo 10 caracteres
+                        // Limit to maximum 10 characters
                         if (n.value.length > 10) {
                             n.value = n.value.substring(0, 10);
                         }
@@ -733,7 +727,7 @@ console.log('Epayco Checkout Components loaded');
                         const helperDiv = i.parentElement.querySelector("input-helper-epayco > div");
                         let isValid = false;
 
-                        // Si está vacío, es válido (se valida después en el bloque general)
+                        // If it is empty, it is valid (validated later in the general block)
                         if (ceValue === '') {
                             isValid = true;
                         } else {
@@ -768,7 +762,7 @@ console.log('Epayco Checkout Components loaded');
                         }
                     }
 
-                    // SSN - Social Security Number
+                    
                     if (i.querySelector("select").value === "SSN") {
                         const ssnRegex = /^(?!.*\s)(?!.*-{3,})\d{3}-?\d{2}-?\d{4}$/;
                         if (!ssnRegex.test(n.value.trim())) {
@@ -800,17 +794,11 @@ console.log('Epayco Checkout Components loaded');
                         const helperDiv = i.parentElement.querySelector("input-helper-epayco > div");
                         let isValid = false;
 
-                        // Si está vacío, es válido (se valida después en el bloque general)
+                        
                         if (pptValue === '') {
                             isValid = true;
                         } else {
-                            // Validación ESTRICTA del PPT según regulación colombiana
-                            // Regex: /^[a-zA-Z0-9]{7,13}$/
-                            // Significa:
-                            // [a-zA-Z0-9] = Solo letras (mayúsculas y minúsculas) y dígitos
-                            // {7,13} = Mínimo 7, máximo 13 caracteres
-                            // NO permite: guiones, guiones bajos, espacios o caracteres especiales
-                            // Ejemplos válidos: ABC1234, A1B2C3D4, 1234567, PPT1234567
+                           
                             
                             const pptRegex = /^[a-zA-Z0-9]{7,13}$/;
 
@@ -4502,11 +4490,11 @@ console.log('Epayco Checkout Components loaded');
                     "emoji": "🇿🇼"
                 }
             ]
-            // Consumir la API de países
+            
             fetch('https://cfeb0f7a-fea6-4cd5-af9c-49be89cfcb6e.mock.pstmn.io/create/resources/countries')
                 .then(response => response.json())
                 .then(data => {
-                    // Convertir el objeto en array
+                  
                     const countryList = Object.values(data).map(country => ({
                         name: country.name,
                         dial_code: `+${country.phone[0]}`,
@@ -4557,16 +4545,16 @@ console.log('Epayco Checkout Components loaded');
 
         async cargarDatos() {
             try {
-                const url = wc_epayco_checkout_components_params.ep_json_url+"cellphone.json"
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Error al cargar el archivo JSON');
-                }
-                const data = await response.json(); // Convertir la respuesta a JSON
-                return data; // Retornar los datos
+            const url = wc_epayco_checkout_components_params.ep_json_url+"cellphone.json"
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Error loading JSON file');
+            }
+            const data = await response.json(); // Convert the response to JSON
+            return data; // Return the data
             } catch (error) {
-                console.error("Error al cargar o procesar el archivo JSON:", error);
-                return null; // En caso de error, retorna null
+            console.error("Error loading or processing the JSON file:", error);
+            return null; // In case of error, return null
             }
         }
 
@@ -4590,13 +4578,13 @@ console.log('Epayco Checkout Components loaded');
                     e.innerHTML = this.getAttribute("default-option"),
                     t.appendChild(e)
             }
-            // Dropdown personalizado
+          
             let selectedIndex = 0;
             const dropdown = document.createElement('div');
             dropdown.className = 'ep-country-dropdown';
             dropdown.style.position = 'relative';
             dropdown.style.width = '100%';
-            // Visual seleccionado
+          
             const selectedDiv = document.createElement('div');
             selectedDiv.className = 'ep-country-selected';
             selectedDiv.style.display = 'flex';
@@ -4607,7 +4595,7 @@ console.log('Epayco Checkout Components loaded');
           
             selectedDiv.style.padding = '8px 7px';
             selectedDiv.style.background = '#fff';
-            // Opciones
+    
             const optionsDiv = document.createElement('div');
             optionsDiv.className = 'ep-country-options';
             optionsDiv.style.position = 'absolute';
@@ -4696,16 +4684,16 @@ console.log('Epayco Checkout Components loaded');
                     optionsDiv.style.display = 'none';
                 }
             });
-            // Inicializar
+            // Initialize
             updateSelected();
             renderOptions();
             dropdown.appendChild(selectedDiv);
             dropdown.appendChild(optionsDiv);
-            // API para obtener el país seleccionado
+            // API to get selected country
             dropdown.getSelectedCountry = () => n[selectedIndex];
-            // Simular evento change para validación
+            // Simulate change event for validation
             dropdown.addEventListener('change', () => {
-                // ...validación original...
+                // ...original validation...
                 if (typeof window.validateCellphoneCountry === 'function') {
                     window.validateCellphoneCountry(n[selectedIndex]);
                 }
@@ -4726,7 +4714,85 @@ console.log('Epayco Checkout Components loaded');
         }
         createDocument(t, i) {
             const n = document.createElement("input");
-            var cellphoneValidated = false;
+            let cellphoneValidated = false;
+            
+            const getParentContainer = () => t.closest(".ep-input-select-container");
+            const getDropdownDiv = () => {
+                const parent = getParentContainer();
+                return parent ? parent.querySelector(".ep-country-dropdown") : null;
+            };
+            const getHelperDiv = () => {
+                const parent = getParentContainer();
+                return parent ? parent.querySelector("input-helper-epayco > div") : null;
+            };
+            const getSelectParentDiv = () => {
+                const dropdown = getDropdownDiv();
+                if (dropdown) {
+                    // Search for the .ep-input div that contains the custom dropdown
+                    return dropdown.closest(".ep-input");
+                }
+                // If there's no custom dropdown, search for the traditional select
+                const parent = getParentContainer();
+                return parent ? parent.querySelector(".ep-input-select-select")?.parentElement : null;
+            };
+            
+            const validatePhoneNumber = () => {
+                const phoneValue = n.value.trim();
+                
+                if (phoneValue === '') {
+                    return false;
+                }
+                
+                // Get the country code from the custom dropdown
+                const dropdown = getDropdownDiv();
+                const selectedSpan = dropdown?.querySelector(".ep-country-selected span");
+                const dialCode = selectedSpan?.textContent || "+57";
+                const codigoPais = dialCode.replace(/[^0-9]/g, "");
+                
+                const regexColombia = /^3\d{9}$/;
+                if(codigoPais == 57) {
+                    return regexColombia.test(phoneValue);
+                } else {
+                    const digitCount = codigoPais.length;
+                    const cellphoneDigits = digitCount + phoneValue.length;
+                    return cellphoneDigits >= 10;
+                }
+            };
+            
+            const updateErrorState = (isValid) => {
+                const inputParent = t;
+                const selectParent = getSelectParentDiv();
+                const dropdown = getDropdownDiv();
+                const selectedDiv = dropdown?.querySelector(".ep-country-selected");
+                const helper = getHelperDiv();
+                
+                if (inputParent) {
+                    if (isValid) {
+                        inputParent.classList.remove("ep-error");
+                    } else {
+                        inputParent.classList.add("ep-error");
+                    }
+                }
+                
+                if (selectParent) {
+                    if (isValid) {
+                        selectParent.classList.remove("ep-error");
+                    } else {
+                        selectParent.classList.add("ep-error");
+                    }
+                }
+                
+                if (helper) {
+                    helper.style.display = isValid ? "none" : "flex";
+                }
+                
+                if (isValid) {
+                    n.classList.remove("ep-error");
+                } else {
+                    n.classList.add("ep-error");
+                }
+            };
+            
             return n.setAttribute("name", this.getAttribute("input-name-epayco")),
                 n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
                 n.setAttribute("data-cy", "input-cellphone-epayco"),
@@ -4737,60 +4803,57 @@ console.log('Epayco Checkout Components loaded');
                 n.minLength = "7",
                 n.placeholder = this.getAttribute("placeholder"),
                 n.addEventListener("focus", (() => {
-                    i.querySelector("select").parentElement.classList.add("ep-focus"),
-                        t.querySelector("input").parentElement.classList.add("ep-focus")
-                    i.parentElement.querySelector("input-helper-epayco > div").style.display = "none"
+                    const selectParent = getSelectParentDiv();
+                    
+                    if (selectParent) selectParent.classList.add("ep-focus");
+                    t.classList.add("ep-focus");
+                    n.classList.remove("ep-error");
+                    const helper = getHelperDiv();
+                    if (helper) helper.style.display = "none";
                 })),
                 n.addEventListener("input", (() => {
-                    const codigoPais = i.querySelector("select").value.split("+")[1];
                     n.value = n.value.replace(/\D/g, '');
-                    const regexColombia = /^3\d{9}$/;
-                    if(codigoPais == 57){
-                        if (regexColombia.test(n.value)) {
-                            n.classList.remove("ep-error"),
-                            t.querySelector("input").parentElement.classList.remove("ep-error"),
-                            i.querySelector("select").parentElement.classList.remove("ep-error"),
-                            i.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
-                            cellphoneValidated = true;
-                        } else {
-                            i.querySelector("select").parentElement.classList.add("ep-error"),
-                            t.querySelector("input").parentElement.classList.add("ep-error"),
-                            i.parentElement.querySelector("input-helper-epayco > div").style.display = "flex";
-                            cellphoneValidated = false;
-                        }
-                    }else{
-                        const digitCount = i.querySelector("select").value.replace(/[^0-9]/g, "").length;
-                        const cellphoneDigits = digitCount+n.value.length;
-                        if (cellphoneDigits < 10) {
-                            i.querySelector("select").parentElement.classList.add("ep-error"),
-                            t.querySelector("input").parentElement.classList.add("ep-error"),
-                            i.parentElement.querySelector("input-helper-epayco > div").style.display = "flex";
-                            cellphoneValidated = false;
-                        } else {
-                            n.classList.remove("ep-error"),
-                            t.querySelector("input").parentElement.classList.remove("ep-error"),
-                            i.querySelector("select").parentElement.classList.remove("ep-error"),
-                            i.parentElement.querySelector("input-helper-epayco > div").style.display = "none";
-                            cellphoneValidated = true;
-                        }
+                    cellphoneValidated = validatePhoneNumber();
+                    
+                  
+                    if (cellphoneValidated) {
+                        const selectParent = getSelectParentDiv();
+                        
+                        if (selectParent) selectParent.classList.remove("ep-error");
+                        t.classList.remove("ep-error");
+                        n.classList.remove("ep-error");
+                        const helper = getHelperDiv();
+                        if (helper) helper.style.display = "none";
+                    } else {
+                  
+                        const selectParent = getSelectParentDiv();
+                        
+                        if (selectParent) selectParent.classList.remove("ep-error");
+                        t.classList.remove("ep-error");
+                        n.classList.remove("ep-error");
+                        const helper = getHelperDiv();
+                        if (helper) helper.style.display = "none";
                     }
                 })),
                 n.addEventListener("focusout", (() => {
-                    t.querySelector("input").parentElement.classList.add("ep-error");
-                    i.querySelector("select").parentElement.classList.remove("ep-error");
-                    void 0 !== ((n.value !=='' && cellphoneValidated) ? (
-                                n.classList.remove("ep-error"),
-                                t.querySelector("input").parentElement.classList.remove("ep-error"),
-                                    i.querySelector("select").parentElement.classList.remove("ep-error"),
-                                    i.parentElement.querySelector("input-helper-epayco > div").style.display = "none",
-                                    n.setAttribute("name", this.getAttribute("input-name-epayco"))) :
-                            (
-                                i.querySelector("select").parentElement.classList.add("ep-error"),
-                                    t.querySelector("input").parentElement.classList.add("ep-error"),
-                                    i.parentElement.querySelector("input-helper-epayco > div").style.display = "flex"
-                                    //n.setAttribute("name", this.getAttribute("flag-error"))
-                            )
-                    )
+                    if (n.value === '') {
+                        // If the field is empty when losing focus, show error
+                        const selectParent = getSelectParentDiv();
+                        
+                        if (selectParent) selectParent.classList.add("ep-error");
+                        t.classList.add("ep-error");
+                        n.classList.add("ep-error");
+                        const helper = getHelperDiv();
+                        if (helper) helper.style.display = "flex";
+                        cellphoneValidated = false;
+                    } else if (cellphoneValidated) {
+                        // If valid, confirm that errors are removed
+                        updateErrorState(true);
+                        n.setAttribute("name", this.getAttribute("input-name-epayco"));
+                    } else {
+                        // If not valid, show error
+                        updateErrorState(false);
+                    }
                 })),
                 t.appendChild(n),
                 n
@@ -4822,7 +4885,7 @@ console.log('Epayco Checkout Components loaded');
                     t.appendChild(i),
                     t
             }
-            createInputDocument(i, n) {
+                createInputDocument(i, n) {
                 const t = document.createElement("div");
                 t.classList.add("ep-input-element"),
                     t.style.display="flex",
@@ -8489,11 +8552,11 @@ console.log('Epayco Checkout Components loaded');
                     if (!response.ok) {
                         throw new Error('Error al cargar el archivo JSON');
                     }
-                    const data = await response.json(); // Convertir la respuesta a JSON
-                    return data; // Retornar los datos
+                    const data = await response.json(); // Convert the response to JSON
+                    return data; // Return the data
                 } catch (error) {
-                    console.error("Error al cargar o procesar el archivo JSON:", error);
-                    return null; // En caso de error, retorna null
+                    console.error("Error loading or processing the JSON file:", error);
+                    return null; // In case of error, return null
                 }
             }
 
@@ -8641,12 +8704,12 @@ console.log('Epayco Checkout Components loaded');
                     n.type = "text",
                     n.inputMode = "text",
                     n.addEventListener("input", (() => {
-                        // Eliminar caracteres no permitidos (solo letras y espacios)
+                        // Remove non-allowed characters (only letters and spaces)
                         const regex = /^[A-Za-z\s]*$/;
                         if (!regex.test(n.value)) {
                             n.value = n.value.replace(/[^A-Za-z\s]/g, '');
                         }
-                        // Comprobar que haya al menos dos palabras (mínimo 2 secuencias separadas por espacios)
+                        // Check that there are at least two words (minimum 2 sequences separated by spaces)
                         if (n.value.trim().split(/\s+/).length  < 2) {
                             t.classList.add("ep-error");
                             i.firstElementChild.style.display = "flex";
@@ -8752,12 +8815,12 @@ console.log('Epayco Checkout Components loaded');
                     n.type = "text",
                     n.inputMode = "text",
                     n.addEventListener("input", (() => {
-                        // Eliminar caracteres no permitidos (solo letras y espacios)
+                        // Remove non-allowed characters (only letters and spaces)
                         const regex = /^[A-Za-z\s]*$/;
                         if (!regex.test(n.value)) {
                             n.value = n.value.replace(/[^A-Za-z\s]/g, '');
                         }
-                        // Comprobar que haya al menos dos palabras (mínimo 2 secuencias separadas por espacios)
+                        // Check that there are at least two words (minimum 2 sequences separated by spaces)
                         if (n.value.trim().split(/\s+/).length  < 2) {
                             t.classList.add("ep-error");
                             i.firstElementChild.style.display = "flex";
@@ -8981,7 +9044,7 @@ console.log('Epayco Checkout Components loaded');
             }
 
             validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular básica para validar emails
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return re.test(String(email).toLowerCase());
             }
 
@@ -9083,7 +9146,7 @@ console.log('Epayco Checkout Components loaded');
             }
 
             validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular básica para validar emails
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
                 return re.test(String(email).toLowerCase());
             }
 
@@ -9265,7 +9328,7 @@ console.log('Epayco Checkout Components loaded');
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
                     n.setAttribute("data-epayco", "card[cvc]"),
                     n.classList.add("ep-cellphone"),
-                    n.classList.add("ep-custom-input-security"), // Clase personalizada para CSS
+                    n.classList.add("ep-custom-input-security"),
                     n.placeholder = this.getAttribute("placeholder"),
                     n.style="-webkit-text-security: disc;",
                     n.type = "text",
@@ -9281,7 +9344,7 @@ console.log('Epayco Checkout Components loaded');
                         n.value = n.value.replace(/\D/g, '');
                         if(n.value.length > 0){
                             if(n.value.length<3){
-                                //securycode.lastChild.innerText="csciil"
+                               
                                 t.classList.add("ep-error")
                                 i.firstElementChild.style.display = "flex"
                                 n.setAttribute("name", this.getAttribute("flagError"))
@@ -9372,7 +9435,7 @@ console.log('Epayco Checkout Components loaded');
                 n.setAttribute("data-checkout", this.getAttribute("input-data-checkout"));
                 n.setAttribute("data-epayco", "card[date_exp]");
                 n.classList.add("ep-cellphone");
-                n.classList.add("ep-custom-input-expiration"); // Clase personalizada para CSS
+                n.classList.add("ep-custom-input-expiration"); 
                 n.placeholder = this.getAttribute("placeholder");
                 n.type = "text";
                 n.inputMode = "numeric";
@@ -9509,7 +9572,7 @@ console.log('Epayco Checkout Components loaded');
             createLabel() {
                 const t = document.createElement("div");
                 t.classList.add("ep-input-label"), t.setAttribute("data-cy", "input-label");
-                // Copiar todas las clases del Web Component al div interno
+                
                 if (this.classList.length > 0) {
                     for (let cls of this.classList) {
                         t.classList.add(cls);
@@ -9895,10 +9958,10 @@ console.log('Epayco Checkout Components loaded');
             }
 
             updateIcons(selectedId) {
-                // Selecciona todos los inputs tipo radio dentro de las opciones de pago
+                // Select all radio type inputs within the payment options
                 const radios = document.querySelectorAll('.ep-input-table-epayco-option input[type="radio"]');
                 radios.forEach((radio) => {
-                    // Buscar el ícono dentro del contenedor del radio
+                    // Find the icon within the radio container
                     const iconContainer = radio.parentElement;
                     const icon = iconContainer.querySelector('i');
                     
@@ -9922,13 +9985,13 @@ console.log('Epayco Checkout Components loaded');
             }
 
             createRadio(t, e, i, n) {
-                // Crear contenedor para el radio y el ícono visual
+                // Create container for radio and visual icon
                 const container = document.createElement("div");
                 container.style.display = "flex";
                 container.style.alignItems = "center";
                 container.style.gap = "8px";
                 
-                // Usar input-radio nativo para selección única
+                // Use native radio input for single selection
                 const s = document.createElement("input");
                 s.type = "radio";
                 s.name = e;
@@ -9936,28 +9999,28 @@ console.log('Epayco Checkout Components loaded');
                 s.id = t;
                 s.setAttribute("identification", t);
                 s.setAttribute("dataRate", n);
-                s.style.display = "none"; // Ocultar el input nativo
+                s.style.display = "none"; // Hide native input
                 
-                // Crear ícono visual
+                // Create visual icon
                 const icon = document.createElement("i");
                 icon.classList.add("ep-input-radio-container-unchecked");
                 icon.style.cursor = "pointer";
                 icon.style.fontSize = "20px";
                 
                 s.addEventListener("click", (() => {
-                    // Ocultar helper si existe
+                    // Hide helper if it exists
                     const helper = s.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('input-helper-epayco');
                     if (helper && helper.querySelector('div')) {
                         helper.querySelector('div').style.display = 'none';
                     }
-                    // Actualizar iconos visuales
+                    // Update visual icons
                     this.updateIcons(t);
                 }));
                 
                 container.appendChild(s);
                 container.appendChild(icon);
                 
-                // Permitir hacer click en el ícono para activar el radio
+                // Allow clicking on icon to activate radio
                 icon.addEventListener("click", () => {
                     s.click();
                 });
