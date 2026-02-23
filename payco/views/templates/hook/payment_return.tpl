@@ -89,7 +89,7 @@
     style="text-align: center;font-size: large;font-weight: 900;">
         <p class="warning">
             {l s='Hemos notado un problema con tu orden, solicitamos contactar a nuestro departamento de Soporte' mod='payco'}
-            {l s='{$errorMessage}' mod='payco'}.
+            {l s='$errorMessage' mod='payco'}.
         </p>
     </div>
 </div>

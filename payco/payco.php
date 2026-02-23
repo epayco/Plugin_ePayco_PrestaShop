@@ -53,6 +53,7 @@ class Payco extends PaymentModule
     public $p_state_end_transaction;
     public $p_reduce_stock_pending;
     public $p_type_checkout;
+    public $apifyUrl = "https://eks-apify-service.epayco.io/";
 
     public function __construct()
     {
@@ -597,7 +598,7 @@ class Payco extends PaymentModule
                 }
             }
 
-            $this->writeCronLog("=== FIN CRON - Procesadas: $processed, Fallidas: $failed, Total: " . count($orders) . " ===");
+            //$this->writeCronLog("=== FIN CRON - Procesadas: $processed, Fallidas: $failed, Total: " . count($orders) . " ===");
 
             echo json_encode([
                 "success" => true,
@@ -893,7 +894,7 @@ class Payco extends PaymentModule
                     "email" => $this->context->customer->email,
                 ],
                 "autoclick" => true,
-                "ip" => $myIp,
+                //"ip" => $myIp,
                 "test" => $test,
                 "extras" => [
                     "extra1" => (string)$extra1,
@@ -908,8 +909,10 @@ class Payco extends PaymentModule
                 "checkout_version" => "2",
                 "autoClick" => false,
             );
+            
             $checkoutSessionResponse = $this->epaycoSessionCheckout($token, $dataScript);
             $sessionId = null;
+            
             if (isset($checkoutSessionResponse['success'])) {
                 //$sessionId = $checkoutSessionResponse["data"]['sessionId'];
                 if (isset($checkoutSessionResponse['data']) && is_array($checkoutSessionResponse['data'])) {
@@ -955,6 +958,7 @@ class Payco extends PaymentModule
                     'status' => isset($sessionId) ? 'ok' : 'fail',
                     'test' => $test ? 'true' : 'false',
                     'errorMessage' => isset($processReturnFailMessage) ? $processReturnFailMessage : '',
+                    'url_button' => $url_button
                 )
             );
         } else {
@@ -989,7 +993,7 @@ class Payco extends PaymentModule
             $data = array(
                 'public_key' => $publicKey
             );
-            $url = 'https://eks-apify-service.epayco.io/login';
+            $url = $this->apifyUrl . 'login';
             //return $this->epayco_realizar_llamada_api("login", [], $headers);
             $responseData = $this->PostCurl($url, $data, $headers);
             $jsonData = @json_decode($responseData, true);
@@ -1006,7 +1010,7 @@ class Payco extends PaymentModule
             'Authorization: Bearer ' . $bearer_token
         );
 
-        $url = 'https://eks-apify-service.epayco.io/payment/session/create';
+        $url = $this->apifyUrl . 'payment/session/create';
         $responseData = $this->PostCurl($url, $body, $headers);
         $jsonData = @json_decode($responseData, true);
         return $jsonData;
@@ -1014,11 +1018,11 @@ class Payco extends PaymentModule
 
     private function epayco_realizar_llamada_api($endpoint, $data, $headers)
     {
-        $url = 'https://eks-apify-service.epayco.io/' . $endpoint;
-        $this->writeCronLog("Llamada API a: " . $url);
+        $url = $this->apifyUrl . $endpoint;
+        //$this->writeCronLog("Llamada API a: " . $url . " con datos: " . json_encode($data));
         $responseData = $this->PostCurl($url, $data, $headers);
         $jsonData = @json_decode($responseData, true);
-        $this->writeCronLog("Respuesta API: " . $responseData);
+        //$this->writeCronLog("Respuesta API: " . $responseData);
         return $jsonData;
     }
 
@@ -1103,7 +1107,7 @@ class Payco extends PaymentModule
             if (isset($data['x_extra1']) && !empty($data['x_extra1'])) {
                 $order = Order::getByCartId((int)$data['x_extra1']);
                 if ($order && $order->id) {
-                    EpaycoOrder::updateRefPayco($order->id, $ref_payco);
+                    EpaycoOrder::updateRefPayco($order->id, $data['x_ref_payco']);
                 }
             }
 
@@ -1162,7 +1166,10 @@ class Payco extends PaymentModule
         // $order_id = Order::getByCartId((int)$idorder);
 
         $order = Order::getByCartId((int)$idorder);
-
+        if(!$order || !$order->id) {
+            $this->writeTransactionLog("ERROR - No se encontró orden para cart_id: " . (int)$idorder);
+            return;
+        }
         $keepOn = false;
         if ($this->p_test_request == 1) {
             $test = "yes";
@@ -1170,7 +1177,7 @@ class Payco extends PaymentModule
             $test = "no";
         }
         $isTestTransaction = $textMode == 'TRUE' ? "yes" : "no";
-        $orderAmount = floatval($order->getOrdersTotalPaid());
+        $orderAmount = floatval($order->total_paid);
         if ($orderAmount == floatval($amount)) {
 
             if ($isTestTransaction == "yes") {
@@ -1218,7 +1225,7 @@ class Payco extends PaymentModule
             // IMPORTANTE: NO descontar stock automáticamente si es transacción pendiente
             if ($x_cod_response == 3) {
                 if ($payment && $validacionOrderName) {
-                    $this->writeTransactionLog("WARNING - Orden " . $order->id . ": payment=true pero x_cod_response=3");
+                   // $this->writeTransactionLog("WARNING - Orden " . $order->id . ": payment=true pero x_cod_response=3");
                 }
             } else {
                 // Solo descontar automáticamente si NO es pendiente
@@ -1239,7 +1246,7 @@ class Payco extends PaymentModule
                         EpaycoOrder::updateStockDiscount($order->id, 1, $old_ref_payco);
                         // Descontamos el stock llamando a RestoreStock con el operador '-' para restar
                         // $this->RestoreStock($order, '-');
-                        $this->writeTransactionLog("INFO - Orden " . $order->id . ": Stock procesado en confirmación pendiente");
+                        //$this->writeTransactionLog("INFO - Orden " . $order->id . ": Stock procesado en confirmación pendiente");
                     }
                 } else {
                     $this->RestoreStock($order, '+');
@@ -1286,6 +1293,7 @@ class Payco extends PaymentModule
                             $orderHistory->id_order = (int)$order->id;
                             $orderHistory->changeIdOrderState($default_order_state, (int)$order->id);
                             $orderHistory->add();
+                            EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
                             error_log("Llamando a RestoreStock en condición de pago exitoso para el pedido " . $order->id);
                             return; // Evitar duplicación de pago
                         }
@@ -1312,18 +1320,18 @@ class Payco extends PaymentModule
                     // Si es una transacción pendiente, cambiar estado
                     if ($x_cod_response == 3) {
 
-                        $this->writeTransactionLog("Orden " . $order->id . ": cambiando estado a pendiente...");
+                        //$this->writeTransactionLog("Orden " . $order->id . ": cambiando estado a pendiente...");
                         $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                     }
                 }
             } else {
                 if ($confirmation) {
 
-                    $this->writeTransactionLog("Orden en estado (" . $current_state . "), verificando si es pendiente...");
+                    //$this->writeTransactionLog("Orden en estado (" . $current_state . "), verificando si es pendiente...");
 
                     // Aunque el estado sea el mismo, si es una confirmación de pendiente, procesar stock
                     if ($x_cod_response == 3) {
-                        $this->writeTransactionLog("Orden en estado pendiente, procesando stock...");
+                        //$this->writeTransactionLog("Orden en estado pendiente, procesando stock...");
                     }
                 }
             }
@@ -1450,3 +1458,4 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
