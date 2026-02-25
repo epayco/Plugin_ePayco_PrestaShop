@@ -85,11 +85,16 @@ Al ejecutar el cron, el endpoint devuelve un JSON con el resultado del proceso. 
 {"success":true,"message":"cron ejecutado","processed":7,"failed":0,"total":7}
 ```
 
-En este caso:
+**¿Qué significa cada campo?**
 
-- **Órdenes procesadas exitosamente:** 7  
-- **Órdenes fallidas:** 0  
-- **Total de órdenes evaluadas:** 7  
+- **processed**: cantidad de transacciones/órdenes que el cron **alcanzó a procesar** en esta ejecución.  
+  Esto incluye **todas las transacciones encontradas**, sin importar el estado en el que estén (por ejemplo: aprobada, pendiente, rechazada, cancelada, etc.). Es decir, *“procesada”* significa que **se consultó y se intentó actualizar su estado** según la información disponible.
+
+- **failed**: cantidad de transacciones/órdenes en las que **no se pudo realizar el proceso de actualización** (por ejemplo, por error de consulta, datos incompletos, problemas de conexión o cualquier condición que impida actualizar). Estas quedan como **fallidas** para esta ejecución.
+
+- **total**: total de transacciones/órdenes consideradas en la ejecución (normalmente **processed + failed**).
+
+En este ejemplo, el cron se ejecutó correctamente (**success: true**), se consideraron **7** transacciones en total: **7** fueron procesadas y **0** fallaron.
 
 ## Pasos
 
