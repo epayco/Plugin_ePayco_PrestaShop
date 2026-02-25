@@ -77,6 +77,20 @@ mínimo permitido por su hosting).
 - ```` >> ```` ...log → (Opcional) Guarda un registro de ejecución para monitorear errores.
 3. para una actualización manual, ingrese a la siguiente ruta de su tienda: ````https://mi_tienda/module/payco/cron```` de manera automatica el cron se ejecuta
 
+#### Ejemplo de respuesta del cron
+
+Al ejecutar el cron, el endpoint devuelve un JSON con el resultado del proceso. Por ejemplo:
+
+```json
+{"success":true,"message":"cron ejecutado","processed":7,"failed":0,"total":7}
+```
+
+En este caso:
+
+- **Órdenes procesadas exitosamente:** 7  
+- **Órdenes fallidas:** 0  
+- **Total de órdenes evaluadas:** 7  
+
 ## Pasos
 
 <img src="ImgTutorialPrestaShop/tuto-1.png" width="400px"/>
