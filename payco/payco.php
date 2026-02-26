@@ -659,6 +659,9 @@ class Payco extends PaymentModule
     {
         $tokenResponse = $this->epaycoBerarToken(trim($this->public_key), trim($this->private_key));
         $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
+        if(!$bearerToken){
+                $this->writeCronLog("ERROR - consultEpaycoToken: " . json_encode($tokenResponse)); 
+        }
         $headers = array(
             'Content-Type: application/json',
             'Authorization: Bearer ' . $bearerToken
@@ -670,6 +673,7 @@ class Payco extends PaymentModule
         if ($transaction['success']) {
             return $transaction['data']['transaction'];
         } else {
+            $this->writeCronLog("ERROR - consultEpayco: " . json_encode($transaction));
             return false;
         }
     }
