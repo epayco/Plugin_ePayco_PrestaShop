@@ -570,7 +570,6 @@ class Payco extends PaymentModule
                             $failed++;
                             continue;
                         }
-
                         $this->updateOrderStatus(
                             $order['id_order'],
                             $response['codTransactionState'],
@@ -584,7 +583,8 @@ class Payco extends PaymentModule
                             $response['codTransactionState'],
                             $order['ref_payco'],
                             isset($response['autorizacion']) ? $response['autorizacion'] : '000000',
-                            isset($response['franchise']) ? $response['franchise'] : 'N/A'
+                            isset($response['franchise']) ? $response['franchise'] : 'N/A',
+                            $response['invoice']
                         );
 
                         $processed++;
@@ -659,9 +659,6 @@ class Payco extends PaymentModule
     {
         $tokenResponse = $this->epaycoBerarToken(trim($this->public_key), trim($this->private_key));
         $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
-        if(!$bearerToken){
-                $this->writeCronLog("ERROR - consultEpaycoToken: " . json_encode($tokenResponse)); 
-        }
         $headers = array(
             'Content-Type: application/json',
             'Authorization: Bearer ' . $bearerToken
@@ -673,7 +670,6 @@ class Payco extends PaymentModule
         if ($transaction['success']) {
             return $transaction['data']['transaction'];
         } else {
-            $this->writeCronLog("ERROR - consultEpayco: " . json_encode($transaction));
             return false;
         }
     }
@@ -692,9 +688,10 @@ class Payco extends PaymentModule
         $x_cod_transaction_state,
         $ref_payco,
         $x_approval_code,
-        $x_franchise
+        $x_franchise,
+        $invoice
     ) {
-        $this->Acentarpago($idorder, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise);
+        $this->Acentarpago($idorder, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise, $invoice);
     }
 
 
@@ -1127,7 +1124,7 @@ class Payco extends PaymentModule
     }
 
 
-    private function Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $old_ref_payco, $x_approval_code, $x_franchise)
+    private function Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $old_ref_payco, $x_approval_code, $x_franchise, $invoice = null)
     {
         $idorder = $extra1;
 
@@ -1168,8 +1165,8 @@ class Payco extends PaymentModule
         }
 
         // $order_id = Order::getByCartId((int)$idorder);
-
-        $order = Order::getByCartId((int)$idorder);
+        //$order = Order::getByCartId((int)$idorder);
+        $order = new Order((int)$idorder);
         if(!$order || !$order->id) {
             $this->writeTransactionLog("ERROR - No se encontró orden para cart_id: " . (int)$idorder);
             return;
