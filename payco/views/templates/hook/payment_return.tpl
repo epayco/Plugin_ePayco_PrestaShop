@@ -37,7 +37,7 @@
 </a>
 </center>
 <form id="epayco_form" style="text-align: center;">
-    <script src="https://checkout.epayco.co/checkout-green-v2.js"></script>
+    <script src="https://checkout.epayco.co/checkout-v2.js"></script>
     <script>
         const params = JSON.parse(atob("{$checkout}"));
         let {

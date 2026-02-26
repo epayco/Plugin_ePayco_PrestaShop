@@ -53,7 +53,7 @@ class Payco extends PaymentModule
     public $p_state_end_transaction;
     public $p_reduce_stock_pending;
     public $p_type_checkout;
-    public $apifyUrl = "https://apify-green.epayco.co/";
+    public $apifyUrl = "https://apify.epayco.co/";
 
     public function __construct()
     {
@@ -129,7 +129,7 @@ class Payco extends PaymentModule
      */
     public function hookDisplayHeader()
     {
-        $this->context->controller->registerJavascript('epayco-checkout', 'https://checkout.epayco.co/checkout-green-v2.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerJavascript('epayco-checkout', 'https://checkout.epayco.co/checkout-v2.js', ['position' => 'bottom', 'priority' => 150]);
         $this->context->controller->registerStylesheet(
             'epayco-checkout-css',
             $this->getPathUri() . 'views/css/back.css',
