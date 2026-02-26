@@ -1311,10 +1311,11 @@ class Payco extends PaymentModule
                             if (trim($x_cod_response) == 10) {
                                 $this->RestoreStock($order, '+');
                             }
-                            if ($orderStatusPreName == "ePayco Esperando Pago") {
+							if ($orderStatusPreName == "ePayco Esperando Pago" || $orderStatusPreName == "ePayco Pago Pendiente") {
                                 $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                                 // error_log("Llamando a RestoreStock en condición de rechazo/fallo.");
                                 $this->RestoreStock($order, '+');
+                                EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
                             }
                         }
                     }
@@ -1460,5 +1461,6 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
 
 
