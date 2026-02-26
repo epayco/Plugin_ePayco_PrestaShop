@@ -1289,6 +1289,7 @@ class Payco extends PaymentModule
                             $orderHistory->id_order = (int)$order->id;
                             $orderHistory->changeIdOrderState((int)$this->p_state_end_transaction, (int)$order->id);
                             $orderHistory->add();
+							EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
                             echo "mensaje de confirmacion 2";
                             die();
                         } else {
@@ -1462,4 +1463,5 @@ class Payco extends PaymentModule
         file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
     }
 }
+
 
