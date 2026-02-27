@@ -84,6 +84,19 @@ class EpaycoOrder extends ObjectModel{
 	}
 
 	/**
+	 * Eliminar registro por ref_payco y order_id
+	 * @param string $refPayco
+	 * @param int $orderId
+	 */
+	public static function deletePaycoOrderByRefAndOrderId($refPayco, $orderId)
+	{
+		return Db::getInstance()->delete(
+			'payco',
+			'`order_id` = ' . (int)$orderId . ' AND `ref_payco` = "' . pSQL($refPayco) . '"'
+		);
+	}
+
+	/**
 	 * Actualizar que ya se le descont贸 el stock a una orden
 	 * @param int $orderId
 	 */	
@@ -108,6 +121,7 @@ class EpaycoOrder extends ObjectModel{
 		return $result ? true : false;
 	}
 
+	
 
 	/**
 	 * Crear la tabla en la base de datos.
