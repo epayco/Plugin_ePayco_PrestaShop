@@ -1241,13 +1241,12 @@ class Payco extends PaymentModule
                 // Solo descontar automáticamente si NO es pendiente
                 if (($payment && $validacionOrderName) || $esReintento) {
                     if ($esReintento) {
-                        $this->writeTransactionLog(" REINTENTO - Pago aceptado en orden " . $order->id . " (estado anterior: " . $orderStatusPreName . ")");
+                    //    $this->writeTransactionLog(" REINTENTO - Pago aceptado en orden " . $order->id . " (estado anterior: " . $orderStatusPreName . ")");
                     }
 
                     if (!EpaycoOrder::ifStockDiscount($order->id)) {
                         if ($esReintento) {
-                            $this->writeTransactionLog(" REINTENTO - Descontando stock para orden " . $order->id . " por pago aceptado en reintento");
-                        } else {
+                         //   $this->writeTransactionLog(" REINTENTO - Descontando stock para orden " . $order->id . " por pago aceptado en reintento");
                         }
                         // Marcar que el stock será descontado
                         EpaycoOrder::updateStockDiscount($order->id, 1, $referencia);
@@ -1333,7 +1332,7 @@ class Payco extends PaymentModule
                     (int)$order->id_shop                          // ID de la tienda (shop)
                 );
             }
-            $this->writeCronLog("INFO - Orden " . $order->id . ": Stock actualizado con operación " . $operation);
+          //  $this->writeCronLog("INFO - Orden " . $order->id . ": Stock actualizado con operación " . $operation);
         } else {
             $this->writeCronLog("ERROR - Orden " . $order->id . ": No hay productos o no se pudo cargar");
         }
