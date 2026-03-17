@@ -1225,7 +1225,8 @@ class Payco extends PaymentModule
                 $this->updateOrderStatus($order, $state, $x_cod_response, $confirmation, $old_ref_payco, $payment, $validacionOrderName, $referencia, $orderStatusPreName);
             }
         } else {
-            $this->writeTransactionLog("ERROR - Validación fallida para orden " . $order->id . ": signature no coincide o validación no aprobada");
+            $this->writeTransactionLog("ERROR - Validación fallida para orden " . $order->id . ": signature no coincide o validación no aprobada" . " - Datos recibidos: ref_payco=" . $old_ref_payco . ", transid=" . $transid . ", amount=" . $amount . ", currency=" . $currency . "estado=" . $x_cod_response);
+
         }
     }
 
