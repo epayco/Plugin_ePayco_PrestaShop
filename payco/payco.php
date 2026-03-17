@@ -538,8 +538,8 @@ class Payco extends PaymentModule
     protected function actualizarEstados($params): void
     {
         try {
-
-
+ 		 $this->writeCronLog("=== INICIO CRON actualizarEstados ===");
+			
             $orders = $this->getPendingOrders();
 
             if (empty($orders)) {
@@ -598,7 +598,7 @@ class Payco extends PaymentModule
                 }
             }
 
-
+    $this->writeCronLog("=== FIN CRON - Procesadas: $processed, Fallidas: $failed, Total: " . count($orders) . " ===");
             echo json_encode([
                 "success" => true,
                 "message" => "cron ejecutado",
@@ -658,7 +658,10 @@ class Payco extends PaymentModule
     {
         $tokenResponse = $this->epaycoBerarToken(trim($this->public_key), trim($this->private_key));
         $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
-        $headers = array(
+             if(!$bearerToken){
+                $this->writeCronLog("ERROR - consultEpaycoToken: " . json_encode($tokenResponse)); 
+        }
+		$headers = array(
             'Content-Type: application/json',
             'Authorization: Bearer ' . $bearerToken
         );
@@ -669,6 +672,7 @@ class Payco extends PaymentModule
         if ($transaction['success']) {
             return $transaction['data']['transaction'];
         } else {
+		   $this->writeCronLog("ERROR - consultEpayco: " . json_encode($transaction));
             return false;
         }
     }
