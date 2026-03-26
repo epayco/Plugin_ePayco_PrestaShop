@@ -1,0 +1,30 @@
+[    1345ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[    1349ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[    1356ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[    1378ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[    1422ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   17713ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   17715ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   17721ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   17740ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   17794ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   38000ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   38004ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   38012ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   38027ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   38103ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)

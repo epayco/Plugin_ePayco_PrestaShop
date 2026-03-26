@@ -1,0 +1,12 @@
+[   38819ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38823ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38831ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38868ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38980ms] [WARNING] JQMIGRATE: jQuery.fn.click() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38981ms] [WARNING] JQMIGRATE: jQuery.fn.bind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38982ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38985ms] [WARNING] JQMIGRATE: jQuery.fn.change() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   38990ms] [WARNING] JQMIGRATE: jQuery.fn.keyup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   39028ms] [WARNING] JQMIGRATE: jQuery.fn.focus() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   39912ms] [WARNING] JQMIGRATE: jQuery.fn.hover() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1
+[   39919ms] [WARNING] JQMIGRATE: jQuery.fn.scroll() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/js/jquery/jquery-migrate-3.1.0.min.js:1

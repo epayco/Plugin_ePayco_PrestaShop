@@ -1,0 +1,5 @@
+- generic [active] [ref=e1]:
+  - text: "[Debug] This page has moved"
+  - text: "Please use the following URL instead:"
+  - link "https://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-brown-bear-printed-sweater.html" [ref=e2] [cursor=pointer]:
+    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-brown-bear-printed-sweater.html

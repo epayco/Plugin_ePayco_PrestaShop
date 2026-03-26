@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\(\\\\.js|\\\\.json\\)$\")",
+      "Bash(grep -E \"\\\\.js$|\\\\.json$|README\")",
+      "Bash(xargs ls:*)",
+      "Skill(playwright-cli)",
+      "Bash(docker exec:*)",
+      "Bash(playwright-cli open:*)",
+      "Bash(playwright-cli snapshot:*)",
+      "Bash(playwright-cli goto:*)",
+      "Bash(playwright-cli eval:*)",
+      "Bash(playwright-cli run-code:*)",
+      "Bash(playwright-cli click:*)",
+      "Bash(playwright-cli fill:*)",
+      "Bash(playwright-cli run-code \"async page => {:*)",
+      "Bash(playwright-cli screenshot:*)",
+      "Bash(playwright-cli close:*)",
+      "Bash(playwright-cli go-back:*)",
+      "Bash(playwright-cli check:*)",
+      "Bash(playwright-console)",
+      "Bash(playwright-cli console:*)",
+      "Bash(docker cp:*)",
+      "Bash(playwright-cli resize:*)"
+    ]
+  }
+}

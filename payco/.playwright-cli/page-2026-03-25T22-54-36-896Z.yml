@@ -1,0 +1,537 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - generic:
+          - link "Contacte con nosotros" [ref=e10] [cursor=pointer]:
+            - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/contactenos
+          - generic [ref=e11]:
+            - button "Selector desplegable de idioma" [ref=e15]:
+              - text: Español
+              - generic [ref=e16] [cursor=pointer]: 
+            - link " Iniciar sesión" [ref=e19] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/iniciar-sesion?back=https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2Fes%2F
+              - generic [ref=e20]: 
+              - text: Iniciar sesión
+            - generic [ref=e23]:
+              - generic [ref=e24]: shopping_cart
+              - text: Carrito (0)
+    - generic [ref=e27]:
+      - heading "epayco" [level=1] [ref=e29]:
+        - link "epayco" [ref=e30] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/
+          - img "epayco" [ref=e31]
+      - generic [ref=e32]:
+        - list [ref=e34]:
+          - listitem [ref=e35]:
+            - link "Clothes" [ref=e36] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/3-clothes
+          - listitem [ref=e37]:
+            - link "Accesorios" [ref=e38] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/6-accessories
+          - listitem [ref=e39]:
+            - link "Art" [ref=e40] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/9-art
+        - generic [ref=e42]:
+          - generic [ref=e43]: search
+          - textbox "Buscar" [ref=e44]:
+            - /placeholder: Búsqueda en catálogo
+  - generic [ref=e45]:
+    - complementary
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - listbox "Contenedor carrusel" [ref=e52]:
+          - option "Sample 1 EXCEPTEUR OCCAECAT Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit" [ref=e53]:
+            - link "Sample 1 EXCEPTEUR OCCAECAT Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit" [ref=e54] [cursor=pointer]:
+              - /url: https://www.prestashop-project.org
+              - figure "Sample 1 EXCEPTEUR OCCAECAT Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit" [ref=e55]:
+                - img "sample-1" [ref=e56]
+                - generic [ref=e57]:
+                  - heading "Sample 1" [level=2] [ref=e58]
+                  - generic [ref=e59]:
+                    - heading "EXCEPTEUR OCCAECAT" [level=3] [ref=e60]
+                    - paragraph [ref=e61]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit
+        - generic "Botones del carrusel":
+          - button "Anterior" [ref=e62] [cursor=pointer]:
+            - generic [ref=e64]: 
+          - button "Siguiente" [ref=e65] [cursor=pointer]:
+            - generic [ref=e67]: 
+      - generic [ref=e68]:
+        - heading "Productos Destacados" [level=2] [ref=e69]
+        - generic [ref=e70]:
+          - article [ref=e72]:
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - link "Hummingbird printed t-shirt" [ref=e75] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-1-hummingbird-printed-t-shirt.html#/1-tamano-s/8-color-blanco
+                  - img "Hummingbird printed t-shirt" [ref=e77]
+                - generic [ref=e78]:
+                  - link " Vista rápida" [ref=e79] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e80]: 
+                    - text: Vista rápida
+                  - generic [ref=e81]:
+                    - link "Blanco" [ref=e82] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-3-hummingbird-printed-t-shirt.html#/2-tamano-m/8-color-blanco
+                    - link "Negro" [ref=e83] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-2-hummingbird-printed-t-shirt.html#/1-tamano-s/11-color-negro
+              - generic [ref=e84]:
+                - heading "Hummingbird printed t-shirt" [level=3] [ref=e85]:
+                  - link "Hummingbird printed t-shirt" [ref=e86] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-1-hummingbird-printed-t-shirt.html#/1-tamano-s/8-color-blanco
+                - generic [ref=e87]:
+                  - generic "Precio base" [ref=e88]: 28,44 $
+                  - text: 22,75 $
+              - list:
+                - listitem [ref=e89]: "-20%"
+                - listitem [ref=e90]: Nuevo
+              - button "favorite_border" [ref=e91] [cursor=pointer]:
+                - generic [ref=e92]: favorite_border
+          - article [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]:
+                - link "Brown bear printed sweater" [ref=e97] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html#/1-tamano-s
+                  - img "Brown bear printed sweater" [ref=e99]
+                - link " Vista rápida" [ref=e101] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e102]: 
+                  - text: Vista rápida
+              - generic [ref=e103]:
+                - heading "Hummingbird printed sweater" [level=3] [ref=e104]:
+                  - link "Hummingbird printed sweater" [ref=e105] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html#/1-tamano-s
+                - generic [ref=e106]:
+                  - generic "Precio base" [ref=e107]: 119.000,00 $
+                  - text: 95.200,00 $
+              - list:
+                - listitem [ref=e108]: "-20%"
+                - listitem [ref=e109]: Nuevo
+              - button "favorite_border" [ref=e110] [cursor=pointer]:
+                - generic [ref=e111]: favorite_border
+          - article [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - link "The best is yet to come' Framed poster" [ref=e116] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/3-13-the-best-is-yet-to-come-framed-poster.html#/19-dimension-40x60cm
+                  - img "The best is yet to come' Framed poster" [ref=e118]
+                - link " Vista rápida" [ref=e120] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e121]: 
+                  - text: Vista rápida
+              - generic [ref=e122]:
+                - heading "The best is yet to come'..." [level=3] [ref=e123]:
+                  - link "The best is yet to come'..." [ref=e124] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/3-13-the-best-is-yet-to-come-framed-poster.html#/19-dimension-40x60cm
+                - generic [ref=e125]: 34,51 $
+              - list:
+                - listitem [ref=e126]: Nuevo
+              - button "favorite_border" [ref=e127] [cursor=pointer]:
+                - generic [ref=e128]: favorite_border
+          - article [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - link "The adventure begins Framed poster" [ref=e133] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/4-16-the-adventure-begins-framed-poster.html#/19-dimension-40x60cm
+                  - img "The adventure begins Framed poster" [ref=e135]
+                - link " Vista rápida" [ref=e137] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e138]: 
+                  - text: Vista rápida
+              - generic [ref=e139]:
+                - heading "The adventure begins Framed..." [level=3] [ref=e140]:
+                  - link "The adventure begins Framed..." [ref=e141] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/4-16-the-adventure-begins-framed-poster.html#/19-dimension-40x60cm
+                - generic [ref=e142]: 34,51 $
+              - list:
+                - listitem [ref=e143]: Nuevo
+              - button "favorite_border" [ref=e144] [cursor=pointer]:
+                - generic [ref=e145]: favorite_border
+          - article [ref=e147]:
+            - generic [ref=e148]:
+              - generic [ref=e149]:
+                - link "Today is a good day Framed poster" [ref=e150] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/5-19-today-is-a-good-day-framed-poster.html#/19-dimension-40x60cm
+                  - img "Today is a good day Framed poster" [ref=e152]
+                - link " Vista rápida" [ref=e154] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e155]: 
+                  - text: Vista rápida
+              - generic [ref=e156]:
+                - heading "Today is a good day Framed..." [level=3] [ref=e157]:
+                  - link "Today is a good day Framed..." [ref=e158] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/5-19-today-is-a-good-day-framed-poster.html#/19-dimension-40x60cm
+                - generic [ref=e159]: 34,51 $
+              - list:
+                - listitem [ref=e160]: Nuevo
+              - button "favorite_border" [ref=e161] [cursor=pointer]:
+                - generic [ref=e162]: favorite_border
+          - article [ref=e164]:
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - link "Mug The best is yet to come" [ref=e167] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/6-mug-the-best-is-yet-to-come.html
+                  - img "Mug The best is yet to come" [ref=e169]
+                - link " Vista rápida" [ref=e171] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e172]: 
+                  - text: Vista rápida
+              - generic [ref=e173]:
+                - heading "Mug The best is yet to come" [level=3] [ref=e174]:
+                  - link "Mug The best is yet to come" [ref=e175] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/6-mug-the-best-is-yet-to-come.html
+                - generic [ref=e176]: 14,16 $
+              - list:
+                - listitem [ref=e177]: Nuevo
+              - button "favorite_border" [ref=e178] [cursor=pointer]:
+                - generic [ref=e179]: favorite_border
+          - article [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - link "Mug The adventure begins" [ref=e184] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/7-mug-the-adventure-begins.html
+                  - img "Mug The adventure begins" [ref=e186]
+                - link " Vista rápida" [ref=e188] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e189]: 
+                  - text: Vista rápida
+              - generic [ref=e190]:
+                - heading "Mug The adventure begins" [level=3] [ref=e191]:
+                  - link "Mug The adventure begins" [ref=e192] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/7-mug-the-adventure-begins.html
+                - generic [ref=e193]: 14,16 $
+              - list:
+                - listitem [ref=e194]: Nuevo
+              - button "favorite_border" [ref=e195] [cursor=pointer]:
+                - generic [ref=e196]: favorite_border
+          - article [ref=e198]:
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - link "Mug Today is a good day" [ref=e201] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/8-mug-today-is-a-good-day.html
+                  - img "Mug Today is a good day" [ref=e203]
+                - link " Vista rápida" [ref=e205] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e206]: 
+                  - text: Vista rápida
+              - generic [ref=e207]:
+                - heading "Mug Today is a good day" [level=3] [ref=e208]:
+                  - link "Mug Today is a good day" [ref=e209] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/8-mug-today-is-a-good-day.html
+                - generic [ref=e210]: 14,16 $
+              - list:
+                - listitem [ref=e211]: Nuevo
+              - button "favorite_border" [ref=e212] [cursor=pointer]:
+                - generic [ref=e213]: favorite_border
+        - link "Todos los productos " [ref=e214] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/2-inicio
+          - text: Todos los productos
+          - generic [ref=e215]: 
+      - link [ref=e216] [cursor=pointer]:
+        - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/
+      - generic [ref=e217]:
+        - heading "Custom Text Block" [level=2] [ref=e218]
+        - paragraph [ref=e219]:
+          - strong [ref=e220]: Lorem ipsum dolor sit amet conse ctetu
+        - paragraph [ref=e221]: Sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+      - generic [ref=e222]:
+        - heading "En oferta" [level=2] [ref=e223]
+        - generic [ref=e224]:
+          - article [ref=e226]:
+            - generic [ref=e227]:
+              - generic [ref=e228]:
+                - link "Brown bear printed sweater" [ref=e229] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html#/1-tamano-s
+                  - img "Brown bear printed sweater" [ref=e231]
+                - link " Vista rápida" [ref=e233] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e234]: 
+                  - text: Vista rápida
+              - generic [ref=e235]:
+                - heading "Hummingbird printed sweater" [level=3] [ref=e236]:
+                  - link "Hummingbird printed sweater" [ref=e237] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html#/1-tamano-s
+                - generic [ref=e238]:
+                  - generic "Precio base" [ref=e239]: 119.000,00 $
+                  - text: 95.200,00 $
+              - list:
+                - listitem [ref=e240]: "-20%"
+                - listitem [ref=e241]: Nuevo
+              - button "favorite_border" [ref=e242] [cursor=pointer]:
+                - generic [ref=e243]: favorite_border
+          - article [ref=e245]:
+            - generic [ref=e246]:
+              - generic [ref=e247]:
+                - link "Hummingbird printed t-shirt" [ref=e248] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-1-hummingbird-printed-t-shirt.html#/1-tamano-s/8-color-blanco
+                  - img "Hummingbird printed t-shirt" [ref=e250]
+                - generic [ref=e251]:
+                  - link " Vista rápida" [ref=e252] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e253]: 
+                    - text: Vista rápida
+                  - generic [ref=e254]:
+                    - link "Blanco" [ref=e255] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-3-hummingbird-printed-t-shirt.html#/2-tamano-m/8-color-blanco
+                    - link "Negro" [ref=e256] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-2-hummingbird-printed-t-shirt.html#/1-tamano-s/11-color-negro
+              - generic [ref=e257]:
+                - heading "Hummingbird printed t-shirt" [level=3] [ref=e258]:
+                  - link "Hummingbird printed t-shirt" [ref=e259] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/men/1-1-hummingbird-printed-t-shirt.html#/1-tamano-s/8-color-blanco
+                - generic [ref=e260]:
+                  - generic "Precio base" [ref=e261]: 28,44 $
+                  - text: 22,75 $
+              - list:
+                - listitem [ref=e262]: "-20%"
+                - listitem [ref=e263]: Nuevo
+              - button "favorite_border" [ref=e264] [cursor=pointer]:
+                - generic [ref=e265]: favorite_border
+        - link "Todas los productos en oferta " [ref=e266] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/productos-rebajados
+          - text: Todas los productos en oferta
+          - generic [ref=e267]: 
+      - generic [ref=e268]:
+        - heading "Novedades" [level=2] [ref=e269]
+        - generic [ref=e270]:
+          - article [ref=e272]:
+            - generic [ref=e273]:
+              - generic [ref=e274]:
+                - link "Customizable mug" [ref=e275] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/19-customizable-mug.html
+                  - img "Customizable mug" [ref=e277]
+                - link " Vista rápida" [ref=e279] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e280]: 
+                  - text: Vista rápida
+              - generic [ref=e281]:
+                - heading "Customizable mug" [level=3] [ref=e282]:
+                  - link "Customizable mug" [ref=e283] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/19-customizable-mug.html
+                - generic [ref=e284]: 16,54 $
+              - list:
+                - listitem [ref=e285]: Nuevo
+              - button "favorite_border" [ref=e286] [cursor=pointer]:
+                - generic [ref=e287]: favorite_border
+          - article [ref=e289]:
+            - generic [ref=e290]:
+              - generic [ref=e291]:
+                - link "Mountain fox notebook" [ref=e292] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/stationery/18-36-hummingbird-notebook.html#/22-paper_type-ruled
+                  - img "Mountain fox notebook" [ref=e294]
+                - link " Vista rápida" [ref=e296] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e297]: 
+                  - text: Vista rápida
+              - generic [ref=e298]:
+                - heading "Hummingbird notebook" [level=3] [ref=e299]:
+                  - link "Hummingbird notebook" [ref=e300] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/stationery/18-36-hummingbird-notebook.html#/22-paper_type-ruled
+                - generic [ref=e301]: 15,35 $
+              - list:
+                - listitem [ref=e302]: Nuevo
+              - button "favorite_border" [ref=e303] [cursor=pointer]:
+                - generic [ref=e304]: favorite_border
+          - article [ref=e306]:
+            - generic [ref=e307]:
+              - generic [ref=e308]:
+                - link "Mountain fox notebook" [ref=e309] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/stationery/17-32-brown-bear-notebook.html#/22-paper_type-ruled
+                  - img "Mountain fox notebook" [ref=e311]
+                - link " Vista rápida" [ref=e313] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e314]: 
+                  - text: Vista rápida
+              - generic [ref=e315]:
+                - heading "Brown bear notebook" [level=3] [ref=e316]:
+                  - link "Brown bear notebook" [ref=e317] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/stationery/17-32-brown-bear-notebook.html#/22-paper_type-ruled
+                - generic [ref=e318]: 15,35 $
+              - list:
+                - listitem [ref=e319]: Nuevo
+              - button "favorite_border" [ref=e320] [cursor=pointer]:
+                - generic [ref=e321]: favorite_border
+          - article [ref=e323]:
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - link "Mountain fox notebook" [ref=e326] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/stationery/16-28-mountain-fox-notebook.html#/22-paper_type-ruled
+                  - img "Mountain fox notebook" [ref=e328]
+                - link " Vista rápida" [ref=e330] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e331]: 
+                  - text: Vista rápida
+              - generic [ref=e332]:
+                - heading "Mountain fox notebook" [level=3] [ref=e333]:
+                  - link "Mountain fox notebook" [ref=e334] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/stationery/16-28-mountain-fox-notebook.html#/22-paper_type-ruled
+                - generic [ref=e335]: 15,35 $
+              - list:
+                - listitem [ref=e336]: Nuevo
+              - button "favorite_border" [ref=e337] [cursor=pointer]:
+                - generic [ref=e338]: favorite_border
+          - article [ref=e340]:
+            - generic [ref=e341]:
+              - generic [ref=e342]:
+                - link "Pack Mug + Framed poster" [ref=e343] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/15-pack-mug-framed-poster.html
+                  - img "Pack Mug + Framed poster" [ref=e345]
+                - link " Vista rápida" [ref=e347] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e348]: 
+                  - text: Vista rápida
+              - generic [ref=e349]:
+                - heading "Pack Mug + Framed poster" [level=3] [ref=e350]:
+                  - link "Pack Mug + Framed poster" [ref=e351] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/15-pack-mug-framed-poster.html
+                - generic [ref=e352]: 41,65 $
+              - list:
+                - listitem [ref=e353]: Nuevo
+                - listitem [ref=e354]: Pack
+              - button "favorite_border" [ref=e355] [cursor=pointer]:
+                - generic [ref=e356]: favorite_border
+          - article [ref=e358]:
+            - generic [ref=e359]:
+              - generic [ref=e360]:
+                - link "Hummingbird - Vector graphics" [ref=e361] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/14-hummingbird-vector-graphics.html
+                  - img "Hummingbird - Vector graphics" [ref=e363]
+                - link " Vista rápida" [ref=e365] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e366]: 
+                  - text: Vista rápida
+              - generic [ref=e367]:
+                - heading "Hummingbird - Vector graphics" [level=3] [ref=e368]:
+                  - link "Hummingbird - Vector graphics" [ref=e369] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/14-hummingbird-vector-graphics.html
+                - generic [ref=e370]: 10,71 $
+              - list:
+                - listitem [ref=e371]: Nuevo
+              - button "favorite_border" [ref=e372] [cursor=pointer]:
+                - generic [ref=e373]: favorite_border
+          - article [ref=e375]:
+            - generic [ref=e376]:
+              - generic [ref=e377]:
+                - link "Brown bear - Vector graphics" [ref=e378] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/13-brown-bear-vector-graphics.html
+                  - img "Brown bear - Vector graphics" [ref=e380]
+                - link " Vista rápida" [ref=e382] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e383]: 
+                  - text: Vista rápida
+              - generic [ref=e384]:
+                - heading "Brown bear - Vector graphics" [level=3] [ref=e385]:
+                  - link "Brown bear - Vector graphics" [ref=e386] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/13-brown-bear-vector-graphics.html
+                - generic [ref=e387]: 10,71 $
+              - list:
+                - listitem [ref=e388]: Nuevo
+              - button "favorite_border" [ref=e389] [cursor=pointer]:
+                - generic [ref=e390]: favorite_border
+          - article [ref=e392]:
+            - generic [ref=e393]:
+              - generic [ref=e394]:
+                - link "Mountain fox - Vector graphics" [ref=e395] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/12-mountain-fox-vector-graphics.html
+                  - img "Mountain fox - Vector graphics" [ref=e397]
+                - link " Vista rápida" [ref=e399] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e400]: 
+                  - text: Vista rápida
+              - generic [ref=e401]:
+                - heading "Mountain fox - Vector graphics" [level=3] [ref=e402]:
+                  - link "Mountain fox - Vector graphics" [ref=e403] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/12-mountain-fox-vector-graphics.html
+                - generic [ref=e404]: 10,71 $
+              - list:
+                - listitem [ref=e405]: Nuevo
+              - button "favorite_border" [ref=e406] [cursor=pointer]:
+                - generic [ref=e407]: favorite_border
+        - link "Todas las novedades " [ref=e408] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/novedades
+          - text: Todas las novedades
+          - generic [ref=e409]: 
+  - generic [ref=e410]:
+    - generic [ref=e412]:
+      - generic [ref=e414]:
+        - paragraph [ref=e415]: Infórmese de nuestras últimas noticias y ofertas especiales
+        - generic [ref=e418]:
+          - generic [ref=e419]:
+            - button "Suscribirse" [ref=e420] [cursor=pointer]
+            - textbox "Infórmese de nuestras últimas noticias y ofertas especiales" [ref=e422]:
+              - /placeholder: Su dirección de correo electrónico
+          - paragraph [ref=e424]: Puede darse de baja en cualquier momento. Para ello, consulte nuestra información de contacto en el aviso legal.
+      - generic [ref=e425]:
+        - list
+    - generic [ref=e427]:
+      - generic [ref=e428]:
+        - generic [ref=e430]:
+          - generic [ref=e431]:
+            - paragraph [ref=e432]: Productos
+            - list [ref=e433]:
+              - listitem [ref=e434]:
+                - link "Ofertas" [ref=e435] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/productos-rebajados
+              - listitem [ref=e436]:
+                - link "Novedades" [ref=e437] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/novedades
+              - listitem [ref=e438]:
+                - link "Los más vendidos" [ref=e439] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mas-vendidos
+          - generic [ref=e440]:
+            - paragraph [ref=e441]: Nuestra empresa
+            - list [ref=e442]:
+              - listitem [ref=e443]:
+                - link "Envío" [ref=e444] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/1-entrega
+              - listitem [ref=e445]:
+                - link "Aviso legal" [ref=e446] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/2-aviso-legal
+              - listitem [ref=e447]:
+                - link "Términos y condiciones" [ref=e448] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+              - listitem [ref=e449]:
+                - link "Sobre nosotros" [ref=e450] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/4-sobre-nosotros
+              - listitem [ref=e451]:
+                - link "Pago seguro" [ref=e452] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/5-pago-seguro
+              - listitem [ref=e453]:
+                - link "Contacte con nosotros" [ref=e454] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/contactenos
+              - listitem [ref=e455]:
+                - link "Mapa del sitio" [ref=e456] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mapa del sitio
+              - listitem [ref=e457]:
+                - link "Tiendas" [ref=e458] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/tiendas
+        - generic [ref=e459]:
+          - paragraph [ref=e460]:
+            - link "Su cuenta" [ref=e461] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+          - list [ref=e462]:
+            - listitem [ref=e463]:
+              - link "Seguimiento del pedido" [ref=e464] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/seguimiento-pedido-invitado
+            - listitem [ref=e465]:
+              - link "Iniciar sesión" [ref=e466] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+            - listitem [ref=e467]:
+              - link "Crear una cuenta" [ref=e468] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/registro
+            - listitem [ref=e469]:
+              - link "Mis alertas" [ref=e470] [cursor=pointer]:
+                - /url: //theories-jefferson-apps-pushing.trycloudflare.com/es/module/ps_emailalerts/account
+        - generic [ref=e471]:
+          - paragraph [ref=e472]: Información de la tienda
+          - generic [ref=e473]:
+            - text: epayco
+            - text: Colombia
+            - text: "Envíenos un mensaje de correo electrónico:"
+            - link "ricardo.saldarriaga@epayco.com" [ref=e474] [cursor=pointer]:
+              - /url: mailto:ricardo.saldarriaga@epayco.com
+        - generic:
+          - paragraph
+      - paragraph [ref=e477]:
+        - link "© 2026 - Software Ecommerce desarrollado por PrestaShop™" [ref=e478] [cursor=pointer]:
+          - /url: https://www.prestashop-project.org/

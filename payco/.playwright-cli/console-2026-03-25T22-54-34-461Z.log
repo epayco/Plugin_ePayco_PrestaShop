@@ -1,0 +1,38 @@
+[     800ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[     802ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[     805ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[     837ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[     921ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   55074ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   55077ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   55082ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   55100ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:9
+[   55872ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   55886ms] [WARNING] jQuery.Deferred exception: $(...).rating is not a function TypeError: $(...).rating is not a function
+    at initCommentModal (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/productcomments/views/js/post-comment.js:78:51)
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/productcomments/views/js/post-comment.js:143:3)
+    at u (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30599) undefined @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:36
+[   55887ms] [WARNING] jQuery.Deferred exception: $(...).rating is not a function TypeError: $(...).rating is not a function
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/productcomments/views/js/list-comments.js:42:21)
+    at u (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30599) undefined @ https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:36
+[   55900ms] TypeError: $(...).rating is not a function
+    at initCommentModal (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/productcomments/views/js/post-comment.js:78:51)
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/productcomments/views/js/post-comment.js:143:3)
+    at u (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30599)
+[   55901ms] TypeError: $(...).rating is not a function
+    at HTMLDocument.<anonymous> (https://theories-jefferson-apps-pushing.trycloudflare.com/modules/productcomments/views/js/list-comments.js:42:21)
+    at u (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://theories-jefferson-apps-pushing.trycloudflare.com/themes/core.js:37:30599)
