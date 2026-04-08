@@ -1,0 +1,573 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - navigation [ref=e2]:
+      - link "Logotipo de PrestaShop" [ref=e3] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+      - generic [ref=e4]: 8.2.4
+      - button "Acceso rápido arrow_drop_down" [ref=e7] [cursor=pointer]:
+        - text: Acceso rápido
+        - generic [ref=e8]: arrow_drop_down
+      - search [ref=e9]:
+        - generic [ref=e11]:
+          - button "search" [ref=e13] [cursor=pointer]:
+            - generic [ref=e14]: search
+          - textbox "Buscar" [ref=e15]
+      - link "bug_report Modo depuración" [ref=e17] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/performance/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e18]: bug_report
+        - text: Modo depuración
+      - list [ref=e19]:
+        - listitem [ref=e20]:
+          - link "visibility Ver mi tienda" [ref=e21] [cursor=pointer]:
+            - /url: https://try-apparent-deer-via.trycloudflare.com/
+            - generic [ref=e22]: visibility
+            - text: Ver mi tienda
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "notifications_none 11" [ref=e25] [cursor=pointer]:
+            - /url: javascript:void(0);
+            - generic [ref=e26]: notifications_none
+            - generic [ref=e27]: "11"
+          - text: 
+      - list [ref=e28]:
+        - listitem [ref=e29]:
+          - link "account_circle" [ref=e30] [cursor=pointer]:
+            - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/employees/1/edit?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+            - generic [ref=e31]: account_circle
+      - text: 
+  - navigation [ref=e32]:
+    - generic [ref=e33] [cursor=pointer]:
+      - generic [ref=e34]: chevron_left
+      - generic [ref=e35]: chevron_left
+    - list [ref=e37]:
+      - listitem [ref=e38]:
+        - link "trending_up Inicio" [ref=e39] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+          - generic [ref=e40]: trending_up
+          - generic [ref=e41]: Inicio
+      - listitem [ref=e42]:
+        - generic [ref=e43]: Vender
+      - listitem [ref=e44]:
+        - link "shopping_basket Pedidos" [ref=e45] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e46]: shopping_basket
+          - generic [ref=e47]: Pedidos
+      - listitem [ref=e48]:
+        - link "store Catálogo" [ref=e49] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/catalog/products?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e50]: store
+          - generic [ref=e51]: Catálogo
+      - listitem [ref=e52]:
+        - link "account_circle Clientes" [ref=e53] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e54]: account_circle
+          - generic [ref=e55]: Clientes
+      - listitem [ref=e56]:
+        - link "chat Servicio al Cliente" [ref=e57] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCustomerThreads&token=9ad79ec705fabecb81648045b34efd13
+          - generic [ref=e58]: chat
+          - generic [ref=e59]: Servicio al Cliente
+      - listitem [ref=e60]:
+        - link "assessment Estadísticas" [ref=e61] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminStats&token=d1ebeaea7a4695ac28cf52e7ecc22e83
+          - generic [ref=e62]: assessment
+          - generic [ref=e63]: Estadísticas
+      - listitem [ref=e64]:
+        - generic [ref=e65]: Personalizar
+      - listitem [ref=e66]:
+        - link "extension Módulos" [ref=e67] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/modules/manage?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e68]: extension
+          - generic [ref=e69]: Módulos
+      - listitem [ref=e70]:
+        - link "desktop_mac Diseño" [ref=e71] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/design/themes/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e72]: desktop_mac
+          - generic [ref=e73]: Diseño
+      - listitem [ref=e74]:
+        - link "local_shipping Transporte" [ref=e75] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarriers&token=40eb6c7fce4acd3934924d8c9246bfa7
+          - generic [ref=e76]: local_shipping
+          - generic [ref=e77]: Transporte
+      - listitem [ref=e78]:
+        - link "payment Pago" [ref=e79] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/payment/payment_methods?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e80]: payment
+          - generic [ref=e81]: Pago
+      - listitem [ref=e82]:
+        - link "language Internacional" [ref=e83] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/international/localization/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e84]: language
+          - generic [ref=e85]: Internacional
+      - listitem [ref=e86]:
+        - generic [ref=e87]: Configurar
+      - listitem [ref=e88]:
+        - link "settings Parámetros de la tienda" [ref=e89] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/shop/preferences/preferences?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e90]: settings
+          - generic [ref=e91]: Parámetros de la tienda
+      - listitem [ref=e92]:
+        - link "settings_applications Parámetros Avanzados" [ref=e93] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/system-information/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e94]: settings_applications
+          - generic [ref=e95]: Parámetros Avanzados
+      - listitem [ref=e96]:
+        - generic [ref=e97]: Community
+      - listitem [ref=e98]:
+        - link "groups Wall of Fame" [ref=e99] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/modules/ps_distributionapiclient/top-contributors?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e100]: groups
+          - generic [ref=e101]: Wall of Fame
+  - generic [ref=e103]:
+    - generic [ref=e105]:
+      - list [ref=e106]:
+        - listitem [ref=e107]:
+          - link "Inicio" [ref=e108] [cursor=pointer]:
+            - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+      - heading "Inicio" [level=1] [ref=e109]
+      - generic [ref=e111]:
+        - text: 
+        - list [ref=e112]:
+          - listitem [ref=e113]:
+            - generic [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]: 
+              - generic [ref=e116]: Modo demo
+          - listitem [ref=e117]:
+            - link "Ayuda" [ref=e118] [cursor=pointer]:
+              - /url: https://help.prestashop-project.org/es/doc/AdminDashboard?version=8.2.4&country=es
+              - text: 
+              - generic [ref=e119]: Ayuda
+    - text: 
+    - generic [ref=e120]:
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - button "Día" [ref=e126] [cursor=pointer]
+          - button "Mes" [ref=e127] [cursor=pointer]
+          - button "Año" [ref=e128] [cursor=pointer]
+          - button "Día-1" [ref=e129] [cursor=pointer]
+          - button "Mes-1" [ref=e130] [cursor=pointer]
+          - button "Año-1" [ref=e131] [cursor=pointer]
+        - button " Desde 2026-03-01 A 2026-04-01 " [ref=e133] [cursor=pointer]:
+          - generic [ref=e134]: 
+          - generic [ref=e135]:
+            - text: Desde
+            - strong [ref=e136]: 2026-03-01
+            - text: A
+            - strong [ref=e137]: 2026-04-01
+            - strong
+          - generic [ref=e138]: 
+        - text:              
+      - generic [ref=e139]:
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]: 
+            - text: Resumen de actividades
+            - generic [ref=e144]:
+              - link "" [ref=e145] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e146]: 
+              - link "" [ref=e147] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e148]: 
+          - text:  
+          - list [ref=e150]:
+            - listitem [ref=e151]:
+              - generic [ref=e152]:
+                - link "Carritos de compra activos" [ref=e153] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarts&token=547c53f408565467be293de60d07e77c
+                - generic [ref=e154]: en los últimos 30 minutos
+              - generic [ref=e155]: "3"
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - generic [ref=e158]: 
+              - text: Pendientes actualmente
+            - list [ref=e159]:
+              - listitem [ref=e160]:
+                - link "Pedidos" [ref=e162] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                - generic [ref=e163]: "0"
+              - listitem [ref=e164]:
+                - link "Devoluciones/Cambios" [ref=e166] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminReturn&token=ad952154e98c057ca80950f4c2dc962d
+                - generic [ref=e167]: "0"
+              - listitem [ref=e168]:
+                - link "Carritos abandonados" [ref=e170] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarts&token=547c53f408565467be293de60d07e77c
+                - generic [ref=e171]: "0"
+              - listitem [ref=e172]:
+                - link "Productos fuera de stock" [ref=e174] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/catalog/monitoring/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                - generic [ref=e175]: "0"
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e178]: 
+              - text: Notificaciones
+            - list [ref=e179]:
+              - listitem [ref=e180]:
+                - link "Nuevos mensajes" [ref=e182] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCustomerThreads&token=9ad79ec705fabecb81648045b34efd13
+                - generic [ref=e183]: "0"
+              - listitem [ref=e184]:
+                - link "Productos evaluados" [ref=e186] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminModules&token=06b27b2c3f3257d142024e50080596b1&configure=productcomments&tab_module=front_office_features&module_name=productcomments
+                - generic [ref=e187]: "0"
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - generic [ref=e190]: 
+              - text: Clientes y Boletín
+              - generic [ref=e191]: (from 2026-03-01 to 2026-04-01)
+            - list [ref=e192]:
+              - listitem [ref=e193]:
+                - link "Nuevos clientes" [ref=e195] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                - generic [ref=e196]: "2"
+              - listitem [ref=e197]:
+                - link "Nuevas suscripciones" [ref=e199] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminStats&token=d1ebeaea7a4695ac28cf52e7ecc22e83&module=statsnewsletter
+                - generic [ref=e200]: "0"
+              - listitem [ref=e201]:
+                - link "Total de suscriptores" [ref=e203] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminModules&token=06b27b2c3f3257d142024e50080596b1&configure=ps_emailsubscription&module_name=ps_emailsubscription
+                - generic [ref=e204]: "1"
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - generic [ref=e207]: 
+              - text: Tráfico
+              - generic [ref=e208]: (from 2026-03-01 to 2026-04-01)
+            - list [ref=e209]:
+              - listitem [ref=e210]:
+                - link "Visitas" [ref=e212] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminStats&token=d1ebeaea7a4695ac28cf52e7ecc22e83&module=statsforecast
+                - generic [ref=e213]: "2"
+              - listitem [ref=e214]:
+                - text: Fuentes de tráfico
+                - list [ref=e215]:
+                  - listitem [ref=e216]:
+                    - generic [ref=e217]:
+                      - generic [ref=e218]: 
+                      - text: Enlace directo
+                    - generic [ref=e219]: "1"
+                  - listitem [ref=e220]:
+                    - generic [ref=e221]:
+                      - generic [ref=e222]: 
+                      - text: prestashop.com
+                    - generic [ref=e223]: "1"
+                - img [ref=e225]
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]:
+              - generic [ref=e239]: 
+              - text: Inicio
+              - generic [ref=e240]:
+                - link "" [ref=e241] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7&profitability_conf=1
+                  - generic [ref=e242]: 
+                - link "" [ref=e243] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e244]: 
+            - generic [ref=e245]:
+              - generic [ref=e246] [cursor=pointer]:
+                - term [ref=e247]: Ventas
+                - definition [ref=e248]:
+                  - generic [ref=e249]: 0,00 $ Imp. excl.
+                - definition
+              - generic [ref=e250] [cursor=pointer]:
+                - term [ref=e251]: Pedidos
+                - definition [ref=e252]: "0"
+                - definition
+              - generic [ref=e253] [cursor=pointer]:
+                - term [ref=e254]: Valor del carrito
+                - definition [ref=e255]:
+                  - generic [ref=e256]: 0,00 $ Imp. excl.
+                - definition
+              - generic [ref=e257] [cursor=pointer]:
+                - term [ref=e258]: Visitas
+                - definition [ref=e259]: "2"
+                - definition
+              - generic [ref=e260] [cursor=pointer]:
+                - term [ref=e261]: Tasa de conversión
+                - definition [ref=e262]: 0%
+                - definition
+              - generic [ref=e263] [cursor=pointer]:
+                - term [ref=e264]: Beneficio neto
+                - definition [ref=e265]:
+                  - generic [ref=e266]: 0,00 $ Imp. excl.
+                - definition
+            - generic [ref=e267]:
+              - img [ref=e268]:
+                - generic [ref=e270]:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic: 8/3/2026
+                        - generic:
+                          - generic: 14/3/2026
+                        - generic:
+                          - generic: 20/3/2026
+                        - generic:
+                          - generic: 25/3/2026
+                      - generic:
+                        - generic: 1/3/2026
+                      - generic:
+                        - generic: 1/4/2026
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic: "-1"
+                        - generic:
+                          - generic: "-1"
+                        - generic:
+                          - generic: "-1"
+                        - generic:
+                          - generic: "0"
+                        - generic:
+                          - generic: "0"
+                        - generic:
+                          - generic: "0"
+                        - generic:
+                          - generic: "0"
+                        - generic:
+                          - generic: "0"
+                        - generic:
+                          - generic: "1"
+                        - generic:
+                          - generic: "1"
+                        - generic:
+                          - generic: "1"
+                      - generic:
+                        - generic: "-1"
+                      - generic:
+                        - generic: "1"
+                  - generic [ref=e317] [cursor=pointer]: Ventas
+              - generic:
+                - table:
+                  - rowgroup:
+                    - row "3/3/2026":
+                      - cell "3/3/2026":
+                        - strong: 3/3/2026
+                  - rowgroup:
+                    - row "Ventas 0":
+                      - cell
+                      - cell "Ventas"
+                      - cell "0"
+          - generic [ref=e318]:
+            - generic [ref=e319]:
+              - generic [ref=e320]: 
+              - text: Previsiones
+              - generic [ref=e321]: "2026"
+              - generic [ref=e322]:
+                - link "" [ref=e323] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                  - generic [ref=e324]: 
+                - link "" [ref=e325] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                  - generic [ref=e326]: 
+              - generic [ref=e327]:
+                - link "" [ref=e328] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                  - generic [ref=e329]: 
+                - link "" [ref=e330] [cursor=pointer]:
+                  - /url: javascript:void(0);
+                  - generic [ref=e331]: 
+            - text:  
+            - generic [ref=e332]:
+              - generic [ref=e333]:
+                - generic [ref=e334] [cursor=pointer]:
+                  - radio " Tráfico" [ref=e335]
+                  - generic [ref=e336]: 
+                  - text: Tráfico
+                - generic [ref=e337] [cursor=pointer]:
+                  - radio " Conversión" [ref=e338]
+                  - generic [ref=e339]: 
+                  - text: Conversión
+                - generic [ref=e340] [cursor=pointer]:
+                  - radio " Valor promedio del carrito" [ref=e341]
+                  - generic [ref=e342]: 
+                  - text: Valor promedio del carrito
+                - generic [ref=e343] [cursor=pointer]:
+                  - radio " Ventas" [ref=e344]
+                  - generic [ref=e345]: 
+                  - text: Ventas
+              - img [ref=e347]:
+                - generic [ref=e349]:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic: Enero
+                        - generic:
+                          - generic: Febrero
+                        - generic:
+                          - generic: Marzo
+                        - generic:
+                          - generic: Abril
+                        - generic:
+                          - generic: Mayo
+                        - generic:
+                          - generic: Junio
+                        - generic:
+                          - generic: Julio
+                        - generic:
+                          - generic: Agosto
+                        - generic:
+                          - generic: Septiembre
+                        - generic:
+                          - generic: Octubre
+                        - generic:
+                          - generic: Noviembre
+                        - generic:
+                          - generic: Diciembre
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic: "0.0"
+                        - generic:
+                          - generic: "0.2"
+                        - generic:
+                          - generic: "0.4"
+                        - generic:
+                          - generic: "0.6"
+                        - generic:
+                          - generic: "0.8"
+                        - generic:
+                          - generic: "1.0"
+                      - generic:
+                        - generic: "0.0"
+                      - generic:
+                        - generic: "1.0"
+          - generic [ref=e393]:
+            - generic [ref=e394]:
+              - generic [ref=e395]: 
+              - text: Productos y Ventas
+              - generic [ref=e396]:
+                - link "" [ref=e397] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e398]: 
+                - link "" [ref=e399] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e400]: 
+            - text:  
+            - generic [ref=e401]:
+              - navigation [ref=e402]:
+                - list [ref=e403]:
+                  - listitem [ref=e404]:
+                    - link " Pedidos recientes" [ref=e405] [cursor=pointer]:
+                      - /url: "#dash_recent_orders"
+                      - generic [ref=e406]: 
+                      - text: Pedidos recientes
+                  - listitem [ref=e407]:
+                    - link " Los más vendidos" [ref=e408] [cursor=pointer]:
+                      - /url: "#dash_best_sellers"
+                      - generic [ref=e409]: 
+                      - text: Los más vendidos
+                  - listitem [ref=e410]:
+                    - link " Más Vistos" [ref=e411] [cursor=pointer]:
+                      - /url: "#dash_most_viewed"
+                      - generic [ref=e412]: 
+                      - text: Más Vistos
+                  - listitem [ref=e413]:
+                    - link " Más buscados" [ref=e414] [cursor=pointer]:
+                      - /url: "#dash_top_search"
+                      - generic [ref=e415]: 
+                      - text: Más buscados
+              - generic [ref=e416]:
+                - generic [ref=e417]:
+                  - generic [ref=e418]: Últimos 10 pedidos
+                  - table [ref=e420]:
+                    - rowgroup [ref=e421]:
+                      - row "Nombre del cliente Productos Total Imp. excl. Fecha Estado" [ref=e422]:
+                        - columnheader "Nombre del cliente" [ref=e423]
+                        - columnheader "Productos" [ref=e424]
+                        - columnheader "Total Imp. excl." [ref=e425]
+                        - columnheader "Fecha" [ref=e426]
+                        - columnheader "Estado" [ref=e427]
+                        - columnheader [ref=e428]
+                    - rowgroup [ref=e429]:
+                      - row "Ricardo Saldarriaga 1 10.000,00 $ 07/04/2026 ePayco Esperando Pago " [ref=e430]:
+                        - cell "Ricardo Saldarriaga" [ref=e431]:
+                          - link "Ricardo Saldarriaga" [ref=e432] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/4/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "1" [ref=e433]
+                        - cell "10.000,00 $" [ref=e434]
+                        - cell "07/04/2026" [ref=e435]
+                        - cell "ePayco Esperando Pago" [ref=e436]
+                        - cell "" [ref=e437]:
+                          - link "" [ref=e438] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=7&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e439]: 
+                      - row "Ricardo Saldarriaga 1 10.000,00 $ 07/04/2026 ePayco Esperando Pago " [ref=e440]:
+                        - cell "Ricardo Saldarriaga" [ref=e441]:
+                          - link "Ricardo Saldarriaga" [ref=e442] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/3/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "1" [ref=e443]
+                        - cell "10.000,00 $" [ref=e444]
+                        - cell "07/04/2026" [ref=e445]
+                        - cell "ePayco Esperando Pago" [ref=e446]
+                        - cell "" [ref=e447]:
+                          - link "" [ref=e448] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=6&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e449]: 
+                      - row "John DOE 2 66,80 $ 01/04/2026 Cancelado " [ref=e450]:
+                        - cell "John DOE" [ref=e451]:
+                          - link "John DOE" [ref=e452] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "2" [ref=e453]
+                        - cell "66,80 $" [ref=e454]
+                        - cell "01/04/2026" [ref=e455]
+                        - cell "Cancelado" [ref=e456]
+                        - cell "" [ref=e457]:
+                          - link "" [ref=e458] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=1&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e459]: 
+                      - row "John DOE 2 169,90 $ 01/04/2026 En espera de pago por cheque " [ref=e460]:
+                        - cell "John DOE" [ref=e461]:
+                          - link "John DOE" [ref=e462] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "2" [ref=e463]
+                        - cell "169,90 $" [ref=e464]
+                        - cell "01/04/2026" [ref=e465]
+                        - cell "En espera de pago por cheque" [ref=e466]
+                        - cell "" [ref=e467]:
+                          - link "" [ref=e468] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=2&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e469]: 
+                      - row "John DOE 1 19,90 $ 01/04/2026 Error en pago " [ref=e470]:
+                        - cell "John DOE" [ref=e471]:
+                          - link "John DOE" [ref=e472] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "1" [ref=e473]
+                        - cell "19,90 $" [ref=e474]
+                        - cell "01/04/2026" [ref=e475]
+                        - cell "Error en pago" [ref=e476]
+                        - cell "" [ref=e477]:
+                          - link "" [ref=e478] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=3&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e479]: 
+                      - row "John DOE 1 19,90 $ 01/04/2026 En espera de pago por cheque " [ref=e480]:
+                        - cell "John DOE" [ref=e481]:
+                          - link "John DOE" [ref=e482] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "1" [ref=e483]
+                        - cell "19,90 $" [ref=e484]
+                        - cell "01/04/2026" [ref=e485]
+                        - cell "En espera de pago por cheque" [ref=e486]
+                        - cell "" [ref=e487]:
+                          - link "" [ref=e488] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=4&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e489]: 
+                      - row "John DOE 1 25,90 $ 01/04/2026 En espera de pago por transferencia bancaria " [ref=e490]:
+                        - cell "John DOE" [ref=e491]:
+                          - link "John DOE" [ref=e492] [cursor=pointer]:
+                            - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - cell "1" [ref=e493]
+                        - cell "25,90 $" [ref=e494]
+                        - cell "01/04/2026" [ref=e495]
+                        - cell "En espera de pago por transferencia bancaria" [ref=e496]
+                        - cell "" [ref=e497]:
+                          - link "" [ref=e498] [cursor=pointer]:
+                            - /url: index.php?controller=AdminOrders&id_order=5&vieworder&token=0b6f9739257013cc56d9683f7cf2d9b3
+                            - generic [ref=e499]: 
+                - text: 

@@ -1,0 +1,466 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - navigation [ref=e2]:
+      - link [ref=e3] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+      - generic [ref=e4]: 8.2.4
+      - button "Acceso rápido arrow_drop_down" [ref=e7] [cursor=pointer]
+      - search [ref=e11]:
+        - generic [ref=e12]:
+          - text: search
+          - textbox "Barra de búsqueda" [ref=e13]:
+            - /placeholder: "Buscar (p. ej.: referencia de producto, nombre de cliente...)"
+          - generic:
+            - button "toda la tienda arrow_drop_down"
+            - button "search":
+              - generic [ref=e14] [cursor=pointer]: search
+      - link "bug_report" [ref=e16] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/performance/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e17]: bug_report
+      - generic [ref=e18]:
+        - link "visibility Ver mi tienda" [ref=e21] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/
+          - generic [ref=e22]: visibility
+          - generic [ref=e23]: Ver mi tienda
+        - generic [ref=e25]:
+          - button "notifications_none 11" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]: notifications_none
+            - generic [ref=e28]: "11"
+          - text: 
+        - generic [ref=e32] [cursor=pointer]: account_circle
+  - navigation [ref=e33]:
+    - generic [ref=e34] [cursor=pointer]:
+      - generic [ref=e35]: chevron_left
+      - generic [ref=e36]: chevron_left
+    - list [ref=e38]:
+      - listitem [ref=e39]:
+        - link "trending_up Inicio" [ref=e40] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+          - generic [ref=e41]: trending_up
+          - generic [ref=e42]: Inicio
+      - listitem [ref=e43]: Vender
+      - listitem [ref=e44]:
+        - link "shopping_basket Pedidos keyboard_arrow_up" [ref=e45] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e46]: shopping_basket
+          - generic [ref=e47]: Pedidos
+          - generic [ref=e48]: keyboard_arrow_up
+        - list [ref=e49]:
+          - listitem [ref=e50]:
+            - link "Pedidos" [ref=e51] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e52]:
+            - link "Facturas" [ref=e53] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/invoices/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e54]:
+            - link "Facturas por abono" [ref=e55] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/credit-slips/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e56]:
+            - link "Albaranes de entrega" [ref=e57] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/delivery-slips/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e58]:
+            - link "Carritos de compra" [ref=e59] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarts&token=547c53f408565467be293de60d07e77c
+      - listitem [ref=e60]:
+        - link "store Catálogo" [ref=e61] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/catalog/products?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e62]: store
+          - generic [ref=e63]: Catálogo
+      - listitem [ref=e64]:
+        - link "account_circle Clientes" [ref=e65] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e66]: account_circle
+          - generic [ref=e67]: Clientes
+      - listitem [ref=e68]:
+        - link "chat Servicio al Cliente" [ref=e69] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCustomerThreads&token=9ad79ec705fabecb81648045b34efd13
+          - generic [ref=e70]: chat
+          - generic [ref=e71]: Servicio al Cliente
+      - listitem [ref=e72]:
+        - link "assessment Estadísticas" [ref=e73] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminStats&token=d1ebeaea7a4695ac28cf52e7ecc22e83
+          - generic [ref=e74]: assessment
+          - generic [ref=e75]: Estadísticas
+      - listitem [ref=e76]: Personalizar
+      - listitem [ref=e77]:
+        - link "extension Módulos" [ref=e78] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/modules/manage?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e79]: extension
+          - generic [ref=e80]: Módulos
+      - listitem [ref=e81]:
+        - link "desktop_mac Diseño" [ref=e82] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/design/themes/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e83]: desktop_mac
+          - generic [ref=e84]: Diseño
+      - listitem [ref=e85]:
+        - link "local_shipping Transporte" [ref=e86] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarriers&token=40eb6c7fce4acd3934924d8c9246bfa7
+          - generic [ref=e87]: local_shipping
+          - generic [ref=e88]: Transporte
+      - listitem [ref=e89]:
+        - link "payment Pago" [ref=e90] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/payment/payment_methods?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e91]: payment
+          - generic [ref=e92]: Pago
+      - listitem [ref=e93]:
+        - link "language Internacional" [ref=e94] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/international/localization/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e95]: language
+          - generic [ref=e96]: Internacional
+      - listitem [ref=e97]: Configurar
+      - listitem [ref=e98]:
+        - link "settings Parámetros de la tienda" [ref=e99] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/shop/preferences/preferences?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e100]: settings
+          - generic [ref=e101]: Parámetros de la tienda
+      - listitem [ref=e102]:
+        - link "settings_applications Parámetros Avanzados" [ref=e103] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/system-information/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e104]: settings_applications
+          - generic [ref=e105]: Parámetros Avanzados
+      - listitem [ref=e106]: Community
+      - listitem [ref=e107]:
+        - link "groups Wall of Fame" [ref=e108] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/modules/ps_distributionapiclient/top-contributors?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e109]: groups
+          - generic [ref=e110]: Wall of Fame
+  - generic [ref=e114]:
+    - navigation "Breadcrumb" [ref=e115]:
+      - list [ref=e116]:
+        - listitem [ref=e117]: Pedidos
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - heading "#7 QYVRBVCDN" [level=1] [ref=e120]:
+          - strong [ref=e121]: "#7"
+          - strong [ref=e122]: QYVRBVCDN
+        - paragraph [ref=e123]: de Ricardo Saldarriaga
+        - generic [ref=e124]: 11.900,00 $
+        - paragraph [ref=e125]: 07/04/2026 en 17:30:04
+      - link "Ayuda" [ref=e128] [cursor=pointer]:
+        - /url: "#"
+  - generic [ref=e130]:
+    - text: 
+    - generic [ref=e131]:
+      - generic [ref=e133]:
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - combobox [ref=e137] [cursor=pointer]
+            - combobox "ePayco Esperando Pago" [ref=e140]:
+              - textbox "ePayco Esperando Pago" [ref=e141]
+              - text: expand_more
+          - button "Actualizar el estado" [disabled] [ref=e142]
+        - button "Imprimir pedido" [ref=e145] [cursor=pointer]:
+          - generic [ref=e146]: print
+          - text: Imprimir pedido
+        - generic [ref=e147]:
+          - button "arrow_back" [ref=e149] [cursor=pointer]:
+            - generic [ref=e150]: arrow_back
+          - generic [ref=e151]:
+            - button "arrow_forward":
+              - generic: arrow_forward
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - heading "Cliente" [level=3] [ref=e156]
+            - generic [ref=e157]:
+              - generic [ref=e158]:
+                - generic [ref=e159]:
+                  - 'heading "account_box Sr. Ricardo Saldarriaga #4" [level=2] [ref=e161]':
+                    - generic [ref=e162]: account_box
+                    - text: Sr. Ricardo Saldarriaga
+                    - strong [ref=e163]: "#4"
+                  - link "Ver todos los detalles" [ref=e165] [cursor=pointer]:
+                    - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/4/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                - generic [ref=e167]: Invitado
+              - generic [ref=e168]:
+                - generic [ref=e169]:
+                  - paragraph [ref=e170]:
+                    - strong [ref=e171]: "Email:"
+                  - paragraph [ref=e172]:
+                    - link "ricardo.saldarriaga@epayco.com" [ref=e173] [cursor=pointer]:
+                      - /url: mailto:ricardo.saldarriaga@epayco.com
+                - generic [ref=e174]:
+                  - paragraph [ref=e175]:
+                    - strong [ref=e176]: "Pedidos realizados validados:"
+                  - paragraph [ref=e177]:
+                    - generic [ref=e178]: "0"
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - generic [ref=e182]:
+                    - strong [ref=e183]: Dirección de envío
+                    - link "more_vert" [ref=e184] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e185]: more_vert
+                  - paragraph [ref=e186]: Ricardo Saldarriaga
+                  - paragraph [ref=e187]: "Calle 100 # 10-20"
+                  - paragraph [ref=e188]: 110111 Bogota
+                  - paragraph [ref=e189]: Colombia
+                  - paragraph [ref=e190]: "3001234567"
+                - generic [ref=e191]:
+                  - generic [ref=e192]:
+                    - strong [ref=e193]: Dirección de facturación
+                    - link "more_vert" [ref=e194] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e195]: more_vert
+                  - paragraph [ref=e196]: Ricardo Saldarriaga
+                  - paragraph [ref=e197]: "Calle 100 # 10-20"
+                  - paragraph [ref=e198]: 110111 Bogota
+                  - paragraph [ref=e199]: Colombia
+                  - paragraph [ref=e200]: "3001234567"
+              - generic [ref=e202]:
+                - heading "Nota Privada" [level=3] [ref=e204]
+                - link "add" [ref=e206] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e207]: add
+          - generic [ref=e208]:
+            - heading "Mensajes (0)" [level=3] [ref=e212]
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - generic [ref=e216]: Elige el mensaje de tu pedido
+                - combobox "order_message_order_message" [ref=e218]:
+                  - option [selected]
+                  - option "Retraso"
+              - link "Configurar mensajes predefinidos arrow_right_alt" [ref=e221] [cursor=pointer]:
+                - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customer-service/order-messages/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                - text: Configurar mensajes predefinidos
+                - generic [ref=e222]: arrow_right_alt
+              - generic [ref=e227]: ¿Mostrar al cliente?
+              - generic [ref=e228]:
+                - generic [ref=e229]:
+                  - generic [ref=e230]: "*"
+                  - text: Mensaje
+                - generic [ref=e232]:
+                  - textbox "* Mensaje" [ref=e233]
+                  - generic [ref=e235]: "1200"
+              - button "Enviar mensaje" [ref=e237] [cursor=pointer]
+        - generic [ref=e238]:
+          - generic [ref=e240]:
+            - heading "Productos (1)" [level=3] [ref=e242]
+            - generic [ref=e244]:
+              - table [ref=e245]:
+                - rowgroup [ref=e246]:
+                  - row "Producto Precio unitario Impuestos incluidos Cantidad Disponible Total Impuestos incluidos Acciones" [ref=e247]:
+                    - columnheader "Producto" [ref=e248]:
+                      - paragraph [ref=e249]: Producto
+                    - columnheader [ref=e250]
+                    - columnheader "Precio unitario Impuestos incluidos" [ref=e251]:
+                      - paragraph [ref=e252]: Precio unitario
+                      - text: Impuestos incluidos
+                    - columnheader "Cantidad" [ref=e253]:
+                      - paragraph [ref=e254]: Cantidad
+                    - columnheader "Disponible" [ref=e255]:
+                      - paragraph [ref=e256]: Disponible
+                    - columnheader "Total Impuestos incluidos" [ref=e257]:
+                      - paragraph [ref=e258]: Total
+                      - text: Impuestos incluidos
+                    - columnheader "Acciones" [ref=e259]:
+                      - paragraph [ref=e260]: Acciones
+                - rowgroup [ref=e261]:
+                  - 'row "Customizable mug Customizable mug Número de referencia: demo_14 Referencia del proveedor: demo_14 11.900,00 $ 1 298 11.900,00 $ edit delete" [ref=e262]':
+                    - cell "Customizable mug" [ref=e263]:
+                      - img "Customizable mug" [ref=e264]
+                    - 'cell "Customizable mug Número de referencia: demo_14 Referencia del proveedor: demo_14" [ref=e265]':
+                      - 'link "Customizable mug Número de referencia: demo_14 Referencia del proveedor: demo_14" [ref=e266] [cursor=pointer]':
+                        - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/catalog/products/19?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                        - paragraph [ref=e267]: Customizable mug
+                        - paragraph [ref=e268]: "Número de referencia: demo_14"
+                        - paragraph [ref=e269]: "Referencia del proveedor: demo_14"
+                    - cell "11.900,00 $" [ref=e270]
+                    - cell "1" [ref=e271]
+                    - cell "298" [ref=e272]
+                    - cell "11.900,00 $" [ref=e273]
+                    - cell "edit delete" [ref=e274]:
+                      - button "edit" [ref=e275] [cursor=pointer]:
+                        - generic [ref=e276]: edit
+                      - button "delete" [ref=e277] [cursor=pointer]:
+                        - generic [ref=e278]: delete
+                  - 'row "Type your text here : Test ePayco" [ref=e279]':
+                    - cell [ref=e280]
+                    - 'cell "Type your text here : Test ePayco" [ref=e281]':
+                      - paragraph [ref=e282]:
+                        - strong [ref=e283]: "Type your text here :"
+                        - text: Test ePayco
+              - generic [ref=e284]:
+                - generic [ref=e286]:
+                  - generic [ref=e287]: "Artículos por página:"
+                  - combobox [ref=e288]:
+                    - option "8" [selected]
+                    - option "20"
+                    - option "50"
+                    - option "100"
+                - generic [ref=e289]:
+                  - button "add_circle_outline Añadir un producto" [ref=e290] [cursor=pointer]:
+                    - generic [ref=e291]: add_circle_outline
+                    - text: Añadir un producto
+                  - button "confirmation_number Añadir un descuento" [ref=e292] [cursor=pointer]:
+                    - generic [ref=e293]: confirmation_number
+                    - text: Añadir un descuento
+              - generic [ref=e295]:
+                - generic [ref=e296]:
+                  - paragraph [ref=e297]:
+                    - strong [ref=e298]: Productos
+                  - strong [ref=e299]: 11.900,00 $
+                - generic [ref=e300]:
+                  - paragraph [ref=e301]:
+                    - strong [ref=e302]: Total
+                  - generic [ref=e303]: 11.900,00 $
+              - paragraph [ref=e304]:
+                - generic [ref=e305]:
+                  - text: "Para este grupo de clientes, los precios se muestran con:"
+                  - strong [ref=e306]: Impuestos incluidos
+                  - text: .
+                  - strong [ref=e307]: Las devoluciones de mercancía están desactivadas
+          - generic [ref=e308]:
+            - tablist [ref=e309]:
+              - listitem [ref=e310]:
+                - tab "history Estado (1)" [expanded] [ref=e311] [cursor=pointer]:
+                  - generic [ref=e312]: history
+                  - text: Estado (1)
+              - listitem [ref=e313]:
+                - tab "note Documentos (0)" [expanded] [ref=e314] [cursor=pointer]:
+                  - generic [ref=e315]: note
+                  - text: Documentos (0)
+              - listitem [ref=e316]:
+                - tab "local_shipping Transportistas (1)" [expanded] [ref=e317] [cursor=pointer]:
+                  - generic [ref=e318]: local_shipping
+                  - text: Transportistas (1)
+            - tabpanel "history Estado (1)" [ref=e320]:
+              - generic [ref=e322]:
+                - table [ref=e323]:
+                  - rowgroup [ref=e324]:
+                    - row "ePayco Esperando Pago 07/04/2026 17:30:04" [ref=e325]:
+                      - cell "ePayco Esperando Pago" [ref=e326]:
+                        - generic [ref=e327]: ePayco Esperando Pago
+                      - cell [ref=e328]
+                      - cell "07/04/2026 17:30:04" [ref=e329]
+                      - cell [ref=e330]
+                - generic [ref=e333]:
+                  - combobox [ref=e334]
+                  - combobox "ePayco Esperando Pago" [ref=e337]:
+                    - textbox "ePayco Esperando Pago" [ref=e338]
+                    - text: expand_more
+                  - button "Actualizar el estado" [ref=e339] [cursor=pointer]
+                - generic [ref=e341]:
+                  - heading "Nota del pedido" [level=3] [ref=e343]
+                  - link "add" [ref=e345] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e346]: add
+          - generic [ref=e347]:
+            - heading "Pago (0)" [level=3] [ref=e349]
+            - table [ref=e353]:
+              - rowgroup [ref=e354]:
+                - row "Fecha Método de pago ID de Transacción Importe Factura Empleado" [ref=e355]:
+                  - columnheader "Fecha" [ref=e356]
+                  - columnheader "Método de pago" [ref=e357]
+                  - columnheader "ID de Transacción" [ref=e358]
+                  - columnheader "Importe" [ref=e359]
+                  - columnheader "Factura" [ref=e360]
+                  - columnheader "Empleado" [ref=e361]
+                  - columnheader [ref=e362]
+              - rowgroup [ref=e363]:
+                - row "date_range $ Añadir" [ref=e364]:
+                  - cell "date_range" [ref=e365]:
+                    - generic [ref=e366]:
+                      - textbox "order_payment_date" [ref=e367]
+                      - generic [ref=e370]: date_range
+                  - cell [ref=e371]:
+                    - combobox "order_payment_payment_method" [ref=e372]
+                  - cell [ref=e373]:
+                    - textbox "order_payment_transaction_id" [ref=e374]
+                  - cell "$" [ref=e375]:
+                    - generic [ref=e376]:
+                      - textbox [ref=e377]
+                      - generic [ref=e379]: $
+                  - cell [ref=e380]
+                  - cell [ref=e381]
+                  - cell "Añadir" [ref=e382]:
+                    - button "Añadir" [ref=e383] [cursor=pointer]
+      - generic [ref=e388]:
+        - generic [ref=e389]:
+          - generic [ref=e390]: public
+          - text: Fuentes
+          - generic [ref=e391]: "1"
+        - list [ref=e392]:
+          - listitem [ref=e393]:
+            - text: 07/04/2026 17:24:31
+            - text: Desde -
+            - text: A
+            - link "try-apparent-deer-via.trycloudflare.com/es/home-accessories/19-customizable-mug.html" [ref=e394] [cursor=pointer]:
+              - /url: http://try-apparent-deer-via.trycloudflare.com/es/home-accessories/19-customizable-mug.html
+      - text: expand_more
+    - navigation [ref=e395]:
+      - img "Cargando..." [ref=e396]
+  - region "Symfony Web Debug Toolbar" [ref=e397]:
+    - generic [ref=e399]:
+      - link "200 @ admin_orders_view" [ref=e401] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=request&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e402]:
+          - generic [ref=e403]: "200"
+          - text: "@ admin_orders_view"
+      - link [ref=e405] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=api_platform.data_collector.request&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - img [ref=e407]
+      - link "339 ms" [ref=e432] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=time&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e433]: 339 ms
+      - link "38.0 MiB" [ref=e435] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=time&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e436]: 38.0 MiB
+      - generic [ref=e438] [cursor=pointer]:
+        - img [ref=e439]
+        - text: "2"
+      - link "13" [ref=e442] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=form&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e443]:
+          - img [ref=e444]
+          - text: "13"
+      - link "1183" [ref=e447] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=logger&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e448]:
+          - img [ref=e449]
+          - text: "1183"
+      - link "101 in 2.41 ms" [ref=e452] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=cache&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e453]:
+          - img [ref=e454]
+          - text: "101"
+          - generic [ref=e456]: in 2.41 ms
+      - link "8" [ref=e458] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=translation&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e459]:
+          - img [ref=e460]
+          - text: "8"
+      - link "ricardo.saldarriaga@epayco.com" [ref=e463] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=security&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e464]:
+          - img [ref=e465]
+          - text: ricardo.saldarriaga@epayco.com
+      - link "146 ms" [ref=e468] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=twig&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e469]:
+          - img [ref=e470]
+          - text: 146 ms
+      - link "3 in 0.64 ms" [ref=e473] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=db&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e474]:
+          - img [ref=e475]
+          - text: "3"
+          - generic [ref=e477]: in 0.64 ms
+      - link "Hooks (3)" [ref=e479] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=ps.hooks_collector&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e480]:
+          - img [ref=e481]
+          - text: Hooks (3)
+      - link "Commands / Queries" [ref=e484] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=ps.commands_and_queries_collector&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e485]:
+          - img [ref=e486]
+          - text: Commands / Queries
+      - generic "This Symfony version will no longer receive security fixes." [ref=e488]:
+        - link "8.2.4" [ref=e489] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/_profiler/94da86?panel=config&_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e490]:
+            - img [ref=e492]
+            - text: 8.2.4
+      - generic "Close Toolbar" [ref=e493] [cursor=pointer]:
+        - img [ref=e494]

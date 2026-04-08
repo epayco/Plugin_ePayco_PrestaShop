@@ -1,0 +1,143 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - generic:
+          - link "Contacte con nosotros" [ref=e10] [cursor=pointer]:
+            - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/contactenos
+          - generic [ref=e11]:
+            - button "Selector desplegable de idioma" [ref=e15]:
+              - text: Español
+              - generic [ref=e16] [cursor=pointer]: 
+            - link " Iniciar sesión" [ref=e19] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/iniciar-sesion?back=https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2Fes%2Frecuperar-contrase%25C3%25B1a
+              - generic [ref=e20]: 
+              - text: Iniciar sesión
+            - link "Enlace al carrito de la compra que tiene 1 productos" [ref=e24] [cursor=pointer]:
+              - /url: //theories-jefferson-apps-pushing.trycloudflare.com/es/carrito?action=show
+              - generic [ref=e25]: shopping_cart
+              - text: Carrito (1)
+    - generic [ref=e28]:
+      - link "epayco" [ref=e30] [cursor=pointer]:
+        - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/
+        - img "epayco" [ref=e31]
+      - generic [ref=e32]:
+        - list [ref=e34]:
+          - listitem [ref=e35]:
+            - link "Clothes" [ref=e36] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/3-clothes
+          - listitem [ref=e37]:
+            - link "Accesorios" [ref=e38] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/6-accessories
+          - listitem [ref=e39]:
+            - link "Art" [ref=e40] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/9-art
+        - generic [ref=e42]:
+          - generic [ref=e43]: search
+          - textbox "Buscar" [ref=e44]:
+            - /placeholder: Búsqueda en catálogo
+  - generic [ref=e46]:
+    - navigation [ref=e47]:
+      - list [ref=e48]:
+        - listitem [ref=e49]:
+          - link "Inicio" [ref=e50] [cursor=pointer]:
+            - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/
+          - text: /
+        - listitem [ref=e51]: Restablecer su contraseña
+    - generic [ref=e54]:
+      - heading "¿Olvidó su contraseña?" [level=1] [ref=e56]
+      - generic [ref=e58]:
+        - list
+        - paragraph [ref=e60]: Por favor, introduzca la dirección de correo electrónico que utilizó para registrarse. Recibirá un enlace temporal para restablecer su contraseña.
+        - generic [ref=e62]:
+          - generic [ref=e63]: Dirección de correo electrónico
+          - textbox [ref=e65]
+          - button "Enviar enlace de restablecimiento de contraseña" [ref=e66] [cursor=pointer]
+      - link " Volver a Inicio de sesión" [ref=e68] [cursor=pointer]:
+        - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+        - generic [ref=e69]: 
+        - text: Volver a Inicio de sesión
+  - generic [ref=e70]:
+    - generic [ref=e72]:
+      - generic [ref=e74]:
+        - paragraph [ref=e75]: Infórmese de nuestras últimas noticias y ofertas especiales
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - button "Suscribirse" [ref=e80] [cursor=pointer]
+            - textbox "Infórmese de nuestras últimas noticias y ofertas especiales" [ref=e82]:
+              - /placeholder: Su dirección de correo electrónico
+          - paragraph [ref=e84]: Puede darse de baja en cualquier momento. Para ello, consulte nuestra información de contacto en el aviso legal.
+      - generic [ref=e85]:
+        - list
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: Productos
+            - list [ref=e93]:
+              - listitem [ref=e94]:
+                - link "Ofertas" [ref=e95] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/productos-rebajados
+              - listitem [ref=e96]:
+                - link "Novedades" [ref=e97] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/novedades
+              - listitem [ref=e98]:
+                - link "Los más vendidos" [ref=e99] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mas-vendidos
+          - generic [ref=e100]:
+            - paragraph [ref=e101]: Nuestra empresa
+            - list [ref=e102]:
+              - listitem [ref=e103]:
+                - link "Envío" [ref=e104] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/1-entrega
+              - listitem [ref=e105]:
+                - link "Aviso legal" [ref=e106] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/2-aviso-legal
+              - listitem [ref=e107]:
+                - link "Términos y condiciones" [ref=e108] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+              - listitem [ref=e109]:
+                - link "Sobre nosotros" [ref=e110] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/4-sobre-nosotros
+              - listitem [ref=e111]:
+                - link "Pago seguro" [ref=e112] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/5-pago-seguro
+              - listitem [ref=e113]:
+                - link "Contacte con nosotros" [ref=e114] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/contactenos
+              - listitem [ref=e115]:
+                - link "Mapa del sitio" [ref=e116] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mapa del sitio
+              - listitem [ref=e117]:
+                - link "Tiendas" [ref=e118] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/tiendas
+        - generic [ref=e119]:
+          - paragraph [ref=e120]:
+            - link "Su cuenta" [ref=e121] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+          - list [ref=e122]:
+            - listitem [ref=e123]:
+              - link "Seguimiento del pedido" [ref=e124] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/seguimiento-pedido-invitado
+            - listitem [ref=e125]:
+              - link "Iniciar sesión" [ref=e126] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+            - listitem [ref=e127]:
+              - link "Crear una cuenta" [ref=e128] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/registro
+            - listitem [ref=e129]:
+              - link "Mis alertas" [ref=e130] [cursor=pointer]:
+                - /url: //theories-jefferson-apps-pushing.trycloudflare.com/es/module/ps_emailalerts/account
+        - generic [ref=e131]:
+          - paragraph [ref=e132]: Información de la tienda
+          - generic [ref=e133]:
+            - text: epayco
+            - text: Colombia
+            - text: "Envíenos un mensaje de correo electrónico:"
+            - link "ricardo.saldarriaga@epayco.com" [ref=e134] [cursor=pointer]:
+              - /url: mailto:ricardo.saldarriaga@epayco.com
+        - generic:
+          - paragraph
+      - paragraph [ref=e137]:
+        - link "© 2026 - Software Ecommerce desarrollado por PrestaShop™" [ref=e138] [cursor=pointer]:
+          - /url: https://www.prestashop-project.org/

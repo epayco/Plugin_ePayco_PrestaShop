@@ -1,5 +1,5 @@
 /**
-* 2007-2017 PrestaShop
+* 2007-2024 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,26 +18,86 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author    PrestaShop SA <contact@prestashop.com>
-*  @copyright 2007-2017 PrestaShop SA
+*  @copyright 2007-2024 PrestaShop SA
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *
 * Don't forget to prefix your containers with your own identifier
 * to avoid any conflicts with others containers.
 */
-// Añadir el siguiente script en tu archivo principal del módulo o como un archivo JS separado
 
-document.addEventListener('DOMContentLoaded', function() {
-    var epaycoOption = document.querySelector('.epayco-payment-option input[type="radio"]');
-    var epaycoLogo = document.querySelector('.epayco-payment-logo');
+var vObj, vFun;
 
-    if (epaycoOption) {
-        epaycoOption.addEventListener('change', function() {
-            if (this.checked) {
-                epaycoLogo.classList.remove('hidden');
-            } else {
-                epaycoLogo.classList.add('hidden');
-            }
-        });
-    }
-});
+// input mask
+// eslint-disable-next-line no-unused-vars
+function maskInput (o, f) {
+  vObj = o;
+  vFun = f;
+  setTimeout(execmascara(), 1);
+}
+
+// eslint-disable-next-line no-unused-vars
+function execmascara () {
+  vObj.value = vFun(vObj.value);
+}
+
+// eslint-disable-next-line no-unused-vars
+function mdate (v) {
+  v = v.replace(/\D/g, '');
+  v = v.replace(/(\d{2})(\d)/, '$1/$2');
+  v = v.replace(/(\d{2})(\d{2})$/, '$1$2');
+  return v;
+}
+
+// eslint-disable-next-line no-unused-vars
+function minteger (v) {
+  return v.replace(/\D/g, '');
+}
+
+// eslint-disable-next-line no-unused-vars
+function mcc (v) {
+  v = v.replace(/\D/g, '');
+  v = v.replace(/^(\d{4})(\d)/g, '$1 $2');
+  v = v.replace(/^(\d{4})\s(\d{4})(\d)/g, '$1 $2 $3');
+  v = v.replace(/^(\d{4})\s(\d{4})\s(\d{4})(\d)/g, '$1 $2 $3 $4');
+  return v;
+}
+
+// eslint-disable-next-line no-unused-vars
+function mcpf (v) {
+  v = v.replace(/\D/g, '');
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  return v;
+}
+
+// eslint-disable-next-line no-unused-vars
+function mcnpj (v) {
+  v = v.replace(/\D/g, '');
+  v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+  v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+  v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+  v = v.replace(/(\d{4})(\d)/, '$1-$2');
+  return v;
+}
+
+function waitForElement(selector) {
+  return new Promise(resolve => {
+      if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+      }
+
+      const observer = new MutationObserver(() => {
+          if (document.querySelector(selector)) {
+              observer.disconnect();
+              resolve(document.querySelector(selector));
+          }
+      });
+
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  });
+}

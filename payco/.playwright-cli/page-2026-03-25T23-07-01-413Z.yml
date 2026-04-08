@@ -1,0 +1,330 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - generic:
+          - link "Contacte con nosotros" [ref=e10] [cursor=pointer]:
+            - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/contactenos
+          - generic [ref=e11]:
+            - button "Selector desplegable de idioma" [ref=e15]:
+              - text: Español
+              - generic [ref=e16] [cursor=pointer]: 
+            - link " Iniciar sesión" [ref=e19] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/iniciar-sesion?back=https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2Fes%2Fart%2F3-the-best-is-yet-to-come-framed-poster.html
+              - generic [ref=e20]: 
+              - text: Iniciar sesión
+            - generic [ref=e23]:
+              - generic [ref=e24]: shopping_cart
+              - text: Carrito (0)
+    - generic [ref=e27]:
+      - link "epayco" [ref=e29] [cursor=pointer]:
+        - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/
+        - img "epayco" [ref=e30]
+      - generic [ref=e31]:
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - link "Clothes" [ref=e35] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/3-clothes
+          - listitem [ref=e36]:
+            - link "Accesorios" [ref=e37] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/6-accessories
+          - listitem [ref=e38]:
+            - link "Art" [ref=e39] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/9-art
+        - generic [ref=e41]:
+          - generic [ref=e42]: search
+          - textbox "Buscar" [ref=e43]:
+            - /placeholder: Búsqueda en catálogo
+  - generic [ref=e44]:
+    - complementary
+    - generic [ref=e45]:
+      - navigation [ref=e46]:
+        - list [ref=e47]:
+          - listitem [ref=e48]:
+            - link "Inicio" [ref=e49] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/
+            - text: /
+          - listitem [ref=e50]:
+            - link "Art" [ref=e51] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/9-art
+            - text: /
+          - listitem [ref=e52]: The best is yet to come' Framed poster
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - generic [ref=e58]:
+            - list:
+              - listitem [ref=e59]: Nuevo
+            - generic [ref=e60]:
+              - generic [ref=e61]:
+                - img "The best is yet to come' Framed poster" [ref=e63]
+                - generic [ref=e65] [cursor=pointer]: search
+              - list [ref=e67]:
+                - listitem [ref=e68]:
+                  - img "The best is yet to come' Framed poster" [ref=e70] [cursor=pointer]
+          - generic [ref=e71]:
+            - heading "The best is yet to come' Framed poster" [level=1] [ref=e72]
+            - generic [ref=e73]:
+              - generic [ref=e75]: 34,51 $
+              - generic [ref=e76]: Impuestos incluidos
+            - generic [ref=e77]:
+              - paragraph [ref=e79]: Printed on rigid matt paper and smooth surface.
+              - generic [ref=e81]:
+                - generic [ref=e83]:
+                  - generic [ref=e84]: "Dimension: 40x60cm"
+                  - combobox "Dimension" [ref=e85]:
+                    - option "40x60cm" [selected]
+                    - option "60x90cm"
+                    - option "80x120cm"
+                - generic [ref=e86]:
+                  - generic [ref=e87]: Cantidad
+                  - generic [ref=e88]:
+                    - generic [ref=e90]:
+                      - spinbutton "Cantidad" [ref=e91]: "1"
+                      - generic [ref=e92]:
+                        - button "" [ref=e93] [cursor=pointer]:
+                          - generic [ref=e94]: 
+                        - button "" [ref=e95] [cursor=pointer]:
+                          - generic [ref=e96]: 
+                    - button " Añadir al carrito" [ref=e98] [cursor=pointer]:
+                      - generic [ref=e99]: 
+                      - text: Añadir al carrito
+                    - button "favorite_border" [ref=e100] [cursor=pointer]:
+                      - generic [ref=e101]: favorite_border
+                  - paragraph
+                - generic [ref=e103]:
+                  - generic [ref=e104]: Compartir
+                  - list [ref=e105]:
+                    - listitem [ref=e106] [cursor=pointer]:
+                      - link "Compartir" [ref=e107]:
+                        - /url: https://www.facebook.com/sharer.php?u=https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2Fes%2Fart%2F3-the-best-is-yet-to-come-framed-poster.html
+                    - listitem [ref=e108] [cursor=pointer]:
+                      - link "Tuitear" [ref=e109]:
+                        - /url: https://twitter.com/intent/tweet?text=The+best+is+yet+to+come%5C%27+Framed+poster https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2Fes%2Fart%2F3-the-best-is-yet-to-come-framed-poster.html
+                    - listitem [ref=e110] [cursor=pointer]:
+                      - link "Pinterest" [ref=e111]:
+                        - /url: https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2Fes%2Fart%2F3-the-best-is-yet-to-come-framed-poster.html/&media=https%3A%2F%2Ftheories-jefferson-apps-pushing.trycloudflare.com%2F3%2Fthe-best-is-yet-to-come-framed-poster.jpg&description=The+best+is+yet+to+come%5C%27+Framed+poster
+              - generic [ref=e112]:
+                - generic [ref=e113]:
+                  - text: Política de seguridad
+                  - paragraph [ref=e115]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+                - generic [ref=e116]:
+                  - text: Política de entrega
+                  - paragraph [ref=e118]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+                - generic [ref=e119]:
+                  - text: Política de devolución
+                  - paragraph [ref=e121]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+              - generic [ref=e122]:
+                - tablist [ref=e123]:
+                  - listitem [ref=e124]:
+                    - tab "Descripción" [selected] [ref=e125] [cursor=pointer]
+                  - listitem [ref=e126]:
+                    - tab "Detalles del producto" [ref=e127] [cursor=pointer]
+                - tabpanel [ref=e129]:
+                  - paragraph [ref=e131]: The best is yet to come! Give your walls a voice with a framed poster. This aesthethic, optimistic poster will look great in your desk or in an open-space office. Painted wooden frame with passe-partout for more depth.
+        - generic [ref=e133]:
+          - generic [ref=e134]: chat
+          - text: Comentarios (0)
+        - generic [ref=e135]: No hay reseñas de clientes en este momento.
+        - text: error feedback check_circle error check_circle error
+        - generic [ref=e137]:
+          - heading "6 otros productos en la misma categoría:" [level=2] [ref=e138]
+          - generic [ref=e139]:
+            - article [ref=e141]:
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Mountain fox - Vector graphics" [ref=e144] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/12-mountain-fox-vector-graphics.html
+                    - img "Mountain fox - Vector graphics" [ref=e146]
+                  - link " Vista rápida" [ref=e148] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e149]: 
+                    - text: Vista rápida
+                - generic [ref=e150]:
+                  - heading "Mountain fox - Vector graphics" [level=2] [ref=e151]:
+                    - link "Mountain fox - Vector graphics" [ref=e152] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/12-mountain-fox-vector-graphics.html
+                  - generic [ref=e153]: 10,71 $
+                - list:
+                  - listitem [ref=e154]: Nuevo
+                - button "favorite_border" [ref=e155] [cursor=pointer]:
+                  - generic [ref=e156]: favorite_border
+            - article [ref=e158]:
+              - generic [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Pack Mug + Framed poster" [ref=e161] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/15-pack-mug-framed-poster.html
+                    - img "Pack Mug + Framed poster" [ref=e163]
+                  - link " Vista rápida" [ref=e165] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e166]: 
+                    - text: Vista rápida
+                - generic [ref=e167]:
+                  - heading "Pack Mug + Framed poster" [level=2] [ref=e168]:
+                    - link "Pack Mug + Framed poster" [ref=e169] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/home-accessories/15-pack-mug-framed-poster.html
+                  - generic [ref=e170]: 41,65 $
+                - list:
+                  - listitem [ref=e171]: Nuevo
+                  - listitem [ref=e172]: Pack
+                - button "favorite_border" [ref=e173] [cursor=pointer]:
+                  - generic [ref=e174]: favorite_border
+            - article [ref=e176]:
+              - generic [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Brown bear - Vector graphics" [ref=e179] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/13-brown-bear-vector-graphics.html
+                    - img "Brown bear - Vector graphics" [ref=e181]
+                  - link " Vista rápida" [ref=e183] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e184]: 
+                    - text: Vista rápida
+                - generic [ref=e185]:
+                  - heading "Brown bear - Vector graphics" [level=2] [ref=e186]:
+                    - link "Brown bear - Vector graphics" [ref=e187] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/13-brown-bear-vector-graphics.html
+                  - generic [ref=e188]: 10,71 $
+                - list:
+                  - listitem [ref=e189]: Nuevo
+                - button "favorite_border" [ref=e190] [cursor=pointer]:
+                  - generic [ref=e191]: favorite_border
+            - article [ref=e193]:
+              - generic [ref=e194]:
+                - generic [ref=e195]:
+                  - link "Hummingbird - Vector graphics" [ref=e196] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/14-hummingbird-vector-graphics.html
+                    - img "Hummingbird - Vector graphics" [ref=e198]
+                  - link " Vista rápida" [ref=e200] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e201]: 
+                    - text: Vista rápida
+                - generic [ref=e202]:
+                  - heading "Hummingbird - Vector graphics" [level=2] [ref=e203]:
+                    - link "Hummingbird - Vector graphics" [ref=e204] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/14-hummingbird-vector-graphics.html
+                  - generic [ref=e205]: 10,71 $
+                - list:
+                  - listitem [ref=e206]: Nuevo
+                - button "favorite_border" [ref=e207] [cursor=pointer]:
+                  - generic [ref=e208]: favorite_border
+            - article [ref=e210]:
+              - generic [ref=e211]:
+                - generic [ref=e212]:
+                  - link "The adventure begins Framed poster" [ref=e213] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/4-16-the-adventure-begins-framed-poster.html#/19-dimension-40x60cm
+                    - img "The adventure begins Framed poster" [ref=e215]
+                  - link " Vista rápida" [ref=e217] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e218]: 
+                    - text: Vista rápida
+                - generic [ref=e219]:
+                  - heading "The adventure begins Framed..." [level=2] [ref=e220]:
+                    - link "The adventure begins Framed..." [ref=e221] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/4-16-the-adventure-begins-framed-poster.html#/19-dimension-40x60cm
+                  - generic [ref=e222]: 34,51 $
+                - list:
+                  - listitem [ref=e223]: Nuevo
+                - button "favorite_border" [ref=e224] [cursor=pointer]:
+                  - generic [ref=e225]: favorite_border
+            - article [ref=e227]:
+              - generic [ref=e228]:
+                - generic [ref=e229]:
+                  - link "Today is a good day Framed poster" [ref=e230] [cursor=pointer]:
+                    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/5-19-today-is-a-good-day-framed-poster.html#/19-dimension-40x60cm
+                    - img "Today is a good day Framed poster" [ref=e232]
+                  - link " Vista rápida" [ref=e234] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e235]: 
+                    - text: Vista rápida
+                - generic [ref=e236]:
+                  - heading "Today is a good day Framed..." [level=2] [ref=e237]:
+                    - link "Today is a good day Framed..." [ref=e238] [cursor=pointer]:
+                      - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/5-19-today-is-a-good-day-framed-poster.html#/19-dimension-40x60cm
+                  - generic [ref=e239]: 34,51 $
+                - list:
+                  - listitem [ref=e240]: Nuevo
+                - button "favorite_border" [ref=e241] [cursor=pointer]:
+                  - generic [ref=e242]: favorite_border
+  - generic [ref=e243]:
+    - generic [ref=e245]:
+      - generic [ref=e247]:
+        - paragraph [ref=e248]: Infórmese de nuestras últimas noticias y ofertas especiales
+        - generic [ref=e251]:
+          - generic [ref=e252]:
+            - button "Suscribirse" [ref=e253] [cursor=pointer]
+            - textbox "Infórmese de nuestras últimas noticias y ofertas especiales" [ref=e255]:
+              - /placeholder: Su dirección de correo electrónico
+          - paragraph [ref=e257]: Puede darse de baja en cualquier momento. Para ello, consulte nuestra información de contacto en el aviso legal.
+      - generic [ref=e258]:
+        - list
+    - generic [ref=e260]:
+      - generic [ref=e261]:
+        - generic [ref=e263]:
+          - generic [ref=e264]:
+            - paragraph [ref=e265]: Productos
+            - list [ref=e266]:
+              - listitem [ref=e267]:
+                - link "Ofertas" [ref=e268] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/productos-rebajados
+              - listitem [ref=e269]:
+                - link "Novedades" [ref=e270] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/novedades
+              - listitem [ref=e271]:
+                - link "Los más vendidos" [ref=e272] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mas-vendidos
+          - generic [ref=e273]:
+            - paragraph [ref=e274]: Nuestra empresa
+            - list [ref=e275]:
+              - listitem [ref=e276]:
+                - link "Envío" [ref=e277] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/1-entrega
+              - listitem [ref=e278]:
+                - link "Aviso legal" [ref=e279] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/2-aviso-legal
+              - listitem [ref=e280]:
+                - link "Términos y condiciones" [ref=e281] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+              - listitem [ref=e282]:
+                - link "Sobre nosotros" [ref=e283] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/4-sobre-nosotros
+              - listitem [ref=e284]:
+                - link "Pago seguro" [ref=e285] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/content/5-pago-seguro
+              - listitem [ref=e286]:
+                - link "Contacte con nosotros" [ref=e287] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/contactenos
+              - listitem [ref=e288]:
+                - link "Mapa del sitio" [ref=e289] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mapa del sitio
+              - listitem [ref=e290]:
+                - link "Tiendas" [ref=e291] [cursor=pointer]:
+                  - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/tiendas
+        - generic [ref=e292]:
+          - paragraph [ref=e293]:
+            - link "Su cuenta" [ref=e294] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+          - list [ref=e295]:
+            - listitem [ref=e296]:
+              - link "Seguimiento del pedido" [ref=e297] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/seguimiento-pedido-invitado
+            - listitem [ref=e298]:
+              - link "Iniciar sesión" [ref=e299] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/mi-cuenta
+            - listitem [ref=e300]:
+              - link "Crear una cuenta" [ref=e301] [cursor=pointer]:
+                - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/registro
+            - listitem [ref=e302]:
+              - link "Mis alertas" [ref=e303] [cursor=pointer]:
+                - /url: //theories-jefferson-apps-pushing.trycloudflare.com/es/module/ps_emailalerts/account
+        - generic [ref=e304]:
+          - paragraph [ref=e305]: Información de la tienda
+          - generic [ref=e306]:
+            - text: epayco
+            - text: Colombia
+            - text: "Envíenos un mensaje de correo electrónico:"
+            - link "ricardo.saldarriaga@epayco.com" [ref=e307] [cursor=pointer]:
+              - /url: mailto:ricardo.saldarriaga@epayco.com
+        - generic:
+          - paragraph
+      - paragraph [ref=e310]:
+        - link "© 2026 - Software Ecommerce desarrollado por PrestaShop™" [ref=e311] [cursor=pointer]:
+          - /url: https://www.prestashop-project.org/

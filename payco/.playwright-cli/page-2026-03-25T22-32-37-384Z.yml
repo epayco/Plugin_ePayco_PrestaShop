@@ -1,0 +1,878 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - navigation [ref=e2]:
+      - button [ref=e3] [cursor=pointer]
+      - link [ref=e4] [cursor=pointer]:
+        - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/index.php?controller=AdminDashboard&token=8199d3bc211b0662564fb2a47ec436df
+      - generic [ref=e5]: 8.2.4
+      - button "Acceso rápido arrow_drop_down" [ref=e8] [cursor=pointer]
+      - search [ref=e12]:
+        - generic [ref=e13]:
+          - text: search
+          - textbox "Barra de búsqueda" [ref=e14]:
+            - /placeholder: "Buscar (p. ej.: referencia de producto, nombre de cliente...)"
+          - generic:
+            - button "toda la tienda arrow_drop_down"
+            - button "search":
+              - generic [ref=e15] [cursor=pointer]: search
+      - link "bug_report" [ref=e17] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/configure/advanced/performance/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e18]: bug_report
+      - generic [ref=e19]:
+        - link "visibility Ver mi tienda" [ref=e22] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/
+          - generic [ref=e23]: visibility
+          - generic [ref=e24]: Ver mi tienda
+        - generic [ref=e26]:
+          - button "notifications_none" [ref=e27] [cursor=pointer]:
+            - generic [ref=e28]: notifications_none
+          - text:   
+        - generic [ref=e32] [cursor=pointer]: account_circle
+  - navigation [ref=e33]:
+    - generic [ref=e34] [cursor=pointer]:
+      - generic [ref=e35]: chevron_left
+      - generic [ref=e36]: chevron_left
+    - list [ref=e38]:
+      - listitem [ref=e39]:
+        - link "trending_up Inicio" [ref=e40] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/index.php?controller=AdminDashboard&token=8199d3bc211b0662564fb2a47ec436df
+          - generic [ref=e41]: trending_up
+          - generic [ref=e42]: Inicio
+      - listitem [ref=e43]: Vender
+      - listitem [ref=e44]:
+        - link "shopping_basket Pedidos keyboard_arrow_up" [ref=e45] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/orders/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e46]: shopping_basket
+          - generic [ref=e47]: Pedidos
+          - generic [ref=e48]: keyboard_arrow_up
+        - list [ref=e49]:
+          - listitem [ref=e50]:
+            - link "Pedidos" [ref=e51] [cursor=pointer]:
+              - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/orders/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - listitem [ref=e52]:
+            - link "Facturas" [ref=e53] [cursor=pointer]:
+              - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/orders/invoices/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - listitem [ref=e54]:
+            - link "Facturas por abono" [ref=e55] [cursor=pointer]:
+              - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/orders/credit-slips/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - listitem [ref=e56]:
+            - link "Albaranes de entrega" [ref=e57] [cursor=pointer]:
+              - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/orders/delivery-slips/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - listitem [ref=e58]:
+            - link "Carritos de compra" [ref=e59] [cursor=pointer]:
+              - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/index.php?controller=AdminCarts&token=537bc64a0cd385d4126fc429255f9f5a
+      - listitem [ref=e60]:
+        - link "store Catálogo" [ref=e61] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/catalog/products?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e62]: store
+          - generic [ref=e63]: Catálogo
+      - listitem [ref=e64]:
+        - link "account_circle Clientes" [ref=e65] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/customers/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e66]: account_circle
+          - generic [ref=e67]: Clientes
+      - listitem [ref=e68]:
+        - link "chat Servicio al Cliente" [ref=e69] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/index.php?controller=AdminCustomerThreads&token=2c9fb4aad847b67249565e7cc5752bb3
+          - generic [ref=e70]: chat
+          - generic [ref=e71]: Servicio al Cliente
+      - listitem [ref=e72]:
+        - link "assessment Estadísticas" [ref=e73] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/index.php?controller=AdminStats&token=d0100bf0f73cab83eada30f1426d74de
+          - generic [ref=e74]: assessment
+          - generic [ref=e75]: Estadísticas
+      - listitem [ref=e76]: Personalizar
+      - listitem [ref=e77]:
+        - link "extension Módulos" [ref=e78] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/improve/modules/manage?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e79]: extension
+          - generic [ref=e80]: Módulos
+      - listitem [ref=e81]:
+        - link "desktop_mac Diseño" [ref=e82] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/improve/design/themes/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e83]: desktop_mac
+          - generic [ref=e84]: Diseño
+      - listitem [ref=e85]:
+        - link "local_shipping Transporte" [ref=e86] [cursor=pointer]:
+          - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/index.php?controller=AdminCarriers&token=41ea8ec8d01dec7cc14e4ff7b9eeeeae
+          - generic [ref=e87]: local_shipping
+          - generic [ref=e88]: Transporte
+      - listitem [ref=e89]:
+        - link "payment Pago" [ref=e90] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/improve/payment/payment_methods?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e91]: payment
+          - generic [ref=e92]: Pago
+      - listitem [ref=e93]:
+        - link "language Internacional" [ref=e94] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/improve/international/localization/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e95]: language
+          - generic [ref=e96]: Internacional
+      - listitem [ref=e97]: Configurar
+      - listitem [ref=e98]:
+        - link "settings Parámetros de la tienda" [ref=e99] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/configure/shop/preferences/preferences?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e100]: settings
+          - generic [ref=e101]: Parámetros de la tienda
+      - listitem [ref=e102]:
+        - link "settings_applications Parámetros Avanzados" [ref=e103] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/configure/advanced/system-information/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e104]: settings_applications
+          - generic [ref=e105]: Parámetros Avanzados
+      - listitem [ref=e106]: Community
+      - listitem [ref=e107]:
+        - link "groups Wall of Fame" [ref=e108] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/modules/ps_distributionapiclient/top-contributors?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e109]: groups
+          - generic [ref=e110]: Wall of Fame
+  - generic [ref=e114]:
+    - navigation "Breadcrumb" [ref=e115]:
+      - list [ref=e116]:
+        - listitem [ref=e117]: Pedidos
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - heading "#7 HZIFVHMQO" [level=1] [ref=e120]:
+          - strong [ref=e121]: "#7"
+          - strong [ref=e122]: HZIFVHMQO
+        - paragraph [ref=e123]: de Ricardo Saldarriaga
+        - generic [ref=e124]: 95.200,00 $
+        - paragraph [ref=e125]: 25/03/2026 en 17:14:44
+      - link "Ayuda" [ref=e128] [cursor=pointer]:
+        - /url: "#"
+  - generic [ref=e130]:
+    - text: 
+    - generic [ref=e131]:
+      - generic [ref=e133]:
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - combobox [ref=e137] [cursor=pointer]
+            - combobox "Pago aceptado" [ref=e140]:
+              - textbox "Pago aceptado" [ref=e141]
+              - text: expand_more
+          - button "Actualizar el estado" [disabled] [ref=e142]
+        - link "receipt Ver factura" [ref=e145] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/orders/7/generate-invoice-pdf?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e146]: receipt
+          - text: Ver factura
+        - button "Imprimir pedido" [ref=e149] [cursor=pointer]:
+          - generic [ref=e150]: print
+          - text: Imprimir pedido
+        - button "swap_horiz Reembolso parcial" [ref=e151] [cursor=pointer]:
+          - generic [ref=e152]: swap_horiz
+          - text: Reembolso parcial
+        - generic [ref=e153]:
+          - button "arrow_back" [ref=e155] [cursor=pointer]:
+            - generic [ref=e156]: arrow_back
+          - generic [ref=e157]:
+            - button "arrow_forward":
+              - generic: arrow_forward
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - heading "Cliente" [level=3] [ref=e162]
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - generic [ref=e165]:
+                  - 'heading "account_box Ricardo Saldarriaga #3" [level=2] [ref=e167]':
+                    - generic [ref=e168]: account_box
+                    - text: Ricardo Saldarriaga
+                    - strong [ref=e169]: "#3"
+                  - link "Ver todos los detalles" [ref=e171] [cursor=pointer]:
+                    - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/customers/3/view?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+                - generic [ref=e173]: Invitado
+              - generic [ref=e174]:
+                - generic [ref=e175]:
+                  - paragraph [ref=e176]:
+                    - strong [ref=e177]: "Email:"
+                  - paragraph [ref=e178]:
+                    - link "ricardo.saldarriaga@epayco.com" [ref=e179] [cursor=pointer]:
+                      - /url: mailto:ricardo.saldarriaga@epayco.com
+                - generic [ref=e180]:
+                  - paragraph [ref=e181]:
+                    - strong [ref=e182]: "Pedidos realizados validados:"
+                  - paragraph [ref=e183]:
+                    - generic [ref=e184]: "1"
+              - generic [ref=e186]:
+                - generic [ref=e187]:
+                  - generic [ref=e188]:
+                    - strong [ref=e189]: Dirección de envío
+                    - link "more_vert" [ref=e190] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e191]: more_vert
+                  - paragraph [ref=e192]: Ricardo Saldarriaga
+                  - paragraph [ref=e193]: "1214723219"
+                  - paragraph [ref=e194]: "550042"
+                  - paragraph [ref=e195]: "calle 109 # 67-112"
+                  - paragraph [ref=e196]: calle 121 12 ccxaa
+                  - paragraph [ref=e197]: 550042 medellin
+                  - paragraph [ref=e198]: Colombia
+                  - paragraph [ref=e199]: "3198754100"
+                - generic [ref=e200]:
+                  - generic [ref=e201]:
+                    - strong [ref=e202]: Dirección de facturación
+                    - link "more_vert" [ref=e203] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e204]: more_vert
+                  - paragraph [ref=e205]: Ricardo Saldarriaga
+                  - paragraph [ref=e206]: "1214723219"
+                  - paragraph [ref=e207]: "550042"
+                  - paragraph [ref=e208]: "calle 109 # 67-112"
+                  - paragraph [ref=e209]: calle 121 12 ccxaa
+                  - paragraph [ref=e210]: 550042 medellin
+                  - paragraph [ref=e211]: Colombia
+                  - paragraph [ref=e212]: "3198754100"
+              - generic [ref=e214]:
+                - heading "Nota Privada" [level=3] [ref=e216]
+                - link "add" [ref=e218] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e219]: add
+          - generic [ref=e220]:
+            - heading "Mensajes (0)" [level=3] [ref=e224]
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - generic [ref=e228]: Elige el mensaje de tu pedido
+                - combobox "order_message_order_message" [ref=e230]:
+                  - option [selected]
+                  - option "Retraso"
+              - link "Configurar mensajes predefinidos arrow_right_alt" [ref=e233] [cursor=pointer]:
+                - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/customer-service/order-messages/?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+                - text: Configurar mensajes predefinidos
+                - generic [ref=e234]: arrow_right_alt
+              - generic [ref=e239]: ¿Mostrar al cliente?
+              - generic [ref=e240]:
+                - generic [ref=e241]:
+                  - generic [ref=e242]: "*"
+                  - text: Mensaje
+                - generic [ref=e244]:
+                  - textbox "* Mensaje" [ref=e245]
+                  - generic [ref=e247]: "1200"
+              - button "Enviar mensaje" [ref=e249] [cursor=pointer]
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - heading "Productos (1)" [level=3] [ref=e254]
+            - generic [ref=e256]:
+              - table [ref=e257]:
+                - rowgroup [ref=e258]:
+                  - row "Producto Precio unitario Impuestos incluidos Cantidad Disponible Total Impuestos incluidos Factura Acciones" [ref=e259]:
+                    - columnheader "Producto" [ref=e260]:
+                      - paragraph [ref=e261]: Producto
+                    - columnheader [ref=e262]
+                    - columnheader "Precio unitario Impuestos incluidos" [ref=e263]:
+                      - paragraph [ref=e264]: Precio unitario
+                      - text: Impuestos incluidos
+                    - columnheader "Cantidad" [ref=e265]:
+                      - paragraph [ref=e266]: Cantidad
+                    - columnheader "Disponible" [ref=e267]:
+                      - paragraph [ref=e268]: Disponible
+                    - columnheader "Total Impuestos incluidos" [ref=e269]:
+                      - paragraph [ref=e270]: Total
+                      - text: Impuestos incluidos
+                    - columnheader "Factura" [ref=e271]:
+                      - paragraph [ref=e272]: Factura
+                    - columnheader "Acciones" [ref=e273]:
+                      - paragraph [ref=e274]: Acciones
+                - rowgroup [ref=e275]:
+                  - 'row "Hummingbird printed sweater (Tamaño: S) Hummingbird printed sweater (Tamaño: S) Número de referencia: demo_3 Referencia del proveedor: demo_3_62 95.200,00 $ 1 1198 95.200,00 $ #FA000001 edit delete" [ref=e276]':
+                    - 'cell "Hummingbird printed sweater (Tamaño: S)" [ref=e277]':
+                      - 'img "Hummingbird printed sweater (Tamaño: S)" [ref=e278]'
+                    - 'cell "Hummingbird printed sweater (Tamaño: S) Número de referencia: demo_3 Referencia del proveedor: demo_3_62" [ref=e279]':
+                      - 'link "Hummingbird printed sweater (Tamaño: S) Número de referencia: demo_3 Referencia del proveedor: demo_3_62" [ref=e280] [cursor=pointer]':
+                        - /url: /admin669tjuwwmfzwcepmdzl/index.php/sell/catalog/products/2?_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+                        - paragraph [ref=e281]: "Hummingbird printed sweater (Tamaño: S)"
+                        - paragraph [ref=e282]: "Número de referencia: demo_3"
+                        - paragraph [ref=e283]: "Referencia del proveedor: demo_3_62"
+                    - cell "95.200,00 $" [ref=e284]
+                    - cell "1" [ref=e285]
+                    - cell "1198" [ref=e286]
+                    - cell "95.200,00 $" [ref=e287]
+                    - cell "#FA000001" [ref=e288]
+                    - cell "edit delete" [ref=e289]:
+                      - button "edit" [ref=e290] [cursor=pointer]:
+                        - generic [ref=e291]: edit
+                      - button "delete" [ref=e292] [cursor=pointer]:
+                        - generic [ref=e293]: delete
+              - generic [ref=e294]:
+                - generic [ref=e296]:
+                  - generic [ref=e297]: "Artículos por página:"
+                  - combobox [ref=e298]:
+                    - option "8" [selected]
+                    - option "20"
+                    - option "50"
+                    - option "100"
+                - generic [ref=e299]:
+                  - button "add_circle_outline Añadir un producto" [ref=e300] [cursor=pointer]:
+                    - generic [ref=e301]: add_circle_outline
+                    - text: Añadir un producto
+                  - button "confirmation_number Añadir un descuento" [ref=e302] [cursor=pointer]:
+                    - generic [ref=e303]: confirmation_number
+                    - text: Añadir un descuento
+              - generic [ref=e305]:
+                - generic [ref=e306]:
+                  - paragraph [ref=e307]:
+                    - strong [ref=e308]: Productos
+                  - strong [ref=e309]: 95.200,00 $
+                - generic [ref=e310]:
+                  - paragraph [ref=e311]:
+                    - strong [ref=e312]: Total
+                  - generic [ref=e313]: 95.200,00 $
+              - paragraph [ref=e314]:
+                - generic [ref=e315]:
+                  - text: "Para este grupo de clientes, los precios se muestran con:"
+                  - strong [ref=e316]: Impuestos incluidos
+                  - text: .
+                  - strong [ref=e317]: Las devoluciones de mercancía están desactivadas
+          - generic [ref=e318]:
+            - tablist [ref=e319]:
+              - listitem [ref=e320]:
+                - tab "history Estado (2)" [expanded] [ref=e321] [cursor=pointer]:
+                  - generic [ref=e322]: history
+                  - text: Estado (2)
+              - listitem [ref=e323]:
+                - tab "note Documentos (1)" [expanded] [ref=e324] [cursor=pointer]:
+                  - generic [ref=e325]: note
+                  - text: Documentos (1)
+              - listitem [ref=e326]:
+                - tab "local_shipping Transportistas (1)" [expanded] [ref=e327] [cursor=pointer]:
+                  - generic [ref=e328]: local_shipping
+                  - text: Transportistas (1)
+            - tabpanel "history Estado (2)" [ref=e330]:
+              - generic [ref=e332]:
+                - table [ref=e333]:
+                  - rowgroup [ref=e334]:
+                    - row "Pago aceptado 25/03/2026 17:14:48 Reenviar email" [ref=e335]:
+                      - cell "Pago aceptado" [ref=e336]:
+                        - generic [ref=e337]: Pago aceptado
+                      - cell [ref=e338]
+                      - cell "25/03/2026 17:14:48" [ref=e339]
+                      - cell "Reenviar email" [ref=e340]:
+                        - button "Reenviar email" [ref=e342] [cursor=pointer]
+                    - row "ePayco Esperando Pago 25/03/2026 17:14:44" [ref=e343]:
+                      - cell "ePayco Esperando Pago" [ref=e344]:
+                        - generic [ref=e345]: ePayco Esperando Pago
+                      - cell [ref=e346]
+                      - cell "25/03/2026 17:14:44" [ref=e347]
+                      - cell [ref=e348]
+                - generic [ref=e351]:
+                  - combobox [ref=e352]
+                  - combobox "Pago aceptado" [ref=e355]:
+                    - textbox "Pago aceptado" [ref=e356]
+                    - text: expand_more
+                  - button "Actualizar el estado" [ref=e357] [cursor=pointer]
+                - generic [ref=e359]:
+                  - heading "Nota del pedido" [level=3] [ref=e361]
+                  - link "add" [ref=e363] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e364]: add
+          - generic [ref=e365]:
+            - heading "Pago (1)" [level=3] [ref=e367]
+            - table [ref=e371]:
+              - rowgroup [ref=e372]:
+                - row "Fecha Método de pago ID de Transacción Importe Factura Empleado" [ref=e373]:
+                  - columnheader "Fecha" [ref=e374]
+                  - columnheader "Método de pago" [ref=e375]
+                  - columnheader "ID de Transacción" [ref=e376]
+                  - columnheader "Importe" [ref=e377]
+                  - columnheader "Factura" [ref=e378]
+                  - columnheader "Empleado" [ref=e379]
+                  - columnheader [ref=e380]
+              - rowgroup [ref=e381]:
+                - 'row "25/03/2026 17:14:48 ePayco 95.200,00 $ #FA000001 - Datos" [ref=e382]':
+                  - cell "25/03/2026 17:14:48" [ref=e383]
+                  - cell "ePayco" [ref=e384]
+                  - cell [ref=e385]
+                  - cell "95.200,00 $" [ref=e386]
+                  - cell "#FA000001" [ref=e387]
+                  - cell "-" [ref=e388]
+                  - cell "Datos" [ref=e389]:
+                    - button "Datos" [ref=e390] [cursor=pointer]
+                - 'row "date_range $ #FA000001 Añadir" [ref=e391]':
+                  - cell "date_range" [ref=e392]:
+                    - generic [ref=e393]:
+                      - textbox "order_payment_date" [ref=e394]
+                      - generic [ref=e397]: date_range
+                  - cell [ref=e398]:
+                    - combobox "order_payment_payment_method" [ref=e399]
+                  - cell [ref=e400]:
+                    - textbox "order_payment_transaction_id" [ref=e401]
+                  - cell "$" [ref=e402]:
+                    - generic [ref=e403]:
+                      - textbox [ref=e404]
+                      - generic [ref=e406]: $
+                  - cell "#FA000001" [ref=e407]:
+                    - combobox "order_payment_id_invoice" [ref=e409]:
+                      - option "#FA000001" [selected]
+                  - cell [ref=e410]
+                  - cell "Añadir" [ref=e411]:
+                    - button "Añadir" [ref=e412] [cursor=pointer]
+      - generic [ref=e417]:
+        - generic [ref=e418]:
+          - generic [ref=e419]: public
+          - text: Fuentes
+          - generic [ref=e420]: "65"
+        - list [ref=e421]:
+          - listitem [ref=e422]:
+            - text: 25/03/2026 17:12:57
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e423] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e424]:
+            - text: 25/03/2026 17:12:56
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e425] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e426]:
+            - text: 25/03/2026 17:01:10
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e427] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e428]:
+            - text: 25/03/2026 17:01:10
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e429] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e430]:
+            - text: 25/03/2026 16:57:08
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e431] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e432]:
+            - text: 25/03/2026 16:57:07
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e433] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e434]:
+            - text: 25/03/2026 16:54:22
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e435] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e436]:
+            - text: 25/03/2026 16:54:22
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e437] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e438]:
+            - text: 25/03/2026 16:53:52
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e439] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e440]:
+            - text: 25/03/2026 16:53:51
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e441] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e442]:
+            - text: 25/03/2026 16:53:14
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e443] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e444]:
+            - text: 25/03/2026 16:53:14
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e445] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e446]:
+            - text: 25/03/2026 16:52:38
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e447] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e448]:
+            - text: 25/03/2026 16:52:38
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e449] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e450]:
+            - text: 25/03/2026 16:52:13
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e451] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e452]:
+            - text: 25/03/2026 16:52:12
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e453] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e454]:
+            - text: 25/03/2026 16:48:41
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e455] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e456]:
+            - text: 25/03/2026 16:48:39
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e457] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e458]:
+            - text: 25/03/2026 16:47:38
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e459] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e460]:
+            - text: 25/03/2026 16:47:37
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e461] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e462]:
+            - text: 25/03/2026 16:45:13
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e463] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e464]:
+            - text: 25/03/2026 16:45:12
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e465] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e466]:
+            - text: 25/03/2026 16:42:39
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e467] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e468]:
+            - text: 25/03/2026 16:42:39
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e469] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e470]:
+            - text: 25/03/2026 16:40:53
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e471] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e472]:
+            - text: 25/03/2026 16:40:53
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e473] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e474]:
+            - text: 25/03/2026 16:36:39
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e475] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e476]:
+            - text: 25/03/2026 16:36:39
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e477] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e478]:
+            - text: 25/03/2026 16:36:28
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e479] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e480]:
+            - text: 25/03/2026 16:36:28
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e481] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e482]:
+            - text: 25/03/2026 16:36:25
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e483] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e484]:
+            - text: 25/03/2026 16:36:24
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e485] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e486]:
+            - text: 25/03/2026 16:35:40
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e487] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e488]:
+            - text: 25/03/2026 16:35:40
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e489] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e490]:
+            - text: 25/03/2026 16:29:22
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e491] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e492]:
+            - text: 25/03/2026 16:29:22
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e493] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e494]:
+            - text: 25/03/2026 16:24:05
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e495] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e496]:
+            - text: 25/03/2026 16:24:05
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e497] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e498]:
+            - text: 25/03/2026 16:22:11
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e499] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e500]:
+            - text: 25/03/2026 16:22:11
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e501] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e502]:
+            - text: 25/03/2026 16:20:07
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e503] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e504]:
+            - text: 25/03/2026 16:20:07
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e505] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e506]:
+            - text: 25/03/2026 16:13:54
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e507] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e508]:
+            - text: 25/03/2026 16:13:49
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e509] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e510]:
+            - text: 25/03/2026 16:05:11
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e511] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e512]:
+            - text: 25/03/2026 16:05:11
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e513] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e514]:
+            - text: 25/03/2026 16:04:59
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e515] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e516]:
+            - text: 25/03/2026 16:04:58
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e517] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e518]:
+            - text: 25/03/2026 16:03:54
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e519] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e520]:
+            - text: 25/03/2026 16:03:54
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e521] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e522]:
+            - text: 25/03/2026 15:54:55
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e523] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e524]:
+            - text: 25/03/2026 15:54:54
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e525] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e526]:
+            - text: 25/03/2026 15:53:18
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e527] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e528]:
+            - text: 25/03/2026 15:53:17
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e529] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e530]:
+            - text: 25/03/2026 15:38:33
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e531] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e532]:
+            - text: 25/03/2026 15:38:33
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e533] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e534]:
+            - text: 25/03/2026 15:38:20
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e535] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e536]:
+            - text: 25/03/2026 15:38:19
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e537] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e538]:
+            - text: 25/03/2026 15:38:12
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e539] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e540]:
+            - text: 25/03/2026 15:38:12
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e541] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e542]:
+            - text: 25/03/2026 15:38:03
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map" [ref=e543] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.css.map
+          - listitem [ref=e544]:
+            - text: 25/03/2026 15:38:03
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map" [ref=e545] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/modules/blockreassurance/views/dist/front.js.map
+          - listitem [ref=e546]:
+            - text: 25/03/2026 15:36:40
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html" [ref=e547] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html
+          - listitem [ref=e548]:
+            - text: 25/03/2026 15:35:25
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html" [ref=e549] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/es/women/2-9-brown-bear-printed-sweater.html
+          - listitem [ref=e550]:
+            - text: 25/03/2026 15:13:50
+            - text: Desde -
+            - text: A
+            - link "theories-jefferson-apps-pushing.trycloudflare.com/es/" [ref=e551] [cursor=pointer]:
+              - /url: http://theories-jefferson-apps-pushing.trycloudflare.com/es/
+      - text: expand_more
+    - navigation [ref=e552]:
+      - img "Cargando..." [ref=e553]
+  - region "Symfony Web Debug Toolbar" [ref=e554]:
+    - generic [ref=e556]:
+      - link "200 @ admin_orders_view" [ref=e558] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=request&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e559]:
+          - generic [ref=e560]: "200"
+          - text: "@ admin_orders_view"
+      - link [ref=e562] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=api_platform.data_collector.request&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - img [ref=e564]
+      - link "463 ms" [ref=e589] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=time&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e590]: 463 ms
+      - link "32.0 MiB" [ref=e592] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=time&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e593]: 32.0 MiB
+      - generic [ref=e595] [cursor=pointer]:
+        - img [ref=e596]
+        - text: "2"
+      - link "13" [ref=e599] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=form&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e600]:
+          - img [ref=e601]
+          - text: "13"
+      - link "1183" [ref=e604] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=logger&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e605]:
+          - img [ref=e606]
+          - text: "1183"
+      - link "99 in 4.51 ms" [ref=e609] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=cache&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e610]:
+          - img [ref=e611]
+          - text: "99"
+          - generic [ref=e613]: in 4.51 ms
+      - link "13" [ref=e615] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=translation&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e616]:
+          - img [ref=e617]
+          - text: "13"
+      - link "ricardo.saldarriaga@epayco.com" [ref=e620] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=security&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e621]:
+          - img [ref=e622]
+          - text: ricardo.saldarriaga@epayco.com
+      - link "99 ms" [ref=e625] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=twig&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e626]:
+          - img [ref=e627]
+          - text: 99 ms
+      - link "3 in 1.47 ms" [ref=e630] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=db&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e631]:
+          - img [ref=e632]
+          - text: "3"
+          - generic [ref=e634]: in 1.47 ms
+      - link "Hooks (3)" [ref=e636] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=ps.hooks_collector&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e637]:
+          - img [ref=e638]
+          - text: Hooks (3)
+      - link "Commands / Queries" [ref=e641] [cursor=pointer]:
+        - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=ps.commands_and_queries_collector&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+        - generic [ref=e642]:
+          - img [ref=e643]
+          - text: Commands / Queries
+      - generic "This Symfony version will no longer receive security fixes." [ref=e645]:
+        - link "8.2.4" [ref=e646] [cursor=pointer]:
+          - /url: /admin669tjuwwmfzwcepmdzl/index.php/_profiler/e9a80c?panel=config&_token=eZAlxiTK-VfUmiMvzP_Nw3S2c8_YjStk8cxZRvUtVNE
+          - generic [ref=e647]:
+            - img [ref=e649]
+            - text: 8.2.4
+      - generic "Close Toolbar" [ref=e650] [cursor=pointer]:
+        - img [ref=e651]

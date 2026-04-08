@@ -1,0 +1,95 @@
+- main [ref=e2]:
+  - navigation [ref=e4]:
+    - generic [ref=e6]:
+      - link "epayco" [ref=e8] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/
+        - img "epayco" [ref=e9]
+      - link "Contacte con nosotros" [ref=e13] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/contactenos
+  - generic [ref=e14]:
+    - complementary
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - heading " Datos Personales mode_edit Modificar" [level=1] [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: 
+          - text: Datos Personales
+          - generic [ref=e24]:
+            - generic [ref=e25]: mode_edit
+            - text: Modificar
+        - heading " Direcciones mode_edit Modificar" [level=1] [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Direcciones
+          - generic [ref=e29]:
+            - generic [ref=e30]: mode_edit
+            - text: Modificar
+        - generic [ref=e31]:
+          - heading "3 Método de envío" [level=1] [ref=e32]:
+            - generic [ref=e33]: "3"
+            - text: Método de envío
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - generic [ref=e39]:
+                - radio "Click and collect Recoger en tienda Gratis" [checked] [ref=e42] [cursor=pointer]
+                - generic [ref=e45]:
+                  - generic [ref=e49]: Click and collect
+                  - generic [ref=e51]: Recoger en tienda
+                  - generic [ref=e52]: Gratis
+              - generic [ref=e54]:
+                - generic [ref=e55]: Si desea dejarnos un comentario acerca de su pedido, por favor, escríbalo a continuación.
+                - textbox "Si desea dejarnos un comentario acerca de su pedido, por favor, escríbalo a continuación." [ref=e56]
+            - button "Continuar" [ref=e57] [cursor=pointer]
+        - text: "Warning: DOMDocument::loadHTML(): Tag test-mode-epayco invalid in Entity, line: 16 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 32 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag path invalid in Entity, line: 33 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-name-epayco invalid in Entity, line: 49 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-number invalid in Entity, line: 62 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-expiration-date invalid in Entity, line: 77 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-security-code invalid in Entity, line: 91 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-installment-epayco invalid in Entity, line: 100 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 107 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag path invalid in Entity, line: 108 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): ID ep-custom-checkout-form-container already defined in Entity, line: 112 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-document-epayco invalid in Entity, line: 129 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-address-epayco invalid in Entity, line: 142 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-email-epayco invalid in Entity, line: 155 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-cellphone-epayco invalid in Entity, line: 173 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-country-epayco invalid in Entity, line: 192 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag terms-and-conditions invalid in Entity, line: 210 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Opening and ending tag mismatch: form and div in Entity, line: 222 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - heading "4 Pago" [level=1] [ref=e59]:
+          - generic [ref=e60]: "4"
+          - text: Pago
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - paragraph [ref=e65]: 1 artículo
+              - paragraph [ref=e66]:
+                - link "mostrar detalles expand_more" [ref=e67] [cursor=pointer]:
+                  - /url: "#"
+                  - text: mostrar detalles
+                  - generic [ref=e68]: expand_more
+            - generic [ref=e69]:
+              - generic [ref=e70]:
+                - text: Subtotal
+                - generic [ref=e71]: 11.900,00 $
+              - generic [ref=e72]:
+                - text: Transporte
+                - generic [ref=e73]: Gratis
+          - generic [ref=e75]:
+            - text: Total (impuestos inc.)
+            - generic [ref=e76]: 11.900,00 $
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - text: Política de seguridad
+            - paragraph [ref=e80]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+          - generic [ref=e81]:
+            - text: Política de entrega
+            - paragraph [ref=e83]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+          - generic [ref=e84]:
+            - text: Política de devolución
+            - paragraph [ref=e86]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+  - generic [ref=e88]:
+    - link "Términos y condiciones" [ref=e90] [cursor=pointer]:
+      - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+    - text: © 2026 - Software Ecommerce desarrollado por PrestaShop™

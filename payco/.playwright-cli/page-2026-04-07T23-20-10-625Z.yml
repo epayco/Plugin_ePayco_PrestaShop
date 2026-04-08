@@ -1,0 +1,379 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - generic:
+          - link "Contacte con nosotros" [ref=e10] [cursor=pointer]:
+            - /url: https://try-apparent-deer-via.trycloudflare.com/es/contactenos
+          - generic [ref=e11]:
+            - button "Selector desplegable de idioma" [ref=e15]:
+              - text: Español
+              - generic [ref=e16] [cursor=pointer]: 
+            - link " Iniciar sesión" [ref=e19] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/iniciar-sesion?back=https%3A%2F%2Ftry-apparent-deer-via.trycloudflare.com%2Fes%2Fhome-accessories%2F19-customizable-mug.html
+              - generic [ref=e20]: 
+              - text: Iniciar sesión
+            - generic [ref=e23]:
+              - generic [ref=e24]: shopping_cart
+              - text: Carrito (0)
+    - generic [ref=e27]:
+      - link "epayco" [ref=e29] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/
+        - img "epayco" [ref=e30]
+      - generic [ref=e31]:
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - link "Clothes" [ref=e35] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/3-clothes
+          - listitem [ref=e36]:
+            - link "Accesorios" [ref=e37] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/6-accessories
+          - listitem [ref=e38]:
+            - link "Art" [ref=e39] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/9-art
+        - generic [ref=e41]:
+          - generic [ref=e42]: search
+          - textbox "Buscar" [ref=e43]:
+            - /placeholder: Búsqueda en catálogo
+  - generic [ref=e44]:
+    - complementary
+    - generic [ref=e45]:
+      - navigation [ref=e46]:
+        - list [ref=e47]:
+          - listitem [ref=e48]:
+            - link "Inicio" [ref=e49] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/
+            - text: /
+          - listitem [ref=e50]:
+            - link "Accesorios" [ref=e51] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/6-accessories
+            - text: /
+          - listitem [ref=e52]:
+            - link "Home Accessories" [ref=e53] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/8-home-accessories
+            - text: /
+          - listitem [ref=e54]: Customizable mug
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e60]:
+            - list:
+              - listitem [ref=e61]: Nuevo
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - img "Customizable mug" [ref=e65]
+                - generic [ref=e67] [cursor=pointer]: search
+              - list [ref=e69]:
+                - listitem [ref=e70]:
+                  - img "Customizable mug" [ref=e72] [cursor=pointer]
+          - generic [ref=e73]:
+            - heading "Customizable mug" [level=1] [ref=e74]
+            - generic [ref=e75]:
+              - generic [ref=e77]: 11.900,00 $
+              - generic [ref=e78]: Impuestos incluidos
+            - generic [ref=e79]:
+              - paragraph [ref=e81]: White Ceramic Mug. 325ml
+              - generic [ref=e83]:
+                - paragraph [ref=e84]: Personalización del producto
+                - text: No olvide guardar su personalización para poder añadirla al carrito
+                - generic [ref=e85]:
+                  - list [ref=e86]:
+                    - listitem [ref=e87]:
+                      - generic [ref=e88]: Type your text here
+                      - textbox "Type your text here" [ref=e89]:
+                        - /placeholder: Su mensaje aquí
+                      - generic [ref=e90]: 250 caracteres como máximo
+                      - 'heading "Su personalización: T" [level=6] [ref=e91]':
+                        - text: "Su personalización:"
+                        - generic [ref=e92]: T
+                  - button "Guardar Personalización" [ref=e94] [cursor=pointer]
+              - generic [ref=e96]:
+                - generic [ref=e97]:
+                  - generic [ref=e98]: Cantidad
+                  - generic [ref=e99]:
+                    - generic [ref=e101]:
+                      - spinbutton "Cantidad" [ref=e102]: "1"
+                      - generic [ref=e103]:
+                        - button "" [ref=e104] [cursor=pointer]:
+                          - generic [ref=e105]: 
+                        - button "" [ref=e106] [cursor=pointer]:
+                          - generic [ref=e107]: 
+                    - button " Añadir al carrito" [ref=e109] [cursor=pointer]:
+                      - generic [ref=e110]: 
+                      - text: Añadir al carrito
+                    - button "favorite_border" [ref=e111] [cursor=pointer]:
+                      - generic [ref=e112]: favorite_border
+                  - paragraph
+                - generic [ref=e114]:
+                  - generic [ref=e115]: Compartir
+                  - list [ref=e116]:
+                    - listitem [ref=e117] [cursor=pointer]:
+                      - link "Compartir" [ref=e118]:
+                        - /url: https://www.facebook.com/sharer.php?u=https%3A%2F%2Ftry-apparent-deer-via.trycloudflare.com%2Fes%2Fhome-accessories%2F19-customizable-mug.html
+                    - listitem [ref=e119] [cursor=pointer]:
+                      - link "Tuitear" [ref=e120]:
+                        - /url: https://twitter.com/intent/tweet?text=Customizable+mug https%3A%2F%2Ftry-apparent-deer-via.trycloudflare.com%2Fes%2Fhome-accessories%2F19-customizable-mug.html
+                    - listitem [ref=e121] [cursor=pointer]:
+                      - link "Pinterest" [ref=e122]:
+                        - /url: https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Ftry-apparent-deer-via.trycloudflare.com%2Fes%2Fhome-accessories%2F19-customizable-mug.html/&media=https%3A%2F%2Ftry-apparent-deer-via.trycloudflare.com%2F22%2Fcustomizable-mug.jpg&description=Customizable+mug
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - text: Política de seguridad
+                  - paragraph [ref=e126]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+                - generic [ref=e127]:
+                  - text: Política de entrega
+                  - paragraph [ref=e129]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+                - generic [ref=e130]:
+                  - text: Política de devolución
+                  - paragraph [ref=e132]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+              - generic [ref=e133]:
+                - tablist [ref=e134]:
+                  - listitem [ref=e135]:
+                    - tab "Descripción" [selected] [ref=e136] [cursor=pointer]
+                  - listitem [ref=e137]:
+                    - tab "Detalles del producto" [ref=e138] [cursor=pointer]
+                - tabpanel [ref=e140]:
+                  - paragraph [ref=e142]: "Customize your mug with the text of your choice. A mood, a message, a quote... It's up to you! Maximum number of characters: ---"
+        - generic [ref=e144]:
+          - generic [ref=e145]: chat
+          - text: Comentarios (0)
+        - generic [ref=e146]: No hay reseñas de clientes en este momento.
+        - text: error feedback check_circle error check_circle error
+        - generic [ref=e148]:
+          - heading "7 otros productos en la misma categoría:" [level=2] [ref=e149]
+          - generic [ref=e150]:
+            - article [ref=e152]:
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - link "Brown bear cushion" [ref=e155] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/10-24-brown-bear-cushion.html#/8-color-blanco
+                    - img "Brown bear cushion" [ref=e157]
+                  - generic [ref=e158]:
+                    - link " Vista rápida" [ref=e159] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e160]: 
+                      - text: Vista rápida
+                    - generic [ref=e161]:
+                      - link "Blanco" [ref=e162] [cursor=pointer]:
+                        - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/10-24-brown-bear-cushion.html#/8-color-blanco
+                      - link "Negro" [ref=e163] [cursor=pointer]:
+                        - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/10-25-brown-bear-cushion.html#/11-color-negro
+                - generic [ref=e164]:
+                  - heading "Brown bear cushion" [level=2] [ref=e165]:
+                    - link "Brown bear cushion" [ref=e166] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/10-24-brown-bear-cushion.html#/8-color-blanco
+                  - generic [ref=e167]: 22,49 $
+                - list:
+                  - listitem [ref=e168]: Nuevo
+                - button "favorite_border" [ref=e169] [cursor=pointer]:
+                  - generic [ref=e170]: favorite_border
+            - article [ref=e172]:
+              - generic [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Mountain fox cushion" [ref=e175] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/9-22-mountain-fox-cushion.html#/8-color-blanco
+                    - img "Mountain fox cushion" [ref=e177]
+                  - generic [ref=e178]:
+                    - link " Vista rápida" [ref=e179] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e180]: 
+                      - text: Vista rápida
+                    - generic [ref=e181]:
+                      - link "Blanco" [ref=e182] [cursor=pointer]:
+                        - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/9-22-mountain-fox-cushion.html#/8-color-blanco
+                      - link "Negro" [ref=e183] [cursor=pointer]:
+                        - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/9-23-mountain-fox-cushion.html#/11-color-negro
+                - generic [ref=e184]:
+                  - heading "Mountain fox cushion" [level=2] [ref=e185]:
+                    - link "Mountain fox cushion" [ref=e186] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/9-22-mountain-fox-cushion.html#/8-color-blanco
+                  - generic [ref=e187]: 22,49 $
+                - list:
+                  - listitem [ref=e188]: Nuevo
+                - button "favorite_border" [ref=e189] [cursor=pointer]:
+                  - generic [ref=e190]: favorite_border
+            - article [ref=e192]:
+              - generic [ref=e193]:
+                - generic [ref=e194]:
+                  - link "Mug Today is a good day" [ref=e195] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/8-mug-today-is-a-good-day.html
+                    - img "Mug Today is a good day" [ref=e197]
+                  - link " Vista rápida" [ref=e199] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e200]: 
+                    - text: Vista rápida
+                - generic [ref=e201]:
+                  - heading "Mug Today is a good day" [level=2] [ref=e202]:
+                    - link "Mug Today is a good day" [ref=e203] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/8-mug-today-is-a-good-day.html
+                  - generic [ref=e204]: 14,16 $
+                - list:
+                  - listitem [ref=e205]: Nuevo
+                - button "favorite_border" [ref=e206] [cursor=pointer]:
+                  - generic [ref=e207]: favorite_border
+            - article [ref=e209]:
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - link "Hummingbird cushion" [ref=e212] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/11-26-hummingbird-cushion.html#/8-color-blanco
+                    - img "Hummingbird cushion" [ref=e214]
+                  - generic [ref=e215]:
+                    - link " Vista rápida" [ref=e216] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e217]: 
+                      - text: Vista rápida
+                    - generic [ref=e218]:
+                      - link "Blanco" [ref=e219] [cursor=pointer]:
+                        - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/11-26-hummingbird-cushion.html#/8-color-blanco
+                      - link "Negro" [ref=e220] [cursor=pointer]:
+                        - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/11-27-hummingbird-cushion.html#/11-color-negro
+                - generic [ref=e221]:
+                  - heading "Hummingbird cushion" [level=2] [ref=e222]:
+                    - link "Hummingbird cushion" [ref=e223] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/11-26-hummingbird-cushion.html#/8-color-blanco
+                  - generic [ref=e224]: 22,49 $
+                - list:
+                  - listitem [ref=e225]: Nuevo
+                - button "favorite_border" [ref=e226] [cursor=pointer]:
+                  - generic [ref=e227]: favorite_border
+            - article [ref=e229]:
+              - generic [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Mug The adventure begins" [ref=e232] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/7-mug-the-adventure-begins.html
+                    - img "Mug The adventure begins" [ref=e234]
+                  - link " Vista rápida" [ref=e236] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e237]: 
+                    - text: Vista rápida
+                - generic [ref=e238]:
+                  - heading "Mug The adventure begins" [level=2] [ref=e239]:
+                    - link "Mug The adventure begins" [ref=e240] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/7-mug-the-adventure-begins.html
+                  - generic [ref=e241]: 14,16 $
+                - list:
+                  - listitem [ref=e242]: Nuevo
+                - button "favorite_border" [ref=e243] [cursor=pointer]:
+                  - generic [ref=e244]: favorite_border
+            - article [ref=e246]:
+              - generic [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Pack Mug + Framed poster" [ref=e249] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/15-pack-mug-framed-poster.html
+                    - img "Pack Mug + Framed poster" [ref=e251]
+                  - link " Vista rápida" [ref=e253] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e254]: 
+                    - text: Vista rápida
+                - generic [ref=e255]:
+                  - heading "Pack Mug + Framed poster" [level=2] [ref=e256]:
+                    - link "Pack Mug + Framed poster" [ref=e257] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/15-pack-mug-framed-poster.html
+                  - generic [ref=e258]: 41,65 $
+                - list:
+                  - listitem [ref=e259]: Nuevo
+                  - listitem [ref=e260]: Pack
+                - button "favorite_border" [ref=e261] [cursor=pointer]:
+                  - generic [ref=e262]: favorite_border
+            - article [ref=e264]:
+              - generic [ref=e265]:
+                - generic [ref=e266]:
+                  - link "Mug The best is yet to come" [ref=e267] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/6-mug-the-best-is-yet-to-come.html
+                    - img "Mug The best is yet to come" [ref=e269]
+                  - link " Vista rápida" [ref=e271] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e272]: 
+                    - text: Vista rápida
+                - generic [ref=e273]:
+                  - heading "Mug The best is yet to come" [level=2] [ref=e274]:
+                    - link "Mug The best is yet to come" [ref=e275] [cursor=pointer]:
+                      - /url: https://try-apparent-deer-via.trycloudflare.com/es/home-accessories/6-mug-the-best-is-yet-to-come.html
+                  - generic [ref=e276]: 14,16 $
+                - list:
+                  - listitem [ref=e277]: Nuevo
+                - button "favorite_border" [ref=e278] [cursor=pointer]:
+                  - generic [ref=e279]: favorite_border
+  - generic [ref=e280]:
+    - generic [ref=e282]:
+      - generic [ref=e284]:
+        - paragraph [ref=e285]: Infórmese de nuestras últimas noticias y ofertas especiales
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - button "Suscribirse" [ref=e290] [cursor=pointer]
+            - textbox "Infórmese de nuestras últimas noticias y ofertas especiales" [ref=e292]:
+              - /placeholder: Su dirección de correo electrónico
+          - paragraph [ref=e294]: Puede darse de baja en cualquier momento. Para ello, consulte nuestra información de contacto en el aviso legal.
+      - generic [ref=e295]:
+        - list
+    - generic [ref=e297]:
+      - generic [ref=e298]:
+        - generic [ref=e300]:
+          - generic [ref=e301]:
+            - paragraph [ref=e302]: Productos
+            - list [ref=e303]:
+              - listitem [ref=e304]:
+                - link "Ofertas" [ref=e305] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/productos-rebajados
+              - listitem [ref=e306]:
+                - link "Novedades" [ref=e307] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/novedades
+              - listitem [ref=e308]:
+                - link "Los más vendidos" [ref=e309] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/mas-vendidos
+          - generic [ref=e310]:
+            - paragraph [ref=e311]: Nuestra empresa
+            - list [ref=e312]:
+              - listitem [ref=e313]:
+                - link "Envío" [ref=e314] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/1-entrega
+              - listitem [ref=e315]:
+                - link "Aviso legal" [ref=e316] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/2-aviso-legal
+              - listitem [ref=e317]:
+                - link "Términos y condiciones" [ref=e318] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+              - listitem [ref=e319]:
+                - link "Sobre nosotros" [ref=e320] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/4-sobre-nosotros
+              - listitem [ref=e321]:
+                - link "Pago seguro" [ref=e322] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/5-pago-seguro
+              - listitem [ref=e323]:
+                - link "Contacte con nosotros" [ref=e324] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/contactenos
+              - listitem [ref=e325]:
+                - link "Mapa del sitio" [ref=e326] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/mapa del sitio
+              - listitem [ref=e327]:
+                - link "Tiendas" [ref=e328] [cursor=pointer]:
+                  - /url: https://try-apparent-deer-via.trycloudflare.com/es/tiendas
+        - generic [ref=e329]:
+          - paragraph [ref=e330]:
+            - link "Su cuenta" [ref=e331] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/es/mi-cuenta
+          - list [ref=e332]:
+            - listitem [ref=e333]:
+              - link "Seguimiento del pedido" [ref=e334] [cursor=pointer]:
+                - /url: https://try-apparent-deer-via.trycloudflare.com/es/seguimiento-pedido-invitado
+            - listitem [ref=e335]:
+              - link "Iniciar sesión" [ref=e336] [cursor=pointer]:
+                - /url: https://try-apparent-deer-via.trycloudflare.com/es/mi-cuenta
+            - listitem [ref=e337]:
+              - link "Crear una cuenta" [ref=e338] [cursor=pointer]:
+                - /url: https://try-apparent-deer-via.trycloudflare.com/es/registro
+            - listitem [ref=e339]:
+              - link "Mis alertas" [ref=e340] [cursor=pointer]:
+                - /url: //try-apparent-deer-via.trycloudflare.com/es/module/ps_emailalerts/account
+        - generic [ref=e341]:
+          - paragraph [ref=e342]: Información de la tienda
+          - generic [ref=e343]:
+            - text: epayco
+            - text: Colombia
+            - text: "Envíenos un mensaje de correo electrónico:"
+            - link "ricardo.saldarriaga@epayco.com" [ref=e344] [cursor=pointer]:
+              - /url: mailto:ricardo.saldarriaga@epayco.com
+        - generic:
+          - paragraph
+      - paragraph [ref=e347]:
+        - link "© 2026 - Software Ecommerce desarrollado por PrestaShop™" [ref=e348] [cursor=pointer]:
+          - /url: https://www.prestashop-project.org/

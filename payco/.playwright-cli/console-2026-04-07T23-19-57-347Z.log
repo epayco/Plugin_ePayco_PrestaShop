@@ -1,0 +1,123 @@
+[    1522ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-medium_default/customizable-mug.jpg:0
+[    1530ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-large_default/customizable-mug.jpg:0
+[    1635ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[    1637ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[    1642ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[    1654ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[    1842ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-small_default/customizable-mug.jpg:0
+[    1871ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/7-home_default/mug-the-adventure-begins.jpg:0
+[    1874ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/13-home_default/hummingbird-cushion.jpg:0
+[    1916ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/23-home_default/pack-mug-framed-poster.jpg:0
+[    1994ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/11-home_default/brown-bear-cushion.jpg:0
+[    1994ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/6-home_default/mug-the-best-is-yet-to-come.jpg:0
+[    2004ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[    2023ms] [WARNING] jQuery.Deferred exception: $(...).rating is not a function TypeError: $(...).rating is not a function
+    at initCommentModal (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:78:51)
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:143:3)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599) undefined @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:36
+[    2024ms] [WARNING] jQuery.Deferred exception: $(...).rating is not a function TypeError: $(...).rating is not a function
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/list-comments.js:42:21)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599) undefined @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:36
+[    2031ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/9-home_default/mountain-fox-cushion.jpg:0
+[    2036ms] TypeError: $(...).rating is not a function
+    at initCommentModal (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:78:51)
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:143:3)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599)
+[    2036ms] TypeError: $(...).rating is not a function
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/list-comments.js:42:21)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599)
+[    2155ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/8-home_default/mug-today-is-a-good-day.jpg:0
+[    3149ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-home_default/customizable-mug.jpg:0
+[   12205ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   12206ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   12208ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   12219ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   12268ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   12272ms] [WARNING] jQuery.Deferred exception: $(...).rating is not a function TypeError: $(...).rating is not a function
+    at initCommentModal (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:78:51)
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:143:3)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599) undefined @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:36
+[   12273ms] [WARNING] jQuery.Deferred exception: $(...).rating is not a function TypeError: $(...).rating is not a function
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/list-comments.js:42:21)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599) undefined @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:36
+[   12280ms] TypeError: $(...).rating is not a function
+    at initCommentModal (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:78:51)
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/post-comment.js:143:3)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599)
+[   12280ms] TypeError: $(...).rating is not a function
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/productcomments/views/js/list-comments.js:42:21)
+    at u (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30297)
+    at l (https://try-apparent-deer-via.trycloudflare.com/themes/core.js:37:30599)
+[   12466ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-medium_default/customizable-mug.jpg:0
+[   12471ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-home_default/customizable-mug.jpg:0
+[   12478ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-large_default/customizable-mug.jpg:0
+[   12498ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-small_default/customizable-mug.jpg:0
+[   12539ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/9-home_default/mountain-fox-cushion.jpg:0
+[   12592ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/11-home_default/brown-bear-cushion.jpg:0
+[   12864ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/23-home_default/pack-mug-framed-poster.jpg:0
+[   12894ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/8-home_default/mug-today-is-a-good-day.jpg:0
+[   12916ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/13-home_default/hummingbird-cushion.jpg:0
+[   12935ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/7-home_default/mug-the-adventure-begins.jpg:0
+[   12945ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/6-home_default/mug-the-best-is-yet-to-come.jpg:0
+[   15316ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-home_default/customizable-mug.jpg:0
+[   18862ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   18868ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   18870ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   18877ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   18902ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   19233ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://try-apparent-deer-via.trycloudflare.com/22-cart_default/customizable-mug.jpg:0
+[   21480ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   21491ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   21493ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   21500ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   21515ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   21518ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   38077ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   38083ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   38085ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   38093ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   38108ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   38112ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   73371ms] [WARNING] JQMIGRATE: jQuery.expr[':'] is deprecated; use jQuery.expr.pseudos @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   73372ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   73383ms] [WARNING] JQMIGRATE: jQuery.fn.delegate() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   73403ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9
+[   73478ms] TypeError: Cannot read properties of undefined (reading 'autocomplete')
+    at HTMLDocument.<anonymous> (https://try-apparent-deer-via.trycloudflare.com/modules/ps_searchbar/ps_searchbar.js:8:59)
+    at j (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27136)
+    at Object.fireWith [as resolveWith] (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:27949)
+    at n.ready (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:29783)
+    at HTMLDocument.K (https://try-apparent-deer-via.trycloudflare.com/modules/payco/views/js/jquery-1.11.0.min.js:30:30128)
+[   73432ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/themes/core.js:9

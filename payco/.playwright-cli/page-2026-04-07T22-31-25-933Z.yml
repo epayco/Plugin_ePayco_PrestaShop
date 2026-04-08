@@ -1,0 +1,427 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - navigation [ref=e2]:
+      - button [ref=e3] [cursor=pointer]
+      - link [ref=e4] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+      - generic [ref=e5]: 8.2.4
+      - button "Acceso rápido arrow_drop_down" [ref=e8] [cursor=pointer]
+      - search [ref=e12]:
+        - generic [ref=e13]:
+          - text: search
+          - textbox "Barra de búsqueda" [ref=e14]:
+            - /placeholder: "Buscar (p. ej.: referencia de producto, nombre de cliente...)"
+          - generic:
+            - button "toda la tienda arrow_drop_down"
+            - button "search":
+              - generic [ref=e15] [cursor=pointer]: search
+      - link "bug_report" [ref=e17] [cursor=pointer]:
+        - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/performance/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+        - generic [ref=e18]: bug_report
+      - generic [ref=e19]:
+        - link "visibility Ver mi tienda" [ref=e22] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/
+          - generic [ref=e23]: visibility
+          - generic [ref=e24]: Ver mi tienda
+        - generic [ref=e26]:
+          - button "notifications_none" [ref=e27] [cursor=pointer]:
+            - generic [ref=e28]: notifications_none
+          - text:   
+        - generic [ref=e32] [cursor=pointer]: account_circle
+  - navigation [ref=e33]:
+    - generic [ref=e34] [cursor=pointer]:
+      - generic [ref=e35]: chevron_left
+      - generic [ref=e36]: chevron_left
+    - list [ref=e38]:
+      - listitem [ref=e39]:
+        - link "trending_up Inicio" [ref=e40] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminDashboard&token=8d7cba22d5c71719d3f1c9f3f84b7eb7
+          - generic [ref=e41]: trending_up
+          - generic [ref=e42]: Inicio
+      - listitem [ref=e43]: Vender
+      - listitem [ref=e44]:
+        - link "shopping_basket Pedidos keyboard_arrow_up" [ref=e45] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e46]: shopping_basket
+          - generic [ref=e47]: Pedidos
+          - generic [ref=e48]: keyboard_arrow_up
+        - list [ref=e49]:
+          - listitem [ref=e50]:
+            - link "Pedidos" [ref=e51] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e52]:
+            - link "Facturas" [ref=e53] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/invoices/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e54]:
+            - link "Facturas por abono" [ref=e55] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/credit-slips/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e56]:
+            - link "Albaranes de entrega" [ref=e57] [cursor=pointer]:
+              - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/delivery-slips/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - listitem [ref=e58]:
+            - link "Carritos de compra" [ref=e59] [cursor=pointer]:
+              - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarts&token=547c53f408565467be293de60d07e77c
+      - listitem [ref=e60]:
+        - link "store Catálogo" [ref=e61] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/catalog/products?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e62]: store
+          - generic [ref=e63]: Catálogo
+      - listitem [ref=e64]:
+        - link "account_circle Clientes" [ref=e65] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e66]: account_circle
+          - generic [ref=e67]: Clientes
+      - listitem [ref=e68]:
+        - link "chat Servicio al Cliente" [ref=e69] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCustomerThreads&token=9ad79ec705fabecb81648045b34efd13
+          - generic [ref=e70]: chat
+          - generic [ref=e71]: Servicio al Cliente
+      - listitem [ref=e72]:
+        - link "assessment Estadísticas" [ref=e73] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminStats&token=d1ebeaea7a4695ac28cf52e7ecc22e83
+          - generic [ref=e74]: assessment
+          - generic [ref=e75]: Estadísticas
+      - listitem [ref=e76]: Personalizar
+      - listitem [ref=e77]:
+        - link "extension Módulos" [ref=e78] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/modules/manage?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e79]: extension
+          - generic [ref=e80]: Módulos
+      - listitem [ref=e81]:
+        - link "desktop_mac Diseño" [ref=e82] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/design/themes/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e83]: desktop_mac
+          - generic [ref=e84]: Diseño
+      - listitem [ref=e85]:
+        - link "local_shipping Transporte" [ref=e86] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarriers&token=40eb6c7fce4acd3934924d8c9246bfa7
+          - generic [ref=e87]: local_shipping
+          - generic [ref=e88]: Transporte
+      - listitem [ref=e89]:
+        - link "payment Pago" [ref=e90] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/payment/payment_methods?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e91]: payment
+          - generic [ref=e92]: Pago
+      - listitem [ref=e93]:
+        - link "language Internacional" [ref=e94] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/improve/international/localization/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e95]: language
+          - generic [ref=e96]: Internacional
+      - listitem [ref=e97]: Configurar
+      - listitem [ref=e98]:
+        - link "settings Parámetros de la tienda" [ref=e99] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/shop/preferences/preferences?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e100]: settings
+          - generic [ref=e101]: Parámetros de la tienda
+      - listitem [ref=e102]:
+        - link "settings_applications Parámetros Avanzados" [ref=e103] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/configure/advanced/system-information/?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e104]: settings_applications
+          - generic [ref=e105]: Parámetros Avanzados
+      - listitem [ref=e106]: Community
+      - listitem [ref=e107]:
+        - link "groups Wall of Fame" [ref=e108] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/modules/ps_distributionapiclient/top-contributors?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e109]: groups
+          - generic [ref=e110]: Wall of Fame
+  - generic [ref=e114]:
+    - navigation "Breadcrumb" [ref=e115]:
+      - list [ref=e116]:
+        - listitem [ref=e117]: Pedidos
+    - generic [ref=e118]:
+      - heading "Pedidos" [level=1] [ref=e119]
+      - generic [ref=e121]:
+        - link "add_circle_outline Añadir nuevo pedido" [ref=e122] [cursor=pointer]:
+          - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/new?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+          - generic [ref=e123]: add_circle_outline
+          - text: Añadir nuevo pedido
+        - link "Ayuda" [ref=e124] [cursor=pointer]:
+          - /url: "#"
+  - generic [ref=e126]:
+    - text: 
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - generic [ref=e130]:
+          - generic [ref=e131]: assessment
+          - generic [ref=e132]: Tasa de conversión
+          - generic [ref=e133]:
+            - generic [ref=e134]: 30 días
+            - generic [ref=e135]: 0%
+        - link "remove_shopping_cart Carritos abandonados Hoy 0" [ref=e136] [cursor=pointer]:
+          - /url: https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/index.php?controller=AdminCarts&token=547c53f408565467be293de60d07e77c&action=filterOnlyAbandonedCarts
+          - generic [ref=e137]:
+            - generic [ref=e138]: remove_shopping_cart
+            - generic [ref=e139]: Carritos abandonados
+            - generic [ref=e140]:
+              - generic [ref=e141]: Hoy
+              - generic [ref=e142]: "0"
+        - generic [ref=e144]:
+          - generic [ref=e145]: account_balance_wallet
+          - generic [ref=e146]: Valor promedio del pedido
+          - generic [ref=e147]:
+            - generic [ref=e148]: 30 días
+            - generic [ref=e149]: 0,00 $ impuestos excl.
+        - generic [ref=e151]:
+          - generic [ref=e152]: account_box
+          - generic [ref=e153]: Beneficio neto por visitante
+          - generic [ref=e154]:
+            - generic [ref=e155]: 30 días
+            - generic [ref=e156]: 0,00 $
+      - button "refresh" [ref=e158] [cursor=pointer]:
+        - generic [ref=e159]: refresh
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - heading "Pedidos (7)" [level=3] [ref=e162]
+        - button "Ajustes settings" [ref=e165] [cursor=pointer]:
+          - generic [ref=e166]: Ajustes
+          - text: settings
+      - generic [ref=e168]:
+        - button "Acciones Agrupadas expand_more" [disabled] [ref=e170]:
+          - text: Acciones Agrupadas
+          - text: expand_more
+        - table [ref=e172]:
+          - rowgroup [ref=e173]:
+            - row "ID Ordenar por Referencia Ordenar por Nuevo cliente Entrega Ordenar por Cliente Ordenar por Total Ordenar por Pago Ordenar por Estado Ordenar por Fecha Ordenar por Acciones" [ref=e174]:
+              - columnheader [ref=e175]
+              - columnheader "ID Ordenar por" [ref=e176]:
+                - generic [ref=e177]:
+                  - columnheader "ID" [ref=e178]
+                  - button "Ordenar por" [ref=e179]: keyboard_arrow_up
+              - columnheader "Referencia Ordenar por" [ref=e180]:
+                - generic [ref=e181]:
+                  - columnheader "Referencia" [ref=e182]
+                  - button "Ordenar por" [ref=e183]: code
+              - columnheader "Nuevo cliente" [ref=e184]
+              - columnheader "Entrega Ordenar por" [ref=e185]:
+                - generic [ref=e186]:
+                  - columnheader "Entrega" [ref=e187]
+                  - button "Ordenar por" [ref=e188]: code
+              - columnheader "Cliente Ordenar por" [ref=e189]:
+                - generic [ref=e190]:
+                  - columnheader "Cliente" [ref=e191]
+                  - button "Ordenar por" [ref=e192]: code
+              - columnheader "Total Ordenar por" [ref=e193]:
+                - generic [ref=e194]:
+                  - columnheader "Total" [ref=e195]
+                  - button "Ordenar por" [ref=e196]: code
+              - columnheader "Pago Ordenar por" [ref=e197]:
+                - generic [ref=e198]:
+                  - columnheader "Pago" [ref=e199]
+                  - button "Ordenar por" [ref=e200]: code
+              - columnheader "Estado Ordenar por" [ref=e201]:
+                - generic [ref=e202]:
+                  - columnheader "Estado" [ref=e203]
+                  - button "Ordenar por" [ref=e204]: code
+              - columnheader "Fecha Ordenar por" [ref=e205]:
+                - generic [ref=e206]:
+                  - columnheader "Fecha" [ref=e207]
+                  - button "Ordenar por" [ref=e208]: code
+              - columnheader "Acciones" [ref=e209]:
+                - generic [ref=e210]: Acciones
+            - row "Todas date_range date_range search Buscar" [ref=e211]:
+              - cell [ref=e212]
+              - cell [ref=e214]:
+                - textbox "order_id_order" [ref=e215]:
+                  - /placeholder: Buscar ID
+              - cell [ref=e216]:
+                - textbox "order_reference" [ref=e217]:
+                  - /placeholder: Buscar referencia
+              - cell "Todas" [ref=e218]:
+                - combobox "order_new" [ref=e219]:
+                  - option "Todas" [selected]
+                  - option "Sí"
+                  - option "No"
+              - cell [ref=e220]:
+                - combobox "order_country_name" [ref=e221]:
+                  - option [selected]
+                  - option "Colombia"
+                  - option "Estados Unidos"
+              - cell [ref=e222]:
+                - textbox "order_customer" [ref=e223]:
+                  - /placeholder: Buscar cliente
+              - cell [ref=e224]:
+                - textbox "order_total_paid_tax_incl" [ref=e225]:
+                  - /placeholder: Buscar total
+              - cell [ref=e226]:
+                - textbox "order_payment" [ref=e227]:
+                  - /placeholder: Buscar pago
+              - cell [ref=e228]:
+                - combobox "order_osname" [ref=e229]:
+                  - option [selected]
+                  - option "Cancelado"
+                  - option "En espera de pago por cheque"
+                  - option "En espera de pago por transferencia bancaria"
+                  - option "En espera de validación por contra reembolso."
+                  - option "Entregado"
+                  - option "Enviado"
+                  - option "ePayco Esperando Pago"
+                  - option "ePayco Pago Abandonado"
+                  - option "ePayco Pago Aceptado"
+                  - option "ePayco Pago Cancelado"
+                  - option "ePayco Pago Expirado"
+                  - option "ePayco Pago Fallido"
+                  - option "ePayco Pago Pendiente"
+                  - option "ePayco Pago Rechazado"
+                  - option "Error en pago"
+                  - option "Pago aceptado"
+                  - option "Pago remoto aceptado"
+                  - option "Pedido pendiente por falta de stock (no pagado)"
+                  - option "Pedido pendiente por falta de stock (pagado)"
+                  - option "Preparación en curso"
+                  - option "Reembolsado"
+              - cell "date_range date_range" [ref=e230]:
+                - generic [ref=e231]:
+                  - textbox "order_date_add_from" [ref=e232]:
+                    - /placeholder: YYYY-MM-DD
+                  - generic [ref=e235]: date_range
+                - generic [ref=e236]:
+                  - textbox "order_date_add_to" [ref=e237]:
+                    - /placeholder: YYYY-MM-DD
+                  - generic [ref=e240]: date_range
+              - cell "search Buscar" [ref=e241]:
+                - button "search Buscar" [disabled] [ref=e242]:
+                  - generic [ref=e243]: search
+                  - text: Buscar
+          - rowgroup [ref=e244]:
+            - row "7 QYVRBVCDN Sí Colombia R. Saldarriaga 11.900,00 $ ePayco ePayco Esperando Pago 07/04/2026 17:30:04 zoom_in" [ref=e245]:
+              - cell [ref=e246]
+              - cell "7" [ref=e248]: "7"
+              - cell "QYVRBVCDN" [ref=e249] [cursor=pointer]
+              - cell "Sí" [ref=e250] [cursor=pointer]
+              - cell "Colombia" [ref=e251] [cursor=pointer]
+              - cell "R. Saldarriaga" [ref=e252]:
+                - link "R. Saldarriaga" [ref=e253] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/4/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "11.900,00 $" [ref=e254] [cursor=pointer]:
+                - generic [ref=e255]: 11.900,00 $
+              - cell "ePayco" [ref=e256] [cursor=pointer]
+              - cell "ePayco Esperando Pago" [ref=e257]:
+                - button "ePayco Esperando Pago" [ref=e259] [cursor=pointer]
+              - cell "07/04/2026 17:30:04" [ref=e260] [cursor=pointer]:
+                - time [ref=e261]: 07/04/2026 17:30:04
+              - cell "zoom_in" [ref=e262]:
+                - link "zoom_in" [ref=e265] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/7/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e266]: zoom_in
+            - row "6 ZVKNCEEAL Sí Colombia R. Saldarriaga 11.900,00 $ ePayco ePayco Esperando Pago 07/04/2026 17:17:19 zoom_in" [ref=e267]:
+              - cell [ref=e268]
+              - cell "6" [ref=e270]: "6"
+              - cell "ZVKNCEEAL" [ref=e271] [cursor=pointer]
+              - cell "Sí" [ref=e272] [cursor=pointer]
+              - cell "Colombia" [ref=e273] [cursor=pointer]
+              - cell "R. Saldarriaga" [ref=e274]:
+                - link "R. Saldarriaga" [ref=e275] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/3/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "11.900,00 $" [ref=e276] [cursor=pointer]:
+                - generic [ref=e277]: 11.900,00 $
+              - cell "ePayco" [ref=e278] [cursor=pointer]
+              - cell "ePayco Esperando Pago" [ref=e279]:
+                - button "ePayco Esperando Pago" [ref=e281] [cursor=pointer]
+              - cell "07/04/2026 17:17:19" [ref=e282] [cursor=pointer]:
+                - time [ref=e283]: 07/04/2026 17:17:19
+              - cell "zoom_in" [ref=e284]:
+                - link "zoom_in" [ref=e287] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/6/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e288]: zoom_in
+            - row "5 KHWLILZLL No Estados Unidos J. DOE 27,30 $ Bank wire En espera de pago por transferencia bancaria 01/04/2026 12:50:18 zoom_in" [ref=e289]:
+              - cell [ref=e290]
+              - cell "5" [ref=e292]: "5"
+              - cell "KHWLILZLL" [ref=e293] [cursor=pointer]
+              - cell "No" [ref=e294] [cursor=pointer]
+              - cell "Estados Unidos" [ref=e295] [cursor=pointer]
+              - cell "J. DOE" [ref=e296]:
+                - link "J. DOE" [ref=e297] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "27,30 $" [ref=e298] [cursor=pointer]:
+                - generic [ref=e299]: 27,30 $
+              - cell "Bank wire" [ref=e300] [cursor=pointer]
+              - cell "En espera de pago por transferencia bancaria" [ref=e301]:
+                - button "En espera de pago por transferencia bancaria" [ref=e303] [cursor=pointer]
+              - cell "01/04/2026 12:50:18" [ref=e304] [cursor=pointer]:
+                - time [ref=e305]: 01/04/2026 12:50:18
+              - cell "zoom_in" [ref=e306]:
+                - link "zoom_in" [ref=e309] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/5/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e310]: zoom_in
+            - row "4 FFATNOMMJ No Estados Unidos J. DOE 21,30 $ Payment by check En espera de pago por cheque 01/04/2026 12:50:18 zoom_in" [ref=e311]:
+              - cell [ref=e312]
+              - cell "4" [ref=e314]: "4"
+              - cell "FFATNOMMJ" [ref=e315] [cursor=pointer]
+              - cell "No" [ref=e316] [cursor=pointer]
+              - cell "Estados Unidos" [ref=e317] [cursor=pointer]
+              - cell "J. DOE" [ref=e318]:
+                - link "J. DOE" [ref=e319] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "21,30 $" [ref=e320] [cursor=pointer]:
+                - generic [ref=e321]: 21,30 $
+              - cell "Payment by check" [ref=e322] [cursor=pointer]
+              - cell "En espera de pago por cheque" [ref=e323]:
+                - button "En espera de pago por cheque" [ref=e325] [cursor=pointer]
+              - cell "01/04/2026 12:50:18" [ref=e326] [cursor=pointer]:
+                - time [ref=e327]: 01/04/2026 12:50:18
+              - cell "zoom_in" [ref=e328]:
+                - link "zoom_in" [ref=e331] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/4/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e332]: zoom_in
+            - row "3 UOYEVOLI No Estados Unidos J. DOE 21,30 $ Payment by check Error en pago 01/04/2026 12:50:18 zoom_in" [ref=e333]:
+              - cell [ref=e334]
+              - cell "3" [ref=e336]: "3"
+              - cell "UOYEVOLI" [ref=e337] [cursor=pointer]
+              - cell "No" [ref=e338] [cursor=pointer]
+              - cell "Estados Unidos" [ref=e339] [cursor=pointer]
+              - cell "J. DOE" [ref=e340]:
+                - link "J. DOE" [ref=e341] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "21,30 $" [ref=e342] [cursor=pointer]:
+                - generic [ref=e343]: 21,30 $
+              - cell "Payment by check" [ref=e344] [cursor=pointer]
+              - cell "Error en pago" [ref=e345]:
+                - button "Error en pago" [ref=e347] [cursor=pointer]
+              - cell "01/04/2026 12:50:18" [ref=e348] [cursor=pointer]:
+                - time [ref=e349]: 01/04/2026 12:50:18
+              - cell "zoom_in" [ref=e350]:
+                - link "zoom_in" [ref=e353] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/3/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e354]: zoom_in
+            - row "2 OHSATSERP No Estados Unidos J. DOE 169,90 $ Payment by check En espera de pago por cheque 01/04/2026 12:50:18 zoom_in" [ref=e355]:
+              - cell [ref=e356]
+              - cell "2" [ref=e358]: "2"
+              - cell "OHSATSERP" [ref=e359] [cursor=pointer]
+              - cell "No" [ref=e360] [cursor=pointer]
+              - cell "Estados Unidos" [ref=e361] [cursor=pointer]
+              - cell "J. DOE" [ref=e362]:
+                - link "J. DOE" [ref=e363] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "169,90 $" [ref=e364] [cursor=pointer]:
+                - generic [ref=e365]: 169,90 $
+              - cell "Payment by check" [ref=e366] [cursor=pointer]
+              - cell "En espera de pago por cheque" [ref=e367]:
+                - button "En espera de pago por cheque" [ref=e369] [cursor=pointer]
+              - cell "01/04/2026 12:50:18" [ref=e370] [cursor=pointer]:
+                - time [ref=e371]: 01/04/2026 12:50:18
+              - cell "zoom_in" [ref=e372]:
+                - link "zoom_in" [ref=e375] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e376]: zoom_in
+            - row "1 XKBKNABJK Sí Estados Unidos J. DOE 68,20 $ Payment by check Cancelado 01/04/2026 12:50:18 zoom_in" [ref=e377]:
+              - cell [ref=e378]
+              - cell "1" [ref=e380]: "1"
+              - cell "XKBKNABJK" [ref=e381] [cursor=pointer]
+              - cell "Sí" [ref=e382] [cursor=pointer]
+              - cell "Estados Unidos" [ref=e383] [cursor=pointer]
+              - cell "J. DOE" [ref=e384]:
+                - link "J. DOE" [ref=e385] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/customers/2/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+              - cell "68,20 $" [ref=e386] [cursor=pointer]:
+                - generic [ref=e387]: 68,20 $
+              - cell "Payment by check" [ref=e388] [cursor=pointer]
+              - cell "Cancelado" [ref=e389]:
+                - button "Cancelado" [ref=e391] [cursor=pointer]
+              - cell "01/04/2026 12:50:18" [ref=e392] [cursor=pointer]:
+                - time [ref=e393]: 01/04/2026 12:50:18
+              - cell "zoom_in" [ref=e394]:
+                - link "zoom_in" [ref=e397] [cursor=pointer]:
+                  - /url: /admin757fzaeczoemdfwp0tx/index.php/sell/orders/1/view?_token=ENOYlcpVDwThJUwLV_apVXb0swj0OgUROSQmhd8laT4
+                  - generic [ref=e398]: zoom_in
+    - navigation [ref=e399]:
+      - img "Cargando..." [ref=e400]

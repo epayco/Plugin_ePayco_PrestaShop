@@ -1,0 +1,1282 @@
+- main [ref=e2]:
+  - navigation [ref=e4]:
+    - generic [ref=e6]:
+      - link "epayco" [ref=e8] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/
+        - img "epayco" [ref=e9]
+      - link "Contacte con nosotros" [ref=e13] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/contactenos
+  - generic [ref=e14]:
+    - complementary
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - heading " Datos Personales mode_edit Modificar" [level=1] [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: 
+          - text: Datos Personales
+          - generic [ref=e24]:
+            - generic [ref=e25]: mode_edit
+            - text: Modificar
+        - heading " Direcciones mode_edit Modificar" [level=1] [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Direcciones
+          - generic [ref=e29]:
+            - generic [ref=e30]: mode_edit
+            - text: Modificar
+        - heading " Método de envío mode_edit Modificar" [level=1] [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: 
+          - text: Método de envío
+          - generic [ref=e34]:
+            - generic [ref=e35]: mode_edit
+            - text: Modificar
+        - text: "Warning: DOMDocument::loadHTML(): Tag test-mode-epayco invalid in Entity, line: 16 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 32 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag path invalid in Entity, line: 33 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-name-epayco invalid in Entity, line: 49 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-number invalid in Entity, line: 62 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-expiration-date invalid in Entity, line: 77 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-security-code invalid in Entity, line: 91 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-installment-epayco invalid in Entity, line: 100 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 107 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag path invalid in Entity, line: 108 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): ID ep-custom-checkout-form-container already defined in Entity, line: 112 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-document-epayco invalid in Entity, line: 129 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-address-epayco invalid in Entity, line: 142 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-email-epayco invalid in Entity, line: 155 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-cellphone-epayco invalid in Entity, line: 173 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-country-epayco invalid in Entity, line: 192 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag terms-and-conditions invalid in Entity, line: 210 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Opening and ending tag mismatch: form and div in Entity, line: 222 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - generic [ref=e36]:
+          - heading "4 Pago" [level=1] [ref=e37]:
+            - generic [ref=e38]: "4"
+            - text: Pago
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e42]:
+                - radio "Pago por transferencia bancaria" [ref=e44] [cursor=pointer]
+                - generic [ref=e45]: Pago por transferencia bancaria
+              - generic [ref=e47]:
+                - radio "Pagar con cheque" [ref=e49] [cursor=pointer]
+                - generic [ref=e50]: Pagar con cheque
+              - generic [ref=e52]:
+                - radio "Pago contra reembolso" [ref=e54] [cursor=pointer]
+                - generic [ref=e55]: Pago contra reembolso
+              - generic [ref=e57]:
+                - radio [checked] [ref=e59] [cursor=pointer]
+                - img [ref=e61]
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic "Modo de prueba" [ref=e110]:
+                    - generic [ref=e112]:
+                      - img "warning" [ref=e113]
+                      - paragraph [ref=e114]: Modo de prueba
+                  - generic [ref=e115]:
+                    - img [ref=e116]
+                    - generic [ref=e117]:
+                      - paragraph [ref=e118]: "Por favor, utiliza la siguiente información de tarjeta de prueba:"
+                      - paragraph [ref=e119]: "Número: 1234 1234 1234 1234"
+                      - generic [ref=e120]:
+                        - paragraph [ref=e121]:
+                          - strong [ref=e122]: MM
+                          - text: :12
+                        - paragraph [ref=e123]:
+                          - strong [ref=e124]: AA
+                          - text: :2027
+                        - paragraph [ref=e125]:
+                          - strong [ref=e126]: CVV
+                          - text: :123
+                - generic [ref=e127]:
+                  - img [ref=e128]
+                  - paragraph [ref=e130]: Datos de la tarjeta
+                - generic [ref=e131]:
+                  - generic [ref=e132]:
+                    - generic [ref=e135]:
+                      - generic [ref=e137]:
+                        - text: Nombres y Apellidos
+                        - generic [ref=e138]: "*"
+                      - textbox "Escribe..." [ref=e140] [cursor=pointer]: Ricardo Saldarriaga
+                    - generic [ref=e143]:
+                      - generic [ref=e145]:
+                        - text: Número de tarjeta
+                        - generic [ref=e146]: "*"
+                      - generic [ref=e147]:
+                        - textbox "Escribe..." [ref=e148] [cursor=pointer]: "4575623182290326"
+                        - img [ref=e149]
+                    - generic [ref=e150]:
+                      - generic [ref=e153]:
+                        - generic [ref=e155]: Fecha de expiración*
+                        - textbox "MM/AA" [ref=e157] [cursor=pointer]: 12/27
+                      - generic [ref=e160]:
+                        - generic [ref=e162]:
+                          - text: CVV
+                          - generic [ref=e163]: "*"
+                        - textbox "***" [ref=e165] [cursor=pointer]: "123"
+                      - generic [ref=e168]:
+                        - generic [ref=e170]:
+                          - text: Cuotas
+                          - generic [ref=e171]: "*"
+                        - combobox [ref=e173] [cursor=pointer]:
+                          - option "1" [selected]
+                          - option "2"
+                          - option "3"
+                          - option "4"
+                          - option "5"
+                          - option "6"
+                          - option "7"
+                          - option "8"
+                          - option "9"
+                          - option "10"
+                          - option "11"
+                          - option "12"
+                          - option "13"
+                          - option "14"
+                          - option "15"
+                          - option "16"
+                          - option "17"
+                          - option "18"
+                          - option "19"
+                          - option "20"
+                          - option "21"
+                          - option "22"
+                          - option "23"
+                          - option "24"
+                          - option "25"
+                          - option "26"
+                          - option "27"
+                          - option "28"
+                          - option "29"
+                          - option "30"
+                          - option "31"
+                          - option "32"
+                          - option "33"
+                          - option "34"
+                          - option "35"
+                          - option "36"
+                          - option "37"
+                          - option "38"
+                          - option "39"
+                          - option "40"
+                          - option "41"
+                          - option "42"
+                          - option "43"
+                          - option "44"
+                          - option "45"
+                          - option "46"
+                          - option "47"
+                          - option "48"
+                  - generic [ref=e174]:
+                    - img [ref=e175]
+                    - paragraph [ref=e177]: Datos del cliente
+                  - generic [ref=e178]:
+                    - generic [ref=e181]:
+                      - generic [ref=e183]:
+                        - text: Documento
+                        - generic [ref=e184]: "*"
+                      - generic [ref=e185]:
+                        - combobox [ref=e187] [cursor=pointer]:
+                          - option "Tipo"
+                          - option "CC" [selected]
+                          - option "NIT"
+                          - option "CE"
+                          - option "PPN"
+                          - option "SSN"
+                          - option "LIC"
+                          - option "DNI"
+                          - option "PEP"
+                          - option "PPT"
+                        - textbox "Numero de documento" [ref=e189] [cursor=pointer]: "1234567890"
+                    - generic [ref=e192]:
+                      - generic [ref=e194]:
+                        - text: Dirección
+                        - generic [ref=e195]: "*"
+                      - textbox "Escribe..." [ref=e197] [cursor=pointer]: "Calle 100 # 10-20"
+                    - generic [ref=e200]:
+                      - generic [ref=e202]:
+                        - text: Correo electrónico
+                        - generic [ref=e203]: "*"
+                      - textbox "Escribe..." [ref=e205] [cursor=pointer]: ricardo.saldarriaga@epayco.com
+                    - generic [ref=e208]:
+                      - generic [ref=e210]:
+                        - text: Celular
+                        - generic [ref=e211]: "*"
+                      - generic [ref=e212]:
+                        - generic [ref=e214]:
+                          - generic [ref=e215] [cursor=pointer]:
+                            - img "Bandera" [ref=e216]
+                            - generic [ref=e217]: "+376"
+                            - img [ref=e219]
+                          - generic [ref=e250]:
+                            - generic [ref=e251] [cursor=pointer]:
+                              - img "Bandera" [ref=e252]
+                              - generic [ref=e253]: "+376"
+                            - generic [ref=e254] [cursor=pointer]:
+                              - img "Bandera" [ref=e255]
+                              - generic [ref=e256]: "+971"
+                            - generic [ref=e257] [cursor=pointer]:
+                              - img "Bandera" [ref=e258]
+                              - generic [ref=e259]: "+93"
+                            - generic [ref=e260] [cursor=pointer]:
+                              - img "Bandera" [ref=e261]
+                              - generic [ref=e262]: "+1268"
+                            - generic [ref=e263] [cursor=pointer]:
+                              - img "Bandera" [ref=e264]
+                              - generic [ref=e265]: "+1264"
+                            - generic [ref=e266] [cursor=pointer]:
+                              - img "Bandera" [ref=e267]
+                              - generic [ref=e268]: "+355"
+                            - generic [ref=e269] [cursor=pointer]:
+                              - img "Bandera" [ref=e270]
+                              - generic [ref=e271]: "+374"
+                            - generic [ref=e272] [cursor=pointer]:
+                              - img "Bandera" [ref=e273]
+                              - generic [ref=e274]: "+244"
+                            - generic [ref=e275] [cursor=pointer]:
+                              - img "Bandera" [ref=e276]
+                              - generic [ref=e277]: "+672"
+                            - generic [ref=e278] [cursor=pointer]:
+                              - img "Bandera" [ref=e279]
+                              - generic [ref=e280]: "+54"
+                            - generic [ref=e281] [cursor=pointer]:
+                              - img "Bandera" [ref=e282]
+                              - generic [ref=e283]: "+1684"
+                            - generic [ref=e284] [cursor=pointer]:
+                              - img "Bandera" [ref=e285]
+                              - generic [ref=e286]: "+43"
+                            - generic [ref=e287] [cursor=pointer]:
+                              - img "Bandera" [ref=e288]
+                              - generic [ref=e289]: "+61"
+                            - generic [ref=e290] [cursor=pointer]:
+                              - img "Bandera" [ref=e291]
+                              - generic [ref=e292]: "+297"
+                            - generic [ref=e293] [cursor=pointer]:
+                              - img "Bandera" [ref=e294]
+                              - generic [ref=e295]: "+358"
+                            - generic [ref=e296] [cursor=pointer]:
+                              - img "Bandera" [ref=e297]
+                              - generic [ref=e298]: "+994"
+                            - generic [ref=e299] [cursor=pointer]:
+                              - img "Bandera" [ref=e300]
+                              - generic [ref=e301]: "+387"
+                            - generic [ref=e302] [cursor=pointer]:
+                              - img "Bandera" [ref=e303]
+                              - generic [ref=e304]: "+1246"
+                            - generic [ref=e305] [cursor=pointer]:
+                              - img "Bandera" [ref=e306]
+                              - generic [ref=e307]: "+880"
+                            - generic [ref=e308] [cursor=pointer]:
+                              - img "Bandera" [ref=e309]
+                              - generic [ref=e310]: "+32"
+                            - generic [ref=e311] [cursor=pointer]:
+                              - img "Bandera" [ref=e312]
+                              - generic [ref=e313]: "+226"
+                            - generic [ref=e314] [cursor=pointer]:
+                              - img "Bandera" [ref=e315]
+                              - generic [ref=e316]: "+359"
+                            - generic [ref=e317] [cursor=pointer]:
+                              - img "Bandera" [ref=e318]
+                              - generic [ref=e319]: "+973"
+                            - generic [ref=e320] [cursor=pointer]:
+                              - img "Bandera" [ref=e321]
+                              - generic [ref=e322]: "+257"
+                            - generic [ref=e323] [cursor=pointer]:
+                              - img "Bandera" [ref=e324]
+                              - generic [ref=e325]: "+229"
+                            - generic [ref=e326] [cursor=pointer]:
+                              - img "Bandera" [ref=e327]
+                              - generic [ref=e328]: "+590"
+                            - generic [ref=e329] [cursor=pointer]:
+                              - img "Bandera" [ref=e330]
+                              - generic [ref=e331]: "+1441"
+                            - generic [ref=e332] [cursor=pointer]:
+                              - img "Bandera" [ref=e333]
+                              - generic [ref=e334]: "+673"
+                            - generic [ref=e335] [cursor=pointer]:
+                              - img "Bandera" [ref=e336]
+                              - generic [ref=e337]: "+591"
+                            - generic [ref=e338] [cursor=pointer]:
+                              - img "Bandera" [ref=e339]
+                              - generic [ref=e340]: "+5997"
+                            - generic [ref=e341] [cursor=pointer]:
+                              - img "Bandera" [ref=e342]
+                              - generic [ref=e343]: "+55"
+                            - generic [ref=e344] [cursor=pointer]:
+                              - img "Bandera" [ref=e345]
+                              - generic [ref=e346]: "+1242"
+                            - generic [ref=e347] [cursor=pointer]:
+                              - img "Bandera" [ref=e348]
+                              - generic [ref=e349]: "+975"
+                            - generic [ref=e350] [cursor=pointer]:
+                              - img "Bandera" [ref=e351]
+                              - generic [ref=e352]: "+47"
+                            - generic [ref=e353] [cursor=pointer]:
+                              - img "Bandera" [ref=e354]
+                              - generic [ref=e355]: "+267"
+                            - generic [ref=e356] [cursor=pointer]:
+                              - img "Bandera" [ref=e357]
+                              - generic [ref=e358]: "+375"
+                            - generic [ref=e359] [cursor=pointer]:
+                              - img "Bandera" [ref=e360]
+                              - generic [ref=e361]: "+501"
+                            - generic [ref=e362] [cursor=pointer]:
+                              - img "Bandera" [ref=e363]
+                              - generic [ref=e364]: "+1"
+                            - generic [ref=e365] [cursor=pointer]:
+                              - img "Bandera" [ref=e366]
+                              - generic [ref=e367]: "+61"
+                            - generic [ref=e368] [cursor=pointer]:
+                              - img "Bandera" [ref=e369]
+                              - generic [ref=e370]: "+243"
+                            - generic [ref=e371] [cursor=pointer]:
+                              - img "Bandera" [ref=e372]
+                              - generic [ref=e373]: "+236"
+                            - generic [ref=e374] [cursor=pointer]:
+                              - img "Bandera" [ref=e375]
+                              - generic [ref=e376]: "+242"
+                            - generic [ref=e377] [cursor=pointer]:
+                              - img "Bandera" [ref=e378]
+                              - generic [ref=e379]: "+41"
+                            - generic [ref=e380] [cursor=pointer]:
+                              - img "Bandera" [ref=e381]
+                              - generic [ref=e382]: "+225"
+                            - generic [ref=e383] [cursor=pointer]:
+                              - img "Bandera" [ref=e384]
+                              - generic [ref=e385]: "+682"
+                            - generic [ref=e386] [cursor=pointer]:
+                              - img "Bandera" [ref=e387]
+                              - generic [ref=e388]: "+56"
+                            - generic [ref=e389] [cursor=pointer]:
+                              - img "Bandera" [ref=e390]
+                              - generic [ref=e391]: "+237"
+                            - generic [ref=e392] [cursor=pointer]:
+                              - img "Bandera" [ref=e393]
+                              - generic [ref=e394]: "+86"
+                            - generic [ref=e395] [cursor=pointer]:
+                              - img "Bandera" [ref=e396]
+                              - generic [ref=e397]: "+57"
+                            - generic [ref=e398] [cursor=pointer]:
+                              - img "Bandera" [ref=e399]
+                              - generic [ref=e400]: "+506"
+                            - generic [ref=e401] [cursor=pointer]:
+                              - img "Bandera" [ref=e402]
+                              - generic [ref=e403]: "+53"
+                            - generic [ref=e404] [cursor=pointer]:
+                              - img "Bandera" [ref=e405]
+                              - generic [ref=e406]: "+238"
+                            - generic [ref=e407] [cursor=pointer]:
+                              - img "Bandera" [ref=e408]
+                              - generic [ref=e409]: "+5999"
+                            - generic [ref=e410] [cursor=pointer]:
+                              - img "Bandera" [ref=e411]
+                              - generic [ref=e412]: "+61"
+                            - generic [ref=e413] [cursor=pointer]:
+                              - img "Bandera" [ref=e414]
+                              - generic [ref=e415]: "+357"
+                            - generic [ref=e416] [cursor=pointer]:
+                              - img "Bandera" [ref=e417]
+                              - generic [ref=e418]: "+420"
+                            - generic [ref=e419] [cursor=pointer]:
+                              - img "Bandera" [ref=e420]
+                              - generic [ref=e421]: "+49"
+                            - generic [ref=e422] [cursor=pointer]:
+                              - img "Bandera" [ref=e423]
+                              - generic [ref=e424]: "+253"
+                            - generic [ref=e425] [cursor=pointer]:
+                              - img "Bandera" [ref=e426]
+                              - generic [ref=e427]: "+45"
+                            - generic [ref=e428] [cursor=pointer]:
+                              - img "Bandera" [ref=e429]
+                              - generic [ref=e430]: "+1767"
+                            - generic [ref=e431] [cursor=pointer]:
+                              - img "Bandera" [ref=e432]
+                              - generic [ref=e433]: "+1809"
+                            - generic [ref=e434] [cursor=pointer]:
+                              - img "Bandera" [ref=e435]
+                              - generic [ref=e436]: "+213"
+                            - generic [ref=e437] [cursor=pointer]:
+                              - img "Bandera" [ref=e438]
+                              - generic [ref=e439]: "+593"
+                            - generic [ref=e440] [cursor=pointer]:
+                              - img "Bandera" [ref=e441]
+                              - generic [ref=e442]: "+372"
+                            - generic [ref=e443] [cursor=pointer]:
+                              - img "Bandera" [ref=e444]
+                              - generic [ref=e445]: "+20"
+                            - generic [ref=e446] [cursor=pointer]:
+                              - img "Bandera" [ref=e447]
+                              - generic [ref=e448]: "+212"
+                            - generic [ref=e449] [cursor=pointer]:
+                              - img "Bandera" [ref=e450]
+                              - generic [ref=e451]: "+291"
+                            - generic [ref=e452] [cursor=pointer]:
+                              - img "Bandera" [ref=e453]
+                              - generic [ref=e454]: "+34"
+                            - generic [ref=e455] [cursor=pointer]:
+                              - img "Bandera" [ref=e456]
+                              - generic [ref=e457]: "+251"
+                            - generic [ref=e458] [cursor=pointer]:
+                              - img "Bandera" [ref=e459]
+                              - generic [ref=e460]: "+358"
+                            - generic [ref=e461] [cursor=pointer]:
+                              - img "Bandera" [ref=e462]
+                              - generic [ref=e463]: "+679"
+                            - generic [ref=e464] [cursor=pointer]:
+                              - img "Bandera" [ref=e465]
+                              - generic [ref=e466]: "+500"
+                            - generic [ref=e467] [cursor=pointer]:
+                              - img "Bandera" [ref=e468]
+                              - generic [ref=e469]: "+691"
+                            - generic [ref=e470] [cursor=pointer]:
+                              - img "Bandera" [ref=e471]
+                              - generic [ref=e472]: "+298"
+                            - generic [ref=e473] [cursor=pointer]:
+                              - img "Bandera" [ref=e474]
+                              - generic [ref=e475]: "+33"
+                            - generic [ref=e476] [cursor=pointer]:
+                              - img "Bandera" [ref=e477]
+                              - generic [ref=e478]: "+241"
+                            - generic [ref=e479] [cursor=pointer]:
+                              - img "Bandera" [ref=e480]
+                              - generic [ref=e481]: "+44"
+                            - generic [ref=e482] [cursor=pointer]:
+                              - img "Bandera" [ref=e483]
+                              - generic [ref=e484]: "+1473"
+                            - generic [ref=e485] [cursor=pointer]:
+                              - img "Bandera" [ref=e486]
+                              - generic [ref=e487]: "+995"
+                            - generic [ref=e488] [cursor=pointer]:
+                              - img "Bandera" [ref=e489]
+                              - generic [ref=e490]: "+594"
+                            - generic [ref=e491] [cursor=pointer]:
+                              - img "Bandera" [ref=e492]
+                              - generic [ref=e493]: "+44"
+                            - generic [ref=e494] [cursor=pointer]:
+                              - img "Bandera" [ref=e495]
+                              - generic [ref=e496]: "+233"
+                            - generic [ref=e497] [cursor=pointer]:
+                              - img "Bandera" [ref=e498]
+                              - generic [ref=e499]: "+350"
+                            - generic [ref=e500] [cursor=pointer]:
+                              - img "Bandera" [ref=e501]
+                              - generic [ref=e502]: "+299"
+                            - generic [ref=e503] [cursor=pointer]:
+                              - img "Bandera" [ref=e504]
+                              - generic [ref=e505]: "+220"
+                            - generic [ref=e506] [cursor=pointer]:
+                              - img "Bandera" [ref=e507]
+                              - generic [ref=e508]: "+224"
+                            - generic [ref=e509] [cursor=pointer]:
+                              - img "Bandera" [ref=e510]
+                              - generic [ref=e511]: "+590"
+                            - generic [ref=e512] [cursor=pointer]:
+                              - img "Bandera" [ref=e513]
+                              - generic [ref=e514]: "+240"
+                            - generic [ref=e515] [cursor=pointer]:
+                              - img "Bandera" [ref=e516]
+                              - generic [ref=e517]: "+30"
+                            - generic [ref=e518] [cursor=pointer]:
+                              - img "Bandera" [ref=e519]
+                              - generic [ref=e520]: "+500"
+                            - generic [ref=e521] [cursor=pointer]:
+                              - img "Bandera" [ref=e522]
+                              - generic [ref=e523]: "+502"
+                            - generic [ref=e524] [cursor=pointer]:
+                              - img "Bandera" [ref=e525]
+                              - generic [ref=e526]: "+1671"
+                            - generic [ref=e527] [cursor=pointer]:
+                              - img "Bandera" [ref=e528]
+                              - generic [ref=e529]: "+245"
+                            - generic [ref=e530] [cursor=pointer]:
+                              - img "Bandera" [ref=e531]
+                              - generic [ref=e532]: "+592"
+                            - generic [ref=e533] [cursor=pointer]:
+                              - img "Bandera" [ref=e534]
+                              - generic [ref=e535]: "+852"
+                            - generic [ref=e536] [cursor=pointer]:
+                              - img "Bandera" [ref=e537]
+                              - generic [ref=e538]: "+61"
+                            - generic [ref=e539] [cursor=pointer]:
+                              - img "Bandera" [ref=e540]
+                              - generic [ref=e541]: "+504"
+                            - generic [ref=e542] [cursor=pointer]:
+                              - img "Bandera" [ref=e543]
+                              - generic [ref=e544]: "+385"
+                            - generic [ref=e545] [cursor=pointer]:
+                              - img "Bandera" [ref=e546]
+                              - generic [ref=e547]: "+509"
+                            - generic [ref=e548] [cursor=pointer]:
+                              - img "Bandera" [ref=e549]
+                              - generic [ref=e550]: "+36"
+                            - generic [ref=e551] [cursor=pointer]:
+                              - img "Bandera" [ref=e552]
+                              - generic [ref=e553]: "+62"
+                            - generic [ref=e554] [cursor=pointer]:
+                              - img "Bandera" [ref=e555]
+                              - generic [ref=e556]: "+353"
+                            - generic [ref=e557] [cursor=pointer]:
+                              - img "Bandera" [ref=e558]
+                              - generic [ref=e559]: "+972"
+                            - generic [ref=e560] [cursor=pointer]:
+                              - img "Bandera" [ref=e561]
+                              - generic [ref=e562]: "+44"
+                            - generic [ref=e563] [cursor=pointer]:
+                              - img "Bandera" [ref=e564]
+                              - generic [ref=e565]: "+91"
+                            - generic [ref=e566] [cursor=pointer]:
+                              - img "Bandera" [ref=e567]
+                              - generic [ref=e568]: "+246"
+                            - generic [ref=e569] [cursor=pointer]:
+                              - img "Bandera" [ref=e570]
+                              - generic [ref=e571]: "+964"
+                            - generic [ref=e572] [cursor=pointer]:
+                              - img "Bandera" [ref=e573]
+                              - generic [ref=e574]: "+98"
+                            - generic [ref=e575] [cursor=pointer]:
+                              - img "Bandera" [ref=e576]
+                              - generic [ref=e577]: "+354"
+                            - generic [ref=e578] [cursor=pointer]:
+                              - img "Bandera" [ref=e579]
+                              - generic [ref=e580]: "+39"
+                            - generic [ref=e581] [cursor=pointer]:
+                              - img "Bandera" [ref=e582]
+                              - generic [ref=e583]: "+44"
+                            - generic [ref=e584] [cursor=pointer]:
+                              - img "Bandera" [ref=e585]
+                              - generic [ref=e586]: "+1876"
+                            - generic [ref=e587] [cursor=pointer]:
+                              - img "Bandera" [ref=e588]
+                              - generic [ref=e589]: "+962"
+                            - generic [ref=e590] [cursor=pointer]:
+                              - img "Bandera" [ref=e591]
+                              - generic [ref=e592]: "+81"
+                            - generic [ref=e593] [cursor=pointer]:
+                              - img "Bandera" [ref=e594]
+                              - generic [ref=e595]: "+254"
+                            - generic [ref=e596] [cursor=pointer]:
+                              - img "Bandera" [ref=e597]
+                              - generic [ref=e598]: "+996"
+                            - generic [ref=e599] [cursor=pointer]:
+                              - img "Bandera" [ref=e600]
+                              - generic [ref=e601]: "+855"
+                            - generic [ref=e602] [cursor=pointer]:
+                              - img "Bandera" [ref=e603]
+                              - generic [ref=e604]: "+686"
+                            - generic [ref=e605] [cursor=pointer]:
+                              - img "Bandera" [ref=e606]
+                              - generic [ref=e607]: "+269"
+                            - generic [ref=e608] [cursor=pointer]:
+                              - img "Bandera" [ref=e609]
+                              - generic [ref=e610]: "+1869"
+                            - generic [ref=e611] [cursor=pointer]:
+                              - img "Bandera" [ref=e612]
+                              - generic [ref=e613]: "+850"
+                            - generic [ref=e614] [cursor=pointer]:
+                              - img "Bandera" [ref=e615]
+                              - generic [ref=e616]: "+82"
+                            - generic [ref=e617] [cursor=pointer]:
+                              - img "Bandera" [ref=e618]
+                              - generic [ref=e619]: "+965"
+                            - generic [ref=e620] [cursor=pointer]:
+                              - img "Bandera" [ref=e621]
+                              - generic [ref=e622]: "+1345"
+                            - generic [ref=e623] [cursor=pointer]:
+                              - img "Bandera" [ref=e624]
+                              - generic [ref=e625]: "+7"
+                            - generic [ref=e626] [cursor=pointer]:
+                              - img "Bandera" [ref=e627]
+                              - generic [ref=e628]: "+856"
+                            - generic [ref=e629] [cursor=pointer]:
+                              - img "Bandera" [ref=e630]
+                              - generic [ref=e631]: "+961"
+                            - generic [ref=e632] [cursor=pointer]:
+                              - img "Bandera" [ref=e633]
+                              - generic [ref=e634]: "+1758"
+                            - generic [ref=e635] [cursor=pointer]:
+                              - img "Bandera" [ref=e636]
+                              - generic [ref=e637]: "+423"
+                            - generic [ref=e638] [cursor=pointer]:
+                              - img "Bandera" [ref=e639]
+                              - generic [ref=e640]: "+94"
+                            - generic [ref=e641] [cursor=pointer]:
+                              - img "Bandera" [ref=e642]
+                              - generic [ref=e643]: "+231"
+                            - generic [ref=e644] [cursor=pointer]:
+                              - img "Bandera" [ref=e645]
+                              - generic [ref=e646]: "+266"
+                            - generic [ref=e647] [cursor=pointer]:
+                              - img "Bandera" [ref=e648]
+                              - generic [ref=e649]: "+370"
+                            - generic [ref=e650] [cursor=pointer]:
+                              - img "Bandera" [ref=e651]
+                              - generic [ref=e652]: "+352"
+                            - generic [ref=e653] [cursor=pointer]:
+                              - img "Bandera" [ref=e654]
+                              - generic [ref=e655]: "+371"
+                            - generic [ref=e656] [cursor=pointer]:
+                              - img "Bandera" [ref=e657]
+                              - generic [ref=e658]: "+218"
+                            - generic [ref=e659] [cursor=pointer]:
+                              - img "Bandera" [ref=e660]
+                              - generic [ref=e661]: "+212"
+                            - generic [ref=e662] [cursor=pointer]:
+                              - img "Bandera" [ref=e663]
+                              - generic [ref=e664]: "+377"
+                            - generic [ref=e665] [cursor=pointer]:
+                              - img "Bandera" [ref=e666]
+                              - generic [ref=e667]: "+373"
+                            - generic [ref=e668] [cursor=pointer]:
+                              - img "Bandera" [ref=e669]
+                              - generic [ref=e670]: "+382"
+                            - generic [ref=e671] [cursor=pointer]:
+                              - img "Bandera" [ref=e672]
+                              - generic [ref=e673]: "+590"
+                            - generic [ref=e674] [cursor=pointer]:
+                              - img "Bandera" [ref=e675]
+                              - generic [ref=e676]: "+261"
+                            - generic [ref=e677] [cursor=pointer]:
+                              - img "Bandera" [ref=e678]
+                              - generic [ref=e679]: "+692"
+                            - generic [ref=e680] [cursor=pointer]:
+                              - img "Bandera" [ref=e681]
+                              - generic [ref=e682]: "+389"
+                            - generic [ref=e683] [cursor=pointer]:
+                              - img "Bandera" [ref=e684]
+                              - generic [ref=e685]: "+223"
+                            - generic [ref=e686] [cursor=pointer]:
+                              - img "Bandera" [ref=e687]
+                              - generic [ref=e688]: "+95"
+                            - generic [ref=e689] [cursor=pointer]:
+                              - img "Bandera" [ref=e690]
+                              - generic [ref=e691]: "+976"
+                            - generic [ref=e692] [cursor=pointer]:
+                              - img "Bandera" [ref=e693]
+                              - generic [ref=e694]: "+853"
+                            - generic [ref=e695] [cursor=pointer]:
+                              - img "Bandera" [ref=e696]
+                              - generic [ref=e697]: "+1670"
+                            - generic [ref=e698] [cursor=pointer]:
+                              - img "Bandera" [ref=e699]
+                              - generic [ref=e700]: "+596"
+                            - generic [ref=e701] [cursor=pointer]:
+                              - img "Bandera" [ref=e702]
+                              - generic [ref=e703]: "+222"
+                            - generic [ref=e704] [cursor=pointer]:
+                              - img "Bandera" [ref=e705]
+                              - generic [ref=e706]: "+1664"
+                            - generic [ref=e707] [cursor=pointer]:
+                              - img "Bandera" [ref=e708]
+                              - generic [ref=e709]: "+356"
+                            - generic [ref=e710] [cursor=pointer]:
+                              - img "Bandera" [ref=e711]
+                              - generic [ref=e712]: "+230"
+                            - generic [ref=e713] [cursor=pointer]:
+                              - img "Bandera" [ref=e714]
+                              - generic [ref=e715]: "+960"
+                            - generic [ref=e716] [cursor=pointer]:
+                              - img "Bandera" [ref=e717]
+                              - generic [ref=e718]: "+265"
+                            - generic [ref=e719] [cursor=pointer]:
+                              - img "Bandera" [ref=e720]
+                              - generic [ref=e721]: "+52"
+                            - generic [ref=e722] [cursor=pointer]:
+                              - img "Bandera" [ref=e723]
+                              - generic [ref=e724]: "+60"
+                            - generic [ref=e725] [cursor=pointer]:
+                              - img "Bandera" [ref=e726]
+                              - generic [ref=e727]: "+258"
+                            - generic [ref=e728] [cursor=pointer]:
+                              - img "Bandera" [ref=e729]
+                              - generic [ref=e730]: "+264"
+                            - generic [ref=e731] [cursor=pointer]:
+                              - img "Bandera" [ref=e732]
+                              - generic [ref=e733]: "+687"
+                            - generic [ref=e734] [cursor=pointer]:
+                              - img "Bandera" [ref=e735]
+                              - generic [ref=e736]: "+227"
+                            - generic [ref=e737] [cursor=pointer]:
+                              - img "Bandera" [ref=e738]
+                              - generic [ref=e739]: "+672"
+                            - generic [ref=e740] [cursor=pointer]:
+                              - img "Bandera" [ref=e741]
+                              - generic [ref=e742]: "+234"
+                            - generic [ref=e743] [cursor=pointer]:
+                              - img "Bandera" [ref=e744]
+                              - generic [ref=e745]: "+505"
+                            - generic [ref=e746] [cursor=pointer]:
+                              - img "Bandera" [ref=e747]
+                              - generic [ref=e748]: "+31"
+                            - generic [ref=e749] [cursor=pointer]:
+                              - img "Bandera" [ref=e750]
+                              - generic [ref=e751]: "+47"
+                            - generic [ref=e752] [cursor=pointer]:
+                              - img "Bandera" [ref=e753]
+                              - generic [ref=e754]: "+977"
+                            - generic [ref=e755] [cursor=pointer]:
+                              - img "Bandera" [ref=e756]
+                              - generic [ref=e757]: "+674"
+                            - generic [ref=e758] [cursor=pointer]:
+                              - img "Bandera" [ref=e759]
+                              - generic [ref=e760]: "+683"
+                            - generic [ref=e761] [cursor=pointer]:
+                              - img "Bandera" [ref=e762]
+                              - generic [ref=e763]: "+64"
+                            - generic [ref=e764] [cursor=pointer]:
+                              - img "Bandera" [ref=e765]
+                              - generic [ref=e766]: "+968"
+                            - generic [ref=e767] [cursor=pointer]:
+                              - img "Bandera" [ref=e768]
+                              - generic [ref=e769]: "+507"
+                            - generic [ref=e770] [cursor=pointer]:
+                              - img "Bandera" [ref=e771]
+                              - generic [ref=e772]: "+51"
+                            - generic [ref=e773] [cursor=pointer]:
+                              - img "Bandera" [ref=e774]
+                              - generic [ref=e775]: "+689"
+                            - generic [ref=e776] [cursor=pointer]:
+                              - img "Bandera" [ref=e777]
+                              - generic [ref=e778]: "+675"
+                            - generic [ref=e779] [cursor=pointer]:
+                              - img "Bandera" [ref=e780]
+                              - generic [ref=e781]: "+63"
+                            - generic [ref=e782] [cursor=pointer]:
+                              - img "Bandera" [ref=e783]
+                              - generic [ref=e784]: "+92"
+                            - generic [ref=e785] [cursor=pointer]:
+                              - img "Bandera" [ref=e786]
+                              - generic [ref=e787]: "+48"
+                            - generic [ref=e788] [cursor=pointer]:
+                              - img "Bandera" [ref=e789]
+                              - generic [ref=e790]: "+508"
+                            - generic [ref=e791] [cursor=pointer]:
+                              - img "Bandera" [ref=e792]
+                              - generic [ref=e793]: "+64"
+                            - generic [ref=e794] [cursor=pointer]:
+                              - img "Bandera" [ref=e795]
+                              - generic [ref=e796]: "+1787"
+                            - generic [ref=e797] [cursor=pointer]:
+                              - img "Bandera" [ref=e798]
+                              - generic [ref=e799]: "+970"
+                            - generic [ref=e800] [cursor=pointer]:
+                              - img "Bandera" [ref=e801]
+                              - generic [ref=e802]: "+351"
+                            - generic [ref=e803] [cursor=pointer]:
+                              - img "Bandera" [ref=e804]
+                              - generic [ref=e805]: "+680"
+                            - generic [ref=e806] [cursor=pointer]:
+                              - img "Bandera" [ref=e807]
+                              - generic [ref=e808]: "+595"
+                            - generic [ref=e809] [cursor=pointer]:
+                              - img "Bandera" [ref=e810]
+                              - generic [ref=e811]: "+974"
+                            - generic [ref=e812] [cursor=pointer]:
+                              - img "Bandera" [ref=e813]
+                              - generic [ref=e814]: "+262"
+                            - generic [ref=e815] [cursor=pointer]:
+                              - img "Bandera" [ref=e816]
+                              - generic [ref=e817]: "+40"
+                            - generic [ref=e818] [cursor=pointer]:
+                              - img "Bandera" [ref=e819]
+                              - generic [ref=e820]: "+381"
+                            - generic [ref=e821] [cursor=pointer]:
+                              - img "Bandera" [ref=e822]
+                              - generic [ref=e823]: "+7"
+                            - generic [ref=e824] [cursor=pointer]:
+                              - img "Bandera" [ref=e825]
+                              - generic [ref=e826]: "+250"
+                            - generic [ref=e827] [cursor=pointer]:
+                              - img "Bandera" [ref=e828]
+                              - generic [ref=e829]: "+966"
+                            - generic [ref=e830] [cursor=pointer]:
+                              - img "Bandera" [ref=e831]
+                              - generic [ref=e832]: "+677"
+                            - generic [ref=e833] [cursor=pointer]:
+                              - img "Bandera" [ref=e834]
+                              - generic [ref=e835]: "+248"
+                            - generic [ref=e836] [cursor=pointer]:
+                              - img "Bandera" [ref=e837]
+                              - generic [ref=e838]: "+249"
+                            - generic [ref=e839] [cursor=pointer]:
+                              - img "Bandera" [ref=e840]
+                              - generic [ref=e841]: "+46"
+                            - generic [ref=e842] [cursor=pointer]:
+                              - img "Bandera" [ref=e843]
+                              - generic [ref=e844]: "+65"
+                            - generic [ref=e845] [cursor=pointer]:
+                              - img "Bandera" [ref=e846]
+                              - generic [ref=e847]: "+290"
+                            - generic [ref=e848] [cursor=pointer]:
+                              - img "Bandera" [ref=e849]
+                              - generic [ref=e850]: "+386"
+                            - generic [ref=e851] [cursor=pointer]:
+                              - img "Bandera" [ref=e852]
+                              - generic [ref=e853]: "+4779"
+                            - generic [ref=e854] [cursor=pointer]:
+                              - img "Bandera" [ref=e855]
+                              - generic [ref=e856]: "+421"
+                            - generic [ref=e857] [cursor=pointer]:
+                              - img "Bandera" [ref=e858]
+                              - generic [ref=e859]: "+232"
+                            - generic [ref=e860] [cursor=pointer]:
+                              - img "Bandera" [ref=e861]
+                              - generic [ref=e862]: "+378"
+                            - generic [ref=e863] [cursor=pointer]:
+                              - img "Bandera" [ref=e864]
+                              - generic [ref=e865]: "+221"
+                            - generic [ref=e866] [cursor=pointer]:
+                              - img "Bandera" [ref=e867]
+                              - generic [ref=e868]: "+252"
+                            - generic [ref=e869] [cursor=pointer]:
+                              - img "Bandera" [ref=e870]
+                              - generic [ref=e871]: "+597"
+                            - generic [ref=e872] [cursor=pointer]:
+                              - img "Bandera" [ref=e873]
+                              - generic [ref=e874]: "+211"
+                            - generic [ref=e875] [cursor=pointer]:
+                              - img "Bandera" [ref=e876]
+                              - generic [ref=e877]: "+239"
+                            - generic [ref=e878] [cursor=pointer]:
+                              - img "Bandera" [ref=e879]
+                              - generic [ref=e880]: "+503"
+                            - generic [ref=e881] [cursor=pointer]:
+                              - img "Bandera" [ref=e882]
+                              - generic [ref=e883]: "+1721"
+                            - generic [ref=e884] [cursor=pointer]:
+                              - img "Bandera" [ref=e885]
+                              - generic [ref=e886]: "+963"
+                            - generic [ref=e887] [cursor=pointer]:
+                              - img "Bandera" [ref=e888]
+                              - generic [ref=e889]: "+268"
+                            - generic [ref=e890] [cursor=pointer]:
+                              - img "Bandera" [ref=e891]
+                              - generic [ref=e892]: "+1649"
+                            - generic [ref=e893] [cursor=pointer]:
+                              - img "Bandera" [ref=e894]
+                              - generic [ref=e895]: "+235"
+                            - generic [ref=e896] [cursor=pointer]:
+                              - img "Bandera" [ref=e897]
+                              - generic [ref=e898]: "+262"
+                            - generic [ref=e899] [cursor=pointer]:
+                              - img "Bandera" [ref=e900]
+                              - generic [ref=e901]: "+228"
+                            - generic [ref=e902] [cursor=pointer]:
+                              - img "Bandera" [ref=e903]
+                              - generic [ref=e904]: "+66"
+                            - generic [ref=e905] [cursor=pointer]:
+                              - img "Bandera" [ref=e906]
+                              - generic [ref=e907]: "+992"
+                            - generic [ref=e908] [cursor=pointer]:
+                              - img "Bandera" [ref=e909]
+                              - generic [ref=e910]: "+690"
+                            - generic [ref=e911] [cursor=pointer]:
+                              - img "Bandera" [ref=e912]
+                              - generic [ref=e913]: "+670"
+                            - generic [ref=e914] [cursor=pointer]:
+                              - img "Bandera" [ref=e915]
+                              - generic [ref=e916]: "+993"
+                            - generic [ref=e917] [cursor=pointer]:
+                              - img "Bandera" [ref=e918]
+                              - generic [ref=e919]: "+216"
+                            - generic [ref=e920] [cursor=pointer]:
+                              - img "Bandera" [ref=e921]
+                              - generic [ref=e922]: "+676"
+                            - generic [ref=e923] [cursor=pointer]:
+                              - img "Bandera" [ref=e924]
+                              - generic [ref=e925]: "+90"
+                            - generic [ref=e926] [cursor=pointer]:
+                              - img "Bandera" [ref=e927]
+                              - generic [ref=e928]: "+1868"
+                            - generic [ref=e929] [cursor=pointer]:
+                              - img "Bandera" [ref=e930]
+                              - generic [ref=e931]: "+688"
+                            - generic [ref=e932] [cursor=pointer]:
+                              - img "Bandera" [ref=e933]
+                              - generic [ref=e934]: "+886"
+                            - generic [ref=e935] [cursor=pointer]:
+                              - img "Bandera" [ref=e936]
+                              - generic [ref=e937]: "+255"
+                            - generic [ref=e938] [cursor=pointer]:
+                              - img "Bandera" [ref=e939]
+                              - generic [ref=e940]: "+380"
+                            - generic [ref=e941] [cursor=pointer]:
+                              - img "Bandera" [ref=e942]
+                              - generic [ref=e943]: "+256"
+                            - generic [ref=e944] [cursor=pointer]:
+                              - img "Bandera" [ref=e945]
+                              - generic [ref=e946]: "+1"
+                            - generic [ref=e947] [cursor=pointer]:
+                              - img "Bandera" [ref=e948]
+                              - generic [ref=e949]: "+1"
+                            - generic [ref=e950] [cursor=pointer]:
+                              - img "Bandera" [ref=e951]
+                              - generic [ref=e952]: "+598"
+                            - generic [ref=e953] [cursor=pointer]:
+                              - img "Bandera" [ref=e954]
+                              - generic [ref=e955]: "+998"
+                            - generic [ref=e956] [cursor=pointer]:
+                              - img "Bandera" [ref=e957]
+                              - generic [ref=e958]: "+379"
+                            - generic [ref=e959] [cursor=pointer]:
+                              - img "Bandera" [ref=e960]
+                              - generic [ref=e961]: "+1784"
+                            - generic [ref=e962] [cursor=pointer]:
+                              - img "Bandera" [ref=e963]
+                              - generic [ref=e964]: "+58"
+                            - generic [ref=e965] [cursor=pointer]:
+                              - img "Bandera" [ref=e966]
+                              - generic [ref=e967]: "+1284"
+                            - generic [ref=e968] [cursor=pointer]:
+                              - img "Bandera" [ref=e969]
+                              - generic [ref=e970]: "+1340"
+                            - generic [ref=e971] [cursor=pointer]:
+                              - img "Bandera" [ref=e972]
+                              - generic [ref=e973]: "+84"
+                            - generic [ref=e974] [cursor=pointer]:
+                              - img "Bandera" [ref=e975]
+                              - generic [ref=e976]: "+678"
+                            - generic [ref=e977] [cursor=pointer]:
+                              - img "Bandera" [ref=e978]
+                              - generic [ref=e979]: "+681"
+                            - generic [ref=e980] [cursor=pointer]:
+                              - img "Bandera" [ref=e981]
+                              - generic [ref=e982]: "+685"
+                            - generic [ref=e983] [cursor=pointer]:
+                              - img "Bandera" [ref=e984]
+                              - generic [ref=e985]: "+377"
+                            - generic [ref=e986] [cursor=pointer]:
+                              - img "Bandera" [ref=e987]
+                              - generic [ref=e988]: "+967"
+                            - generic [ref=e989] [cursor=pointer]:
+                              - img "Bandera" [ref=e990]
+                              - generic [ref=e991]: "+262"
+                            - generic [ref=e992] [cursor=pointer]:
+                              - img "Bandera" [ref=e993]
+                              - generic [ref=e994]: "+27"
+                            - generic [ref=e995] [cursor=pointer]:
+                              - img "Bandera" [ref=e996]
+                              - generic [ref=e997]: "+260"
+                            - generic [ref=e998] [cursor=pointer]:
+                              - img "Bandera" [ref=e999]
+                              - generic [ref=e1000]: "+263"
+                        - textbox "Numero de celular" [ref=e222] [cursor=pointer]
+                    - generic [ref=e225]:
+                      - generic [ref=e226]:
+                        - generic [ref=e228]:
+                          - text: País
+                          - generic [ref=e229]: "*"
+                        - generic [ref=e231]:
+                          - text: Ciudad
+                          - generic [ref=e232]: "*"
+                      - generic [ref=e233]:
+                        - combobox [ref=e235] [cursor=pointer]:
+                          - option "Colombia" [selected]
+                          - option "Afghanistan"
+                          - option "Åland Islands"
+                          - option "Albania"
+                          - option "Algeria"
+                          - option "American Samoa"
+                          - option "Andorra"
+                          - option "Angola"
+                          - option "Anguilla"
+                          - option "Antarctica"
+                          - option "Antigua and Barbuda"
+                          - option "Argentina"
+                          - option "Armenia"
+                          - option "Aruba"
+                          - option "Ascension Island"
+                          - option "Australia"
+                          - option "Austria"
+                          - option "Azerbaijan"
+                          - option "Bahamas"
+                          - option "Bahrain"
+                          - option "Bangladesh"
+                          - option "Barbados"
+                          - option "Belarus"
+                          - option "Belgium"
+                          - option "Belize"
+                          - option "Benin"
+                          - option "Bermuda"
+                          - option "Bhutan"
+                          - option "Bolivia"
+                          - option "Bonaire"
+                          - option "Bosnia and Herzegovina"
+                          - option "Botswana"
+                          - option "Brazil"
+                          - option "British Indian Ocean Territory"
+                          - option "Brunei Darussalam"
+                          - option "Bulgaria"
+                          - option "Burkina Faso"
+                          - option "Burundi"
+                          - option "Cambodia"
+                          - option "Cameroon"
+                          - option "Canada"
+                          - option "Cape Verde"
+                          - option "Cayman Islands"
+                          - option "Central African Republic"
+                          - option "Chad"
+                          - option "Chile"
+                          - option "China"
+                          - option "Christmas Island"
+                          - option "Cocos (Keeling) Islands"
+                          - option "Comoros"
+                          - option "Congo"
+                          - option "Cook Islands"
+                          - option "Costa Rica"
+                          - option "Croatia"
+                          - option "Cuba"
+                          - option "Curaçao"
+                          - option "Cyprus"
+                          - option "Czechia"
+                          - option "Côte d'Ivoire"
+                          - option "Democratic Republic of the Congo"
+                          - option "Denmark"
+                          - option "Djibouti"
+                          - option "Dominica"
+                          - option "Dominican Republic"
+                          - option "Ecuador"
+                          - option "England"
+                          - option "Egypt"
+                          - option "El Salvador"
+                          - option "Equatorial Guinea"
+                          - option "Eritrea"
+                          - option "Estonia"
+                          - option "Eswatini"
+                          - option "Ethiopia"
+                          - option "Falkland Islands (Malvinas)"
+                          - option "Faroe Islands"
+                          - option "Fiji"
+                          - option "Finland"
+                          - option "France"
+                          - option "French Guiana"
+                          - option "French Polynesia"
+                          - option "French Southern Territories"
+                          - option "Gabon"
+                          - option "Gambia"
+                          - option "Georgia"
+                          - option "Germany"
+                          - option "Ghana"
+                          - option "Gibraltar"
+                          - option "Greece"
+                          - option "Greenland"
+                          - option "Grenada"
+                          - option "Guadeloupe"
+                          - option "Guam"
+                          - option "Guatemala"
+                          - option "Guernsey"
+                          - option "Guinea"
+                          - option "Guinea-Bissau"
+                          - option "Guyana"
+                          - option "Haiti"
+                          - option "Heard Island and McDonald Islands"
+                          - option "Honduras"
+                          - option "Hong Kong"
+                          - option "Hungary"
+                          - option "Iceland"
+                          - option "India"
+                          - option "Indonesia"
+                          - option "Iran"
+                          - option "Iraq"
+                          - option "Ireland"
+                          - option "Isle of Man"
+                          - option "Israel"
+                          - option "Italy"
+                          - option "Jamaica"
+                          - option "Japan"
+                          - option "Jersey"
+                          - option "Jordan"
+                          - option "Kazakhstan"
+                          - option "Kenya"
+                          - option "Kiribati"
+                          - option "Kosovo"
+                          - option "Kuwait"
+                          - option "Kyrgyzstan"
+                          - option "Laos"
+                          - option "Latvia"
+                          - option "Lebanon"
+                          - option "Lesotho"
+                          - option "Liberia"
+                          - option "Libya"
+                          - option "Liechtenstein"
+                          - option "Lithuania"
+                          - option "Luxembourg"
+                          - option "Macao"
+                          - option "Madagascar"
+                          - option "Malawi"
+                          - option "Malaysia"
+                          - option "Maldives"
+                          - option "Mali"
+                          - option "Malta"
+                          - option "Marshall Islands"
+                          - option "Martinique"
+                          - option "Mauritania"
+                          - option "Mauritius"
+                          - option "Mayotte"
+                          - option "Mexico"
+                          - option "Micronesia"
+                          - option "Moldova"
+                          - option "Monaco"
+                          - option "Mongolia"
+                          - option "Montenegro"
+                          - option "Montserrat"
+                          - option "Morocco"
+                          - option "Mozambique"
+                          - option "Myanmar"
+                          - option "Namibia"
+                          - option "Nauru"
+                          - option "Nepal"
+                          - option "Netherlands"
+                          - option "New Caledonia"
+                          - option "New Zealand"
+                          - option "Nicaragua"
+                          - option "Niger"
+                          - option "Nigeria"
+                          - option "Niue"
+                          - option "Norfolk Island"
+                          - option "North Korea"
+                          - option "North Macedonia"
+                          - option "Northern Ireland"
+                          - option "Northern Mariana Islands"
+                          - option "Norway"
+                          - option "Oman"
+                          - option "Pakistan"
+                          - option "Palau"
+                          - option "Palestine"
+                          - option "Panama"
+                          - option "Papua New Guinea"
+                          - option "Paraguay"
+                          - option "Peru"
+                          - option "Philippines"
+                          - option "Pitcairn"
+                          - option "Poland"
+                          - option "Portugal"
+                          - option "Puerto Rico"
+                          - option "Qatar"
+                          - option "Romania"
+                          - option "Russia"
+                          - option "Rwanda"
+                          - option "Réunion"
+                          - option "Saba"
+                          - option "Saint Barthélemy"
+                          - option "Saint Helena"
+                          - option "Saint Kitts and Nevis"
+                          - option "Saint Lucia"
+                          - option "Sint Eustatius"
+                          - option "Saint Martin"
+                          - option "Saint Pierre and Miquelon"
+                          - option "Saint Vincent and the Grenadines"
+                          - option "Samoa"
+                          - option "San Marino"
+                          - option "Sao Tome and Principe"
+                          - option "Saudi Arabia"
+                          - option "Scotland"
+                          - option "Senegal"
+                          - option "Serbia"
+                          - option "Seychelles"
+                          - option "Sierra Leone"
+                          - option "Singapore"
+                          - option "Sint Maarten"
+                          - option "Slovakia"
+                          - option "Slovenia"
+                          - option "Solomon Islands"
+                          - option "Somalia"
+                          - option "South Africa"
+                          - option "South Georgia and the South Sandwich Islands"
+                          - option "South Korea"
+                          - option "South Sudan"
+                          - option "Spain"
+                          - option "Sri Lanka"
+                          - option "Sudan"
+                          - option "Suriname"
+                          - option "Svalbard and Jan Mayen"
+                          - option "Sweden"
+                          - option "Switzerland"
+                          - option "Syria"
+                          - option "Taiwan"
+                          - option "Tajikistan"
+                          - option "Tanzania"
+                          - option "Thailand"
+                          - option "Timor-Leste"
+                          - option "Togo"
+                          - option "Tokelau"
+                          - option "Tonga"
+                          - option "Trinidad and Tobago"
+                          - option "Tristan da Cunha"
+                          - option "Tunisia"
+                          - option "Turkmenistan"
+                          - option "Turks and Caicos Islands"
+                          - option "Tuvalu"
+                          - option "Türkiye"
+                          - option "Uganda"
+                          - option "Ukraine"
+                          - option "United Arab Emirates"
+                          - option "United Kingdom"
+                          - option "United States"
+                          - option "Uruguay"
+                          - option "Uzbekistan"
+                          - option "Vanuatu"
+                          - option "Vatican City State"
+                          - option "Venezuela"
+                          - option "Vietnam"
+                          - option "Virgin Islands, British"
+                          - option "Virgin Islands, U.S."
+                          - option "Wales"
+                          - option "Wallis and Futuna"
+                          - option "Western Sahara"
+                          - option "Yemen"
+                          - option "Zambia"
+                          - option "Zimbabwe"
+                        - textbox "Ciudad" [ref=e237] [cursor=pointer]
+                - generic [ref=e242] [cursor=pointer]:
+                  - checkbox "Confirmo y acepto losTérminos y condicionesy lapolítica de tratamiento de datos personalesde ePayco." [ref=e243]
+                  - paragraph [ref=e244]:
+                    - text: Confirmo y acepto los
+                    - link "Términos y condiciones" [ref=e245]:
+                      - /url: https://epayco.com/terminos-y-condiciones-usuario-pagador-comprador/
+                    - text: y la
+                    - link "política de tratamiento de datos personales" [ref=e246]:
+                      - /url: https://epayco.com/tratamiento-de-datos/
+                    - text: de ePayco.
+                - generic [ref=e247]:
+                  - paragraph [ref=e248]: Secured by
+                  - img [ref=e249]
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - checkbox "Estoy de acuerdo con los términos del servicio y los acepto sin reservas." [ref=e65] [cursor=pointer]
+                - generic [ref=e67]:
+                  - text: Estoy de acuerdo con los
+                  - link "términos del servicio" [ref=e68] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+                  - text: y los acepto sin reservas.
+            - button "Realizar pedido" [disabled] [ref=e71]
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: 1 artículo
+              - paragraph [ref=e77]:
+                - link "mostrar detalles expand_more" [ref=e78] [cursor=pointer]:
+                  - /url: "#"
+                  - text: mostrar detalles
+                  - generic [ref=e79]: expand_more
+            - generic [ref=e80]:
+              - generic [ref=e81]:
+                - text: Subtotal
+                - generic [ref=e82]: 11.900,00 $
+              - generic [ref=e83]:
+                - text: Transporte
+                - generic [ref=e84]: Gratis
+          - generic [ref=e86]:
+            - text: Total (impuestos inc.)
+            - generic [ref=e87]: 11.900,00 $
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - text: Política de seguridad
+            - paragraph [ref=e91]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+          - generic [ref=e92]:
+            - text: Política de entrega
+            - paragraph [ref=e94]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+          - generic [ref=e95]:
+            - text: Política de devolución
+            - paragraph [ref=e97]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+  - generic [ref=e99]:
+    - link "Términos y condiciones" [ref=e101] [cursor=pointer]:
+      - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+    - text: © 2026 - Software Ecommerce desarrollado por PrestaShop™

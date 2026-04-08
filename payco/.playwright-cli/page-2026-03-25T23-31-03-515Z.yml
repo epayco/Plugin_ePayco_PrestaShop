@@ -1,0 +1,37 @@
+- generic [ref=e4]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - strong [ref=e8]: Modo de prueba
+      - paragraph [ref=e9]: "NÃºmero: 1234 1234 1234 1234"
+      - generic [ref=e10]:
+        - generic [ref=e11]:
+          - strong [ref=e12]: MM
+          - text: :12
+        - generic [ref=e13]:
+          - strong [ref=e14]: AA
+          - text: :2027
+        - generic [ref=e15]:
+          - strong [ref=e16]: CVV
+          - text: :123
+    - generic [ref=e17]:
+      - img [ref=e18]
+      - paragraph [ref=e20]: Datos de la tarjeta
+    - generic [ref=e22]:
+      - generic [ref=e24]: Nombres y Apellidos * Escribe...
+      - generic [ref=e26]: NÃºmero de tarjeta * Escribe...
+      - generic [ref=e27]:
+        - generic [ref=e29]: Fecha de expiraciÃ³n * MM/AA
+        - generic [ref=e31]: CVV * ***
+        - generic [ref=e33]: Cuotas * 1
+    - generic [ref=e34]:
+      - img [ref=e35]
+      - paragraph [ref=e38]: Datos del cliente
+    - generic [ref=e39]:
+      - generic [ref=e40]: "* Numero de documento"
+      - generic [ref=e41]: DirecciÃ³n * Escribe...
+      - generic [ref=e42]: Email * Escribe...
+      - generic [ref=e43]: "* Numero de celular"
+  - generic [ref=e45]:
+    - checkbox "Confirmo y acepto los TÃ©rminos y condiciones de ePayco." [ref=e46] [cursor=pointer]
+    - text: Confirmo y acepto los TÃ©rminos y condiciones de ePayco.
+  - button "Pagar" [ref=e47] [cursor=pointer]

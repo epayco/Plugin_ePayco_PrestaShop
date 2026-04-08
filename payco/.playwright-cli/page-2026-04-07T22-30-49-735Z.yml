@@ -1,0 +1,48 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - heading "PrestaShop" [level=1] [ref=e6]:
+        - img "PrestaShop" [ref=e7]
+      - text: 
+    - img "epayco" [ref=e9]
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - heading "epayco" [level=4] [ref=e13]
+        - generic [ref=e14]:
+          - generic [ref=e15]:
+            - generic [ref=e16]: Dirección de correo electrónico
+            - textbox "Dirección de correo electrónico" [active] [ref=e17]:
+              - /placeholder:  test@example.com
+          - generic [ref=e18]:
+            - generic [ref=e19]: Contraseña
+            - textbox "Contraseña" [ref=e20]:
+              - /placeholder:  Contraseña
+          - button "Iniciar sesión" [ref=e22] [cursor=pointer]:
+            - generic [ref=e23]: Iniciar sesión
+          - generic [ref=e24]:
+            - generic [ref=e26] [cursor=pointer]:
+              - checkbox "Mantener sesión activa" [ref=e27]
+              - text: Mantener sesión activa
+            - link "He olvidado mi contraseña" [ref=e28] [cursor=pointer]:
+              - /url: "#"
+      - text: 
+    - link "arrow_back Volver a epayco" [ref=e29] [cursor=pointer]:
+      - /url: https://try-apparent-deer-via.trycloudflare.com/
+      - generic [ref=e30]: arrow_back
+      - generic [ref=e31]: Volver a
+      - generic [ref=e32]: epayco
+    - generic [ref=e33]:
+      - paragraph [ref=e34]:
+        - link "© PrestaShop™ 2007-2026 - All rights reserved" [ref=e35] [cursor=pointer]:
+          - /url: https://www.prestashop.com/
+      - paragraph [ref=e36]:
+        - link "" [ref=e37] [cursor=pointer]:
+          - /url: https://twitter.com/PrestaShop
+          - generic [ref=e38]: 
+        - link "" [ref=e39] [cursor=pointer]:
+          - /url: https://www.facebook.com/prestashop
+          - generic [ref=e40]: 
+        - link "" [ref=e41] [cursor=pointer]:
+          - /url: https://www.prestashop.com/github
+          - generic [ref=e42]: 
+  - generic:  

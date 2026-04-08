@@ -1,0 +1,109 @@
+- main [ref=e2]:
+  - navigation [ref=e4]:
+    - generic [ref=e6]:
+      - link "epayco" [ref=e8] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/
+        - img "epayco" [ref=e9]
+      - link "Contacte con nosotros" [ref=e13] [cursor=pointer]:
+        - /url: https://try-apparent-deer-via.trycloudflare.com/es/contactenos
+  - generic [ref=e14]:
+    - complementary
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - heading " Datos Personales mode_edit Modificar" [level=1] [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: 
+          - text: Datos Personales
+          - generic [ref=e24]:
+            - generic [ref=e25]: mode_edit
+            - text: Modificar
+        - heading " Direcciones mode_edit Modificar" [level=1] [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Direcciones
+          - generic [ref=e29]:
+            - generic [ref=e30]: mode_edit
+            - text: Modificar
+        - heading " Método de envío mode_edit Modificar" [level=1] [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: 
+          - text: Método de envío
+          - generic [ref=e34]:
+            - generic [ref=e35]: mode_edit
+            - text: Modificar
+        - text: "Warning: DOMDocument::loadHTML(): Tag test-mode-epayco invalid in Entity, line: 16 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 32 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag path invalid in Entity, line: 33 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-name-epayco invalid in Entity, line: 49 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-number invalid in Entity, line: 62 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-expiration-date invalid in Entity, line: 77 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-card-security-code invalid in Entity, line: 91 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-installment-epayco invalid in Entity, line: 100 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 107 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag path invalid in Entity, line: 108 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): ID ep-custom-checkout-form-container already defined in Entity, line: 112 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-document-epayco invalid in Entity, line: 129 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-address-epayco invalid in Entity, line: 142 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-email-epayco invalid in Entity, line: 155 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-cellphone-epayco invalid in Entity, line: 173 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag input-country-epayco invalid in Entity, line: 192 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Tag terms-and-conditions invalid in Entity, line: 210 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - text: "Warning: DOMDocument::loadHTML(): Opening and ending tag mismatch: form and div in Entity, line: 222 in /var/www/html/src/Core/Payment/PaymentOptionFormDecorator.php on line 38"
+        - generic [ref=e36]:
+          - heading "4 Pago" [level=1] [ref=e37]:
+            - generic [ref=e38]: "4"
+            - text: Pago
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e42]:
+                - radio "Pago por transferencia bancaria" [ref=e44] [cursor=pointer]
+                - generic [ref=e45]: Pago por transferencia bancaria
+              - generic [ref=e47]:
+                - radio "Pagar con cheque" [ref=e49] [cursor=pointer]
+                - generic [ref=e50]: Pagar con cheque
+              - generic [ref=e52]:
+                - radio "Pago contra reembolso" [ref=e54] [cursor=pointer]
+                - generic [ref=e55]: Pago contra reembolso
+              - generic [ref=e57]:
+                - radio [ref=e59] [cursor=pointer]
+                - img [ref=e61]
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - checkbox "Estoy de acuerdo con los términos del servicio y los acepto sin reservas." [ref=e65] [cursor=pointer]
+                - generic [ref=e67]:
+                  - text: Estoy de acuerdo con los
+                  - link "términos del servicio" [ref=e68] [cursor=pointer]:
+                    - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+                  - text: y los acepto sin reservas.
+            - button "Realizar pedido" [disabled] [ref=e71]
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: 1 artículo
+              - paragraph [ref=e77]:
+                - link "mostrar detalles expand_more" [ref=e78] [cursor=pointer]:
+                  - /url: "#"
+                  - text: mostrar detalles
+                  - generic [ref=e79]: expand_more
+            - generic [ref=e80]:
+              - generic [ref=e81]:
+                - text: Subtotal
+                - generic [ref=e82]: 11.900,00 $
+              - generic [ref=e83]:
+                - text: Transporte
+                - generic [ref=e84]: Gratis
+          - generic [ref=e86]:
+            - text: Total (impuestos inc.)
+            - generic [ref=e87]: 11.900,00 $
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - text: Política de seguridad
+            - paragraph [ref=e91]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+          - generic [ref=e92]:
+            - text: Política de entrega
+            - paragraph [ref=e94]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+          - generic [ref=e95]:
+            - text: Política de devolución
+            - paragraph [ref=e97]: (editar con el módulo de Información de seguridad y confianza para el cliente)
+  - generic [ref=e99]:
+    - link "Términos y condiciones" [ref=e101] [cursor=pointer]:
+      - /url: https://try-apparent-deer-via.trycloudflare.com/es/content/3-terminos-y-condiciones-de-uso
+    - text: © 2026 - Software Ecommerce desarrollado por PrestaShop™

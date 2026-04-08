@@ -1,0 +1,32 @@
+[    1479ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1519ms] [WARNING] JQMIGRATE: jQuery.fn.click() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1520ms] [WARNING] JQMIGRATE: jQuery.fn.hover() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1530ms] [WARNING] JQMIGRATE: jQuery.fn.bind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1531ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1533ms] [WARNING] JQMIGRATE: jQuery.fn.change() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1536ms] [WARNING] JQMIGRATE: jQuery.fn.mousedown() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[    1536ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   14702ms] [WARNING] JQMIGRATE: jQuery.fn.mousemove() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   14703ms] [WARNING] JQMIGRATE: jQuery.fn.unbind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   15953ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   15996ms] [WARNING] JQMIGRATE: jQuery.isArray is deprecated; use Array.isArray @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   16003ms] [WARNING] JQMIGRATE: jQuery.fn.click() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   16006ms] [WARNING] JQMIGRATE: jQuery.fn.hover() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   16014ms] [WARNING] JQMIGRATE: jQuery.fn.bind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   16014ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[   16018ms] [WARNING] JQMIGRATE: jQuery.fn.unbind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195394ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195461ms] [WARNING] JQMIGRATE: jQuery.isArray is deprecated; use Array.isArray @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195470ms] [WARNING] JQMIGRATE: jQuery.fn.click() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195474ms] [WARNING] JQMIGRATE: jQuery.fn.hover() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195482ms] [WARNING] JQMIGRATE: jQuery.fn.bind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195482ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  195491ms] [WARNING] JQMIGRATE: jQuery.fn.unbind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  202433ms] [WARNING] JQMIGRATE: jQuery.trim is deprecated; use String.prototype.trim @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216153ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216208ms] [WARNING] JQMIGRATE: jQuery.isArray is deprecated; use Array.isArray @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216227ms] [WARNING] JQMIGRATE: jQuery.fn.click() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216229ms] [WARNING] JQMIGRATE: jQuery.fn.hover() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216241ms] [WARNING] JQMIGRATE: jQuery.fn.bind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216242ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
+[  216251ms] [WARNING] JQMIGRATE: jQuery.fn.unbind() is deprecated @ https://theories-jefferson-apps-pushing.trycloudflare.com/admin669tjuwwmfzwcepmdzl/themes/new-theme/public/main.bundle.js:603
