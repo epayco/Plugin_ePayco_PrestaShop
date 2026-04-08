@@ -1,8 +1,0 @@
-[    1274ms] [WARNING] JQMIGRATE: 'ready' event is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1329ms] [WARNING] JQMIGRATE: jQuery.fn.click() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1333ms] [WARNING] JQMIGRATE: jQuery.fn.hover() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1345ms] [WARNING] JQMIGRATE: jQuery.fn.bind() is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1346ms] [WARNING] JQMIGRATE: jQuery.fn.submit() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1349ms] [WARNING] JQMIGRATE: jQuery.fn.change() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1352ms] [WARNING] JQMIGRATE: jQuery.fn.mousedown() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603
-[    1352ms] [WARNING] JQMIGRATE: jQuery.fn.mouseup() event shorthand is deprecated @ https://try-apparent-deer-via.trycloudflare.com/admin757fzaeczoemdfwp0tx/themes/new-theme/public/main.bundle.js:603

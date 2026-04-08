@@ -42,7 +42,7 @@ class AbstractSettings
     public $process;
     public $epayco;
     protected $validate;
-    private const EP_APIFY  = "https://eks-apify-service.epayco.io";
+    private const EP_APIFY  = "https://apify-green.epayco.co";
 
     public function __construct()
     {

@@ -828,7 +828,7 @@ class Payco extends PaymentModule
 
         $basic = base64_encode($public_key . ':' . $private_key);
 
-        $ch = curl_init('https://eks-apify-service.epayco.io/login');
+        $ch = curl_init('https://apify-green.epayco.co/login');
         curl_setopt_array($ch, [
             CURLOPT_POST           => true,
             CURLOPT_POSTFIELDS     => json_encode([]),
@@ -861,7 +861,7 @@ class Payco extends PaymentModule
      */
     private function callReversionApi($ref_payco, $bearer_token)
     {
-        $ch = curl_init('https://eks-apify-service.epayco.io/transaction/reversion');
+        $ch = curl_init('https://apify-green.epayco.co/transaction/reversion');
         curl_setopt_array($ch, [
             CURLOPT_POST           => true,
             CURLOPT_POSTFIELDS     => json_encode(['referencePayco' => $ref_payco]),
