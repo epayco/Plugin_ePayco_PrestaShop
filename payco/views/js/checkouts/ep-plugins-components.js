@@ -4921,7 +4921,7 @@ console.log('Epayco Checkout Components loaded');
                 ee.classList.add("ep-label-country", "ep-label-city-custom");
                 ee.setAttribute("message", this.getAttribute("placeholder")),
                 ee.style.width="230px",
-                ee.style.marginLeft="-141px",
+                //ee.style.marginLeft="-141px",
                     ee.setAttribute("isOptional", "false");
                 return tt.appendChild(e),
                     tt.appendChild(ee),

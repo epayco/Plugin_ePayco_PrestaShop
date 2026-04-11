@@ -42,7 +42,7 @@
                             <img src="{$module_dir|escape:'htmlall':'UTF-8'}views/img/icon-info.png" style="height: 25px" >
                             <div style="display: grid;grid-template-rows: repeat(2, 1fr);gap: 8px; margin-top: -25px;">
                                 <p style="margin-left: 35px;">Por favor, utiliza la siguiente información de tarjeta de prueba:</p>
-                                <p style="font-weight: bold; color:black; margin-left: 35px;" >Número: 1234 1234 1234 1234</p>
+                                <p style="font-weight: bold; color:black; margin-left: 35px;" >Número: 4575 6231 8229 0326</p>
                                 <div style="width: 50%;display: grid;grid-template-columns: repeat(3, 1fr);gap: 0px;padding: 0px">
                                     <p style="border-right: 1px solid #000 !important; padding: 0px 10px 0px 0px;color:black;margin-left: 35px;"><strong>MM</strong>:12</p>
                                     <p style="border-right: 1px solid #000 !important; padding: 0px 25px 0px;color:black"><strong>AA</strong>:2027</p>

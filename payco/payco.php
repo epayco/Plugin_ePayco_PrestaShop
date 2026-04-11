@@ -27,7 +27,7 @@
 
 
 //namespace Epayco\Prestashop;
-define('EP_VERSION', '1.0.0');
+define('EP_VERSION', '1.0.3');
 define('EP_ROOT_URL', dirname(__FILE__));
 
 if (!defined('_PS_VERSION_')) {
