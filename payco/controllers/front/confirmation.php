@@ -43,7 +43,7 @@ class PaycoConfirmationModuleFrontController extends ModuleFrontController
     		$payco = new Payco();
 
     		// Obtener y sanitizar datos
-    		$extra1 = (int)trim($_REQUEST['x_extra1'] ?? 0);
+    		$extra1 = (int)trim($_REQUEST['x_extra2'] ?? 0);
     		$response = (int)trim($_REQUEST['x_cod_response'] ?? 0);
     		$referencia = pSQL(trim($_REQUEST['x_ref_payco'] ?? ''));
     		$transid = pSQL(trim($_REQUEST['x_transaction_id'] ?? ''));
