@@ -8768,7 +8768,7 @@ console.log('Epayco Checkout Components loaded');
 
             createDocument(t, i) {
                 const n = document.createElement("input");
-                return n.setAttribute("name", this.getAttribute("inputName")),
+                return n.setAttribute("name", this.getAttribute("input-name-epayco")),
                     n.setAttribute("data-checkout", this.getAttribute("inputDataCheckout")),
                     n.setAttribute("data-cy", "card[name]"),
                     n.setAttribute("data-epayco", "card[name]"),
@@ -8880,7 +8880,7 @@ console.log('Epayco Checkout Components loaded');
 
             createDocument(t, i) {
                 const n = document.createElement("input");
-                return n.setAttribute("name", this.getAttribute("inputName")),
+                return n.setAttribute("name", this.getAttribute("input-name-epayco")),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
                     n.setAttribute("data-epayco", "card[name]"),
                     n.classList.add("ep-cellphone"),
@@ -8993,7 +8993,7 @@ console.log('Epayco Checkout Components loaded');
 
             createDocument(t, i) {
                 const n = document.createElement("input");
-                return n.setAttribute("name", this.getAttribute("inputName")),
+                return n.setAttribute("name", this.getAttribute("input-name-epayco")),
                     n.setAttribute("data-checkout", this.getAttribute("inputDataCheckout")),
                     n.setAttribute("data-cy", "input-address"),
                     n.classList.add("ep-cellphone"),
@@ -9076,7 +9076,7 @@ console.log('Epayco Checkout Components loaded');
 
             createDocument(t, i) {
                 const n = document.createElement("input");
-                return n.setAttribute("name", this.getAttribute("inputName")),
+                return n.setAttribute("name", this.getAttribute("input-name-epayco")),
                     n.setAttribute("data-checkout", this.getAttribute("inputDataCheckout")),
                     n.setAttribute("data", "email"),
                     n.setAttribute("data-epayco", "card[email]"),
@@ -9100,14 +9100,14 @@ console.log('Epayco Checkout Components loaded');
                             t.classList.remove("ep-error");
                             n.classList.remove("ep-error");
                             i.firstElementChild.style.display = "none",
-                                n.setAttribute("name", this.getAttribute("inputName"))
+                                n.setAttribute("name", this.getAttribute("input-name-epayco"))
                         }
                     })),
                     n.addEventListener("focusout", (() => {
                         t.classList.remove("ep-focus");
                         void 0 !== (n.value !=='' && this.validateEmail(n.value) ? (t.classList.remove("ep-error"),
                                     i.firstElementChild.style.display = "none",
-                                    n.setAttribute("name", this.getAttribute("inputName"))) :
+                                    n.setAttribute("name", this.getAttribute("input-name-epayco"))) :
                                 (
                                     t.classList.add("ep-error"),
                                         i.firstElementChild.style.display = "flex",
@@ -9179,7 +9179,8 @@ console.log('Epayco Checkout Components loaded');
 
             createDocument(t, i) {
                 const n = document.createElement("input");
-                return n.setAttribute("name", this.getAttribute("input-name-epayco")),
+                const inputNameAttr = this.getAttribute("input-name-epayco");
+                return n.setAttribute("name", inputNameAttr),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
                     n.setAttribute("data-epayco", "card[email]"),
                     n.classList.add("ep-cellphone"),
@@ -9195,25 +9196,21 @@ console.log('Epayco Checkout Components loaded');
                         if (!this.validateEmail(n.value)) {
                             n.classList.add("ep-error"),
                                 t.classList.add("ep-error"),
-                                i.firstElementChild.style.display = "flex",
-                                n.setAttribute("name", this.getAttribute("flagError"))
+                                i.firstElementChild.style.display = "flex"
                             //i.firstElementChild.textContent = "Por favor, introduce un email válido."; // Mensaje de error
                         } else {
                             n.classList.remove("ep-error");
                             t.classList.remove("ep-error");
-                            i.firstElementChild.style.display = "none",
-                                n.setAttribute("name", this.getAttribute("inputName"))
+                            i.firstElementChild.style.display = "none"
                         }
                     })),
                     n.addEventListener("focusout", (() => {
                         t.classList.remove("ep-focus");
                         void 0 !== (n.value !=='' && this.validateEmail(n.value) ? (t.classList.remove("ep-error"),
-                                    i.firstElementChild.style.display = "none",
-                                    n.setAttribute("name", this.getAttribute("inputName"))) :
+                                    i.firstElementChild.style.display = "none") :
                                 (
                                     t.classList.add("ep-error"),
-                                        i.firstElementChild.style.display = "flex",
-                                        n.setAttribute("name", this.getAttribute("flagError"))
+                                        i.firstElementChild.style.display = "flex"
                                 )
                         )
                     })), n
@@ -9398,7 +9395,7 @@ console.log('Epayco Checkout Components loaded');
 
             createDocument(t, i) {
                 const n = document.createElement("input");
-                return n.setAttribute("name", this.getAttribute("inputName")),
+                return n.setAttribute("name", this.getAttribute("input-name-epayco")),
                     n.setAttribute("data-checkout", this.getAttribute("input-data-checkout")),
                     n.setAttribute("data-epayco", "card[cvc]"),
                     n.classList.add("ep-cellphone"),
