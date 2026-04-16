@@ -1037,7 +1037,7 @@ class Payco extends PaymentModule
             if ($current_state != Configuration::get($state)) {
                 $orderHistory = new OrderHistory();
                 $orderHistory->id_order = (int)$order->id;
-                $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                $orderHistory->changeIdOrderState((int)Configuration::get($state), $order, true);
                 $orderHistory->add();
             }
         }
