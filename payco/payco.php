@@ -965,4 +965,83 @@ class Payco extends PaymentModule
             return $this->display(__FILE__, 'views/templates/hook/failure.tpl');
         }
     }
+
+    public function PaymentSuccess($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise)
+    {
+
+        $this->Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise);
+    }
+    
+    private function Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $old_ref_payco, $x_approval_code, $x_franchise, $invoice = null)
+    {
+        $idorder = $extra1;
+
+        $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE', 'P_KEY', 'PUBLIC_KEY', 'P_TEST_REQUEST', 'P_STATE_END_TRANSACTION'));
+
+        $x_cust_id_cliente = trim($config['P_CUST_ID_CLIENTE']);
+        $x_key = trim($config['P_KEY']);
+        
+        
+        $public_key = Configuration::get('EPAYCO_PUBLIC_KEY');
+        $private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
+        $x_key = Configuration::get('EPAYCO_P_KEY');
+        $x_cust_id_cliente = Configuration::get('EPAYCO_P_CUST_ID_CLIENTE');
+        
+        $x_cod_response = (int)$response;
+        $x_signature = hash(
+            'sha256',
+            trim($x_cust_id_cliente ). '^'
+                . trim($x_key) . '^'
+                . $referencia . '^'
+                . $transid . '^'
+                . $amount . '^'
+                . $currency
+        );
+
+
+        $payment = false;
+        $state = 'PAYCO_OS_REJECTED';
+        if ($x_cod_response == 4)
+            $state = 'PAYCO_OS_FAILED';
+        else if ($x_cod_response == 2)
+            $state = 'PAYCO_OS_REJECTED';
+        else if ($x_cod_response == 3) {
+            $state = 'PAYCO_OS_PENDING';
+            $statePending = $state;
+        } else if ($x_cod_response == 9)
+            $state = 'PAYCO_OS_EXPIRED';
+        else if ($x_cod_response == 10)
+            $state = 'PAYCO_OS_ABANDONED';
+        else if ($x_cod_response == 11)
+            $state = 'PAYCO_OS_CANCELED';
+        else if ($x_cod_response == 1) {
+            $state = 'PS_OS_PAYMENT';
+            $payment = true;
+        }
+
+        // $order_id = Order::getByCartId((int)$idorder);
+        //$order = Order::getByCartId((int)$idorder);
+        $order = new Order((int)$idorder);
+        if(!$order || !$order->id) {
+            $this->writeTransactionLog("ERROR - No se encontró orden para cart_id: " . (int)$idorder);
+            return;
+        }
+        $keepOn = false;
+        $orderAmount = floatval($order->total_paid);
+        if ($orderAmount == floatval($amount)) {
+            $validation = true;
+        }
+        
+        if ($x_signature == $signature && $validation) {
+            $current_state = $order->current_state;
+            if ($current_state != Configuration::get($state)) {
+                $orderHistory = new OrderHistory();
+                $orderHistory->id_order = (int)$order->id;
+                $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                $orderHistory->add();
+            }
+        }
+        
+        
+    }
 }

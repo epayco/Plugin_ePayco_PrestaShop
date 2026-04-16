@@ -123,7 +123,12 @@ class CreditcardPreference extends AbstractPreference
                 "use_default_card_customer" => true,
                 "testMode" => $test,
                 "extras_epayco"=>["extra5"=>"P19"],
-                'metodoconfirmacion'=> "POST"
+                'metodoconfirmacion'=> "POST",
+                "method_confirmation" => "POST",
+                'extras'=> [
+                    'extra1' => strval($extra1),
+                    'extra2' => strval($extra2)
+                ]
             );
             try {
                 $charge = $this->epayco->charge->create($response);
