@@ -565,12 +565,38 @@ class Payco extends PaymentModule
         // available later in hookActionOrderSlipAdd for refund processing.
         if ($ref_payco) {
             $order = isset($params['order']) ? $params['order'] : (isset($params['objOrder']) ? $params['objOrder'] : null);
+            
             if ($order) {
-                Db::getInstance()->update(
+                /*Db::getInstance()->update(
                     'order_payment',
                     ['transaction_id' => pSQL($ref_payco)],
                     'order_reference = \'' . pSQL($order->reference) . '\''
+                );*/
+                
+
+                $exists = Db::getInstance()->getValue(
+                    'SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'order_payment 
+                     WHERE order_reference = "' . pSQL($order->reference) . '"'
                 );
+                
+                if ($exists) {
+                    Db::getInstance()->update(
+                        'order_payment',
+                        ['transaction_id' => pSQL($ref_payco)],
+                        'order_reference = "' . pSQL($order->reference) . '"'
+                    );
+                } else {
+                    Db::getInstance()->insert(
+                        'order_payment',
+                        [
+                            'order_reference' => pSQL($order->reference),
+                            'transaction_id' => pSQL($ref_payco),
+                            'amount' => (float)$order->total_paid,
+                            'payment_method' => 'ePayco',
+                        ]
+                    );
+                }
+
             }
         }
 
