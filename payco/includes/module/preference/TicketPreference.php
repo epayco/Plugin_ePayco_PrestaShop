@@ -166,11 +166,13 @@ class TicketPreference extends AbstractPreference
                 'currency' => $currency->iso_code,
                 'ip' =>$myIp,
                 "testMode" => $test,
-                "extras_epayco"=>["extra5"=>"P19"],
+                "extras_epayco"=>["extra5"=>"P60"],
                 'methodConfirmation'=> "POST"
             );
             $cash = $this->epayco->cash->create($response);
             $response = json_decode(json_encode($cash), true);
+            var_dump($response);
+            die();
             if (is_array($response) && $response['success']) {
                 $order = new Order($extra2);
                 $descuento = $order->total_discounts_tax_incl;

@@ -38,6 +38,7 @@ class PaycoTicketModuleFrontController extends ModuleFrontController
     public function __construct()
     {
         parent::__construct();
+        $this->ssl = true;
     }
 
     /**
@@ -45,16 +46,38 @@ class PaycoTicketModuleFrontController extends ModuleFrontController
      *
      * @return void
      */
+    public function postProcess()
+    {
+        // Procesar POST REQUEST del formulario de ticket
+        if (Tools::isSubmit('epayco_ticket')) {
+            try {
+                $preference = new TicketPreference();
+                $context = $this->context;
+                $preference->verifyModuleParameters($context);
+                
+                $ticket_info = Tools::getValue('epayco_ticket');
+                
+                // Log para debugging
+                error_log('PAYCO TICKET - Datos recibidos: ' . json_encode($ticket_info));
+                
+                if ($ticket_info && !empty($ticket_info)) {
+                    $preference->createPreference($this->context->cart, $ticket_info);
+                } else {
+                    error_log('PAYCO TICKET - Error: No se recibieron datos del formulario');
+                    Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
+                }
+            } catch (Exception $e) {
+                error_log('PAYCO TICKET - Exception: ' . $e->getMessage());
+                $this->context->cookie->__set('redirect_message', 'Error procesando pago: ' . $e->getMessage());
+                Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
+            }
+        }
+    }
+
     public function initContent()
     {
-        $preference = new TicketPreference();
-        try{
-            $context = $this->context;
-            $preference->verifyModuleParameters($context);
-            $ticket_info = Tools::getValue('epayco_ticket');
-            $preference->createPreference($this->context->cart, $ticket_info);
-        } catch (Exception $e) {
-            $this->context->cookie->__set('redirect_message', Tools::displayError());
-        }
+        // Llamar al postProcess para manejar el POST
+        $this->postProcess();
+        parent::initContent();
     }
 }
