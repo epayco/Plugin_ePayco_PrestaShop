@@ -586,7 +586,8 @@ class Payco extends PaymentModule
                         'order_reference = "' . pSQL($order->reference) . '"'
                     );
                 } else {
-                    Db::getInstance()->insert(
+                    $order->addOrderPayment($order->total_paid, 'ePayco', $ref_payco);
+                    /*Db::getInstance()->insert(
                         'order_payment',
                         [
                             'order_reference' => pSQL($order->reference),
@@ -594,7 +595,7 @@ class Payco extends PaymentModule
                             'amount' => (float)$order->total_paid,
                             'payment_method' => 'ePayco',
                         ]
-                    );
+                    );*/
                 }
 
             }
