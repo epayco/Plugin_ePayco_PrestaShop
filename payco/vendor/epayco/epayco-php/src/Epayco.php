@@ -11,7 +11,6 @@ use Epayco\Resources\Subscriptions;
 use Epayco\Resources\Token;
 use Epayco\Resources\Daviplata;
 use Epayco\Resources\Safetypay;
-use Epayco\Resources\Transaction;
 
 /**
  * Global class constructor
@@ -52,19 +51,18 @@ class Epayco
         $this->test = $options["test"] ? "TRUE" : "FALSE";
         $this->lang = $options["lenguage"];
 
-        if ($this->api_key && $this->private_key) {
-            $this->token = new Token($this);
-            $this->customer = new Customers($this);
-            $this->plan = new Plan($this);
-            $this->subscriptions = new Subscriptions($this);
-            $this->bank = new Bank($this);
-            $this->cash = new Cash($this);
-            $this->charge = new Charge($this);
-            $this->daviplata = new Daviplata($this);
-            $this->safetypay = new Safetypay($this);
-            $this->transaction = new Transaction($this);
+        if (!$this->api_key && !$this->private_key && $this->test && $this->lang) {
+            throw new ErrorException($this->lang, 100);
         }
 
-
+        $this->token = new Token($this);
+        $this->customer = new Customers($this);
+        $this->plan = new Plan($this);
+        $this->subscriptions = new Subscriptions($this);
+        $this->bank = new Bank($this);
+        $this->cash = new Cash($this);
+        $this->charge = new Charge($this);
+        $this->daviplata = new Daviplata($this);
+        $this->safetypay = new Safetypay($this);
     }
 }

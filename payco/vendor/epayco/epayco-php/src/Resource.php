@@ -9,7 +9,7 @@
  {
     protected $epayco;
     /**
-      * Instance payco class
+      * Instance epayco class
       * @param array $epayco
      */
      public function __construct($epayco)

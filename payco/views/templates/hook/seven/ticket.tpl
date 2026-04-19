@@ -56,7 +56,7 @@
                                 labelMessage="{l s='Nombres y Apellidos' mod='payco'}"
                                 helperMessage="{l s='Invalid name' mod='payco'}"
                                 placeholder="{l s='Escriba' mod='payco'}"
-                                input-name-epayco='epayco_ticket[name]'
+                                inputName='epayco_ticket[name]'
                                 flagError='epayco_ticket[nameError]'
                                 validate=true
                                 hiddenId="hidden-name-ticket"
@@ -68,7 +68,7 @@
                                 labelMessage="{l s='Correo electrónico' mod='payco'}"
                                 helperMessage="{l s='Invalid email' mod='payco'}"
                                 placeholder="{l s='Escriba' mod='payco'}"
-                                input-name-epayco='epayco_ticket[email]'
+                                inputName='epayco_ticket[email]'
                                 flagError='epayco_ticket[emailError]'
                                 validate=true
                                 hiddenId= "hidden-email-ticket"

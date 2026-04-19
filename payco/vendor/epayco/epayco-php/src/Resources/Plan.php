@@ -37,7 +37,7 @@ class Plan extends Resource
     {
         return $this->request(
                "GET",
-               "/recurring/v1/plan/" . $this->epayco->api_key . "/" . $uid . "/",
+               "/recurring/v1/plan/" . $this->epayco->api_key . "/" . $uid,
                $api_key = $this->epayco->api_key,
                $options = null,
                $private_key = $this->epayco->private_key,
@@ -48,7 +48,7 @@ class Plan extends Resource
     }
 
     /**
-     * Get list all plans from client payco
+     * Get list all plans from client epayco
      * @return object
      */
     public function getList()
@@ -106,7 +106,7 @@ class Plan extends Resource
    }
 
     /**
-    * graphql query client payco
+    * graphql query client epayco
     * @return object
     */
     public function query($query,$type,$custom_key = null){

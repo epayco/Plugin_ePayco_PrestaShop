@@ -12,23 +12,52 @@ class Cash extends Resource
 {
     /**
      * Return data payment cash
-     * @param  array $options data transaction
+     * @param  String $type method payment
+     * @param  String $options data transaction
      * @return object
      */
-    public function create($options = null)
+    public function create($type = null, $options = null)
     {
-        return $this->request(
-            "POST",
-            "/payment/process/cash",
-            $this->epayco->api_key,
-            $options,
-            $this->epayco->private_key,
-            $this->epayco->test,
-            false,
-            $this->epayco->lang,
-            true,
+        $medio = strtolower($type);
+        if($medio == "baloto"){
+            throw new ErrorException($this->epayco->lang, 109);
+        }
+        
+        $methods_payment = $this->request(
+            "GET",
+            "/payment/cash/entities",
+            $api_key = $this->epayco->api_key,
+            null,
+            $private_key = $this->epayco->private_key,
+            $test = $this->epayco->test,
+            $switch = false,
+            $lang = $this->epayco->lang,
+            $cash = false,
             false,
             true
+        );
+        
+        if(!isset($methods_payment->data) || !is_array($methods_payment->data) || count($methods_payment->data) == 0){
+            throw new ErrorException($this->epayco->lang, 106);
+        }
+        $entities = array_map(function($item){
+            return strtolower(str_replace(" ","", $item->name));
+        }, $methods_payment->data);
+        
+        if(!in_array($medio,  $entities)){
+            throw new ErrorException($this->epayco->lang, 109);
+        }
+        
+        return $this->request(
+                "POST",
+                "/v2/efectivo/{$medio}",
+                $api_key = $this->epayco->api_key,
+                $options,
+                $this->epayco->private_key,
+                $this->epayco->test,
+                true,
+                $this->epayco->lang,
+                true
         );
     }
 
@@ -41,13 +70,13 @@ class Cash extends Resource
     {
         return $this->request(
                 "GET",
-                "/restpagos/transaction/response.json?ref_payco=" . $uid . "&public_key=" . $this->epayco->api_key,
-                $api_key = $this->epayco->api_key,
+                "/transaction/response.json?ref_payco=" . $uid . "&public_key=" . $this->epayco->api_key,
+                $this->epayco->api_key,
                 $uid,
-                $private_key = $this->epayco->private_key,
-                $test = $this->epayco->test,
-                $switch = true,
-                $lang = $this->epayco->lang
+                $this->epayco->private_key,
+                $this->epayco->test,
+                true,
+                $this->epayco->lang
         );
     }
 }

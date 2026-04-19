@@ -37,7 +37,7 @@ class Customers extends Resource
     {
         return $this->request(
                "GET",
-               "/payment/v1/customer/" . $this->epayco->api_key . "/" . $uid . "/",
+               "/payment/v1/customer/" . $this->epayco->api_key . "/" . $uid,
                $api_key = $this->epayco->api_key,
                $options = null,
                $private_key = $this->epayco->private_key,
@@ -48,14 +48,14 @@ class Customers extends Resource
     }
 
     /**
-     * Get list customer from client payco
+     * Get list customer from client epayco
      * @return object
      */
     public function getList()
     {
         return $this->request(
                "GET",
-               "/payment/v1/customers/" . $this->epayco->api_key . "/",
+               "/payment/v1/customers/" . $this->epayco->api_key,
                $api_key = $this->epayco->api_key,
                $options = null,
                $private_key = $this->epayco->private_key,
@@ -66,7 +66,7 @@ class Customers extends Resource
     }
 
     /**
-     * Update customer from client payco
+     * Update customer from client epayco
      * @return object
      */
     public function update($uid, $options = null)
@@ -84,7 +84,7 @@ class Customers extends Resource
     }
 
      /**
-     * delete customer from client payco
+     * delete customer from client epayco
      * @return object
      */
     public function delete($options = null)
@@ -144,7 +144,7 @@ class Customers extends Resource
 
 
     /**
-     * graphql query client payco
+     * graphql query client epayco
      * @return object
      */
       public function query($query,$type,$custom_key = null){

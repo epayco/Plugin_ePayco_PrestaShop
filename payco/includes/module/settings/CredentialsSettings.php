@@ -85,7 +85,7 @@ class CredentialsSettings extends AbstractSettings
                 'name' => '',
                 'desc' => '',
                 'label' => $this->module->l('Cargar credenciales', 'CredentialsSettings'),
-                'html_content' => '<a href="https://eks-dashboard-service.epayco.io/configuration" target="_blank" class="btn btn-default mp-btn-credenciais">'
+                'html_content' => '<a href="https://dashboard.epayco.com/configuration" target="_blank" class="btn btn-default mp-btn-credenciais">'
                     . $this->module->l('Buscar mis credenciales', 'CredentialsSettings') . '</a>'
             ),
             array(

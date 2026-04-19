@@ -1,5 +1,0 @@
-- generic [active] [ref=e1]:
-  - text: "[Debug] This page has moved"
-  - text: "Please use the following URL instead:"
-  - link "https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/3-the-best-is-yet-to-come-framed-poster.html" [ref=e2] [cursor=pointer]:
-    - /url: https://theories-jefferson-apps-pushing.trycloudflare.com/es/art/3-the-best-is-yet-to-come-framed-poster.html

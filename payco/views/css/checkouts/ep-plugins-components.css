@@ -606,7 +606,7 @@ div .ep-error {
   min-height: 38px !important;
   outline: 0 !important;
   padding: 0 14px !important;
-  /* width: 100% !important; */
+  width: 100% !important;
 }
 
 .ep-input-select-select {
@@ -972,6 +972,7 @@ top: 5px !important;
     position: relative !important;
     background: #fff !important;
     width: 29% !important;
+           margin-left: -141px;
 }
 
 .ep-label-bank {
@@ -994,10 +995,16 @@ top: 5px !important;
 }
 
 /* Responsive: stack 3-column row on narrow screens */
+@media (max-width: 767px) {
+  .ep-label-city-custom {
+    margin-left: -40px;
+  }
+}
 @media (max-width: 520px) {
   .ep-checkout-container {
     padding: 16px !important;
   }
+
 
   .ep-checkout-custom-dual-column-row {
     flex-direction: column !important;

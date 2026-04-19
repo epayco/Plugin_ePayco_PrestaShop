@@ -169,7 +169,7 @@ class DaviplataPreference extends AbstractPreference
                     $this->context->cookie->__set('redirect_epayco_message', json_encode($epaycoOrder));
                     $this->context->cookie->write();
                     //redirect to order confirmation page
-                    $response_urlPayment = 'https://vtex.epayco.io/daviplata?refPayco='.$ref_payco;
+                    $response_urlPayment = 'https://cms.epayco.co/daviplata?refPayco='.$ref_payco;
                     Tools::redirect($response_urlPayment);
                 }else{
                     Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');

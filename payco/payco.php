@@ -27,7 +27,7 @@
 
 
 //namespace Epayco\Prestashop;
-define('EP_VERSION', '1.0.0');
+define('EP_VERSION', '1.0.3');
 define('EP_ROOT_URL', dirname(__FILE__));
 
 if (!defined('_PS_VERSION_')) {
@@ -148,7 +148,8 @@ class Payco extends PaymentModule
             $this->registerHook('displayWrapperTop') &&
             $this->registerHook('displayTopColumn') &&
             $this->registerHook('actionOrderSlipAdd') &&
-            $this->registerHook('actionOrderStatusUpdate');
+            $this->registerHook('actionOrderStatusUpdate') &&
+            $this->registerHook('displayAdminOrder');
     }
 
     /**
@@ -564,12 +565,39 @@ class Payco extends PaymentModule
         // available later in hookActionOrderSlipAdd for refund processing.
         if ($ref_payco) {
             $order = isset($params['order']) ? $params['order'] : (isset($params['objOrder']) ? $params['objOrder'] : null);
+            
             if ($order) {
-                Db::getInstance()->update(
+                /*Db::getInstance()->update(
                     'order_payment',
                     ['transaction_id' => pSQL($ref_payco)],
                     'order_reference = \'' . pSQL($order->reference) . '\''
+                );*/
+                
+
+                $exists = Db::getInstance()->getValue(
+                    'SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'order_payment 
+                     WHERE order_reference = "' . pSQL($order->reference) . '"'
                 );
+                
+                if ($exists) {
+                    Db::getInstance()->update(
+                        'order_payment',
+                        ['transaction_id' => pSQL($ref_payco)],
+                        'order_reference = "' . pSQL($order->reference) . '"'
+                    );
+                } else {
+                    $order->addOrderPayment($order->total_paid, 'ePayco', $ref_payco);
+                    /*Db::getInstance()->insert(
+                        'order_payment',
+                        [
+                            'order_reference' => pSQL($order->reference),
+                            'transaction_id' => pSQL($ref_payco),
+                            'amount' => (float)$order->total_paid,
+                            'payment_method' => 'ePayco',
+                        ]
+                    );*/
+                }
+
             }
         }
 
@@ -696,6 +724,11 @@ class Payco extends PaymentModule
             ' http_code=' . $result['http_code'] .
             ' response=' . $result['body']
         );
+
+        // Store refund result in cookie to display alert on next page load
+        $this->context->cookie->__set('epayco_refund_result', $result['body']);
+        $this->context->cookie->__set('epayco_refund_order_id', $order->id);
+        $this->context->cookie->write();
     }
 
     /**
@@ -707,6 +740,11 @@ class Payco extends PaymentModule
      */
     public function hookActionOrderStatusUpdate($params)
     {
+        // Auto-register displayAdminOrder hook if not already registered
+        if (!$this->isRegisteredInHook('displayAdminOrder')) {
+            $this->registerHook('displayAdminOrder');
+        }
+
         $new_state = $params['newOrderStatus'];
 
         // Only act on the refunded state
@@ -752,6 +790,53 @@ class Payco extends PaymentModule
             ' http_code=' . $result['http_code'] .
             ' response=' . $result['body']
         );
+
+        // Store refund result in cookie to display alert on next page load
+        $this->context->cookie->__set('epayco_refund_result', $result['body']);
+        $this->context->cookie->__set('epayco_refund_order_id', $order->id);
+        $this->context->cookie->write();
+    }
+
+    /**
+     * Hook to display the refund API response as an alert on the admin order page.
+     *
+     * @param array $params
+     * @return string
+     */
+    public function hookDisplayAdminOrder($params)
+    {
+        $refund_result = $this->context->cookie->__get('epayco_refund_result');
+        $refund_order_id = $this->context->cookie->__get('epayco_refund_order_id');
+
+        if (!$refund_result) {
+            return '';
+        }
+
+        // Clear cookie after reading
+        $this->context->cookie->__unset('epayco_refund_result');
+        $this->context->cookie->__unset('epayco_refund_order_id');
+        $this->context->cookie->write();
+
+        $response = json_decode($refund_result, true);
+        $success = isset($response['success']) ? $response['success'] : false;
+        $title = isset($response['titleResponse']) ? $response['titleResponse'] : 'Respuesta ePayco';
+        $text = isset($response['textResponse']) ? $response['textResponse'] : $refund_result;
+
+        $alertType = $success ? 'success' : 'danger';
+        $icon = $success ? 'check-circle' : 'exclamation-circle';
+
+        $html = '<div class="alert alert-' . $alertType . '" role="alert" style="margin-top:10px;">';
+        $html .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+        $html .= '<span aria-hidden="true">&times;</span>';
+        $html .= '</button>';
+        $html .= '<p class="alert-text">';
+        $html .= '<i class="material-icons" style="vertical-align:middle;margin-right:5px;">' . ($success ? 'check_circle' : 'error') . '</i>';
+        $html .= '<strong>ePayco Reembolso - Pedido #' . (int)$refund_order_id . ':</strong> ';
+        $html .= htmlspecialchars($title) . ' - ' . htmlspecialchars($text);
+        $html .= '</p>';
+        $html .= '</div>';
+
+        return $html;
     }
 
     /**
@@ -770,7 +855,7 @@ class Payco extends PaymentModule
 
         $basic = base64_encode($public_key . ':' . $private_key);
 
-        $ch = curl_init('https://eks-apify-service.epayco.io/login');
+        $ch = curl_init('https://apify.epayco.co/login');
         curl_setopt_array($ch, [
             CURLOPT_POST           => true,
             CURLOPT_POSTFIELDS     => json_encode([]),
@@ -803,7 +888,7 @@ class Payco extends PaymentModule
      */
     private function callReversionApi($ref_payco, $bearer_token)
     {
-        $ch = curl_init('https://eks-apify-service.epayco.io/transaction/reversion');
+        $ch = curl_init('https://apify.epayco.co/transaction/reversion');
         curl_setopt_array($ch, [
             CURLOPT_POST           => true,
             CURLOPT_POSTFIELDS     => json_encode(['referencePayco' => $ref_payco]),
@@ -907,8 +992,87 @@ class Payco extends PaymentModule
             return $this->display(__FILE__, 'views/templates/hook/failure.tpl');
         }
     }
+
+    // public function PaymentSuccess($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise)
+    // {
+
+    //     $this->Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise);
+    // }
     
-     public function PaymentSuccess($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise)
+    // private function Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $old_ref_payco, $x_approval_code, $x_franchise, $invoice = null)
+    // {
+    //     $idorder = $extra1;
+
+    //     $config = Configuration::getMultiple(array('P_CUST_ID_CLIENTE', 'P_KEY', 'PUBLIC_KEY', 'P_TEST_REQUEST', 'P_STATE_END_TRANSACTION'));
+
+    //     $x_cust_id_cliente = trim($config['P_CUST_ID_CLIENTE']);
+    //     $x_key = trim($config['P_KEY']);
+        
+        
+    //     $public_key = Configuration::get('EPAYCO_PUBLIC_KEY');
+    //     $private_key = Configuration::get('EPAYCO_PRIVATE_KEY');
+    //     $x_key = Configuration::get('EPAYCO_P_KEY');
+    //     $x_cust_id_cliente = Configuration::get('EPAYCO_P_CUST_ID_CLIENTE');
+        
+    //     $x_cod_response = (int)$response;
+    //     $x_signature = hash(
+    //         'sha256',
+    //         trim($x_cust_id_cliente ). '^'
+    //             . trim($x_key) . '^'
+    //             . $referencia . '^'
+    //             . $transid . '^'
+    //             . $amount . '^'
+    //             . $currency
+    //     );
+
+
+    //     $payment = false;
+    //     $state = 'PAYCO_OS_REJECTED';
+    //     if ($x_cod_response == 4)
+    //         $state = 'PAYCO_OS_FAILED';
+    //     else if ($x_cod_response == 2)
+    //         $state = 'PAYCO_OS_REJECTED';
+    //     else if ($x_cod_response == 3) {
+    //         $state = 'PAYCO_OS_PENDING';
+    //         $statePending = $state;
+    //     } else if ($x_cod_response == 9)
+    //         $state = 'PAYCO_OS_EXPIRED';
+    //     else if ($x_cod_response == 10)
+    //         $state = 'PAYCO_OS_ABANDONED';
+    //     else if ($x_cod_response == 11)
+    //         $state = 'PAYCO_OS_CANCELED';
+    //     else if ($x_cod_response == 1) {
+    //         $state = 'PS_OS_PAYMENT';
+    //         $payment = true;
+    //     }
+
+    //     // $order_id = Order::getByCartId((int)$idorder);
+    //     //$order = Order::getByCartId((int)$idorder);
+    //     $order = new Order((int)$idorder);
+    //     if(!$order || !$order->id) {
+    //         $this->writeTransactionLog("ERROR - No se encontró orden para cart_id: " . (int)$idorder);
+    //         return;
+    //     }
+    //     $keepOn = false;
+    //     $orderAmount = floatval($order->total_paid);
+    //     if ($orderAmount == floatval($amount)) {
+    //         $validation = true;
+    //     }
+        
+    //     if ($x_signature == $signature && $validation) {
+    //         $current_state = $order->current_state;
+    //         if ($current_state != Configuration::get($state)) {
+    //             $orderHistory = new OrderHistory();
+    //             $orderHistory->id_order = (int)$order->id;
+    //             $orderHistory->changeIdOrderState((int)Configuration::get($state), $order, true);
+    //             $orderHistory->add();
+    //         }
+    //     }
+        
+        
+    // }
+
+      public function PaymentSuccess($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise)
     {
 
         $this->Acentarpago($extra1, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise);

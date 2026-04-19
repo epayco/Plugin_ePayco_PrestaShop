@@ -32,6 +32,50 @@
     'use strict';
     $(function () {
         const creditcardForm = document.getElementById('ep_creditcard_checkout');
+
+        function showPaymentError(message, data) {
+            const container = document.querySelector('.ep-checkout-creditcard-container');
+            if (!container) {
+                alert(message);
+                return;
+            }
+            let errorBox = container.querySelector('.ep-payment-error-message');
+            if (!errorBox) {
+                errorBox = document.createElement('div');
+                errorBox.className = 'ep-payment-error-message';
+                errorBox.setAttribute('role', 'alert');
+                errorBox.setAttribute('data-testid', 'ep-payment-error');
+                errorBox.style.cssText = 'background:#fdecea;border:1px solid #f5c2c0;color:#b71c1c;padding:12px 16px;margin:12px 0;border-radius:6px;font-size:14px;font-weight:500;display:flex;align-items:flex-start;gap:8px;';
+                container.insertBefore(errorBox, container.firstChild);
+            }
+            let refInfo = '';
+            if (data && data.ref_payco) {
+                refInfo = ' <span style="opacity:0.75;font-weight:400;">(Ref ePayco: ' + data.ref_payco + ')</span>';
+            }
+            errorBox.innerHTML = '<span aria-hidden="true" style="font-size:18px;line-height:1;">&#9888;</span><span>' + message + refInfo + '</span>';
+            errorBox.style.display = 'flex';
+            try { errorBox.scrollIntoView({behavior: 'smooth', block: 'center'}); } catch (e) {}
+        }
+
+        function clearPaymentError() {
+            const errorBox = document.querySelector('.ep-payment-error-message');
+            if (errorBox) { errorBox.style.display = 'none'; }
+        }
+
+        function resetPaymentFormForRetry() {
+            if (creditcardForm && creditcardForm.parentElement) {
+                creditcardForm.parentElement.classList.remove('loader_epayco');
+            }
+            const confirmBtn = document.querySelector('#payment-confirmation button');
+            if (confirmBtn) {
+                confirmBtn.disabled = false;
+                confirmBtn.removeAttribute('disabled');
+                confirmBtn.textContent = confirmBtn.dataset.originalText || 'Confirmar mi pedido';
+            }
+            const termsCheckbox = document.getElementById('conditions_to_approve[terms-and-conditions]');
+            if (termsCheckbox) { termsCheckbox.checked = true; }
+        }
+
         function uncheckConditionTerms() {
             const conditionTermsCheckbox = document.getElementById('conditions_to_approve[terms-and-conditions]');
 
@@ -46,7 +90,7 @@
             finishOrderButton.setAttribute('disabled', 'disabled');
         }
 
-        function  epaycoFormHandler() {
+        async function  epaycoFormHandler() {
 
             //creditcardForm.parentElement.classList.add("loader_epayco")
             var epayco_submit = false;
@@ -200,15 +244,68 @@
                 creditcardForm.parentElement.classList.remove("loader_epayco")
                 return epayco_submit;
             } else {
-                const request =  createToken(CustomContent)
-                    .then((resultado) => {
-                        nn["epayco_creditcard[cardTokenId]"]=resultado
-                        document.querySelector('#cardTokenId').value = resultado;
-                        creditcardForm.submit()
-                    })
-                    .catch((error) => console.error(error));
-                //if(!request) return epayco_submit;
-                //epayco_submit = true;
+                clearPaymentError();
+                creditcardForm.parentElement.classList.add("loader_epayco")
+                try {
+                    const resultado = await createToken(CustomContent);
+
+                    if (!resultado) {
+                        throw new Error('No se pudo generar el token de la tarjeta');
+                    }
+
+                    nn["epayco_creditcard[cardTokenId]"] = resultado;
+                    document.querySelector('#cardTokenId').value = resultado;
+
+                    var formData = new FormData(creditcardForm);
+                    Object.keys(nn).forEach(function(key) {
+                        formData.set(key, nn[key]);
+                    });
+                    formData.set('epayco_creditcard[cardTokenId]', resultado);
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', creditcardForm.action, true);
+                    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                    xhr.onload = function() {
+                        var contentType = xhr.getResponseHeader('Content-Type') || '';
+                        var jsonBody = null;
+                        if (contentType.indexOf('application/json') !== -1) {
+                            try { jsonBody = JSON.parse(xhr.responseText); } catch (e) { jsonBody = null; }
+                        }
+
+                        if (jsonBody && jsonBody.success === false) {
+                            var friendly = jsonBody.error_message || 'No pudimos procesar tu pago. Por favor intenta nuevamente.';
+                            showPaymentError(friendly, jsonBody);
+                            resetPaymentFormForRetry();
+                            return;
+                        }
+
+                        if (xhr.status >= 200 && xhr.status < 400) {
+                            var responseUrl = xhr.responseURL;
+                            if (responseUrl && responseUrl !== creditcardForm.action) {
+                                window.location.href = responseUrl;
+                            } else {
+                                creditcardForm.submit();
+                            }
+                        } else {
+                            console.error('Error en el pago:', xhr.status);
+                            showPaymentError('Ocurrio un error procesando tu pago. Por favor intenta nuevamente.');
+                            resetPaymentFormForRetry();
+                        }
+                    };
+                    xhr.onerror = function() {
+                        console.error('Error de red al procesar el pago');
+                        showPaymentError('Error de red al procesar el pago. Verifica tu conexion e intenta nuevamente.');
+                        resetPaymentFormForRetry();
+                    };
+                    xhr.send(formData);
+                    epayco_submit = true;
+                    return epayco_submit;
+                } catch (error) {
+                    console.error('ePayco token error:', error);
+                    showPaymentError('No pudimos validar los datos de tu tarjeta. Verificalos e intenta nuevamente.');
+                    resetPaymentFormForRetry();
+                    return epayco_submit;
+                }
             }
 
         }
@@ -217,10 +314,10 @@
 
         async function  createToken($form) {
             return await new Promise(function(resolve, reject) {
-                //resolve("79d170cf1c873bf3201aee2")
                 ePaycoSubscription.token.create($form, function(data) {
+
                     creditcardForm.parentElement.classList.remove("loader_epayco")
-                    if(data.status=='error'){
+                    if(data.status=='error' || !data.status){
                         const parsedError = handleCardFormErrors(data);
                         console.error('ePayco cardForm error: ', parsedError);
                         reject(false)
@@ -244,16 +341,54 @@
 
 
         waitForElement('#payment-confirmation').then(() => {
-            creditcardForm.onsubmit = () => {
-                //const creditcardRadioInput = document.getElementById('ep_creditcard_checkout').parentNode.previousElementSibling.querySelector('input');
-                //const creditcardIsSelected = creditcardRadioInput.checked;
-                if (!epaycoFormHandler()) return false;
-                creditcardForm.submit();
-            }
+            var epaycoProcessing = false;
+
+            // Intercept ALL click events at document level in capture phase
+            // This runs BEFORE jQuery delegation handlers
+            document.addEventListener('click', function(e) {
+                var target = e.target;
+                // Check if click is on the payment confirmation button or its children
+                var confirmBtn = document.querySelector('#payment-confirmation button');
+                if (!confirmBtn) return;
+                if (target !== confirmBtn && !confirmBtn.contains(target)) return;
+
+                // Check if ePayco is the selected payment method.
+                // DOM: .payment-option (radio) + .js-payment-option-form > .payment-method-wrapper > form#ep_creditcard_checkout
+                var jsPaymentOptionForm = creditcardForm.closest('.js-payment-option-form');
+                var creditcardRadioInput = jsPaymentOptionForm
+                    ? (jsPaymentOptionForm.previousElementSibling && jsPaymentOptionForm.previousElementSibling.querySelector('input[type="radio"]'))
+                    : null;
+                // Fallback to legacy structure
+                if (!creditcardRadioInput && creditcardForm.parentNode.previousElementSibling) {
+                    creditcardRadioInput = creditcardForm.parentNode.previousElementSibling.querySelector('input[type="radio"]');
+                }
+                if (!creditcardRadioInput || !creditcardRadioInput.checked) return;
+
+                // Prevent PS from handling the click
+                if (!epaycoProcessing) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    epaycoProcessing = true;
+                    if (!confirmBtn.dataset.originalText) {
+                        confirmBtn.dataset.originalText = confirmBtn.textContent;
+                    }
+                    confirmBtn.disabled = true;
+                    confirmBtn.textContent = 'Procesando...';
+                    epaycoFormHandler()
+                        .catch(function (err) {
+                            console.error('epaycoFormHandler failed:', err);
+                            alert('Ocurrió un error inesperado al procesar el pago.');
+                        })
+                        .finally(function () {
+                            epaycoProcessing = false;
+                        });
+                }
+            }, true);
         })
 
-        $('form#ep_creditcard_checkout').submit(function () {
-            return epaycoFormHandler();
+        $('form#ep_creditcard_checkout').submit(function (e) {
+            e.preventDefault();
+            return false;
         });
     })
 })(jQuery);

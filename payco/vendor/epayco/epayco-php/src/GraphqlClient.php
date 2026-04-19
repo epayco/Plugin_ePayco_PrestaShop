@@ -9,7 +9,7 @@ use Epayco\Exceptions\ErrorException;
 use WpOrg\Requests\Requests;
 
 /**
- * Client conection api payco graphql
+ * Client conection api epayco graphql
  */
 class GraphqlClient
 {
@@ -92,7 +92,7 @@ class GraphqlClient
     {
         $headers = [
             "Content-Type: application/json",
-            "Accept" => "application/json", 
+            "Accept" => "application/json",
             "type" => "sdk",
             "authorization" => "Basic " . base64_encode($api_key)
         ];
@@ -102,7 +102,13 @@ class GraphqlClient
                 'query' => $query
             ];
 
-            $response = Requests::post(Client::BASE_URL . '/graphql', $headers, $body);
+            $options = array(
+                'timeout' => 180,
+                'connect_timeout' => 180,
+            );
+
+
+            $response = Requests::post($this->getEpaycoBaseUrl(Client::BASE_URL) . '/graphql', $headers, $body, $options);
 
         } catch (\Throwable $th) {
             return $th->getMessage();
@@ -383,5 +389,8 @@ class GraphqlClient
         return $response;
     }
 
-    
+    protected function getEpaycoBaseUrl($default)
+    {
+        return getenv('BASE_URL_SDK') ?: $default;
+    }
 }

@@ -19,12 +19,12 @@ class Daviplata extends Resource
         return $this->request(
                "POST",
                "/payment/process/daviplata",
-               $this->epayco->api_key,
+               $api_key = $this->epayco->api_key,
                $options,
-               $this->epayco->private_key,
-               $this->epayco->test,
-               false,
-               $this->epayco->lang,
+               $private_key = $this->epayco->private_key,
+               $test = $this->epayco->test,
+               $switch = false,
+               $lang = $this->epayco->lang,
                false,
                false,
                $apify = true

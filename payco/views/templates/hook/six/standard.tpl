@@ -30,7 +30,7 @@
     </form>
 </div>
 
-<script type="text/javascript" src='https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js'></script>
+<script type="text/javascript" src='https://checkout.epayco.co/checkout-v2.js'></script>
 <script>
     window.addEventListener('load', (event) => {
         const loader = document.getElementById('loader_epayco');

@@ -204,7 +204,7 @@ class StandardPreference extends AbstractPreference
         try{
             $token = base64_encode($api_key.":".$private_key);
             $bearer = $this->apiService(
-                'https://apify.epayco.io/login',
+                'https://apify.epayco.co/login',
                 [],
                 'POST',
                 "authorization: Basic ".$token
@@ -237,7 +237,7 @@ class StandardPreference extends AbstractPreference
             $header[] = "authorization: ".$cabecera;
 
             return $this->apiService(
-                'https://apify.epayco.io/payment/session/create',
+                'https://apify.epayco.co/payment/session/create',
                 $data,
                 'POST',
                 $header

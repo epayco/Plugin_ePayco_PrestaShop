@@ -71,7 +71,7 @@ class Subscriptions extends Resource
     {
         return $this->request(
                "GET",
-               "/recurring/v1/subscription/" . $uid . "/" . $this->epayco->api_key  . "/",
+               "/recurring/v1/subscription/" . $uid . "/" . $this->epayco->api_key,
                $api_key = $this->epayco->api_key,
                $options = null,
                $private_key = $this->epayco->private_key,
@@ -82,7 +82,7 @@ class Subscriptions extends Resource
     }
 
     /**
-     * Get all subscriptions from client payco
+     * Get all subscriptions from client epayco
      * @return object
      */
     public function getList()
@@ -140,7 +140,7 @@ class Subscriptions extends Resource
     }
 
     /**
-     * graphql query client payco
+     * graphql query client epayco
      * @return object
      */
     public function query($query,$type,$custom_key = null){

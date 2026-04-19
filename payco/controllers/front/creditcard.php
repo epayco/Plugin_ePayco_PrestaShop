@@ -47,6 +47,24 @@ class PaycoCreditcardModuleFrontController extends ModuleFrontController
      */
     public function initContent()
     {
+        // Retry recovery: if the cart was already consumed by a previous
+        // validateOrder() call, PrestaShop leaves $this->context->cart without a
+        // valid id on the retry POST. Recover it from the previous order via
+        // the `epayco_retry_order` cookie before the module's checks kick in.
+        if (!$this->context->cart || !$this->context->cart->id) {
+            $retryOrderId = isset($_COOKIE['epayco_retry_order']) ? (int)$_COOKIE['epayco_retry_order'] : 0;
+            if ($retryOrderId > 0) {
+                $previousOrder = new Order($retryOrderId);
+                if (Validate::isLoadedObject($previousOrder) && $previousOrder->id_cart) {
+                    $recoveredCart = new Cart((int)$previousOrder->id_cart);
+                    if (Validate::isLoadedObject($recoveredCart)) {
+                        $this->context->cart = $recoveredCart;
+                        $this->context->customer = new Customer((int)$recoveredCart->id_customer);
+                    }
+                }
+            }
+        }
+
         $preference = new CreditcardPreference();
         try{
             $context = $this->context;

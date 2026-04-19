@@ -47,12 +47,19 @@ class CreditcardPreference extends AbstractPreference
      */
     public function createPreference($cart, $creditcard_info)
     {
+        $logFile = dirname(__DIR__, 3) . '/logs/creditcard.log';
+        //file_put_contents($logFile, date('Y-m-d H:i:s') . " [DEBUG] cardTokenId recibido: " . ($creditcard_info['cardTokenId'] ?? 'VACIO') . " | customer_id: " . ($creditcard_info['customer_id'] ?? 'N/A') . PHP_EOL, FILE_APPEND);
         $customer = new Customer($cart->id_customer);
         if (!Validate::isLoadedObject($customer))
             Tools::redirect('index.php?controller=order&step=1');
         $addressdelivery = new Address((int)($cart->id_address_delivery));
         $paymentData = $this->createSessionPayment();
         $orderData = array_merge($paymentData, $creditcard_info);
+        // If this is a retry on an order that was previously left in a
+        // rejected/cancelled/error state, reset it to the "Esperando Pago"
+        // (PAYCO_ORDERSTATE_WAITING) state so PrestaShop doesn't abort the new
+        // charge with "idShop is corrupted" or similar guard checks.
+        $this->resetRejectedOrderStateForRetry(isset($orderData['id_order']) ? (int)$orderData['id_order'] : 0, $logFile);
         if ($orderData) {
             $value = floatval($orderData['total_paid']);
             $valorBaseDevolucion = floatval($orderData['total_paid_tax_excl']);
@@ -116,14 +123,48 @@ class CreditcardPreference extends AbstractPreference
                 "use_default_card_customer" => true,
                 "testMode" => $test,
                 "extras_epayco"=>["extra5"=>"P19"],
-                'metodoconfirmacion'=> "POST"
+                'metodoconfirmacion'=> "POST",
+                "method_confirmation" => "POST",
+                'extras'=> [
+                    'extra1' => strval($extra1),
+                    'extra2' => strval($extra2)
+                ]
             );
-            $charge = $this->epayco->charge->create($response);
+            try {
+                $charge = $this->epayco->charge->create($response);
+            } catch (\Exception $e) {
+                file_put_contents($logFile, date('Y-m-d H:i:s') . " [ERROR] Exception en charge->create: " . $e->getMessage() . " | Code: " . $e->getCode() . PHP_EOL, FILE_APPEND);
+                $this->jsonErrorResponse($this->friendlyErrorMessage($e->getMessage() ?: 'Error procesando el pago'), [
+                    'reason' => 'exception',
+                    'exception_code' => $e->getCode(),
+                ]);
+                return;
+            }
+
             $response = json_decode(json_encode($charge), true);
-            if (is_array($response) && $response['success']) {
+            //file_put_contents($logFile, date('Y-m-d H:i:s') . " [DEBUG] Respuesta charge->create: " . json_encode($response) . PHP_EOL, FILE_APPEND);
+            if (is_array($response) && !empty($response['success'])) {
                 $ref_payco = $response['data']['refPayco']??$response['data']['ref_payco'];
-                if (in_array(strtolower($response['data']['estado']),["rechazada","fallida","cancelada","abandonada"])) {
-                    Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
+                $estado = $response['data']['estado']??$response['data']['status']??'desconocido';
+                //file_put_contents($logFile, date('Y-m-d H:i:s') . " [INFO] Transaccion procesada | ref_payco: " . $ref_payco . " | estado: " . $estado . " | valor: " . ($response['data']['value']??$response['data']['valor']??'N/A') . " | franquicia: " . ($response['data']['franchise']??$response['data']['franquicia']??'N/A') . " | autorizacion: " . ($response['data']['autorizacion']??'N/A') . " | respuesta: " . ($response['data']['response']??$response['data']['respuesta']??'N/A') . PHP_EOL, FILE_APPEND);
+                $estadoLower = strtolower($estado);
+                $estadosValidos = ["aceptada", "acepted", "accepted", "pendiente", "pending"];
+                if (!in_array($estadoLower, $estadosValidos)) {
+                    $respuestaMsg = $response['data']['respuesta']
+                        ?? $response['data']['response']
+                        ?? ($response['data']['cc_network_response']['message'] ?? null)
+                        ?? 'Transaccion rechazada';
+                    $codError = $response['data']['cod_error']
+                        ?? ($response['data']['cc_network_response']['code'] ?? null);
+                    file_put_contents($logFile, date('Y-m-d H:i:s') . " [WARNING] Transaccion NO aprobada | ref_payco: " . $ref_payco . " | estado: " . $estado . " | mensaje: " . $respuestaMsg . PHP_EOL, FILE_APPEND);
+                    $this->jsonErrorResponse($this->friendlyErrorMessage($respuestaMsg), [
+                        'reason'    => 'rejected',
+                        'estado'    => $estado,
+                        'ref_payco' => $ref_payco,
+                        'cod_error' => $codError,
+                        'respuesta' => $respuestaMsg,
+                    ]);
+                    return;
                 }else{
                     $order = new Order($extra2);
                     $descuento = $order->total_discounts_tax_incl;
@@ -177,16 +218,66 @@ class CreditcardPreference extends AbstractPreference
                         $default_order_state = Configuration::get('EPAYCO_STANDARD_STATE_END_TRANSACTION');
                         $orderHistory->changeIdOrderState((int)$default_order_state, (int)$order->id);
                         $orderHistory->add();
+                        file_put_contents($logFile, date('Y-m-d H:i:s') . " [SUCCESS] Pago ACEPTADO | ref_payco: " . $ref_payco . " | order_id: " . $order->id . " | reference: " . $order->reference . " | valor: " . ($response['data']['value']??$response['data']['valor']??'N/A') . " | franquicia: " . ($response['data']['franchise']??$response['data']['franquicia']??'N/A') . " | autorizacion: " . ($response['data']['autorizacion']??'N/A') . " | ip: " . ($response['data']['ip']??'N/A') . PHP_EOL, FILE_APPEND);
+                    } else {
+                        file_put_contents($logFile, date('Y-m-d H:i:s') . " [INFO] Pago con estado pendiente | ref_payco: " . $ref_payco . " | order_id: " . $order->id . " | estado: " . ($response['data']['estado']??'N/A') . PHP_EOL, FILE_APPEND);
                     }
                     //redirect to order confirmation page
                     Tools::redirect($uri);
                 }
             }else{
-                Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
+                file_put_contents($logFile, date('Y-m-d H:i:s') . " [ERROR] Respuesta NO exitosa de ePayco. Response completa: " . json_encode($response) . PHP_EOL, FILE_APPEND);
+                $mensaje = (is_array($response) ? ($response['message'] ?? null) : null)
+                    ?? (is_array($response) ? ($response['data']['description'] ?? null) : null)
+                    ?? 'Error procesando la transaccion';
+                $detalle = is_array($response) ? ($response['data']['errors'] ?? null) : null;
+                if (!empty($detalle) && is_string($detalle)) {
+                    $mensaje .= ' - ' . $detalle;
+                }
+                $this->jsonErrorResponse($this->friendlyErrorMessage($mensaje), [
+                    'reason' => 'api_error',
+                ]);
+                return;
             }
         }else{
-            $this->getResponse([], 400);
-            Tools::redirect('index.php?controller=order&step=3&typeReturn=failure');
+            file_put_contents($logFile, date('Y-m-d H:i:s') . " [ERROR] orderData vacio o falso" . PHP_EOL, FILE_APPEND);
+            $this->jsonErrorResponse('No pudimos leer los datos de tu orden. Por favor recarga la pagina e intenta de nuevo.', [
+                'reason' => 'missing_order_data',
+            ]);
+            return;
         }
+    }
+
+
+    /**
+     * Convierte el mensaje tecnico de ePayco en un texto amigable para el cliente.
+     *
+     * @param string $raw
+     * @return string
+     */
+    private function friendlyErrorMessage($raw)
+    {
+        $raw = trim((string)$raw);
+        if ($raw === '') {
+            return 'No pudimos procesar tu pago. Por favor intenta nuevamente.';
+        }
+        $lower = mb_strtolower($raw);
+        $map = [
+            'fondos insuficientes'        => 'Fondos insuficientes en la tarjeta. Intenta con otro medio de pago.',
+            'tarjeta bloqueada'           => 'Tu tarjeta se encuentra bloqueada. Comunicate con tu banco o usa otra tarjeta.',
+            'tarjeta vencida'             => 'Tu tarjeta se encuentra vencida. Utiliza otra tarjeta.',
+            'excede el limite'            => 'La transaccion excede el limite autorizado por tu banco.',
+            'denegada'                    => 'Tu banco rechazo la transaccion. Comunicate con tu banco o usa otra tarjeta.',
+            'rechazada'                   => 'La transaccion fue rechazada. Verifica los datos de tu tarjeta o intenta con otra.',
+            'cliente o token inexistente' => 'No pudimos validar los datos de la tarjeta. Por favor verificalos e intenta nuevamente.',
+            'operacion no permitida'      => 'Operacion no permitida por la entidad emisora. Intenta con otra tarjeta.',
+            'transaccion invalida'        => 'Transaccion invalida. Verifica los datos de tu tarjeta e intenta nuevamente.',
+        ];
+        foreach ($map as $needle => $friendly) {
+            if (mb_strpos($lower, $needle) !== false) {
+                return $friendly;
+            }
+        }
+        return $raw;
     }
 }

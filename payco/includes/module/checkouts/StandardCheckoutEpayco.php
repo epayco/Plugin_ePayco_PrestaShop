@@ -104,7 +104,7 @@ class StandardCheckoutEpayco
     public function loadJsStandard()
     {
         $this->context->controller->addJS(
-            'https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js'
+            'https://checkout.epayco.co/checkout-v2.js'
         );
         $this->context->controller->addJS(
             $this->path . '/views/js/standard' . $this->assets_ext_min . '.js?v=' . EP_VERSION

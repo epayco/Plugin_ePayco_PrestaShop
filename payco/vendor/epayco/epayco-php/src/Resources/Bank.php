@@ -15,15 +15,20 @@ class Bank extends Resource
      */
     public function pseBank($testMode = null)
     {
-        $url = '/payment/pse/banks';
+        if ($testMode === null) {
+            $test = $this->epayco->test === "TRUE" || $this->epayco->test === true;
+        } else {
+            $test = (bool)$testMode;
+        }
+        $url = "/payment/pse/banks?test=" . ($test ? "true" : "false");
         return $this->request(
             "GET",
             $url,
             $this->epayco->api_key,
             null,
             $this->epayco->private_key,
-            $this->epayco->test,
-            true,
+            $test,
+            false,
             $this->epayco->lang,
             null,
             null,
@@ -40,16 +45,13 @@ class Bank extends Resource
     {
         return $this->request(
             "POST",
-            "/payment/process/pse",
-            $this->epayco->api_key,
+            "/pagos/debitos.json",
+            $api_key = $this->epayco->api_key,
             $options,
-            $this->epayco->private_key,
-            $this->epayco->test,
-            false,
-            $this->epayco->lang,
-            null,
-            null,
-            true
+            $private_key = $this->epayco->private_key,
+            $test = $this->epayco->test,
+            $switch = true,
+            $lang = $this->epayco->lang
         );
     }
 
@@ -61,14 +63,14 @@ class Bank extends Resource
     public function get($uid = null)
     {
         return $this->request(
-                "GET",
-                "/restpagos/pse/transactioninfomation.json?transactionID=" . $uid . "&&public_key=" . $this->epayco->api_key,
-                $api_key = $this->epayco->api_key,
-                $uid,
-                $private_key = $this->epayco->private_key,
-                $test = $this->epayco->test,
-                $switch = true,
-                $lang = $this->epayco->lang
+            "GET",
+            "/pse/transactioninfomation.json?transactionID=" . $uid . "&&public_key=" . $this->epayco->api_key,
+            $api_key = $this->epayco->api_key,
+            $uid,
+            $private_key = $this->epayco->private_key,
+            $test = $this->epayco->test,
+            $switch = true,
+            $lang = $this->epayco->lang
         );
     }
 }
