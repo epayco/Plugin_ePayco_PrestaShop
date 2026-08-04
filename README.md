@@ -44,7 +44,7 @@
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.1).
+1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.2).
 2. Descomprime el archivo que acabas de descargar y luego comprimer la carpeta llamada payco.
 3. Ingresa a tu administrador de PrestaShop.
 4. Ve a "Módulos o Servicios".
