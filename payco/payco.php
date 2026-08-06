@@ -531,8 +531,32 @@ class Payco extends PaymentModule
 
     public function  HookActionCronJob($params): bool
     {
+        if (!$this->isValidCronRequest()) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Forbidden']);
+            return false;
+        }
+
         $this->actualizarEstados($params);
         return true;
+    }
+
+    private function isValidCronRequest()
+    {
+        $configuredToken = trim((string) Configuration::get('EPAYCO_CRON_TOKEN'));
+        if (empty($configuredToken)) {
+            return true;
+        }
+
+        $providedToken = Tools::getValue('token');
+        if (empty($providedToken)) {
+            $providedToken = Tools::getValue('epayco_cron_token');
+        }
+        if (empty($providedToken) && isset($_SERVER['HTTP_X_EPAYCO_CRON_TOKEN'])) {
+            $providedToken = $_SERVER['HTTP_X_EPAYCO_CRON_TOKEN'];
+        }
+
+        return $providedToken === $configuredToken;
     }
 
     protected function actualizarEstados($params): void
@@ -600,6 +624,7 @@ class Payco extends PaymentModule
 
             //$this->writeCronLog("=== FIN CRON - Procesadas: $processed, Fallidas: $failed, Total: " . count($orders) . " ===");
 
+            http_response_code(200);
             echo json_encode([
                 "success" => true,
                 "message" => "cron ejecutado",
@@ -610,6 +635,7 @@ class Payco extends PaymentModule
             exit;
         } catch (\Exception $e) {
             $this->writeCronLog("ERROR GENERAL: " . $e->getMessage());
+            http_response_code(500);
             echo json_encode(["success" => false, "error" => $e->getMessage()]);
             exit;
         }
@@ -618,6 +644,7 @@ class Payco extends PaymentModule
     private function getPendingOrders()
     {
         try {
+            // TODO: revisar todas las consultas que concatenan variables y preferir APIs de PrestaShop o consultas parametrizadas para evitar inyección y errores por entradas no validadas.
             $sql = 'SELECT p.order_id, 
                         p.id_payco, 
                         p.ref_payco, 
@@ -659,6 +686,12 @@ class Payco extends PaymentModule
     {
         $tokenResponse = $this->epaycoBerarToken(trim($this->public_key), trim($this->private_key));
         $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
+
+        if (empty($bearerToken)) {
+            $this->writeTransactionLog("ERROR - consultEpayco: bearer token vacío");
+            return false;
+        }
+
         $headers = array(
             'Content-Type: application/json',
             'Authorization: Bearer ' . $bearerToken
@@ -666,12 +699,12 @@ class Payco extends PaymentModule
         $data = array(
             'referencePayco' => $ref_payco
         );
-        $transaction = $this->epayco_realizar_llamada_api("payment/transaction", $data, $headers);
-        if ($transaction['success']) {
+        $transaction = $this->epayco_realizar_llamada_api("/payment/transaction", $data, $headers);
+        if (is_array($transaction) && isset($transaction['success']) && $transaction['success'] && isset($transaction['data']['transaction'])) {
             return $transaction['data']['transaction'];
-        } else {
-            return false;
         }
+
+        return false;
     }
 
 
@@ -898,8 +931,8 @@ class Payco extends PaymentModule
                 //"ip" => $myIp,
                 "test" => $test,
                 "extras" => [
-                    "extra1" => (string)$extra2,
-                    "extra2" => (string)$extra1,
+                    "extra1" => (string)$extra1,
+                    "extra2" => (string)$extra2,
                     "extra3" => $lang
                 ],
                 "extrasEpayco" => [
@@ -992,13 +1025,17 @@ class Payco extends PaymentModule
             );
 
             $data = array(
-                'public_key' => $publicKey
+                'public_key' => $publicKey,
+                'private_key' => $privateKey
             );
-            $url = $this->apifyUrl . '/login';
+            $url = rtrim($this->apifyUrl, '/') . '/login';
             //return $this->epayco_realizar_llamada_api("login", [], $headers);
             $responseData = $this->PostCurl($url, $data, $headers);
+            if (!is_string($responseData)) {
+                return false;
+            }
             $jsonData = @json_decode($responseData, true);
-            return $jsonData;
+            return is_array($jsonData) ? $jsonData : false;
         } catch (\Exception $e) {
             return false;
         }
@@ -1011,20 +1048,26 @@ class Payco extends PaymentModule
             'Authorization: Bearer ' . $bearer_token
         );
 
-        $url = $this->apifyUrl . '/payment/session/create';
+        $url = rtrim($this->apifyUrl, '/') . '/payment/session/create';
         $responseData = $this->PostCurl($url, $body, $headers);
+        if (!is_string($responseData)) {
+            return false;
+        }
         $jsonData = @json_decode($responseData, true);
-        return $jsonData;
+        return is_array($jsonData) ? $jsonData : false;
     }
 
     private function epayco_realizar_llamada_api($endpoint, $data, $headers)
     {
-        $url = $this->apifyUrl . $endpoint;
+        $url = rtrim($this->apifyUrl, '/') . $endpoint;
         //$this->writeCronLog("Llamada API a: " . $url . " con datos: " . json_encode($data));
         $responseData = $this->PostCurl($url, $data, $headers);
+        if (!is_string($responseData)) {
+            return false;
+        }
         $jsonData = @json_decode($responseData, true);
         //$this->writeCronLog("Respuesta API: " . $responseData);
-        return $jsonData;
+        return is_array($jsonData) ? $jsonData : false;
     }
 
     private function is_blank($var)
@@ -1236,7 +1279,7 @@ class Payco extends PaymentModule
             $validation = false;
         }
 
-        if ($x_signature == $signature && $validation) {
+        if ($validation && hash_equals((string)$signature, (string)$x_signature)) {
             $current_state = $order->current_state;
 
             if ($x_cod_response == 3) {
@@ -1288,14 +1331,15 @@ class Payco extends PaymentModule
         $history = new OrderHistory();
         $history->id_order = (int)$order->id;
         $stateId = (int)Configuration::get($state);
+        $x_cod_response = (int)$x_cod_response;
 
         if ($confirmation && !$payment && $x_cod_response != 3 && EpaycoOrder::ifStockDiscount($order->id)) {
             if (!$validacionOrderName) {
                 $this->RestoreStock($order, '+');
                 $history->changeIdOrderState((int)Configuration::get($state), $order, true);
                 $history->add();
-                echo "mensaje de confirmacion 1";
-                die();
+                $this->writeTransactionLog("INFO - Confirmación procesada para orden " . $order->id);
+                return;
             }
         }
 
@@ -1315,8 +1359,8 @@ class Payco extends PaymentModule
                     $history->changeIdOrderState((int)$this->p_state_end_transaction, (int)$order->id);
                     $history->add();
                     EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
-                    echo "mensaje de confirmacion 2";
-                    die();
+                    $this->writeTransactionLog("INFO - Confirmación procesada para orden " . $order->id);
+                    return;
                 } else {
                     $history->changeIdOrderState(2, (int)$order->id);
                     $history->add();
@@ -1369,6 +1413,7 @@ class Payco extends PaymentModule
 
     private function RestoreStock($order, $operation)
     {
+        // TODO: extraer markStockDiscounted() y restoreStockIfNeeded() y aplicar locking/transaction para evitar doble descuento en carreras de stock.
         // Verificamos si la orden contiene productos antes de actualizar el stock
         if ($order && !empty($order->getProductsDetail())) {
             foreach ($order->getProductsDetail() as $product) {
@@ -1388,56 +1433,82 @@ class Payco extends PaymentModule
 
     private function PostCurl($url, $body, $headers, $method = 'POST')
     {
+        $ch = null;
         try {
             if (function_exists('curl_init')) {
                 // Inicializamos cURL
                 $ch = curl_init();
-                $timeout = 5;
+                $timeout = 15;
                 $user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
 
                 // Configuraciones de cURL
                 curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+                curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+                curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+
+                if (defined('EPAYCO_DISABLE_SSL_VERIFY') && EPAYCO_DISABLE_SSL_VERIFY === true) {
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                } else {
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+                }
+
                 if (!$body) {
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    // Desactivar verificación de certificado SSL
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);    // Desactivar verificación de host SSL
-                    curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);   // Establecer el agente de usuario
-                    curl_setopt($ch, CURLOPT_HEADER, 0);                // No incluir encabezados en la salida
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);        // Devolver la respuesta como string
-                    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout); // Tiempo de conexión máximo
-                    curl_setopt($ch, CURLOPT_MAXREDIRS, 10);            // Máximo de redirecciones permitidas
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
                 } else {
                     $jsonData = json_encode($body);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // Seguir redirecciones
-                    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); // Tiempo de espera máximo
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Tiempo de espera máximo
-                    curl_setopt($ch, CURLOPT_SSLKEYPASSWD, '');
-                    curl_setopt($ch, CURLOPT_ENCODING, "");
-                    curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-                    curl_setopt($ch, CURLOPT_TIMEOUT, 600);
-                    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
                 }
-                $data = curl_exec($ch);
-                if ($data === false) {
-                    return array('curl_error' => curl_error($ch), 'curerrno' => curl_errno($ch));
-                }
-                curl_close($ch);
 
+                $data = curl_exec($ch);
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                if ($data === false || curl_errno($ch) || $httpCode < 200 || $httpCode >= 300) {
+                    $err = curl_error($ch);
+                    $this->writeTransactionLog("ERROR - PostCurl HTTP $httpCode: $err");
+                    curl_close($ch);
+                    return false;
+                }
+
+                if (!is_string($data)) {
+                    curl_close($ch);
+                    return false;
+                }
+
+                $jsonData = @json_decode($data, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    $this->writeTransactionLog("ERROR - PostCurl JSON decode: " . json_last_error_msg());
+                    curl_close($ch);
+                    return false;
+                }
+
+                curl_close($ch);
                 return $data;
             } else {
-
                 $data = @Tools::file_get_contents($url);
                 return $data;
             }
         } catch (\Throwable $e) {
-            /* @phpstan-ignore-next-line */
-            var_dump($e);
-            die();
+            $this->writeTransactionLog("ERROR - PostCurl exception: " . $e->getMessage());
+            if (is_resource($ch)) {
+                curl_close($ch);
+            }
+            return false;
         } catch (\Exception $e) {
-            var_dump($e);
-            die();
+            $this->writeTransactionLog("ERROR - PostCurl exception: " . $e->getMessage());
+            if (is_resource($ch)) {
+                curl_close($ch);
+            }
+            return false;
         }
     }
 
@@ -1466,25 +1537,26 @@ class Payco extends PaymentModule
         return $clean;
     }
 
-    private function writeCronLog($message)
-    {
-        $logFile = _PS_MODULE_DIR_ . 'payco/logs/cron.log';
-        $date = date('Y-m-d H:i:s');
-        file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
-    }
-
-    private function writeTransactionLog($message, $logType = 'pending')
+    private function logMessage($level, $message, $logFile)
     {
         $logDir = _PS_MODULE_DIR_ . 'payco/logs';
 
-        // Crear directorio si no existe
         if (!is_dir($logDir)) {
             mkdir($logDir, 0755, true);
         }
 
-        $logFile = $logDir . '/' . $logType . '_transactions.log';
-        $date = date('Y-m-d H:i:s');
-        file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
+        $date = date('c');
+        file_put_contents($logDir . '/' . $logFile, "[$date] [$level] $message\n", FILE_APPEND);
+    }
+
+    private function writeCronLog($message)
+    {
+        $this->logMessage('INFO', $message, 'cron.log');
+    }
+
+    private function writeTransactionLog($message, $logType = 'pending')
+    {
+        $this->logMessage('INFO', $message, $logType . '_transactions.log');
     }
 }
 
