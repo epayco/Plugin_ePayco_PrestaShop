@@ -1559,6 +1559,3 @@ class Payco extends PaymentModule
         $this->logMessage('INFO', $message, $logType . '_transactions.log');
     }
 }
-
-
-
