@@ -662,11 +662,11 @@ class Payco extends PaymentModule
 
             if (empty($result)) {
                 $this->writeCronLog("INFO - No hay órdenes pendientes para procesar");
-                
+
                 // Verificar si la tabla payco tiene registros
                 $checkTotal = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'payco');
                 $this->writeCronLog("DEBUG - Total registros en tabla payco: " . $checkTotal);
-                
+
                 // Verificar si hay ref_payco null
                 $checkNull = Db::getInstance()->getValue('SELECT COUNT(*) FROM ' . _DB_PREFIX_ . 'payco WHERE ref_payco IS NULL OR ref_payco = ""');
                 $this->writeCronLog("DEBUG - Registros con ref_payco vacío: " . $checkNull);
@@ -931,8 +931,8 @@ class Payco extends PaymentModule
                 //"ip" => $myIp,
                 "test" => $test,
                 "extras" => [
-                    "extra1" => (string)$extra1,
-                    "extra2" => (string)$extra2,
+                    "extra1" => (string)$extra2,
+                    "extra2" => (string)$extra1,
                     "extra3" => $lang
                 ],
                 "extrasEpayco" => [
@@ -943,10 +943,10 @@ class Payco extends PaymentModule
                 "checkout_version" => "2",
                 "autoClick" => false,
             );
-            
+
             $checkoutSessionResponse = $this->epaycoSessionCheckout($token, $dataScript);
             $sessionId = null;
-            
+
             if (isset($checkoutSessionResponse['success'])) {
                 //$sessionId = $checkoutSessionResponse["data"]['sessionId'];
                 if (isset($checkoutSessionResponse['data']) && is_array($checkoutSessionResponse['data'])) {
@@ -1140,8 +1140,18 @@ class Payco extends PaymentModule
 
 
         if ($ref_payco != "" and $url != "") {
-            $responseData = $this->PostCurl($url, false, $this->StreamContext());
+            $responseData = $this->PostCurl($url, false, [], 'GET');
+            if (!is_string($responseData)) {
+                $this->writeTransactionLog("ERROR - PaymentReturnOnpage: no se pudo consultar la referencia " . $ref_payco . " con GET");
+                return;
+            }
+
             $jsonData = @json_decode($responseData, true);
+            if (!is_array($jsonData) || !isset($jsonData['data']) || !is_array($jsonData['data'])) {
+                $this->writeTransactionLog("ERROR - PaymentReturnOnpage: respuesta inválida para referencia " . $ref_payco . " - " . $responseData);
+                return;
+            }
+
             $data = $jsonData['data'];
 
             $data["ref_payco"] = $ref_payco;
@@ -1221,7 +1231,7 @@ class Payco extends PaymentModule
         // $order_id = Order::getByCartId((int)$idorder);
         //$order = Order::getByCartId((int)$idorder);
         $order = new Order((int)$idorder);
-        if(!$order || !$order->id) {
+        if (!$order || !$order->id) {
             $this->writeTransactionLog("ERROR - No se encontró orden para cart_id: " . (int)$idorder);
             return;
         }
@@ -1321,7 +1331,7 @@ class Payco extends PaymentModule
         } else {
             $this->writeTransactionLog(
                 "ERROR - Validación fallida para orden " . $order->id . ": signature no coincide o validación no aprobada" .
-                " - Datos recibidos: ref_payco=" . $old_ref_payco . ", transid=" . $transid . ", amount=" . $amount . ", currency=" . $currency . " estado=" . $x_cod_response
+                    " - Datos recibidos: ref_payco=" . $old_ref_payco . ", transid=" . $transid . ", amount=" . $amount . ", currency=" . $currency . " estado=" . $x_cod_response
             );
         }
     }
@@ -1474,7 +1484,19 @@ class Payco extends PaymentModule
 
                 if ($data === false || curl_errno($ch) || $httpCode < 200 || $httpCode >= 300) {
                     $err = curl_error($ch);
-                    $this->writeTransactionLog("ERROR - PostCurl HTTP $httpCode: $err");
+                    $message = "ERROR - PostCurl HTTP $httpCode";
+
+                    if ($httpCode === 404 && strpos($url, '/validation/v1/reference/') !== false) {
+                        $message .= " (referencia no encontrada o URL inválida)";
+                    } elseif ($httpCode === 401) {
+                        $message .= " (No autorizado)";
+                    }
+
+                    if (!empty($err)) {
+                        $message .= ": " . $err;
+                    }
+
+                    $this->writeTransactionLog($message);
                     curl_close($ch);
                     return false;
                 }
