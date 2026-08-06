@@ -44,7 +44,7 @@
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.1).
+1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.2).
 2. Descomprime el archivo que acabas de descargar y luego comprimer la carpeta llamada payco.
 3. Ingresa a tu administrador de PrestaShop.
 4. Ve a "Módulos o Servicios".
@@ -64,13 +64,18 @@ Para mantener los estados de sus pedidos actualizados en tiempo real, es necesar
 2. Agregue la siguiente línea en el archivo de tareas programadas (crontab):
 
 ````
-*/1 * * * * /usr/bin/php ruta/a/su/proyecto/prestashop/modules/payco/cron >> /ruta/a/su/proyecto/var/log/cron_epayco.log 2>&1
+*/5 * * * * /usr/bin/php ruta/a/su/proyecto/prestashop/modules/payco/cron >> /ruta/a/su/proyecto/var/log/cron_epayco.log 2>&1
 ````
 
-- ```` * * * * * ```` → Ejecuta la tarea cada minuto (puede ajustar según el tiempo 
+- ```` * * * * * ```` → Ejecuta la tarea cada 5 minutos (recomendado para evitar sobrecarga y ajustar según el volumen de transacciones).
 
-mínimo permitido por su hosting).
+- /usr/bin/php → Ruta al ejecutable de PHP en su servidor.
 
+- /ruta/a/su/proyecto/... → Ruta completa al archivo del cron de su módulo.
+
+- ```` >> ```` ...log → (Opcional) Guarda un registro de ejecución para monitorear errores.
+
+- Si desea proteger el endpoint, configure un token y úselo al invocar el cron desde una URL autorizada.
 - /usr/bin/php → Ruta al ejecutable de PHP en su servidor.
 
 - /ruta/a/su/proyecto/... → Ruta completa al archivo del cron de su módulo.

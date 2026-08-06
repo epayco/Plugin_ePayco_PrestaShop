@@ -53,14 +53,14 @@ class Payco extends PaymentModule
     public $p_state_end_transaction;
     public $p_reduce_stock_pending;
     public $p_type_checkout;
-    public $apifyUrl = "https://eks-apify-service.epayco.io/";
+    public $apifyUrl = "https://eks-apify-service.epayco.io";
 
     public function __construct()
     {
 
         $this->name = 'payco';
         $this->tab = 'payments_gateways';
-        $this->version = '2.0.0.1';
+        $this->version = '2.0.0.2';
         $this->author = 'ePayco';
         $this->need_instance = 0;
 
@@ -531,15 +531,39 @@ class Payco extends PaymentModule
 
     public function  HookActionCronJob($params): bool
     {
+        if (!$this->isValidCronRequest()) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Forbidden']);
+            return false;
+        }
+
         $this->actualizarEstados($params);
         return true;
+    }
+
+    private function isValidCronRequest()
+    {
+        $configuredToken = trim((string) Configuration::get('EPAYCO_CRON_TOKEN'));
+        if (empty($configuredToken)) {
+            return true;
+        }
+
+        $providedToken = Tools::getValue('token');
+        if (empty($providedToken)) {
+            $providedToken = Tools::getValue('epayco_cron_token');
+        }
+        if (empty($providedToken) && isset($_SERVER['HTTP_X_EPAYCO_CRON_TOKEN'])) {
+            $providedToken = $_SERVER['HTTP_X_EPAYCO_CRON_TOKEN'];
+        }
+
+        return $providedToken === $configuredToken;
     }
 
     protected function actualizarEstados($params): void
     {
         try {
- 		 $this->writeCronLog("=== INICIO CRON actualizarEstados ===");
-			
+            $this->writeCronLog("=== INICIO CRON actualizarEstados ===");
+
             $orders = $this->getPendingOrders();
 
             if (empty($orders)) {
@@ -598,7 +622,9 @@ class Payco extends PaymentModule
                 }
             }
 
-    $this->writeCronLog("=== FIN CRON - Procesadas: $processed, Fallidas: $failed, Total: " . count($orders) . " ===");
+            //$this->writeCronLog("=== FIN CRON - Procesadas: $processed, Fallidas: $failed, Total: " . count($orders) . " ===");
+
+            http_response_code(200);
             echo json_encode([
                 "success" => true,
                 "message" => "cron ejecutado",
@@ -609,6 +635,7 @@ class Payco extends PaymentModule
             exit;
         } catch (\Exception $e) {
             $this->writeCronLog("ERROR GENERAL: " . $e->getMessage());
+            http_response_code(500);
             echo json_encode(["success" => false, "error" => $e->getMessage()]);
             exit;
         }
@@ -617,6 +644,7 @@ class Payco extends PaymentModule
     private function getPendingOrders()
     {
         try {
+            // TODO: revisar todas las consultas que concatenan variables y preferir APIs de PrestaShop o consultas parametrizadas para evitar inyección y errores por entradas no validadas.
             $sql = 'SELECT p.order_id, 
                         p.id_payco, 
                         p.ref_payco, 
@@ -658,24 +686,47 @@ class Payco extends PaymentModule
     {
         $tokenResponse = $this->epaycoBerarToken(trim($this->public_key), trim($this->private_key));
         $bearerToken = ($tokenResponse && isset($tokenResponse['token'])) ? $tokenResponse['token'] : '';
-             if(!$bearerToken){
-                $this->writeCronLog("ERROR - consultEpaycoToken: " . json_encode($tokenResponse)); 
+
+        if (empty($bearerToken)) {
+            $this->writeTransactionLog("ERROR - consultEpayco: bearer token vacío");
+            return false;
         }
-		$headers = array(
+
+        $headers = array(
             'Content-Type: application/json',
             'Authorization: Bearer ' . $bearerToken
         );
         $data = array(
             'referencePayco' => $ref_payco
         );
-        $transaction = $this->epayco_realizar_llamada_api("payment/transaction", $data, $headers);
-        if ($transaction['success']) {
+        $transaction = $this->epayco_realizar_llamada_api("/payment/transaction", $data, $headers);
+        if (is_array($transaction) && isset($transaction['success']) && $transaction['success'] && isset($transaction['data']['transaction'])) {
             return $transaction['data']['transaction'];
-        } else {
-		   $this->writeCronLog("ERROR - consultEpayco: " . json_encode($transaction));
-            return false;
         }
+
+        return false;
     }
+
+
+    private function updateOrderStatus(
+        $idorder,
+        $response,
+        $referencia,
+        $transid,
+        $amount,
+        $currency,
+        $signature,
+        $confirmation,
+        $textMode,
+        $x_cod_transaction_state,
+        $ref_payco,
+        $x_approval_code,
+        $x_franchise,
+        $invoice
+    ) {
+        $this->Acentarpago($idorder, $response, $referencia, $transid, $amount, $currency, $signature, $confirmation, $textMode, $x_cod_transaction_state, $ref_payco, $x_approval_code, $x_franchise, $invoice);
+    }
+
 
     /**
      * Add the CSS & JavaScript files you want to be loaded in the BO.
@@ -831,6 +882,9 @@ class Payco extends PaymentModule
             }
             $descripcion = substr($descripcion, 0, -2);
 
+            if (!EpaycoOrder::ifExist($order->id)) {
+                EpaycoOrder::create($order->id, 1);
+            }
 
             $p_url_response = !empty($this->p_url_response) ? $this->p_url_response : Context::getContext()->link->getModuleLink('payco', 'response');
             $p_url_confirmation = !empty($this->p_url_confirmation) ? $this->p_url_confirmation : Context::getContext()->link->getModuleLink('payco', 'confirmation');
@@ -877,8 +931,8 @@ class Payco extends PaymentModule
                 //"ip" => $myIp,
                 "test" => $test,
                 "extras" => [
-                    "extra1" => (string)$extra1,
-                    "extra2" => (string)$extra2,
+                    "extra1" => (string)$extra2,
+                    "extra2" => (string)$extra1,
                     "extra3" => $lang
                 ],
                 "extrasEpayco" => [
@@ -931,15 +985,6 @@ class Payco extends PaymentModule
             );
             $checkout =  base64_encode(json_encode($payload));
 
-            // Crear/verificar la orden en EpaycoOrder con validación
-            if (!EpaycoOrder::ifExist($order->id)) {
-                try {
-                    EpaycoOrder::create($order->id, 0);
-                } catch (Exception $e) {
-                    $this->writeTransactionLog("Error creando EpaycoOrder para id_order: " . $order->id . " - " . $e->getMessage());
-                }
-            }
-
             $this->smarty->assign(
                 array(
                     'this_path_bw' => $this->_path,
@@ -980,13 +1025,17 @@ class Payco extends PaymentModule
             );
 
             $data = array(
-                'public_key' => $publicKey
+                'public_key' => $publicKey,
+                'private_key' => $privateKey
             );
-            $url = $this->apifyUrl . 'login';
+            $url = rtrim($this->apifyUrl, '/') . '/login';
             //return $this->epayco_realizar_llamada_api("login", [], $headers);
             $responseData = $this->PostCurl($url, $data, $headers);
+            if (!is_string($responseData)) {
+                return false;
+            }
             $jsonData = @json_decode($responseData, true);
-            return $jsonData;
+            return is_array($jsonData) ? $jsonData : false;
         } catch (\Exception $e) {
             return false;
         }
@@ -999,20 +1048,26 @@ class Payco extends PaymentModule
             'Authorization: Bearer ' . $bearer_token
         );
 
-        $url = $this->apifyUrl . 'payment/session/create';
+        $url = rtrim($this->apifyUrl, '/') . '/payment/session/create';
         $responseData = $this->PostCurl($url, $body, $headers);
+        if (!is_string($responseData)) {
+            return false;
+        }
         $jsonData = @json_decode($responseData, true);
-        return $jsonData;
+        return is_array($jsonData) ? $jsonData : false;
     }
 
     private function epayco_realizar_llamada_api($endpoint, $data, $headers)
     {
-        $url = $this->apifyUrl . $endpoint;
+        $url = rtrim($this->apifyUrl, '/') . $endpoint;
         //$this->writeCronLog("Llamada API a: " . $url . " con datos: " . json_encode($data));
         $responseData = $this->PostCurl($url, $data, $headers);
+        if (!is_string($responseData)) {
+            return false;
+        }
         $jsonData = @json_decode($responseData, true);
         //$this->writeCronLog("Respuesta API: " . $responseData);
-        return $jsonData;
+        return is_array($jsonData) ? $jsonData : false;
     }
 
     private function is_blank($var)
@@ -1085,8 +1140,18 @@ class Payco extends PaymentModule
 
 
         if ($ref_payco != "" and $url != "") {
-            $responseData = $this->PostCurl($url, false, $this->StreamContext());
+            $responseData = $this->PostCurl($url, false, [], 'GET');
+            if (!is_string($responseData)) {
+                $this->writeTransactionLog("ERROR - PaymentReturnOnpage: no se pudo consultar la referencia " . $ref_payco . " con GET");
+                return;
+            }
+
             $jsonData = @json_decode($responseData, true);
+            if (!is_array($jsonData) || !isset($jsonData['data']) || !is_array($jsonData['data'])) {
+                $this->writeTransactionLog("ERROR - PaymentReturnOnpage: respuesta inválida para referencia " . $ref_payco . " - " . $responseData);
+                return;
+            }
+
             $data = $jsonData['data'];
 
             $data["ref_payco"] = $ref_payco;
@@ -1134,22 +1199,33 @@ class Payco extends PaymentModule
 
         $payment = false;
         $state = 'PAYCO_OS_REJECTED';
-        if ($x_cod_response == 4)
-            $state = 'PAYCO_OS_FAILED';
-        else if ($x_cod_response == 2)
-            $state = 'PAYCO_OS_REJECTED';
-        else if ($x_cod_response == 3) {
-            $state = 'PAYCO_OS_PENDING';
-            $statePending = $state;
-        } else if ($x_cod_response == 9)
-            $state = 'PAYCO_OS_EXPIRED';
-        else if ($x_cod_response == 10)
-            $state = 'PAYCO_OS_ABANDONED';
-        else if ($x_cod_response == 11)
-            $state = 'PAYCO_OS_CANCELED';
-        else if ($x_cod_response == 1) {
-            $state = 'PS_OS_PAYMENT';
-            $payment = true;
+
+        switch ($x_cod_response) {
+            case 4:
+                $state = 'PAYCO_OS_FAILED';
+                break;
+            case 2:
+                $state = 'PAYCO_OS_REJECTED';
+                break;
+            case 3:
+                $state = 'PAYCO_OS_PENDING';
+                break;
+            case 9:
+                $state = 'PAYCO_OS_EXPIRED';
+                break;
+            case 10:
+                $state = 'PAYCO_OS_ABANDONED';
+                break;
+            case 11:
+                $state = 'PAYCO_OS_CANCELED';
+                break;
+            case 1:
+                $state = 'PS_OS_PAYMENT';
+                $payment = true;
+                break;
+            default:
+                $state = 'PAYCO_OS_REJECTED';
+                break;
         }
 
         // $order_id = Order::getByCartId((int)$idorder);
@@ -1192,71 +1268,99 @@ class Payco extends PaymentModule
         WHERE `id_order_state` = ' . (int)$order->current_state);
 
         if (!$orderStatusPre || !isset($orderStatusPre[0]) || !isset($orderStatusPre[0]['name'])) {
-            // Si no encuentra el estado, intentar con idioma específico
             $lang_id = (int) Context::getContext()->language->id;
             $orderStatusPre = Db::getInstance()->executeS('
             SELECT name FROM `' . _DB_PREFIX_ . 'order_state_lang`
-            WHERE `id_order_state` = ' . (int)$order->current_state . ' 
+            WHERE `id_order_state` = ' . (int)$order->current_state . '
             AND `id_lang` = ' . $lang_id);
         }
 
         $orderStatusPreName = (!$orderStatusPre || !isset($orderStatusPre[0]['name'])) ? "ESTADO_NO_ENCONTRADO" : $orderStatusPre[0]['name'];
 
-        if (
-            $orderStatusPreName == "ePayco Pago Rechazado" ||
-            $orderStatusPreName == "ePayco Pago Cancelado" ||
-            $orderStatusPreName == "ePayco Pago Abandonado" ||
-            $orderStatusPreName == "ePayco Pago Expirado"  ||
-            $orderStatusPreName == "ePayco Pago Fallido"
-        ) {
-            $validacionOrderName = false;
-        } else {
-            $validacionOrderName = true;
-        }
+        $validacionOrderName = !in_array($orderStatusPreName, array(
+            "ePayco Pago Rechazado",
+            "ePayco Pago Cancelado",
+            "ePayco Pago Abandonado",
+            "ePayco Pago Expirado",
+            "ePayco Pago Fallido"
+        ), true);
 
         if (!isset($validation)) {
             $validation = false;
         }
 
-        if ($x_signature == $signature && $validation) {
+        if ($validation && hash_equals((string)$signature, (string)$x_signature)) {
             $current_state = $order->current_state;
 
+            if ($x_cod_response == 3) {
+                if ($payment && $validacionOrderName) {
+                    // Mantener el comportamiento actual de la lógica pendiente.
+                }
+            } else {
+                if ($payment && $validacionOrderName) {
+                    if (!EpaycoOrder::ifStockDiscount($order->id)) {
+                        EpaycoOrder::updateStockDiscount($order->id, 1, $referencia);
+                        error_log("Stock descontado automáticamente por PrestaShop para el pedido " . $order->id);
+                    }
+                }
+            }
+
+            if ($confirmation && $x_cod_response == 3) {
+                if (isset($this->p_reduce_stock_pending) && $this->p_reduce_stock_pending == true) {
+                    if (!EpaycoOrder::ifStockDiscount($order->id)) {
+                        EpaycoOrder::updateStockDiscount($order->id, 1, $old_ref_payco);
+                    }
+                } else {
+                    $this->RestoreStock($order, '+');
+                }
+            }
+
             if ($current_state != Configuration::get($state)) {
-                $this->updateOrderStatus($order, $state, $x_cod_response, $confirmation, $old_ref_payco, $payment, $validacionOrderName, $referencia, $orderStatusPreName);
+                $this->handleOrderStateTransition(
+                    $order,
+                    $state,
+                    $x_cod_response,
+                    $confirmation,
+                    $old_ref_payco,
+                    $payment,
+                    $validacionOrderName,
+                    $referencia,
+                    $orderStatusPreName
+                );
             }
         } else {
-            $this->writeTransactionLog("ERROR - Validación fallida para orden " . $order->id . ": signature no coincide o validación no aprobada" . " - Datos recibidos: ref_payco=" . $old_ref_payco . ", transid=" . $transid . ", amount=" . $amount . ", currency=" . $currency . "estado=" . $x_cod_response);
-
+            $this->writeTransactionLog(
+                "ERROR - Validación fallida para orden " . $order->id . ": signature no coincide o validación no aprobada" .
+                    " - Datos recibidos: ref_payco=" . $old_ref_payco . ", transid=" . $transid . ", amount=" . $amount . ", currency=" . $currency . " estado=" . $x_cod_response
+            );
         }
     }
 
-    public function updateOrderStatus($order, $state, $x_cod_response, $confirmation, $old_ref_payco, $payment = false, $validacionOrderName = false, $referencia = '', $orderStatusPreName = '')
+    private function handleOrderStateTransition($order, $state, $x_cod_response, $confirmation, $old_ref_payco, $payment = false, $validacionOrderName = false, $referencia = '', $orderStatusPreName = '')
     {
         $history = new OrderHistory();
         $history->id_order = (int)$order->id;
         $stateId = (int)Configuration::get($state);
+        $x_cod_response = (int)$x_cod_response;
 
-        switch ($x_cod_response) {
-            case 1: // Pago Aceptado
+        if ($confirmation && !$payment && $x_cod_response != 3 && EpaycoOrder::ifStockDiscount($order->id)) {
+            if (!$validacionOrderName) {
+                $this->RestoreStock($order, '+');
+                $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                $history->add();
+                $this->writeTransactionLog("INFO - Confirmación procesada para orden " . $order->id);
+                return;
+            }
+        }
 
-                // Detectar si es un reintento: orden en estado de fallo/rechazo pero pago aceptado
-                $estadosFallo = ["ePayco Pago Rechazado", "ePayco Pago Fallido", "ePayco Pago Cancelado", "ePayco Pago Abandonado", "ePayco Pago Expirado"];
+        switch ((int)$x_cod_response) {
+            case 1:
+                $estadosFallo = array("ePayco Pago Rechazado", "ePayco Pago Fallido", "ePayco Pago Cancelado", "ePayco Pago Abandonado", "ePayco Pago Expirado");
                 $esReintento = $payment && in_array($orderStatusPreName, $estadosFallo) && !EpaycoOrder::ifStockDiscount($order->id);
 
-                // Solo descontar automáticamente si NO es pendiente
                 if (($payment && $validacionOrderName) || $esReintento) {
-                    if ($esReintento) {
-                    //    $this->writeTransactionLog(" REINTENTO - Pago aceptado en orden " . $order->id . " (estado anterior: " . $orderStatusPreName . ")");
-                    }
-
                     if (!EpaycoOrder::ifStockDiscount($order->id)) {
-                        if ($esReintento) {
-                         //   $this->writeTransactionLog(" REINTENTO - Descontando stock para orden " . $order->id . " por pago aceptado en reintento");
-                        }
-                        // Marcar que el stock será descontado
                         EpaycoOrder::updateStockDiscount($order->id, 1, $referencia);
-
-                        // Descontar el stock real
                         $this->RestoreStock($order, '-');
                     }
                 }
@@ -1264,49 +1368,41 @@ class Payco extends PaymentModule
                 if (isset($this->p_state_end_transaction) && (int)$this->p_state_end_transaction > 0) {
                     $history->changeIdOrderState((int)$this->p_state_end_transaction, (int)$order->id);
                     $history->add();
+                    EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
+                    $this->writeTransactionLog("INFO - Confirmación procesada para orden " . $order->id);
+                    return;
                 } else {
                     $history->changeIdOrderState(2, (int)$order->id);
                     $history->add();
+                    EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
+                    error_log("Llamando a RestoreStock en condición de pago exitoso para el pedido " . $order->id);
                     return;
                 }
                 break;
 
-            case 2: // Pago Rechazado
-            case 4: // Pago Fallido
-            case 6: // Código 6
-            case 9: // Pago Expirado
-            case 10: // Pago Abandonado
-            case 11: // Pago Cancelado
-                if (in_array($x_cod_response, [2, 4, 6, 9, 10, 11])) {
-                    $current_state = $order->current_state;
+            case 2:
+            case 4:
+            case 6:
+            case 9:
+            case 10:
+            case 11:
+                if (trim($x_cod_response) == 10) {
+                    $this->RestoreStock($order, '+');
+                }
 
-                    if ($current_state != Configuration::get($state)) {
-                        if (trim($x_cod_response) == 10) {
-                            $this->RestoreStock($order, '+');
-                        }
-
-                        // Verificar comparando por nombre de estado
-                        if ($orderStatusPreName == "ePayco Esperando Pago" || $orderStatusPreName == "ePayco Pago Pendiente") {
-                            $history->changeIdOrderState((int)Configuration::get($state), $order, true);
-
-                            $this->RestoreStock($order, '+');
-
-                            // Resetear el flag stock_discount a 0 para permitir descuento en reintentos aceptados
-                            EpaycoOrder::updateStockDiscount($order->id, 0, $old_ref_payco);
-
-                            $history->add();
-                        }
-                    }
+                if ($orderStatusPreName == "ePayco Esperando Pago" || $orderStatusPreName == "ePayco Pago Pendiente") {
+                    $history->changeIdOrderState((int)Configuration::get($state), $order, true);
+                    $this->RestoreStock($order, '+');
+                    EpaycoOrder::updateStockDiscount($order->id, 0, $old_ref_payco);
+                    $history->add();
+                    EpaycoOrder::deletePaycoOrderByRefAndOrderId($old_ref_payco, $order->id);
                 }
                 break;
 
-            case 3: // Pago Pendiente
+            case 3:
                 if ($confirmation) {
-                    // Si en el módulo se configuró que se reduzca el stock en transacciones pendientes
                     if (isset($this->p_reduce_stock_pending) && $this->p_reduce_stock_pending == true) {
-                        // Verificamos que el stock no se haya descontado ya para este pedido
                         if (!EpaycoOrder::ifStockDiscount($order->id)) {
-                            // Marcamos que el stock ya se descontó para evitar doble descuento
                             EpaycoOrder::updateStockDiscount($order->id, 1, $old_ref_payco);
                         }
                     } else {
@@ -1315,6 +1411,7 @@ class Payco extends PaymentModule
                 }
 
                 $history->changeIdOrderState($stateId, $order, true);
+                $history->add();
                 break;
 
             default:
@@ -1326,6 +1423,7 @@ class Payco extends PaymentModule
 
     private function RestoreStock($order, $operation)
     {
+        // TODO: extraer markStockDiscounted() y restoreStockIfNeeded() y aplicar locking/transaction para evitar doble descuento en carreras de stock.
         // Verificamos si la orden contiene productos antes de actualizar el stock
         if ($order && !empty($order->getProductsDetail())) {
             foreach ($order->getProductsDetail() as $product) {
@@ -1337,7 +1435,7 @@ class Payco extends PaymentModule
                     (int)$order->id_shop                          // ID de la tienda (shop)
                 );
             }
-          //  $this->writeCronLog("INFO - Orden " . $order->id . ": Stock actualizado con operación " . $operation);
+            $this->writeCronLog("INFO - Orden " . $order->id . ": Stock actualizado con operación " . $operation);
         } else {
             $this->writeCronLog("ERROR - Orden " . $order->id . ": No hay productos o no se pudo cargar");
         }
@@ -1345,54 +1443,94 @@ class Payco extends PaymentModule
 
     private function PostCurl($url, $body, $headers, $method = 'POST')
     {
+        $ch = null;
         try {
             if (function_exists('curl_init')) {
                 // Inicializamos cURL
                 $ch = curl_init();
-                $timeout = 5;
+                $timeout = 15;
                 $user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
 
                 // Configuraciones de cURL
                 curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+                curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+                curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+
+                if (defined('EPAYCO_DISABLE_SSL_VERIFY') && EPAYCO_DISABLE_SSL_VERIFY === true) {
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                } else {
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+                }
+
                 if (!$body) {
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);    // Desactivar verificación de certificado SSL
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);    // Desactivar verificación de host SSL
-                    curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);   // Establecer el agente de usuario
-                    curl_setopt($ch, CURLOPT_HEADER, 0);                // No incluir encabezados en la salida
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);        // Devolver la respuesta como string
-                    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout); // Tiempo de conexión máximo
-                    curl_setopt($ch, CURLOPT_MAXREDIRS, 10);            // Máximo de redirecciones permitidas
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
                 } else {
                     $jsonData = json_encode($body);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // Seguir redirecciones
-                    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); // Tiempo de espera máximo
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Tiempo de espera máximo
-                    curl_setopt($ch, CURLOPT_SSLKEYPASSWD, '');
-                    curl_setopt($ch, CURLOPT_ENCODING, "");
-                    curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-                    curl_setopt($ch, CURLOPT_TIMEOUT, 600);
-                    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
                 }
-                $data = curl_exec($ch);
-                if ($data === false) {
-                    return array('curl_error' => curl_error($ch), 'curerrno' => curl_errno($ch));
-                }
-                curl_close($ch);
 
+                $data = curl_exec($ch);
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                if ($data === false || curl_errno($ch) || $httpCode < 200 || $httpCode >= 300) {
+                    $err = curl_error($ch);
+                    $message = "ERROR - PostCurl HTTP $httpCode";
+
+                    if ($httpCode === 404 && strpos($url, '/validation/v1/reference/') !== false) {
+                        $message .= " (referencia no encontrada o URL inválida)";
+                    } elseif ($httpCode === 401) {
+                        $message .= " (No autorizado)";
+                    }
+
+                    if (!empty($err)) {
+                        $message .= ": " . $err;
+                    }
+
+                    $this->writeTransactionLog($message);
+                    curl_close($ch);
+                    return false;
+                }
+
+                if (!is_string($data)) {
+                    curl_close($ch);
+                    return false;
+                }
+
+                $jsonData = @json_decode($data, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    $this->writeTransactionLog("ERROR - PostCurl JSON decode: " . json_last_error_msg());
+                    curl_close($ch);
+                    return false;
+                }
+
+                curl_close($ch);
                 return $data;
             } else {
-
                 $data = @Tools::file_get_contents($url);
                 return $data;
             }
         } catch (\Throwable $e) {
-            /* @phpstan-ignore-next-line */
-            error_log("Error en PostCurl: " . $e->getMessage());
+            $this->writeTransactionLog("ERROR - PostCurl exception: " . $e->getMessage());
+            if (is_resource($ch)) {
+                curl_close($ch);
+            }
+            return false;
         } catch (\Exception $e) {
-            error_log("Exception en PostCurl: " . $e->getMessage());
+            $this->writeTransactionLog("ERROR - PostCurl exception: " . $e->getMessage());
+            if (is_resource($ch)) {
+                curl_close($ch);
+            }
+            return false;
         }
     }
 
@@ -1421,24 +1559,25 @@ class Payco extends PaymentModule
         return $clean;
     }
 
-    private function writeCronLog($message)
-    {
-        $logFile = _PS_MODULE_DIR_ . 'payco/logs/cron.log';
-        $date = date('Y-m-d H:i:s');
-        file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
-    }
-
-    private function writeTransactionLog($message, $logType = 'pending')
+    private function logMessage($level, $message, $logFile)
     {
         $logDir = _PS_MODULE_DIR_ . 'payco/logs';
 
-        // Crear directorio si no existe
         if (!is_dir($logDir)) {
             mkdir($logDir, 0755, true);
         }
 
-        $logFile = $logDir . '/' . $logType . '_transactions.log';
-        $date = date('Y-m-d H:i:s');
-        file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
+        $date = date('c');
+        file_put_contents($logDir . '/' . $logFile, "[$date] [$level] $message\n", FILE_APPEND);
+    }
+
+    private function writeCronLog($message)
+    {
+        $this->logMessage('INFO', $message, 'cron.log');
+    }
+
+    private function writeTransactionLog($message, $logType = 'pending')
+    {
+        $this->logMessage('INFO', $message, $logType . '_transactions.log');
     }
 }
