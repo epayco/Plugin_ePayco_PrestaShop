@@ -53,7 +53,7 @@ class Payco extends PaymentModule
     public $p_state_end_transaction;
     public $p_reduce_stock_pending;
     public $p_type_checkout;
-    public $apifyUrl = "https://eks-apify-service.epayco.io";
+    public $apifyUrl = "https://apify.epayco.co";
 
     public function __construct()
     {
@@ -129,7 +129,7 @@ class Payco extends PaymentModule
      */
     public function hookDisplayHeader()
     {
-        $this->context->controller->registerJavascript('epayco-checkout', 'https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod-v2.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerJavascript('epayco-checkout', 'https://checkout.epayco.co/checkout-v2.js', ['position' => 'bottom', 'priority' => 150]);
         $this->context->controller->registerStylesheet(
             'epayco-checkout-css',
             $this->getPathUri() . 'views/css/back.css',
@@ -1135,7 +1135,7 @@ class Payco extends PaymentModule
                 $ref_payco = $_REQUEST["ref_payco"];
             }
 
-            $url = 'https://eks-ms-checkout-transaction-service.epayco.io/validation/v1/reference/' . $ref_payco;
+            $url = 'https://secure.epayco.co/validation/v1/reference/' . $ref_payco;
         }
 
 
