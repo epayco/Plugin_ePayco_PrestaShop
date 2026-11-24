@@ -54,7 +54,7 @@ class CreditCard_OrderState extends ObjectModel
             $order_state = new OrderState();
             $order_state->name = array();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Esperando Pago';
+                $order_state->name[$language['id_lang']] = 'Davipay Esperando Pago';
 
             $order_state->send_email = false;
             $order_state->color = '#FEFF64';
@@ -71,7 +71,7 @@ class CreditCard_OrderState extends ObjectModel
             $order_state = new OrderState();
             $order_state->name = array();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Esperando Pago Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Esperando Pago Prueba';
 
             $order_state->send_email = false;
             $order_state->color = '#FEFF64';
@@ -88,7 +88,7 @@ class CreditCard_OrderState extends ObjectModel
             $order_state = new OrderState();
             $order_state->name = array();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Pendiente';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Pendiente';
 
             $order_state->send_email = false;
             $order_state->color = '#FEFF64';
@@ -105,7 +105,7 @@ class CreditCard_OrderState extends ObjectModel
             $order_state = new OrderState();
             $order_state->name = array();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Pendiente Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Pendiente Prueba';
 
             $order_state->send_email = false;
             $order_state->color = '#FEFF64';
@@ -121,7 +121,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Fallido';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Fallido';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -137,7 +137,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Fallido Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Fallido Prueba';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -153,7 +153,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Rechazado';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Rechazado';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -168,7 +168,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Rechazado Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Rechazado Prueba';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -183,7 +183,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Expirado';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Expirado';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -198,7 +198,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Expirado Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Expirado Prueba';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -213,7 +213,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Abandonado';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Abandonado';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -228,7 +228,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Abandonado Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Abandonado Prueba';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -243,7 +243,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Cancelado';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Cancelado';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -258,7 +258,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Cancelado Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Cancelado Prueba';
             $order_state->send_email = false;
             $order_state->color = '#8F0621';
             $order_state->hidden = false;
@@ -273,7 +273,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Aceptado';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Aceptado';
             $order_state->send_email = true;
             $order_state->color = '#3498D8';
             $order_state->hidden = false;
@@ -288,7 +288,7 @@ class CreditCard_OrderState extends ObjectModel
         {
             $order_state = new OrderState();
             foreach (Language::getLanguages() as $language)
-                $order_state->name[$language['id_lang']] = 'ePayco Pago Aceptado Prueba';
+                $order_state->name[$language['id_lang']] = 'Davipay Pago Aceptado Prueba';
             $order_state->send_email = true;
             $order_state->color = '#3498D8';
             $order_state->hidden = false;

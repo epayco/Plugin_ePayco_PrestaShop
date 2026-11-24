@@ -17,10 +17,18 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ### Technical Details
 
+- Cambio de marca ePayco → Davipay:
+  - Modificados `payco/views/templates/front/response.tpl` y los demás templates con textos de marca
+  - Actualizados los assets de imagen en `payco/views/img/`
+  - Textos visibles actualizados en `payco/payco.php` (displayName, description y mensajes de configuración)
+  - Identificadores internos (`Payco`, `EpaycoOrder`, `CreditCard_Order`, etc.) sin renombrar
+
 - Modificado `payco/views/templates/front/response.tpl`:
   - Agregada coma faltante en la configuración del objeto
   - Implementada concatenación dinámica de URL completa para `returnUrl`
   - Utilización de `window.location.origin` y `window.location.pathname` para construir URLs absolutas
+
+  
 
 ## [Previous Versions]
 

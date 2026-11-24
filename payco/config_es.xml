@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-    <name>payco</name>
-    <displayName><![CDATA[payco]]></displayName>
+    <name>Davipay</name>
+    <displayName><![CDATA[Davipay]]></displayName>
     <version><![CDATA[1.7.6]]></version>
-    <description><![CDATA[ePayco, Tarjetas de Credito, Debito PSE, SafetyPay y Efectivo]]></description>
-    <author><![CDATA[payco]]></author>
+    <description><![CDATA[Davipay, Tarjetas de Credito, Debito PSE, SafetyPay y Efectivo]]></description>
+    <author><![CDATA[Davipay]]></author>
     <tab><![CDATA[payments_gateways]]></tab>
 	<confirmUninstall><![CDATA[Esta seguro de desistalar este modulo?]]></confirmUninstall>
     <is_configurable>1</is_configurable>
