@@ -46,19 +46,19 @@
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop#versiones).
-2. Descomprime el archivo que acabas de descargar y luego comprimer la carpeta llamada payco.
+1. [Descarga el plugin](https://github.com/epayco/Plugin_ePayco_PrestaShop#versiones).
+2. Descomprime el archivo que acabas de descargar y luego comprime la carpeta llamada `payco`.
 3. Ingresa a tu administrador de PrestaShop.
 4. Ve a "Módulos o Servicios".
-5. Carga el archivo llamado payco en PrestaShop.
+5. Carga el archivo `payco.zip` en PrestaShop.
 6. Busca el plugin Davipay en la lista de módulos.
-7. Haz clic en Instalar.
-8. Haz clic en "Seguir con la Instalación".
-9. Obtén el **P_CUST_ID_CLIENTE**,**P_KEY**, **PUBLIC_KEY** y **PRIVATE_KEY** desde el panel de clientes de Davipay.[panel de clientes](https://dashboard.davipay.com/configuration)
-10. Configura el plugin ingresando los datos en el formulario de configuración.
+7. Haz clic en **Instalar**.
+8. Haz clic en **Seguir con la instalación**.
+9. Obtén el **P_CUST_ID_CLIENTE**, **P_KEY**, **PUBLIC_KEY** y **PRIVATE_KEY** desde el [panel de clientes de Davipay](https://dashboard.davipay.com/configuration).
+10. Configura el plugin ingresando los datos en el formulario de configuración y haz clic en el botón **Guardar**. ¡Y listo! Ahora podrás recibir tus pagos seguros por Davipay.
 
 
-## 🔄 Actualización Automática de Órdenes
+## Actualización Automática de Órdenes
 Para mantener los estados de sus pedidos actualizados en tiempo real, es necesario configurar una tarea programada (cron job) en su servidor. Esta tarea se encargará de consultar periódicamente el estado de las órdenes y actualizarlas automáticamente en su sistema.
 
 ### Pasos para la configuración:
