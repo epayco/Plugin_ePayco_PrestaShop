@@ -29,9 +29,9 @@
 		<p class="payment_module">
 			<a class="bankwire" 
 				 href="{$link->getModuleLink('payco', 'payment')|escape:'html'}" 
-				 title="{l s='ePayco Reciba pagos online con tarjetas de credito, debito PSE, Efectivo y SafetyPay en menos de 24 Horas con multiples herramientas.' mod='payco'}">	
-				 <img src="https://multimedia.epayco.co/epayco-landing/btns/epayco-logo-fondo-claro-lite.png" />			
-				{l s='ePayco' mod='payco'}&nbsp;
+				 title="{l s='Davipay Reciba pagos online con tarjetas de credito, debito PSE, Efectivo y SafetyPay en menos de 24 Horas con multiples herramientas.' mod='payco'}">	
+				<img src="{constant('DAVIPAY_ROUTE_IMAGES_S3')}Imagotipo/checkoutSmallWhite_01_v1.svg"  />
+				{l s='Davipay' mod='payco'}&nbsp;
 				<span style="font-size: 14px;">
 					{l s='(Reciba pagos online con tarjetas de Crédito, Debito PSE, Efectivo y SafetyPay en menos de 24 Horas con multiples herramientas).' mod='payco'}
 				</span>

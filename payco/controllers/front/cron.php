@@ -24,11 +24,11 @@ class PaycoCronModuleFrontController extends ModuleFrontController
                 null,   // ID empleado
                 true    // Permite duplicados
             );
-            $this->writeCronLog("Inicio ejecución cron command ePayco");
+            $this->writeCronLog("Inicio ejecución cron command Davipay");
             $this->ajaxRender('Ejecutando command Cron...');
             Hook::exec('actionCronJob');
         } catch (\Exception $e){
-            $this->writeCronLog("Inicio ejecución cron command ePayco" . $e->getMessage());
+            $this->writeCronLog("Inicio ejecución cron command Davipay" . $e->getMessage());
         } 
 
     }
@@ -47,11 +47,11 @@ class PaycoCronModuleFrontController extends ModuleFrontController
                 null,   // ID empleado
                 true    // Permite duplicados
             );
-            $this->writeCronLog("Inicio ejecución cron ePayco");
+            $this->writeCronLog("Inicio ejecución cron Davipay");
             //$this->ajaxRender('Ejecutando Cron...');
             Hook::exec('actionCronJob');
         } catch (\Exception $e){
-            $this->writeCronLog("Inicio ejecución cron ePayco" . $e->getMessage());
+            $this->writeCronLog("Inicio ejecución cron Davipay" . $e->getMessage());
         } 
         
     }

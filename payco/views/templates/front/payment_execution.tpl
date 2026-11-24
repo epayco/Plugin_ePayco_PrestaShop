@@ -36,9 +36,9 @@
 		<form action="{$link->getModuleLink('payco', 'validation', [], true)|escape:'html'}" method="post">
 			<div class="box cheque-box">
 				<h3 class="page-subheading" style="text-align: center; font-size: 10px;">
-					<img src="boton.png" alt="{l s='ePayco' mod='payco'}"/>
+					<img src="boton.png" alt="{l s='Davipay' mod='payco'}"/>
 					<div>
-						{l s='Ha elegido pagar con ePayco.' mod='payco'}
+						{l s='Ha elegido pagar con Davipay.' mod='payco'}
 					</div>
 				</h3>
 				<div>

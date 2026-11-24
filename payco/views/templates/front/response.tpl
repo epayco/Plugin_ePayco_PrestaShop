@@ -32,7 +32,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Formulario Respuesta ePayco</title>
+        <title>Formulario Respuesta Davipay</title>
         <!-- Bootstrap -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -95,9 +95,9 @@
                                 <div class="container">
                                     <div class="col-lg-8 col-lg-offset-2" style="display: flex; justify-content: center; margin-top: 10px;">
                                         <img 
-                                            src="{constant('_EPAYCO_MULTIMEDIA_URL_')}/plugins-sdks/paymentLogo.svg" 
-                                            alt="Logo de ePayco" 
-                                            style="max-width: 100%; height: auto; width: 100%; max-height: 730px;" 
+                                            src="{constant('DAVIPAY_ROUTE_IMAGES_S3')}checkout/payment-methods/logo-checkout-payment-methods.svg" 
+                                            alt="Logo de Davipay" 
+                                            style="max-width: 100%; height: auto; width: 100%; max-height: 730px; margin-top: 10px;" 
                                         >
                                     </div>
                                 </div>

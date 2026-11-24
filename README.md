@@ -1,6 +1,6 @@
-# ePayco plugin para PrestaShop v1.9.5.2
+# Davipay plugin para PrestaShop v1.9.5.2 ó Superior
 
-**Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@epayco.com.**
+**Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@epayco.com ó desarrolladores@epayco.com**
 
 ## Tabla de contenido
 
@@ -10,53 +10,55 @@
 * [Pasos](#pasos)
 
 ## Versiones
-* [ePayco plugin OnPage_Checkout_PrestaShop v2.0.0.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.2)
-* [ePayco plugin OnPage_Checkout_PrestaShop v2.0.0.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.1)
-* [ePayco plugin OnPage_Checkout_PrestaShop v2.0.0.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.6.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.6.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.1)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.5.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.4.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.4.1)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.4.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.4.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.3.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.3.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.2.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.2.2)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.1.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.1.2)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.1.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.1.1)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.0.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.0.1)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.9.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.0.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.8.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.8.0.0)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.7.7](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.7.x)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.7.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.6)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.7.5](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.5)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.7.4](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.4)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.7.3](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.3)
-* [ePayco plugin OnPage_Checkout_PrestaShop v1.7](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7)
-* [ePayco plugin PrestaShop v1.6.1.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
-* [ePayco plugin PrestaShop v1.5.6.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.5.6.2)
+* [Davipay plugin OnPage_Checkout_PrestaShop v3.0.0.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/3.0.0.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v2.0.0.3](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.3)
+* [Davipay plugin OnPage_Checkout_PrestaShop v2.0.0.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.2)
+* [Davipay plugin OnPage_Checkout_PrestaShop v2.0.0.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.1)
+* [Davipay plugin OnPage_Checkout_PrestaShop v2.0.0.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.6.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.6.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.5.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.2)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.5.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.1)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.5.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.5.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.4.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.4.1)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.4.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.4.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.3.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.3.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.2.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.2.2)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.1.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.1.2)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.1.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.1.1)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.0.1](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.0.1)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.9.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.9.0.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.8.0](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.8.0.0)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.7.7](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.7.x)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.7.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.6)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.7.5](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.5)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.7.4](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.4)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.7.3](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7.3)
+* [Davipay plugin OnPage_Checkout_PrestaShop v1.7](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.7)
+* [Davipay plugin PrestaShop v1.6.1.6](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.6.1.6)
+* [Davipay plugin PrestaShop v1.5.6.2](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/1.5.6.2)
 
 ## Requisitos
 
-* Tener una cuenta activa en [ePayco](https://pagaycobra.com).
+* Tener una cuenta activa en [Davipay](https://davipay.com).
 * Tener instalado PrestaShop v1.6.1.6 o superior.
 * Acceso a las carpetas donde está instalado PrestaShop.
 * Acceso al admin de PrestaShop.
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/Plugin_ePayco_PrestaShop/releases/tag/2.0.0.2).
-2. Descomprime el archivo que acabas de descargar y luego comprimer la carpeta llamada payco.
+1. [Descarga el plugin](https://github.com/epayco/Plugin_ePayco_PrestaShop#versiones).
+2. Descomprime el archivo que acabas de descargar y luego comprime la carpeta llamada `payco`.
 3. Ingresa a tu administrador de PrestaShop.
 4. Ve a "Módulos o Servicios".
-5. Carga el archivo llamado payco en PrestaShop.
-6. Busca el plugin ePayco en la lista de módulos.
-7. Haz clic en Instalar.
-8. Haz clic en "Seguir con la Instalación".
-9. Obtén el **P_CUST_ID_CLIENTE**,**P_KEY**, **PUBLIC_KEY** y **PRIVATE_KEY** desde el panel de clientes de ePayco.
-10. Configura el plugin ingresando los datos en el formulario de configuración.
+5. Carga el archivo `payco.zip` en PrestaShop.
+6. Busca el plugin Davipay en la lista de módulos.
+7. Haz clic en **Instalar**.
+8. Haz clic en **Seguir con la instalación**.
+9. Obtén el **P_CUST_ID_CLIENTE**, **P_KEY**, **PUBLIC_KEY** y **PRIVATE_KEY** desde el [panel de clientes de Davipay](https://dashboard.davipay.com/configuration).
+10. Configura el plugin ingresando los datos en el formulario de configuración y haz clic en el botón **Guardar**. ¡Y listo! Ahora podrás recibir tus pagos seguros por Davipay.
 
 
-## 🔄 Actualización Automática de Órdenes
+## Actualización Automática de Órdenes
 Para mantener los estados de sus pedidos actualizados en tiempo real, es necesario configurar una tarea programada (cron job) en su servidor. Esta tarea se encargará de consultar periódicamente el estado de las órdenes y actualizarlas automáticamente en su sistema.
 
 ### Pasos para la configuración:

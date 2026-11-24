@@ -29,7 +29,7 @@
 </div>
 <p style="text-align: center;" class="epayco-title">
     <span class="animated-points">Cargando métodos de pago</span>
-   <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con ePayco"</small>
+   <br><small class="epayco-subtitle"> Si no se cargan automáticamente, de clic en el botón "Pagar con Davipay"</small>
 </p>
 <center>
 <a id="btn_epayco" href="#">
